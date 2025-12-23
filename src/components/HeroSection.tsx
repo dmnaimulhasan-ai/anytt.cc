@@ -343,7 +343,7 @@ const HeroSection = () => {
             >
               {/* Mobile: Stacked */}
               <div className="flex flex-col gap-3 md:hidden">
-                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 neon-border">
+                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 border border-border/50">
                   <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   <Input
                     type="url"
@@ -390,7 +390,7 @@ const HeroSection = () => {
               </div>
 
               {/* Desktop: Inline */}
-              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 neon-border">
+              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 border border-border/50">
                 <div className="flex-1 flex items-center gap-3 pl-5">
                   <Search className="h-5 w-5 text-muted-foreground" />
                   <Input
