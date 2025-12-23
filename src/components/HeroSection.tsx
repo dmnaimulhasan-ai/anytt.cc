@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Clipboard, X, Loader2, List, Link, Zap, Sparkles, Star } from "lucide-react";
+import { Search, Clipboard, X, Loader2, List, Link, Zap, Sparkles, Star, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +7,8 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
+
+type Platform = 'tiktok' | 'youtube';
 
 interface VideoData {
   id: string;
@@ -33,10 +35,30 @@ const HeroSection = () => {
   const [batchUrls, setBatchUrls] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isBatchMode, setIsBatchMode] = useState(false);
+  const [platform, setPlatform] = useState<Platform>('tiktok');
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
   const { toast } = useToast();
+
+  const platformConfig = {
+    tiktok: {
+      name: 'TikTok',
+      placeholder: 'Paste TikTok link...',
+      batchPlaceholder: 'Paste TikTok URLs here bestie 💕\nOne per line, up to 100 videos!',
+      function: 'tiktok-download',
+      icon: '🎵',
+      color: 'primary'
+    },
+    youtube: {
+      name: 'YouTube',
+      placeholder: 'Paste YouTube link...',
+      batchPlaceholder: 'Paste YouTube URLs here bestie 💕\nOne per line, up to 100 videos!',
+      function: 'youtube-download',
+      icon: '▶️',
+      color: 'destructive'
+    }
+  };
 
   const handlePaste = async () => {
     try {
@@ -69,7 +91,7 @@ const HeroSection = () => {
 
   const fetchVideo = async (videoUrl: string): Promise<BatchVideoResult> => {
     try {
-      const { data, error } = await supabase.functions.invoke('tiktok-download', {
+      const { data, error } = await supabase.functions.invoke(platformConfig[platform].function, {
         body: { url: videoUrl.trim() }
       });
 
@@ -91,7 +113,7 @@ const HeroSection = () => {
     if (!url.trim()) {
       toast({
         title: "🔗 Need a link!",
-        description: "Paste a TikTok URL first",
+        description: `Paste a ${platformConfig[platform].name} URL first`,
         variant: "destructive",
       });
       return;
@@ -128,7 +150,7 @@ const HeroSection = () => {
     if (urls.length === 0) {
       toast({
         title: "🔗 Need links!",
-        description: "Paste some TikTok URLs",
+        description: `Paste some ${platformConfig[platform].name} URLs`,
         variant: "destructive",
       });
       return;
@@ -178,6 +200,13 @@ const HeroSection = () => {
     handleClear();
   };
 
+  const switchPlatform = (newPlatform: Platform) => {
+    if (newPlatform !== platform) {
+      setPlatform(newPlatform);
+      handleClear();
+    }
+  };
+
   const showResults = videoData || batchResults.length > 0;
 
   return (
@@ -201,7 +230,7 @@ const HeroSection = () => {
         </div>
 
         <h1 className="text-5xl md:text-8xl font-black font-display mb-4 animate-fade-in leading-tight" style={{ animationDelay: "0.1s" }}>
-          <span className="gradient-text">TikTok</span>
+          <span className="gradient-text">Video</span>
           <br className="md:hidden" />
           <span className="text-foreground"> Saver</span>
         </h1>
@@ -211,33 +240,63 @@ const HeroSection = () => {
           <span className="inline-block ml-2 animate-bounce">🚀</span>
         </p>
 
-        {/* Mode Toggle */}
+        {/* Platform Toggle */}
         {!showResults && (
-          <div className="flex justify-center gap-3 mb-8 animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <Button
-              variant="ghost"
-              onClick={() => !isBatchMode || toggleMode()}
-              className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
-                !isBatchMode 
-                  ? "glass-card text-foreground border-2 border-primary/50 shadow-glow-pink" 
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <Link className="h-4 w-4 mr-2" />
-              Single
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => isBatchMode || toggleMode()}
-              className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
-                isBatchMode 
-                  ? "glass-card text-foreground border-2 border-secondary/50 shadow-glow-cyan" 
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <List className="h-4 w-4 mr-2" />
-              Batch
-            </Button>
+          <div className="flex flex-col items-center gap-4 mb-6 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+            <div className="flex justify-center gap-3">
+              <Button
+                variant="ghost"
+                onClick={() => switchPlatform('tiktok')}
+                className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
+                  platform === 'tiktok'
+                    ? "glass-card text-foreground border-2 border-primary/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <span className="mr-2">🎵</span>
+                TikTok
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => switchPlatform('youtube')}
+                className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
+                  platform === 'youtube'
+                    ? "glass-card text-foreground border-2 border-red-500/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Youtube className="h-4 w-4 mr-2 text-red-500" />
+                YouTube
+              </Button>
+            </div>
+
+            {/* Mode Toggle */}
+            <div className="flex justify-center gap-3">
+              <Button
+                variant="ghost"
+                onClick={() => !isBatchMode || toggleMode()}
+                className={`rounded-2xl px-4 h-10 text-xs font-semibold transition-all ${
+                  !isBatchMode 
+                    ? "bg-muted/50 text-foreground border border-border/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Link className="h-3.5 w-3.5 mr-1.5" />
+                Single
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => isBatchMode || toggleMode()}
+                className={`rounded-2xl px-4 h-10 text-xs font-semibold transition-all ${
+                  isBatchMode 
+                    ? "bg-muted/50 text-foreground border border-border/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <List className="h-3.5 w-3.5 mr-1.5" />
+                Batch
+              </Button>
+            </div>
           </div>
         )}
 
@@ -245,15 +304,15 @@ const HeroSection = () => {
           isBatchMode ? (
             // Batch Mode Input
             <div 
-              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up neon-border"
+              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder="Paste TikTok URLs here bestie 💕&#10;One per line, up to 100 videos!"
+                  placeholder={platformConfig[platform].batchPlaceholder}
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
-                  className="min-h-40 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
+                  className="min-h-40 bg-muted/50 border-border/50 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
                 />
                 <div className="flex items-center justify-between mt-3">
                   <span className="text-xs text-muted-foreground flex items-center gap-1.5">
@@ -310,11 +369,11 @@ const HeroSection = () => {
             >
               {/* Mobile: Stacked */}
               <div className="flex flex-col gap-3 md:hidden">
-                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 neon-border">
+                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 border border-border/30">
                   <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   <Input
                     type="url"
-                    placeholder="Paste TikTok link..."
+                    placeholder={platformConfig[platform].placeholder}
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-base h-10"
@@ -357,12 +416,12 @@ const HeroSection = () => {
               </div>
 
               {/* Desktop: Inline */}
-              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 neon-border">
+              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 border border-border/30">
                 <div className="flex-1 flex items-center gap-3 pl-5">
                   <Search className="h-5 w-5 text-muted-foreground" />
                   <Input
                     type="url"
-                    placeholder="Paste a TikTok link here..."
+                    placeholder={`Paste a ${platformConfig[platform].name} link here...`}
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}

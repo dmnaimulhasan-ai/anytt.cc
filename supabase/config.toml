@@ -2,3 +2,6 @@ project_id = "gicmzzepxupzghcswqyd"
 
 [functions.tiktok-download]
 verify_jwt = false
+
+[functions.youtube-download]
+verify_jwt = false
