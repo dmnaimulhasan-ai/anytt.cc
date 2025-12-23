@@ -29,15 +29,12 @@ interface BatchVideoResult {
   error?: string;
 }
 
-type Platform = 'all' | 'tiktok' | 'instagram' | 'youtube' | 'facebook' | 'twitter' | 'snapchat';
+type Platform = 'all' | 'tiktok' | 'youtube' | 'snapchat';
 
 const platforms: { id: Platform; name: string; icon: string }[] = [
   { id: 'all', name: 'All', icon: '🌐' },
   { id: 'tiktok', name: 'TikTok', icon: '🎵' },
-  { id: 'instagram', name: 'Instagram', icon: '📸' },
   { id: 'youtube', name: 'YouTube', icon: '▶️' },
-  { id: 'facebook', name: 'Facebook', icon: '👤' },
-  { id: 'twitter', name: 'X/Twitter', icon: '𝕏' },
   { id: 'snapchat', name: 'Snapchat', icon: '👻' },
 ];
 
