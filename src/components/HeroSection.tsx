@@ -278,7 +278,7 @@ const HeroSection = () => {
           isBatchMode ? (
             // Batch Mode Input
             <div 
-              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up neon-border"
+              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up border border-border/50"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="mb-4">
