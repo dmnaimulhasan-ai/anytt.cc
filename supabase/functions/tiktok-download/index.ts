@@ -77,21 +77,61 @@ async function fetchTikTok(url: string): Promise<VideoData> {
 }
 
 async function fetchInstagram(url: string): Promise<VideoData> {
-  // Using a free Instagram API
-  const apiUrl = `https://api.saveig.app/api/v1/media?url=${encodeURIComponent(url)}`;
-  console.log('Fetching Instagram:', apiUrl);
+  console.log('Fetching Instagram:', url);
   
-  const response = await fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  // Approach 1: Try SnapInsta API
+  try {
+    const apiUrl = 'https://snapinsta.app/api/ajaxSearch';
+    const formData = new URLSearchParams();
+    formData.append('q', url);
+    formData.append('t', 'media');
+    formData.append('lang', 'en');
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Origin': 'https://snapinsta.app',
+        'Referer': 'https://snapinsta.app/'
+      },
+      body: formData.toString()
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      console.log('SnapInsta response received');
+      
+      if (data.data) {
+        const htmlContent = data.data;
+        const videoMatch = htmlContent.match(/href="(https:\/\/[^"]+\.mp4[^"]*)"/i) ||
+                          htmlContent.match(/href="(https:\/\/[^"]+)"/i);
+        const thumbMatch = htmlContent.match(/src="(https:\/\/[^"]+\.jpg[^"]*)"/i);
+        
+        if (videoMatch && videoMatch[1]) {
+          return {
+            id: Date.now().toString(),
+            title: 'Instagram Reel',
+            author: 'Instagram User',
+            authorAvatar: '',
+            thumbnail: thumbMatch ? thumbMatch[1] : '',
+            duration: 0,
+            videoUrl: videoMatch[1],
+            videoUrlNoWatermark: videoMatch[1],
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'instagram'
+          };
+        }
+      }
     }
-  });
+  } catch (err) {
+    console.log('SnapInsta failed:', err);
+  }
 
-  if (!response.ok) {
-    // Fallback API
-    const fallbackUrl = `https://www.saveig.app/api/ajaxSearch`;
+  // Approach 2: Try SaveIG API
+  try {
+    const fallbackUrl = 'https://www.saveig.app/api/ajaxSearch';
     const formData = new URLSearchParams();
     formData.append('q', url);
     formData.append('t', 'media');
@@ -106,49 +146,78 @@ async function fetchInstagram(url: string): Promise<VideoData> {
       body: formData.toString()
     });
     
-    if (!fallbackResponse.ok) {
-      throw new Error('Failed to fetch Instagram content');
+    if (fallbackResponse.ok) {
+      const fallbackData = await fallbackResponse.json();
+      if (fallbackData.data) {
+        const htmlContent = fallbackData.data;
+        const videoMatch = htmlContent.match(/href="(https:\/\/[^"]+\.mp4[^"]*)"/);
+        const thumbMatch = htmlContent.match(/src="(https:\/\/[^"]+\.jpg[^"]*)"/);
+        
+        if (videoMatch && videoMatch[1]) {
+          return {
+            id: Date.now().toString(),
+            title: 'Instagram Reel',
+            author: 'Instagram User',
+            authorAvatar: '',
+            thumbnail: thumbMatch ? thumbMatch[1] : '',
+            duration: 0,
+            videoUrl: videoMatch[1],
+            videoUrlNoWatermark: videoMatch[1],
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'instagram'
+          };
+        }
+      }
     }
-    
-    const fallbackData = await fallbackResponse.json();
-    if (!fallbackData.data) {
-      throw new Error('Could not fetch Instagram content');
-    }
-    
-    // Parse the HTML response to extract video URLs
-    const htmlContent = fallbackData.data;
-    const videoMatch = htmlContent.match(/href="(https:\/\/[^"]+\.mp4[^"]*)"/);
-    const thumbMatch = htmlContent.match(/src="(https:\/\/[^"]+\.jpg[^"]*)"/);
-    
-    return {
-      id: Date.now().toString(),
-      title: 'Instagram Reel',
-      author: 'Instagram User',
-      authorAvatar: '',
-      thumbnail: thumbMatch ? thumbMatch[1] : '',
-      duration: 0,
-      videoUrl: videoMatch ? videoMatch[1] : '',
-      videoUrlNoWatermark: videoMatch ? videoMatch[1] : '',
-      musicUrl: '',
-      musicTitle: '',
-      platform: 'instagram'
-    };
+  } catch (err) {
+    console.log('SaveIG failed:', err);
   }
 
-  const data = await response.json();
-  return {
-    id: data.id || Date.now().toString(),
-    title: data.title || 'Instagram Content',
-    author: data.author || 'Instagram User',
-    authorAvatar: data.authorAvatar || '',
-    thumbnail: data.thumbnail || '',
-    duration: data.duration || 0,
-    videoUrl: data.videoUrl || '',
-    videoUrlNoWatermark: data.videoUrl || '',
-    musicUrl: '',
-    musicTitle: '',
-    platform: 'instagram'
-  };
+  // Approach 3: Try direct page scraping
+  try {
+    const pageResponse = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'text/html,application/xhtml+xml',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
+
+    if (pageResponse.ok) {
+      const html = await pageResponse.text();
+      
+      // Look for video URLs
+      const videoMatch = html.match(/"video_url":"([^"]+)"/i) ||
+                        html.match(/property="og:video"[^>]*content="([^"]+)"/i) ||
+                        html.match(/https:\/\/[^"'\s]*?\.mp4[^"'\s]*/gi);
+      
+      if (videoMatch) {
+        const videoUrl = (Array.isArray(videoMatch) ? videoMatch[0] : videoMatch[1]).replace(/\\/g, '');
+        
+        // Get thumbnail
+        const thumbMatch = html.match(/property="og:image"[^>]*content="([^"]+)"/i);
+        
+        return {
+          id: Date.now().toString(),
+          title: 'Instagram Content',
+          author: 'Instagram User',
+          authorAvatar: '',
+          thumbnail: thumbMatch ? thumbMatch[1] : '',
+          duration: 0,
+          videoUrl: videoUrl,
+          videoUrlNoWatermark: videoUrl,
+          musicUrl: '',
+          musicTitle: '',
+          platform: 'instagram'
+        };
+      }
+    }
+  } catch (err) {
+    console.log('Direct scraping failed:', err);
+  }
+
+  throw new Error('Could not extract Instagram content. Make sure the post is public and the URL is correct.');
 }
 
 async function fetchYouTube(url: string): Promise<VideoData> {
@@ -258,87 +327,256 @@ async function fetchTwitter(url: string): Promise<VideoData> {
 async function fetchFacebook(url: string): Promise<VideoData> {
   console.log('Fetching Facebook:', url);
   
-  // Using Facebook video download API
-  const apiUrl = `https://www.getfvid.com/downloader`;
+  // Try multiple approaches for Facebook video extraction
   
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-    },
-    body: `url=${encodeURIComponent(url)}`
-  });
+  // Approach 1: Direct page scraping
+  try {
+    const pageResponse = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept-Language': 'en-US,en;q=0.9',
+      }
+    });
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch Facebook video');
+    if (pageResponse.ok) {
+      const html = await pageResponse.text();
+      console.log('Facebook page fetched, searching for video URLs...');
+      
+      // Look for video URLs in the page source
+      // Pattern 1: HD video URL in JSON data
+      const hdMatch = html.match(/"hd_src":"([^"]+)"/i) || 
+                      html.match(/hd_src\\?":\\?"([^"\\]+)/i) ||
+                      html.match(/"playable_url_quality_hd":"([^"]+)"/i);
+      
+      // Pattern 2: SD video URL in JSON data
+      const sdMatch = html.match(/"sd_src":"([^"]+)"/i) || 
+                      html.match(/sd_src\\?":\\?"([^"\\]+)/i) ||
+                      html.match(/"playable_url":"([^"]+)"/i);
+      
+      // Pattern 3: Direct video URL
+      const directMatch = html.match(/https:\/\/[^"'\s]*?\.mp4[^"'\s]*/gi);
+      
+      let videoUrl = '';
+      
+      if (hdMatch && hdMatch[1]) {
+        videoUrl = hdMatch[1].replace(/\\/g, '');
+        console.log('Found HD video URL');
+      } else if (sdMatch && sdMatch[1]) {
+        videoUrl = sdMatch[1].replace(/\\/g, '');
+        console.log('Found SD video URL');
+      } else if (directMatch && directMatch[0]) {
+        videoUrl = directMatch[0];
+        console.log('Found direct video URL');
+      }
+      
+      // Extract title
+      const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i) ||
+                        html.match(/"title":"([^"]+)"/i);
+      
+      if (videoUrl) {
+        // Decode URL entities
+        videoUrl = videoUrl.replace(/&amp;/g, '&').replace(/\\u0025/g, '%');
+        
+        return {
+          id: Date.now().toString(),
+          title: titleMatch ? titleMatch[1].replace(' | Facebook', '').trim() : 'Facebook Video',
+          author: 'Facebook User',
+          authorAvatar: '',
+          thumbnail: '',
+          duration: 0,
+          videoUrl: videoUrl,
+          videoUrlNoWatermark: videoUrl,
+          musicUrl: '',
+          musicTitle: '',
+          platform: 'facebook'
+        };
+      }
+    }
+  } catch (err) {
+    console.log('Direct scraping failed:', err);
   }
 
-  const html = await response.text();
-  const hdMatch = html.match(/href="(https:\/\/[^"]*\.mp4[^"]*)"[^>]*>.*?HD/si);
-  const sdMatch = html.match(/href="(https:\/\/[^"]*\.mp4[^"]*)"/i);
-  
-  const videoUrl = hdMatch ? hdMatch[1] : (sdMatch ? sdMatch[1] : '');
-  
-  if (!videoUrl) {
-    throw new Error('No video found. Make sure the post is public.');
+  // Approach 2: Try FBDown.net API
+  try {
+    const apiUrl = 'https://fbdown.net/api.php';
+    const formData = new URLSearchParams();
+    formData.append('url', url);
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Origin': 'https://fbdown.net',
+        'Referer': 'https://fbdown.net/'
+      },
+      body: formData.toString()
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('FBDown API response:', JSON.stringify(data).substring(0, 200));
+      
+      if (data.hd || data.sd || data.url) {
+        return {
+          id: Date.now().toString(),
+          title: data.title || 'Facebook Video',
+          author: 'Facebook User',
+          authorAvatar: '',
+          thumbnail: data.thumb || '',
+          duration: 0,
+          videoUrl: data.hd || data.sd || data.url,
+          videoUrlNoWatermark: data.hd || data.sd || data.url,
+          musicUrl: '',
+          musicTitle: '',
+          platform: 'facebook'
+        };
+      }
+    }
+  } catch (err) {
+    console.log('FBDown API failed:', err);
   }
-  
-  return {
-    id: Date.now().toString(),
-    title: 'Facebook Video',
-    author: 'Facebook User',
-    authorAvatar: '',
-    thumbnail: '',
-    duration: 0,
-    videoUrl: videoUrl,
-    videoUrlNoWatermark: videoUrl,
-    musicUrl: '',
-    musicTitle: '',
-    platform: 'facebook'
-  };
+
+  // Approach 3: Try snapsave.app
+  try {
+    const apiUrl = 'https://snapsave.app/api/ajaxSearch';
+    const formData = new URLSearchParams();
+    formData.append('q', url);
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      },
+      body: formData.toString()
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('SnapSave response received');
+      
+      if (data.data) {
+        // Parse the HTML response
+        const htmlContent = data.data;
+        const videoMatch = htmlContent.match(/href="(https:\/\/[^"]+\.mp4[^"]*)"/i) ||
+                          htmlContent.match(/href="(https:\/\/[^"]+)"/i);
+        
+        if (videoMatch && videoMatch[1]) {
+          return {
+            id: Date.now().toString(),
+            title: 'Facebook Video',
+            author: 'Facebook User',
+            authorAvatar: '',
+            thumbnail: '',
+            duration: 0,
+            videoUrl: videoMatch[1],
+            videoUrlNoWatermark: videoMatch[1],
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'facebook'
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.log('SnapSave API failed:', err);
+  }
+
+  throw new Error('Could not extract Facebook video. Make sure the video is public and the URL is correct.');
 }
 
 async function fetchSnapchat(url: string): Promise<VideoData> {
   console.log('Fetching Snapchat:', url);
   
-  // Snapchat stories/spotlight download
-  const apiUrl = `https://snapinsta.io/api/ajaxSearch`;
-  
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-    },
-    body: `q=${encodeURIComponent(url)}&t=snap`
-  });
+  // Approach 1: Try direct page scraping for Snapchat Spotlight/Stories
+  try {
+    const pageResponse = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'text/html,application/xhtml+xml',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch Snapchat content');
+    if (pageResponse.ok) {
+      const html = await pageResponse.text();
+      
+      // Look for video URLs in meta tags or JSON data
+      const videoMatch = html.match(/property="og:video"[^>]*content="([^"]+)"/i) ||
+                        html.match(/"video[Uu]rl":"([^"]+)"/i) ||
+                        html.match(/https:\/\/[^"'\s]*?(?:cf-st\.sc-cdn\.net|snapchat)[^"'\s]*?\.mp4[^"'\s]*/gi);
+      
+      const thumbMatch = html.match(/property="og:image"[^>]*content="([^"]+)"/i);
+      const titleMatch = html.match(/property="og:title"[^>]*content="([^"]+)"/i);
+      
+      if (videoMatch) {
+        const videoUrl = (Array.isArray(videoMatch) ? videoMatch[0] : videoMatch[1]).replace(/\\/g, '');
+        
+        return {
+          id: Date.now().toString(),
+          title: titleMatch ? titleMatch[1] : 'Snapchat Story',
+          author: 'Snapchat User',
+          authorAvatar: '',
+          thumbnail: thumbMatch ? thumbMatch[1] : '',
+          duration: 0,
+          videoUrl: videoUrl,
+          videoUrlNoWatermark: videoUrl,
+          musicUrl: '',
+          musicTitle: '',
+          platform: 'snapchat'
+        };
+      }
+    }
+  } catch (err) {
+    console.log('Direct Snapchat scraping failed:', err);
   }
 
-  const data = await response.json();
-  
-  if (!data.data) {
-    throw new Error('Could not fetch Snapchat content');
+  // Approach 2: Try snapsave.app API
+  try {
+    const apiUrl = 'https://snapsave.app/api/ajaxSearch';
+    const formData = new URLSearchParams();
+    formData.append('q', url);
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      },
+      body: formData.toString()
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      
+      if (data.data) {
+        const videoMatch = data.data.match(/href="(https:\/\/[^"]+)"/);
+        
+        if (videoMatch && videoMatch[1]) {
+          return {
+            id: Date.now().toString(),
+            title: 'Snapchat Story',
+            author: 'Snapchat User',
+            authorAvatar: '',
+            thumbnail: '',
+            duration: 0,
+            videoUrl: videoMatch[1],
+            videoUrlNoWatermark: videoMatch[1],
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'snapchat'
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.log('SnapSave API failed:', err);
   }
-  
-  const videoMatch = data.data.match(/href="(https:\/\/[^"]+)"/);
-  
-  return {
-    id: Date.now().toString(),
-    title: 'Snapchat Story',
-    author: 'Snapchat User',
-    authorAvatar: '',
-    thumbnail: '',
-    duration: 0,
-    videoUrl: videoMatch ? videoMatch[1] : '',
-    videoUrlNoWatermark: videoMatch ? videoMatch[1] : '',
-    musicUrl: '',
-    musicTitle: '',
-    platform: 'snapchat'
-  };
+
+  throw new Error('Could not extract Snapchat content. Make sure the story/spotlight is public.');
 }
 
 serve(async (req) => {
