@@ -29,13 +29,12 @@ interface BatchVideoResult {
   error?: string;
 }
 
-type Platform = 'all' | 'tiktok' | 'youtube' | 'snapchat';
+type Platform = 'all' | 'tiktok' | 'youtube';
 
 const platforms: { id: Platform; name: string; icon: string }[] = [
   { id: 'all', name: 'All', icon: '🌐' },
   { id: 'tiktok', name: 'TikTok', icon: '🎵' },
   { id: 'youtube', name: 'YouTube', icon: '▶️' },
-  { id: 'snapchat', name: 'Snapchat', icon: '👻' },
 ];
 
 const HeroSection = () => {
