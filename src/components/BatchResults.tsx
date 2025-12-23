@@ -32,9 +32,13 @@ interface BatchResultsProps {
 const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
+  const [downloadingIndex, setDownloadingIndex] = useState<number | null>(null);
+  const [downloadedCount, setDownloadedCount] = useState(0);
+  const [isDownloadingAll, setIsDownloadingAll] = useState(false);
   
   const successCount = results.filter(r => r.success).length;
   const failedCount = results.filter(r => !r.success).length;
+  const successfulResults = results.filter(r => r.success && r.data);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -42,38 +46,55 @@ const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsPr
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleDownload = (url: string, filename: string) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = (url: string, filename: string): Promise<void> => {
+    return new Promise((resolve) => {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      // Give browser time to start the download
+      setTimeout(resolve, 800);
+    });
   };
 
   const { toast } = useToast();
 
-  const handleDownloadAll = useCallback(() => {
-    const successfulResults = results.filter(r => r.success && r.data);
-    
-    if (successfulResults.length === 0) return;
+  const handleDownloadAll = useCallback(async () => {
+    if (successfulResults.length === 0 || isDownloadingAll) return;
+
+    setIsDownloadingAll(true);
+    setDownloadedCount(0);
 
     toast({
       title: "🚀 Starting downloads!",
-      description: `Downloading ${successfulResults.length} videos...`,
+      description: `Downloading ${successfulResults.length} videos one by one...`,
     });
 
-    successfulResults.forEach((result, index) => {
-      setTimeout(() => {
-        handleDownload(
-          result.data!.videoUrlNoWatermark,
-          `tiktok-${result.data!.id}-hd.mp4`
-        );
-      }, index * 300);
+    for (let i = 0; i < successfulResults.length; i++) {
+      const result = successfulResults[i];
+      const originalIndex = results.findIndex(r => r === result);
+      setDownloadingIndex(originalIndex);
+      
+      await handleDownload(
+        result.data!.videoUrlNoWatermark,
+        `tiktok-${result.data!.id}-hd.mp4`
+      );
+      
+      setDownloadedCount(i + 1);
+    }
+
+    setDownloadingIndex(null);
+    setIsDownloadingAll(false);
+    
+    toast({
+      title: "✅ All downloads complete!",
+      description: `Successfully downloaded ${successfulResults.length} videos`,
     });
-  }, [results, toast]);
+  }, [results, successfulResults, isDownloadingAll, toast]);
 
   // Auto-download when batch completes
   useEffect(() => {
@@ -104,20 +125,27 @@ const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsPr
           )}
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           {successCount > 0 && (
-            <Button
-              onClick={handleDownloadAll}
-              className="btn-glow text-primary-foreground rounded-xl border-0"
-            >
-              <Zap className="h-4 w-4 mr-2" />
-              Download All HD ({successCount})
-            </Button>
+            <>
+              <Button
+                onClick={handleDownloadAll}
+                disabled={isDownloadingAll}
+                className="btn-glow text-primary-foreground rounded-xl border-0"
+              >
+                <Zap className="h-4 w-4 mr-2" />
+                {isDownloadingAll 
+                  ? `Downloading ${downloadedCount}/${successfulResults.length}...` 
+                  : `Download All HD (${successCount})`
+                }
+              </Button>
+            </>
           )}
           <Button
             onClick={onReset}
             variant="outline"
             className="rounded-xl border-border/50"
+            disabled={isDownloadingAll}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             More
@@ -138,10 +166,14 @@ const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsPr
           >
             {/* Result Header */}
             <div
-              className="flex items-center gap-3 p-3 cursor-pointer hover:bg-muted/50 transition-colors"
+              className={`flex items-center gap-3 p-3 cursor-pointer hover:bg-muted/50 transition-colors ${
+                downloadingIndex === index ? 'bg-primary/10 animate-pulse' : ''
+              }`}
               onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
             >
-              {result.success ? (
+              {downloadingIndex === index ? (
+                <Download className="h-5 w-5 text-primary flex-shrink-0 animate-bounce" />
+              ) : result.success ? (
                 <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
               ) : (
                 <XCircle className="h-5 w-5 text-destructive flex-shrink-0" />
