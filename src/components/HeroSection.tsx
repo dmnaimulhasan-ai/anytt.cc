@@ -181,30 +181,30 @@ const HeroSection = () => {
   const showResults = videoData || batchResults.length > 0;
 
   return (
-    <section className="hero-gradient min-h-[70vh] py-16 pb-24 px-6 relative">
+    <section className="hero-gradient min-h-[60vh] md:min-h-[70vh] py-8 md:py-16 pb-16 md:pb-24 px-4 md:px-6 relative">
       <div className="container mx-auto text-center relative z-10">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-muted-foreground mb-6 animate-fade-in">
-          <Sparkles className="h-4 w-4 text-primary" />
-          <span>No watermark • Free forever • No cap fr fr</span>
-          <Sparkles className="h-4 w-4 text-secondary" />
+        <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full glass-card text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 animate-fade-in">
+          <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-primary" />
+          <span>No watermark • Free forever</span>
+          <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-secondary" />
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold font-display mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl md:text-7xl font-bold font-display mb-3 md:mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <span className="gradient-text">TikTok</span>{" "}
           <span className="text-foreground">Downloader</span>
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in max-w-2xl mx-auto" style={{ animationDelay: "0.2s" }}>
-          Download TikTok videos without watermark ✨ It's giving main character energy 💅
+        <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 animate-fade-in max-w-2xl mx-auto px-2" style={{ animationDelay: "0.2s" }}>
+          Download videos without watermark ✨ It's giving main character energy 💅
         </p>
 
         {/* Mode Toggle */}
         {!showResults && (
-          <div className="flex justify-center gap-2 mb-8 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+          <div className="flex justify-center gap-2 mb-6 md:mb-8 animate-fade-in" style={{ animationDelay: "0.25s" }}>
             <Button
               variant="ghost"
               onClick={() => !isBatchMode || toggleMode()}
-              className={`rounded-full px-6 ${!isBatchMode ? "glass-card text-foreground border border-primary/50" : "text-muted-foreground hover:text-foreground"}`}
+              className={`rounded-full px-4 md:px-6 h-11 md:h-10 text-sm ${!isBatchMode ? "glass-card text-foreground border border-primary/50" : "text-muted-foreground hover:text-foreground active:bg-muted/50"}`}
             >
               <Link className="h-4 w-4 mr-2" />
               Single
@@ -212,10 +212,10 @@ const HeroSection = () => {
             <Button
               variant="ghost"
               onClick={() => isBatchMode || toggleMode()}
-              className={`rounded-full px-6 ${isBatchMode ? "glass-card text-foreground border border-secondary/50" : "text-muted-foreground hover:text-foreground"}`}
+              className={`rounded-full px-4 md:px-6 h-11 md:h-10 text-sm ${isBatchMode ? "glass-card text-foreground border border-secondary/50" : "text-muted-foreground hover:text-foreground active:bg-muted/50"}`}
             >
               <List className="h-4 w-4 mr-2" />
-              Batch Mode
+              Batch
             </Button>
           </div>
         )}
@@ -224,23 +224,139 @@ const HeroSection = () => {
           isBatchMode ? (
             // Batch Mode Input
             <div 
-              className="max-w-3xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border"
+              className="max-w-3xl mx-auto glass-card rounded-2xl md:rounded-3xl p-4 md:p-6 animate-slide-up neon-border"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder="Paste multiple TikTok URLs here bestie 💕 (one per line, max 10)"
+                  placeholder="Paste TikTok URLs here 💕 (one per line, max 10)"
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
-                  className="min-h-32 bg-muted/50 border-border/50 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-primary"
+                  className="min-h-28 md:min-h-32 bg-muted/50 border-border/50 text-foreground placeholder:text-muted-foreground resize-none rounded-xl md:rounded-2xl focus:ring-primary text-base"
                 />
                 <p className="text-xs text-muted-foreground mt-2 text-left flex items-center gap-1">
                   <Zap className="h-3 w-3 text-secondary" />
-                  {batchUrls.split('\n').filter(u => u.trim()).length} URL(s) ready to go
+                  {batchUrls.split('\n').filter(u => u.trim()).length} URL(s) ready
                 </p>
               </div>
               
-              <div className="flex gap-3 justify-end">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:justify-end">
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={handlePaste}
+                    className="flex-1 sm:flex-none rounded-xl h-12 sm:h-10 border-border/50 hover:bg-muted/50 active:bg-muted text-base"
+                  >
+                    <Clipboard className="h-5 w-5 mr-2" />
+                    Paste
+                  </Button>
+                  
+                  {batchUrls && (
+                    <Button
+                      variant="outline"
+                      onClick={handleClear}
+                      className="rounded-xl h-12 sm:h-10 border-border/50 hover:bg-muted/50 active:bg-muted px-4"
+                    >
+                      <X className="h-5 w-5" />
+                    </Button>
+                  )}
+                </div>
+                
+                <Button
+                  onClick={handleBatchSearch}
+                  disabled={isLoading}
+                  className="rounded-xl h-12 sm:h-10 btn-glow text-primary-foreground px-6 sm:px-8 border-0 text-base font-semibold"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                      {processingIndex + 1}/{batchUrls.split('\n').filter(u => u.trim()).length}
+                    </>
+                  ) : (
+                    <>
+                      <Zap className="h-5 w-5 mr-2" />
+                      Download All
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            // Single URL Input - Mobile Optimized
+            <div 
+              className="max-w-3xl mx-auto animate-slide-up"
+              style={{ animationDelay: "0.3s" }}
+            >
+              {/* Mobile: Stacked Layout */}
+              <div className="flex flex-col gap-3 md:hidden">
+                <div className="glass-card rounded-2xl p-3 flex items-center gap-2 neon-border">
+                  <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                  <Input
+                    type="url"
+                    placeholder="Paste TikTok URL..."
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-foreground placeholder:text-muted-foreground text-base h-10"
+                  />
+                  {url && (
+                    <button
+                      onClick={handleClear}
+                      className="p-2 hover:bg-muted rounded-full transition-colors active:bg-muted"
+                    >
+                      <X className="h-5 w-5 text-muted-foreground" />
+                    </button>
+                  )}
+                </div>
+                
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={handlePaste}
+                    className="flex-1 rounded-xl h-12 border-border/50 hover:bg-muted/50 active:bg-muted text-base"
+                  >
+                    <Clipboard className="h-5 w-5 mr-2" />
+                    Paste
+                  </Button>
+                  
+                  <Button
+                    onClick={handleSearch}
+                    disabled={isLoading}
+                    className="flex-1 rounded-xl h-12 btn-glow text-primary-foreground border-0 text-base font-semibold"
+                  >
+                    {isLoading ? (
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <>
+                        <Zap className="h-5 w-5 mr-2" />
+                        Download
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Desktop: Inline Layout */}
+              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 neon-border">
+                <div className="flex-1 flex items-center gap-2 pl-4">
+                  <Search className="h-5 w-5 text-muted-foreground" />
+                  <Input
+                    type="url"
+                    placeholder="Paste a TikTok URL here..."
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                    className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-foreground placeholder:text-muted-foreground"
+                  />
+                  {url && (
+                    <button
+                      onClick={handleClear}
+                      className="p-1 hover:bg-muted rounded-full transition-colors"
+                    >
+                      <X className="h-4 w-4 text-muted-foreground" />
+                    </button>
+                  )}
+                </div>
+                
                 <Button
                   variant="outline"
                   onClick={handlePaste}
@@ -250,85 +366,21 @@ const HeroSection = () => {
                   Paste
                 </Button>
                 
-                {batchUrls && (
-                  <Button
-                    variant="outline"
-                    onClick={handleClear}
-                    className="rounded-full border-border/50 hover:bg-muted/50"
-                  >
-                    <X className="h-4 w-4 mr-2" />
-                    Clear
-                  </Button>
-                )}
-                
                 <Button
-                  onClick={handleBatchSearch}
+                  onClick={handleSearch}
                   disabled={isLoading}
                   className="rounded-full btn-glow text-primary-foreground px-8 border-0"
                 >
                   {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      {processingIndex + 1}/{batchUrls.split('\n').filter(u => u.trim()).length}
-                    </>
+                    <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
                     <>
                       <Zap className="h-4 w-4 mr-2" />
-                      Download All
+                      Go
                     </>
                   )}
                 </Button>
               </div>
-            </div>
-          ) : (
-            // Single URL Input
-            <div 
-              className="max-w-3xl mx-auto glass-card rounded-full p-2 flex items-center gap-2 animate-slide-up neon-border"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <div className="flex-1 flex items-center gap-2 pl-4">
-                <Search className="h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="url"
-                  placeholder="Paste a TikTok URL here..."
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                  className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-foreground placeholder:text-muted-foreground"
-                />
-                {url && (
-                  <button
-                    onClick={handleClear}
-                    className="p-1 hover:bg-muted rounded-full transition-colors"
-                  >
-                    <X className="h-4 w-4 text-muted-foreground" />
-                  </button>
-                )}
-              </div>
-              
-              <Button
-                variant="outline"
-                onClick={handlePaste}
-                className="rounded-full border-border/50 hover:bg-muted/50"
-              >
-                <Clipboard className="h-4 w-4 mr-2" />
-                Paste
-              </Button>
-              
-              <Button
-                onClick={handleSearch}
-                disabled={isLoading}
-                className="rounded-full btn-glow text-primary-foreground px-8 border-0"
-              >
-                {isLoading ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <>
-                    <Zap className="h-4 w-4 mr-2" />
-                    Go
-                  </>
-                )}
-              </Button>
             </div>
           )
         ) : videoData ? (
