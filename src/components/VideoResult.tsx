@@ -12,7 +12,17 @@ interface VideoData {
   videoUrlNoWatermark: string;
   musicUrl: string;
   musicTitle: string;
+  platform?: string;
 }
+
+const platformLabels: Record<string, { name: string; icon: string }> = {
+  tiktok: { name: 'TikTok', icon: '🎵' },
+  instagram: { name: 'Instagram', icon: '📸' },
+  youtube: { name: 'YouTube', icon: '▶️' },
+  facebook: { name: 'Facebook', icon: '👤' },
+  twitter: { name: 'X/Twitter', icon: '𝕏' },
+  snapchat: { name: 'Snapchat', icon: '👻' },
+};
 
 interface VideoResultProps {
   video: VideoData;
@@ -56,6 +66,12 @@ const VideoResult = ({ video, onReset }: VideoResultProps) => {
             <Flame className="h-3 w-3" />
             HD
           </div>
+          {video.platform && platformLabels[video.platform] && (
+            <div className="absolute -top-2 -left-2 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs flex items-center gap-1 text-foreground font-medium border border-border/50">
+              <span>{platformLabels[video.platform].icon}</span>
+              <span>{platformLabels[video.platform].name}</span>
+            </div>
+          )}
         </div>
 
         {/* Info */}
@@ -68,16 +84,17 @@ const VideoResult = ({ video, onReset }: VideoResultProps) => {
               <User className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium">@{video.author}</span>
             </div>
-            <div className="flex items-center gap-2 mt-1 text-muted-foreground">
-              <Music className="h-4 w-4 text-secondary" />
-              <span className="text-sm truncate">{video.musicTitle}</span>
-            </div>
+            {video.musicTitle && (
+              <div className="flex items-center gap-2 mt-1 text-muted-foreground">
+                <Music className="h-4 w-4 text-secondary" />
+                <span className="text-sm truncate">{video.musicTitle}</span>
+              </div>
+            )}
           </div>
 
-          {/* Download Buttons */}
           <div className="space-y-2.5">
             <Button
-              onClick={() => handleDownload(video.videoUrlNoWatermark, `tiktok-${video.id}-hd.mp4`)}
+              onClick={() => handleDownload(video.videoUrlNoWatermark, `${video.platform || 'video'}-${video.id}-hd.mp4`)}
               className="w-full h-13 md:h-12 btn-glow text-primary-foreground rounded-2xl border-0 text-base font-bold"
             >
               <Video className="h-5 w-5 mr-2" />
@@ -86,7 +103,7 @@ const VideoResult = ({ video, onReset }: VideoResultProps) => {
             
             <div className="flex gap-2">
               <Button
-                onClick={() => handleDownload(video.videoUrl, `tiktok-${video.id}.mp4`)}
+                onClick={() => handleDownload(video.videoUrl, `${video.platform || 'video'}-${video.id}.mp4`)}
                 variant="outline"
                 className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold"
               >
@@ -96,7 +113,7 @@ const VideoResult = ({ video, onReset }: VideoResultProps) => {
               
               {video.musicUrl && (
                 <Button
-                  onClick={() => handleDownload(video.musicUrl, `tiktok-${video.id}-audio.mp3`)}
+                  onClick={() => handleDownload(video.musicUrl, `${video.platform || 'video'}-${video.id}-audio.mp3`)}
                   variant="outline"
                   className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold"
                 >
