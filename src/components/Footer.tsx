@@ -1,33 +1,33 @@
-import { Download } from "lucide-react";
+import { Download, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-muted py-8 px-6">
+    <footer className="py-8 px-6 border-t border-border/30">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="bg-primary rounded-lg p-1.5">
+            <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-1.5">
               <Download className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold text-foreground">
-              SaveTT<span className="text-sm font-normal text-muted-foreground">.cc</span>
+            <span className="text-lg font-bold font-display text-foreground">
+              SaveTT<span className="gradient-text">.cc</span>
             </span>
           </div>
           
           <nav className="flex items-center gap-6 text-sm">
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
+              Privacy
             </a>
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
+              Terms
             </a>
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
           </nav>
           
-          <p className="text-sm text-muted-foreground">
-            © 2024 SaveTT.cc. All rights reserved.
+          <p className="text-sm text-muted-foreground flex items-center gap-1">
+            Made with <Heart className="h-3 w-3 text-primary" /> for the culture
           </p>
         </div>
       </div>

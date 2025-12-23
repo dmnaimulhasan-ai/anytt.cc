@@ -4,52 +4,68 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "How to download a TikTok video to Android phone?",
-    answer: "Open the TikTok app or website on your phone and locate your target video. Tap the Share button at the right bottom of the video and click on the Copy Link to save the video URL. Paste this URL to the input box above. Click on the Search button to grab it.",
+    question: "How do I download a TikTok video on Android? 📱",
+    answer: "Open the TikTok app, find your video, tap Share → Copy Link. Paste it here and hit Go. It's literally that easy bestie.",
   },
   {
-    question: "How to download a TikTok video to iPhone/iPad?",
-    answer: "The operation procedure is different depending on the OS version and device types. For iOS 13+, you can directly download videos. For older versions, you may need a third-party app like Documents by Readdle to download and save videos to your camera roll.",
+    question: "Does it work on iPhone/iPad? 🍎",
+    answer: "Yup! Same process. For iOS 13+, you can save videos directly. Older versions might need the Documents app but we got you covered.",
   },
   {
-    question: "Is it free to use this TikTok downloader?",
-    answer: "Yes, our TikTok video downloader is completely free to use. There are no hidden charges or subscription fees. You can download unlimited TikTok videos without any cost.",
+    question: "Is this actually free? No cap? 💸",
+    answer: "100% free forever! No hidden fees, no subscriptions, no bs. Download unlimited videos without paying a single cent.",
   },
   {
-    question: "Can I download TikTok videos without watermark?",
-    answer: "Yes! Our service specifically removes the TikTok watermark from downloaded videos. You'll get clean, high-quality videos without any watermarks or logos.",
+    question: "Can I really download without watermark? 🎨",
+    answer: "That's literally the whole point! We remove TikTok watermarks so you get clean, HD videos. Chef's kiss 💋",
   },
   {
-    question: "What video formats are supported?",
-    answer: "We support MP4 video format for video downloads and MP3 format for audio-only downloads. The videos are saved in high definition quality to ensure the best viewing experience.",
+    question: "What formats can I download? 🎬",
+    answer: "MP4 for videos (HD quality) and MP3 for audio-only downloads. Best of both worlds fr fr.",
   },
   {
-    question: "Is it safe to use this website?",
-    answer: "Absolutely! Our website is secure and doesn't require any software installation or user registration. We don't store any of your data or downloaded videos. Your privacy and security are our top priorities.",
+    question: "Is this safe to use? 🔒",
+    answer: "Absolutely safe! No sketchy software, no registration required, we don't store your data. Your privacy is our priority.",
   },
 ];
 
 const FAQSection = () => {
   return (
-    <section className="py-16 px-6">
-      <div className="container mx-auto max-w-4xl">
-        <div className="bg-primary rounded-t-xl py-6 px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-primary-foreground">
-            Frequently Asked Questions
+    <section className="py-20 px-6 relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto max-w-3xl relative z-10">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full text-sm text-muted-foreground mb-4">
+            <HelpCircle className="h-4 w-4 text-primary" />
+            <span>Got questions?</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold font-display">
+            <span className="gradient-text">FAQ</span>
           </h2>
         </div>
         
-        <div className="bg-card rounded-b-xl shadow-medium">
+        <div className="glass-card rounded-3xl overflow-hidden">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-border last:border-0">
-                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline hover:bg-muted/50 text-primary font-medium">
-                  {faq.question}
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`} 
+                className="border-b border-border/30 last:border-0"
+              >
+                <AccordionTrigger className="px-6 py-5 text-left hover:no-underline hover:bg-muted/30 text-foreground font-medium font-display group">
+                  <span className="group-hover:text-primary transition-colors">
+                    {faq.question}
+                  </span>
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-muted-foreground leading-relaxed">
+                <AccordionContent className="px-6 pb-5 text-muted-foreground leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
