@@ -1,4 +1,4 @@
-import { Download, Heart } from "lucide-react";
+import { Zap, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,10 +7,10 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-1.5">
-              <Download className="h-4 w-4 text-primary-foreground" />
+              <Zap className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold font-display text-foreground">
-              SaveTT<span className="gradient-text">.cc</span>
+            <span className="text-lg font-bold font-display">
+              <span className="gradient-text">GEN-Z</span>
             </span>
           </div>
           
