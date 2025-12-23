@@ -39,46 +39,28 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleDownload = async (url: string, filename: string) => {
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      // Fallback to direct link
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+  const handleDownload = (url: string, filename: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
-  const handleDownloadAll = async () => {
-    const successfulResults = results.filter(r => r.success && r.data);
-    for (let i = 0; i < successfulResults.length; i++) {
-      const result = successfulResults[i];
-      if (result.data) {
-        await handleDownload(
-          result.data.videoUrlNoWatermark,
-          `tiktok-${result.data.id}-hd.mp4`
-        );
-        // Small delay between downloads
-        if (i < successfulResults.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 300));
-        }
+  const handleDownloadAll = () => {
+    results.forEach((result, index) => {
+      if (result.success && result.data) {
+        setTimeout(() => {
+          handleDownload(
+            result.data!.videoUrlNoWatermark,
+            `tiktok-${result.data!.id}-hd.mp4`
+          );
+        }, index * 500);
       }
-    }
+    });
   };
 
   return (
