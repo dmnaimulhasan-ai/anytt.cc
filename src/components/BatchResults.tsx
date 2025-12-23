@@ -1,6 +1,7 @@
 import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 interface VideoData {
   id: string;
@@ -25,10 +26,12 @@ interface BatchVideoResult {
 interface BatchResultsProps {
   results: BatchVideoResult[];
   onReset: () => void;
+  autoDownload?: boolean;
 }
 
-const BatchResults = ({ results, onReset }: BatchResultsProps) => {
+const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
   
   const successCount = results.filter(r => r.success).length;
   const failedCount = results.filter(r => !r.success).length;
@@ -50,18 +53,38 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
     document.body.removeChild(link);
   };
 
-  const handleDownloadAll = () => {
-    results.forEach((result, index) => {
-      if (result.success && result.data) {
-        setTimeout(() => {
-          handleDownload(
-            result.data!.videoUrlNoWatermark,
-            `tiktok-${result.data!.id}-hd.mp4`
-          );
-        }, index * 500);
-      }
+  const { toast } = useToast();
+
+  const handleDownloadAll = useCallback(() => {
+    const successfulResults = results.filter(r => r.success && r.data);
+    
+    if (successfulResults.length === 0) return;
+
+    toast({
+      title: "🚀 Starting downloads!",
+      description: `Downloading ${successfulResults.length} videos...`,
     });
-  };
+
+    successfulResults.forEach((result, index) => {
+      setTimeout(() => {
+        handleDownload(
+          result.data!.videoUrlNoWatermark,
+          `tiktok-${result.data!.id}-hd.mp4`
+        );
+      }, index * 300);
+    });
+  }, [results, toast]);
+
+  // Auto-download when batch completes
+  useEffect(() => {
+    if (autoDownload && !hasAutoDownloaded && successCount > 0) {
+      setHasAutoDownloaded(true);
+      // Small delay to let UI render first
+      setTimeout(() => {
+        handleDownloadAll();
+      }, 500);
+    }
+  }, [autoDownload, hasAutoDownloaded, successCount, handleDownloadAll]);
 
   return (
     <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
