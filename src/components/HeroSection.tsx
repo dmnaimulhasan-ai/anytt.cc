@@ -220,7 +220,7 @@ const HeroSection = () => {
         </h1>
         
         <p className="text-base md:text-xl text-muted-foreground mb-6 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
-          Download from TikTok, Instagram, YouTube, Facebook, X & more
+          Download from TikTok & YouTube
           <span className="inline-block ml-2 animate-bounce">🚀</span>
         </p>
 
@@ -283,7 +283,7 @@ const HeroSection = () => {
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder={`Paste video URLs here bestie 💕\nOne per line, up to 100 videos!\nSupports: TikTok, Instagram, YouTube, Facebook, X, Snapchat`}
+                  placeholder={`Paste video URLs here bestie 💕\nOne per line, up to 100 videos!\nSupports: TikTok & YouTube`}
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
                   className="min-h-40 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
