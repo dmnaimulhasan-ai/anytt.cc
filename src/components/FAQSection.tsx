@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: "What platforms do you support? 📱",
-    answer: "We support TikTok, Instagram Reels, YouTube Shorts, Facebook videos, X/Twitter videos, and Snapchat! Just paste any link.",
+    answer: "We support TikTok and YouTube! Just paste any link.",
   },
   {
     question: "Does it work on iPhone? 🍎",
