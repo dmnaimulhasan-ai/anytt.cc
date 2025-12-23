@@ -134,10 +134,10 @@ const HeroSection = () => {
       return;
     }
 
-    if (urls.length > 10) {
+    if (urls.length > 100) {
       toast({
         title: "⚠️ Too many!",
-        description: "Max 10 at once bestie",
+        description: "Max 100 at once bestie",
         variant: "destructive",
       });
       return;
@@ -250,15 +250,15 @@ const HeroSection = () => {
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder="Paste TikTok URLs here bestie 💕&#10;One per line, max 10"
+                  placeholder="Paste TikTok URLs here bestie 💕&#10;One per line, up to 100 videos!"
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
-                  className="min-h-32 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
+                  className="min-h-40 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
                 />
                 <div className="flex items-center justify-between mt-3">
                   <span className="text-xs text-muted-foreground flex items-center gap-1.5">
                     <Zap className="h-3.5 w-3.5 text-secondary" />
-                    {batchUrls.split('\n').filter(u => u.trim()).length}/10 URLs
+                    {batchUrls.split('\n').filter(u => u.trim()).length}/100 URLs
                   </span>
                 </div>
               </div>
@@ -407,7 +407,7 @@ const HeroSection = () => {
         ) : videoData ? (
           <VideoResult video={videoData} onReset={handleReset} />
         ) : (
-          <BatchResults results={batchResults} onReset={handleReset} />
+          <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} />
         )}
       </div>
     </section>
