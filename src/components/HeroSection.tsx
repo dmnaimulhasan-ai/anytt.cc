@@ -19,6 +19,7 @@ interface VideoData {
   videoUrlNoWatermark: string;
   musicUrl: string;
   musicTitle: string;
+  platform?: string;
 }
 
 interface BatchVideoResult {
@@ -28,11 +29,24 @@ interface BatchVideoResult {
   error?: string;
 }
 
+type Platform = 'all' | 'tiktok' | 'instagram' | 'youtube' | 'facebook' | 'twitter' | 'snapchat';
+
+const platforms: { id: Platform; name: string; icon: string }[] = [
+  { id: 'all', name: 'All', icon: '🌐' },
+  { id: 'tiktok', name: 'TikTok', icon: '🎵' },
+  { id: 'instagram', name: 'Instagram', icon: '📸' },
+  { id: 'youtube', name: 'YouTube', icon: '▶️' },
+  { id: 'facebook', name: 'Facebook', icon: '👤' },
+  { id: 'twitter', name: 'X/Twitter', icon: '𝕏' },
+  { id: 'snapchat', name: 'Snapchat', icon: '👻' },
+];
+
 const HeroSection = () => {
   const [url, setUrl] = useState("");
   const [batchUrls, setBatchUrls] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isBatchMode, setIsBatchMode] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform>('all');
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
@@ -91,7 +105,7 @@ const HeroSection = () => {
     if (!url.trim()) {
       toast({
         title: "🔗 Need a link!",
-        description: "Paste a TikTok URL first",
+        description: "Paste a video URL first",
         variant: "destructive",
       });
       return;
@@ -128,7 +142,7 @@ const HeroSection = () => {
     if (urls.length === 0) {
       toast({
         title: "🔗 Need links!",
-        description: "Paste some TikTok URLs",
+        description: "Paste some video URLs",
         variant: "destructive",
       });
       return;
@@ -200,16 +214,36 @@ const HeroSection = () => {
           <Star className="h-4 w-4 text-secondary fill-secondary" />
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-black font-display mb-4 animate-fade-in leading-tight" style={{ animationDelay: "0.1s" }}>
-          <span className="gradient-text">TikTok</span>
+        <h1 className="text-4xl md:text-7xl font-black font-display mb-4 animate-fade-in leading-tight" style={{ animationDelay: "0.1s" }}>
+          <span className="gradient-text">Video</span>
           <br className="md:hidden" />
           <span className="text-foreground"> Saver</span>
         </h1>
         
-        <p className="text-lg md:text-2xl text-muted-foreground mb-8 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
-          Download vids without the watermark 
+        <p className="text-base md:text-xl text-muted-foreground mb-6 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
+          Download from TikTok, Instagram, YouTube, Facebook, X & more
           <span className="inline-block ml-2 animate-bounce">🚀</span>
         </p>
+
+        {/* Platform Tabs */}
+        {!showResults && (
+          <div className="flex flex-wrap justify-center gap-2 mb-6 animate-fade-in" style={{ animationDelay: "0.22s" }}>
+            {platforms.map((platform) => (
+              <button
+                key={platform.id}
+                onClick={() => setSelectedPlatform(platform.id)}
+                className={`px-3 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-1.5 ${
+                  selectedPlatform === platform.id
+                    ? "bg-primary/20 text-primary border border-primary/50"
+                    : "bg-muted/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 border border-transparent"
+                }`}
+              >
+                <span>{platform.icon}</span>
+                <span className="hidden sm:inline">{platform.name}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Mode Toggle */}
         {!showResults && (
@@ -250,7 +284,7 @@ const HeroSection = () => {
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder="Paste TikTok URLs here bestie 💕&#10;One per line, up to 100 videos!"
+                  placeholder={`Paste video URLs here bestie 💕\nOne per line, up to 100 videos!\nSupports: TikTok, Instagram, YouTube, Facebook, X, Snapchat`}
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
                   className="min-h-40 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
@@ -314,7 +348,7 @@ const HeroSection = () => {
                   <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   <Input
                     type="url"
-                    placeholder="Paste TikTok link..."
+                    placeholder={selectedPlatform === 'all' ? "Paste any video link..." : `Paste ${platforms.find(p => p.id === selectedPlatform)?.name} link...`}
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-base h-10"
@@ -362,7 +396,7 @@ const HeroSection = () => {
                   <Search className="h-5 w-5 text-muted-foreground" />
                   <Input
                     type="url"
-                    placeholder="Paste a TikTok link here..."
+                    placeholder={selectedPlatform === 'all' ? "Paste any video link here..." : `Paste ${platforms.find(p => p.id === selectedPlatform)?.name} link here...`}
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}

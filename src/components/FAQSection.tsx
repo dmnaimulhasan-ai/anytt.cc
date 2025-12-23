@@ -8,7 +8,11 @@ import {
 const faqs = [
   {
     question: "Is this actually free? 💸",
-    answer: "Yep! 100% free, no cap. No hidden fees, no subscriptions, no bs. Download unlimited videos.",
+    answer: "Yep! 100% free, no cap. No hidden fees, no subscriptions, no bs. Download unlimited videos from any platform.",
+  },
+  {
+    question: "What platforms do you support? 📱",
+    answer: "We support TikTok, Instagram Reels, YouTube Shorts, Facebook videos, X/Twitter videos, and Snapchat! Just paste any link.",
   },
   {
     question: "Does it work on iPhone? 🍎",
@@ -16,15 +20,15 @@ const faqs = [
   },
   {
     question: "No watermark fr? 🎨",
-    answer: "That's the whole point bestie! Clean HD videos without TikTok logos.",
+    answer: "That's the whole point bestie! Clean HD videos without platform watermarks.",
   },
   {
     question: "Is this safe to use? 🔒",
     answer: "Absolutely! No sketchy downloads, no registration. We don't store anything.",
   },
   {
-    question: "What about other platforms? 📱",
-    answer: "We're working on Instagram Reels and YouTube Shorts. Stay tuned! 👀",
+    question: "Can I download multiple videos? 📦",
+    answer: "Yes! Use batch mode to download up to 100 videos at once. Mix and match from different platforms too!",
   },
 ];
 
