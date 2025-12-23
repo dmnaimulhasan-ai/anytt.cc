@@ -159,10 +159,35 @@ const HeroSection = () => {
     setIsLoading(false);
 
     const successCount = results.filter(r => r.success).length;
-    toast({
-      title: "🎊 Done!",
-      description: `Got ${successCount}/${urls.length} videos`,
-    });
+    
+    // Auto-download all successful videos
+    if (successCount > 0) {
+      results.forEach((result, index) => {
+        if (result.success && result.data) {
+          setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = result.data!.videoUrlNoWatermark;
+            link.download = `tiktok-${result.data!.id}-hd.mp4`;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }, index * 500);
+        }
+      });
+      
+      toast({
+        title: "🎊 Downloading!",
+        description: `${successCount} videos started downloading`,
+      });
+    } else {
+      toast({
+        title: "💀 No luck",
+        description: "Couldn't fetch any videos",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleReset = () => {
