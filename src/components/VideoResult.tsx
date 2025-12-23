@@ -1,5 +1,6 @@
 import { Download, Music, Video, User, Clock, Sparkles, ArrowLeft, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useStats } from "@/hooks/useStats";
 
 interface VideoData {
   id: string;
@@ -17,9 +18,12 @@ interface VideoData {
 interface VideoResultProps {
   video: VideoData;
   onReset: () => void;
+  platform?: string;
 }
 
-const VideoResult = ({ video, onReset }: VideoResultProps) => {
+const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
+  const { trackDownload } = useStats();
+
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -27,6 +31,9 @@ const VideoResult = ({ video, onReset }: VideoResultProps) => {
   };
 
   const handleDownload = (url: string, filename: string) => {
+    // Track the download
+    trackDownload(platform, video.id);
+    
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;
