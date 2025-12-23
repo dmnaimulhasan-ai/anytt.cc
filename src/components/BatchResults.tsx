@@ -27,9 +27,10 @@ interface BatchResultsProps {
   results: BatchVideoResult[];
   onReset: () => void;
   autoDownload?: boolean;
+  isProcessing?: boolean;
 }
 
-const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsProps) => {
+const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = false }: BatchResultsProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
   
@@ -75,16 +76,16 @@ const BatchResults = ({ results, onReset, autoDownload = false }: BatchResultsPr
     });
   }, [results, toast]);
 
-  // Auto-download when batch completes
+  // Auto-download when batch completes (only after processing finishes)
   useEffect(() => {
-    if (autoDownload && !hasAutoDownloaded && successCount > 0) {
+    if (autoDownload && !hasAutoDownloaded && !isProcessing && successCount > 0) {
       setHasAutoDownloaded(true);
       // Small delay to let UI render first
       setTimeout(() => {
         handleDownloadAll();
       }, 500);
     }
-  }, [autoDownload, hasAutoDownloaded, successCount, handleDownloadAll]);
+  }, [autoDownload, hasAutoDownloaded, isProcessing, successCount, handleDownloadAll]);
 
   return (
     <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
