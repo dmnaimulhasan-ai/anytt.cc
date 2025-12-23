@@ -464,7 +464,7 @@ const HeroSection = () => {
             </div>
           )
         ) : videoData ? (
-          <VideoResult video={videoData} onReset={handleReset} />
+          <VideoResult video={videoData} onReset={handleReset} platform={platform} />
         ) : (
           <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} />
         )}

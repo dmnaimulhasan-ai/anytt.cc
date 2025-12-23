@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      download_stats: {
+        Row: {
+          downloaded_at: string
+          id: string
+          platform: string
+          video_id: string | null
+        }
+        Insert: {
+          downloaded_at?: string
+          id?: string
+          platform?: string
+          video_id?: string | null
+        }
+        Update: {
+          downloaded_at?: string
+          id?: string
+          platform?: string
+          video_id?: string | null
+        }
+        Relationships: []
+      }
+      visitor_stats: {
+        Row: {
+          first_visit: string
+          id: string
+          last_visit: string
+          visitor_id: string
+        }
+        Insert: {
+          first_visit?: string
+          id?: string
+          last_visit?: string
+          visitor_id: string
+        }
+        Update: {
+          first_visit?: string
+          id?: string
+          last_visit?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
