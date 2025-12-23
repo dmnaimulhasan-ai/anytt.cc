@@ -701,7 +701,7 @@ serve(async (req) => {
       console.error('No URL provided');
       return new Response(
         JSON.stringify({ success: false, error: 'URL is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -715,7 +715,7 @@ serve(async (req) => {
           success: false, 
           error: 'Unsupported platform. We support TikTok, Instagram, Facebook, YouTube, Twitter/X, and Snapchat.' 
         }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -758,7 +758,7 @@ serve(async (req) => {
         success: false, 
         error: error instanceof Error ? error.message : 'An unexpected error occurred' 
       }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
 });
