@@ -1,4 +1,4 @@
-import { Download, Sparkles } from "lucide-react";
+import { Zap, Sparkles } from "lucide-react";
 
 const Header = () => {
   return (
@@ -6,10 +6,10 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-2 shadow-glow-pink">
-            <Download className="h-5 w-5 text-primary-foreground" />
+            <Zap className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold font-display text-foreground">
-            SaveTT<span className="gradient-text">.cc</span>
+          <span className="text-xl font-bold font-display">
+            <span className="gradient-text">GEN-Z</span>
           </span>
         </div>
         <nav className="hidden md:flex items-center gap-6">
