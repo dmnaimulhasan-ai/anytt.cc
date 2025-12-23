@@ -40,6 +40,9 @@ const Header = () => {
             Home
           </a>
           <a href="#" className="px-4 py-2 rounded-xl text-muted-foreground font-medium hover:text-foreground hover:bg-muted/50 transition-all">
+            Instagram
+          </a>
+          <a href="#" className="px-4 py-2 rounded-xl text-muted-foreground font-medium hover:text-foreground hover:bg-muted/50 transition-all">
             YouTube
           </a>
         </nav>
@@ -52,6 +55,9 @@ const Header = () => {
             <a href="#" className="text-foreground font-medium flex items-center gap-3 p-4 rounded-2xl glass-card border border-primary/30">
               <Sparkles className="h-5 w-5 text-primary" />
               Home
+            </a>
+            <a href="#" className="text-muted-foreground font-medium flex items-center gap-3 p-4 rounded-2xl hover:bg-muted/50 active:bg-muted transition-colors">
+              📸 Instagram Downloader
             </a>
             <a href="#" className="text-muted-foreground font-medium flex items-center gap-3 p-4 rounded-2xl hover:bg-muted/50 active:bg-muted transition-colors">
               🎬 YouTube Shorts

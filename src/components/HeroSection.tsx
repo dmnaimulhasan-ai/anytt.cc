@@ -19,7 +19,6 @@ interface VideoData {
   videoUrlNoWatermark: string;
   musicUrl: string;
   musicTitle: string;
-  platform?: string;
 }
 
 interface BatchVideoResult {
@@ -29,20 +28,11 @@ interface BatchVideoResult {
   error?: string;
 }
 
-type Platform = 'all' | 'tiktok' | 'youtube';
-
-const platforms: { id: Platform; name: string; icon: string }[] = [
-  { id: 'all', name: 'All', icon: '🌐' },
-  { id: 'tiktok', name: 'TikTok', icon: '🎵' },
-  { id: 'youtube', name: 'YouTube', icon: '▶️' },
-];
-
 const HeroSection = () => {
   const [url, setUrl] = useState("");
   const [batchUrls, setBatchUrls] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isBatchMode, setIsBatchMode] = useState(false);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform>('all');
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
@@ -80,18 +70,15 @@ const HeroSection = () => {
   const fetchVideo = async (videoUrl: string): Promise<BatchVideoResult> => {
     try {
       const { data, error } = await supabase.functions.invoke('tiktok-download', {
-        body: {
-          url: videoUrl.trim(),
-          platform: selectedPlatform !== 'all' ? selectedPlatform : undefined,
-        }
+        body: { url: videoUrl.trim() }
       });
 
       if (error) {
-        return { url: videoUrl, success: false, error: error.message || 'Failed to process video' };
+        return { url: videoUrl, success: false, error: 'Failed to process video' };
       }
 
-      if (!data?.success) {
-        return { url: videoUrl, success: false, error: data?.error || 'Could not fetch video' };
+      if (!data.success) {
+        return { url: videoUrl, success: false, error: data.error || 'Could not fetch video' };
       }
 
       return { url: videoUrl, success: true, data: data.data };
@@ -104,7 +91,7 @@ const HeroSection = () => {
     if (!url.trim()) {
       toast({
         title: "🔗 Need a link!",
-        description: "Paste a video URL first",
+        description: "Paste a TikTok URL first",
         variant: "destructive",
       });
       return;
@@ -141,7 +128,7 @@ const HeroSection = () => {
     if (urls.length === 0) {
       toast({
         title: "🔗 Need links!",
-        description: "Paste some video URLs",
+        description: "Paste some TikTok URLs",
         variant: "destructive",
       });
       return;
@@ -213,36 +200,16 @@ const HeroSection = () => {
           <Star className="h-4 w-4 text-secondary fill-secondary" />
         </div>
 
-        <h1 className="text-4xl md:text-7xl font-black font-display mb-4 animate-fade-in leading-tight" style={{ animationDelay: "0.1s" }}>
-          <span className="gradient-text">Video</span>
+        <h1 className="text-5xl md:text-8xl font-black font-display mb-4 animate-fade-in leading-tight" style={{ animationDelay: "0.1s" }}>
+          <span className="gradient-text">TikTok</span>
           <br className="md:hidden" />
           <span className="text-foreground"> Saver</span>
         </h1>
         
-        <p className="text-base md:text-xl text-muted-foreground mb-6 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
-          Download from TikTok & YouTube
+        <p className="text-lg md:text-2xl text-muted-foreground mb-8 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
+          Download vids without the watermark 
           <span className="inline-block ml-2 animate-bounce">🚀</span>
         </p>
-
-        {/* Platform Tabs */}
-        {!showResults && (
-          <div className="flex flex-wrap justify-center gap-2 mb-6 animate-fade-in" style={{ animationDelay: "0.22s" }}>
-            {platforms.map((platform) => (
-              <button
-                key={platform.id}
-                onClick={() => setSelectedPlatform(platform.id)}
-                className={`px-3 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-1.5 ${
-                  selectedPlatform === platform.id
-                    ? "bg-primary/20 text-primary border border-primary/50"
-                    : "bg-muted/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 border border-transparent"
-                }`}
-              >
-                <span>{platform.icon}</span>
-                <span className="hidden sm:inline">{platform.name}</span>
-              </button>
-            ))}
-          </div>
-        )}
 
         {/* Mode Toggle */}
         {!showResults && (
@@ -278,12 +245,12 @@ const HeroSection = () => {
           isBatchMode ? (
             // Batch Mode Input
             <div 
-              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up border border-border/50"
+              className="max-w-2xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-slide-up neon-border"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder={`Paste video URLs here bestie 💕\nOne per line, up to 100 videos!\nSupports: TikTok & YouTube`}
+                  placeholder="Paste TikTok URLs here bestie 💕&#10;One per line, up to 100 videos!"
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
                   className="min-h-40 bg-muted/30 border-border/30 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-base"
@@ -343,11 +310,11 @@ const HeroSection = () => {
             >
               {/* Mobile: Stacked */}
               <div className="flex flex-col gap-3 md:hidden">
-                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 border border-border/50">
+                <div className="glass-card rounded-2xl p-4 flex items-center gap-3 neon-border">
                   <Search className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                   <Input
                     type="url"
-                    placeholder={selectedPlatform === 'all' ? "Paste any video link..." : `Paste ${platforms.find(p => p.id === selectedPlatform)?.name} link...`}
+                    placeholder="Paste TikTok link..."
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-base h-10"
@@ -390,12 +357,12 @@ const HeroSection = () => {
               </div>
 
               {/* Desktop: Inline */}
-              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 border border-border/50">
+              <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 neon-border">
                 <div className="flex-1 flex items-center gap-3 pl-5">
                   <Search className="h-5 w-5 text-muted-foreground" />
                   <Input
                     type="url"
-                    placeholder={selectedPlatform === 'all' ? "Paste any video link here..." : `Paste ${platforms.find(p => p.id === selectedPlatform)?.name} link here...`}
+                    placeholder="Paste a TikTok link here..."
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
