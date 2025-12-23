@@ -84,15 +84,18 @@ const HeroSection = () => {
   const fetchVideo = async (videoUrl: string): Promise<BatchVideoResult> => {
     try {
       const { data, error } = await supabase.functions.invoke('tiktok-download', {
-        body: { url: videoUrl.trim() }
+        body: {
+          url: videoUrl.trim(),
+          platform: selectedPlatform !== 'all' ? selectedPlatform : undefined,
+        }
       });
 
       if (error) {
-        return { url: videoUrl, success: false, error: 'Failed to process video' };
+        return { url: videoUrl, success: false, error: error.message || 'Failed to process video' };
       }
 
-      if (!data.success) {
-        return { url: videoUrl, success: false, error: data.error || 'Could not fetch video' };
+      if (!data?.success) {
+        return { url: videoUrl, success: false, error: data?.error || 'Could not fetch video' };
       }
 
       return { url: videoUrl, success: true, data: data.data };
