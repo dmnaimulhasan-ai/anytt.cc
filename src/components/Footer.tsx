@@ -2,9 +2,9 @@ import { Zap, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-8 px-6 border-t border-border/30">
+    <footer className="py-6 md:py-8 px-4 md:px-6 border-t border-border/30">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-1.5">
               <Zap className="h-4 w-4 text-primary-foreground" />
@@ -15,13 +15,13 @@ const Footer = () => {
           </div>
           
           <nav className="flex items-center gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors">
               Privacy
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors">
               Terms
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors">
               Contact
             </a>
           </nav>
