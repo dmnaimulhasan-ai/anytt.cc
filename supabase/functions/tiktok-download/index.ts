@@ -242,38 +242,147 @@ async function fetchYouTube(url: string): Promise<VideoData> {
 
   console.log('Fetching YouTube video ID:', videoId);
   
-  // Using a free YouTube download API
-  const apiUrl = `https://www.y2mate.com/mates/analyzeV2/ajax`;
-  const formData = new URLSearchParams();
-  formData.append('k_query', url);
-  formData.append('k_page', 'home');
-  formData.append('hl', 'en');
-  formData.append('q_auto', '0');
-  
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-    },
-    body: formData.toString()
-  });
+  // Approach 1: Try ssyoutube API
+  try {
+    const apiUrl = 'https://ssyoutube.com/api/ajaxSearch/index';
+    const formData = new URLSearchParams();
+    formData.append('query', url);
+    formData.append('vt', 'mp4');
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Origin': 'https://ssyoutube.com',
+        'Referer': 'https://ssyoutube.com/'
+      },
+      body: formData.toString()
+    });
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch YouTube video');
+    if (response.ok) {
+      const data = await response.json();
+      console.log('SSYouTube response:', data.status);
+      
+      if (data.status === 'ok' && data.links) {
+        // Find the best quality MP4
+        const mp4Links = data.links.mp4 || {};
+        const qualities = Object.keys(mp4Links).sort((a, b) => parseInt(b) - parseInt(a));
+        
+        if (qualities.length > 0) {
+          const bestQuality = mp4Links[qualities[0]];
+          return {
+            id: videoId,
+            title: data.title || 'YouTube Video',
+            author: data.a || 'YouTube Creator',
+            authorAvatar: '',
+            thumbnail: data.thumb || `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+            duration: 0,
+            videoUrl: bestQuality.k || bestQuality,
+            videoUrlNoWatermark: bestQuality.k || bestQuality,
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'youtube'
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.log('SSYouTube failed:', err);
   }
 
-  const data = await response.json();
-  
+  // Approach 2: Try y2save API
+  try {
+    const apiUrl = 'https://www.y2save.com/api/ajaxSearch/index';
+    const formData = new URLSearchParams();
+    formData.append('query', url);
+    formData.append('vt', 'mp4');
+    
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      },
+      body: formData.toString()
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Y2Save response:', data.status);
+      
+      if (data.status === 'ok' && data.links) {
+        const mp4Links = data.links.mp4 || {};
+        const qualities = Object.keys(mp4Links).sort((a, b) => parseInt(b) - parseInt(a));
+        
+        if (qualities.length > 0) {
+          const bestQuality = mp4Links[qualities[0]];
+          return {
+            id: videoId,
+            title: data.title || 'YouTube Video',
+            author: data.a || 'YouTube Creator',
+            authorAvatar: '',
+            thumbnail: data.thumb || `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+            duration: 0,
+            videoUrl: bestQuality.k || bestQuality,
+            videoUrlNoWatermark: bestQuality.k || bestQuality,
+            musicUrl: '',
+            musicTitle: '',
+            platform: 'youtube'
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.log('Y2Save failed:', err);
+  }
+
+  // Approach 3: Return embed URL with basic info (user can watch/save from YouTube)
+  // This is a fallback that at least shows the video info
+  try {
+    // Fetch video page for title/metadata
+    const pageResponse = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'text/html',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
+    });
+
+    if (pageResponse.ok) {
+      const html = await pageResponse.text();
+      const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+      const authorMatch = html.match(/"ownerChannelName":"([^"]+)"/i);
+      
+      // Note: This returns the YouTube watch URL since direct download requires more complex extraction
+      return {
+        id: videoId,
+        title: titleMatch ? titleMatch[1].replace(' - YouTube', '').trim() : 'YouTube Video',
+        author: authorMatch ? authorMatch[1] : 'YouTube Creator',
+        authorAvatar: '',
+        thumbnail: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+        duration: 0,
+        videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+        videoUrlNoWatermark: `https://www.youtube.com/embed/${videoId}`,
+        musicUrl: '',
+        musicTitle: '',
+        platform: 'youtube'
+      };
+    }
+  } catch (err) {
+    console.log('YouTube page fetch failed:', err);
+  }
+
+  // Final fallback with basic info
   return {
     id: videoId,
-    title: data.title || 'YouTube Video',
-    author: data.a || 'YouTube Creator',
+    title: 'YouTube Video',
+    author: 'YouTube Creator',
     authorAvatar: '',
     thumbnail: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
     duration: 0,
     videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
-    videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
+    videoUrlNoWatermark: `https://www.youtube.com/embed/${videoId}`,
     musicUrl: '',
     musicTitle: '',
     platform: 'youtube'
