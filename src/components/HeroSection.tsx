@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Clipboard, X, Loader2, List, Link } from "lucide-react";
+import { Search, Clipboard, X, Loader2, List, Link, Zap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,12 +47,12 @@ const HeroSection = () => {
         setUrl(text);
       }
       toast({
-        title: "URL Pasted",
+        title: "✨ URL Pasted",
         description: "Video URL has been pasted from clipboard.",
       });
     } catch (err) {
       toast({
-        title: "Paste failed",
+        title: "😅 Paste failed",
         description: "Please paste the URL manually.",
         variant: "destructive",
       });
@@ -90,7 +90,7 @@ const HeroSection = () => {
   const handleSearch = async () => {
     if (!url.trim()) {
       toast({
-        title: "URL Required",
+        title: "🔗 URL Required",
         description: "Please paste a TikTok video URL first.",
         variant: "destructive",
       });
@@ -105,12 +105,12 @@ const HeroSection = () => {
     if (result.success && result.data) {
       setVideoData(result.data);
       toast({
-        title: "Video Found!",
+        title: "🎉 Video Found!",
         description: "Your video is ready to download.",
       });
     } else {
       toast({
-        title: "Error",
+        title: "❌ Error",
         description: result.error || "Could not fetch video data.",
         variant: "destructive",
       });
@@ -127,7 +127,7 @@ const HeroSection = () => {
 
     if (urls.length === 0) {
       toast({
-        title: "URLs Required",
+        title: "🔗 URLs Required",
         description: "Please paste at least one TikTok video URL.",
         variant: "destructive",
       });
@@ -136,7 +136,7 @@ const HeroSection = () => {
 
     if (urls.length > 10) {
       toast({
-        title: "Too Many URLs",
+        title: "⚠️ Too Many URLs",
         description: "Please paste no more than 10 URLs at once.",
         variant: "destructive",
       });
@@ -160,7 +160,7 @@ const HeroSection = () => {
 
     const successCount = results.filter(r => r.success).length;
     toast({
-      title: "Batch Complete",
+      title: "🎊 Batch Complete",
       description: `Successfully fetched ${successCount} of ${urls.length} videos.`,
     });
   };
@@ -181,30 +181,38 @@ const HeroSection = () => {
   const showResults = videoData || batchResults.length > 0;
 
   return (
-    <section className="hero-gradient py-16 pb-24 px-6">
-      <div className="container mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4 animate-fade-in">
-          TikTok Downloader
+    <section className="hero-gradient min-h-[70vh] py-16 pb-24 px-6 relative">
+      <div className="container mx-auto text-center relative z-10">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm text-muted-foreground mb-6 animate-fade-in">
+          <Sparkles className="h-4 w-4 text-primary" />
+          <span>No watermark • Free forever • No cap fr fr</span>
+          <Sparkles className="h-4 w-4 text-secondary" />
+        </div>
+
+        <h1 className="text-5xl md:text-7xl font-bold font-display mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <span className="gradient-text">TikTok</span>{" "}
+          <span className="text-foreground">Downloader</span>
         </h1>
-        <p className="text-lg md:text-xl text-primary-foreground/90 mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          Download and Save TikTok Videos Without Watermark.
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in max-w-2xl mx-auto" style={{ animationDelay: "0.2s" }}>
+          Download TikTok videos without watermark ✨ It's giving main character energy 💅
         </p>
 
         {/* Mode Toggle */}
         {!showResults && (
-          <div className="flex justify-center gap-2 mb-6 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+          <div className="flex justify-center gap-2 mb-8 animate-fade-in" style={{ animationDelay: "0.25s" }}>
             <Button
-              variant={!isBatchMode ? "secondary" : "ghost"}
+              variant="ghost"
               onClick={() => !isBatchMode || toggleMode()}
-              className={!isBatchMode ? "bg-primary-foreground text-primary" : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"}
+              className={`rounded-full px-6 ${!isBatchMode ? "glass-card text-foreground border border-primary/50" : "text-muted-foreground hover:text-foreground"}`}
             >
               <Link className="h-4 w-4 mr-2" />
-              Single URL
+              Single
             </Button>
             <Button
-              variant={isBatchMode ? "secondary" : "ghost"}
+              variant="ghost"
               onClick={() => isBatchMode || toggleMode()}
-              className={isBatchMode ? "bg-primary-foreground text-primary" : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"}
+              className={`rounded-full px-6 ${isBatchMode ? "glass-card text-foreground border border-secondary/50" : "text-muted-foreground hover:text-foreground"}`}
             >
               <List className="h-4 w-4 mr-2" />
               Batch Mode
@@ -216,26 +224,27 @@ const HeroSection = () => {
           isBatchMode ? (
             // Batch Mode Input
             <div 
-              className="max-w-3xl mx-auto bg-card rounded-2xl p-6 search-container animate-slide-up"
-              style={{ animationDelay: "0.2s" }}
+              className="max-w-3xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border"
+              style={{ animationDelay: "0.3s" }}
             >
               <div className="mb-4">
                 <Textarea
-                  placeholder="Paste multiple TikTok URLs here (one per line, max 10)..."
+                  placeholder="Paste multiple TikTok URLs here bestie 💕 (one per line, max 10)"
                   value={batchUrls}
                   onChange={(e) => setBatchUrls(e.target.value)}
-                  className="min-h-32 bg-muted/50 border-border text-foreground placeholder:text-muted-foreground resize-none"
+                  className="min-h-32 bg-muted/50 border-border/50 text-foreground placeholder:text-muted-foreground resize-none rounded-2xl focus:ring-primary"
                 />
-                <p className="text-xs text-muted-foreground mt-2 text-left">
-                  {batchUrls.split('\n').filter(u => u.trim()).length} URL(s) entered
+                <p className="text-xs text-muted-foreground mt-2 text-left flex items-center gap-1">
+                  <Zap className="h-3 w-3 text-secondary" />
+                  {batchUrls.split('\n').filter(u => u.trim()).length} URL(s) ready to go
                 </p>
               </div>
               
-              <div className="flex gap-2 justify-end">
+              <div className="flex gap-3 justify-end">
                 <Button
                   variant="outline"
                   onClick={handlePaste}
-                  className="border-border hover:bg-muted"
+                  className="rounded-full border-border/50 hover:bg-muted/50"
                 >
                   <Clipboard className="h-4 w-4 mr-2" />
                   Paste
@@ -245,7 +254,7 @@ const HeroSection = () => {
                   <Button
                     variant="outline"
                     onClick={handleClear}
-                    className="border-border hover:bg-muted"
+                    className="rounded-full border-border/50 hover:bg-muted/50"
                   >
                     <X className="h-4 w-4 mr-2" />
                     Clear
@@ -255,15 +264,18 @@ const HeroSection = () => {
                 <Button
                   onClick={handleBatchSearch}
                   disabled={isLoading}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+                  className="rounded-full btn-glow text-primary-foreground px-8 border-0"
                 >
                   {isLoading ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      Processing {processingIndex + 1}/{batchUrls.split('\n').filter(u => u.trim()).length}
+                      {processingIndex + 1}/{batchUrls.split('\n').filter(u => u.trim()).length}
                     </>
                   ) : (
-                    "Download All"
+                    <>
+                      <Zap className="h-4 w-4 mr-2" />
+                      Download All
+                    </>
                   )}
                 </Button>
               </div>
@@ -271,14 +283,14 @@ const HeroSection = () => {
           ) : (
             // Single URL Input
             <div 
-              className="max-w-3xl mx-auto bg-card rounded-full p-2 search-container flex items-center gap-2 animate-slide-up"
-              style={{ animationDelay: "0.2s" }}
+              className="max-w-3xl mx-auto glass-card rounded-full p-2 flex items-center gap-2 animate-slide-up neon-border"
+              style={{ animationDelay: "0.3s" }}
             >
               <div className="flex-1 flex items-center gap-2 pl-4">
                 <Search className="h-5 w-5 text-muted-foreground" />
                 <Input
                   type="url"
-                  placeholder="Paste a TikTok video URL here..."
+                  placeholder="Paste a TikTok URL here..."
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -297,7 +309,7 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 onClick={handlePaste}
-                className="rounded-full border-border hover:bg-muted"
+                className="rounded-full border-border/50 hover:bg-muted/50"
               >
                 <Clipboard className="h-4 w-4 mr-2" />
                 Paste
@@ -306,12 +318,15 @@ const HeroSection = () => {
               <Button
                 onClick={handleSearch}
                 disabled={isLoading}
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+                className="rounded-full btn-glow text-primary-foreground px-8 border-0"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  "Search"
+                  <>
+                    <Zap className="h-4 w-4 mr-2" />
+                    Go
+                  </>
                 )}
               </Button>
             </div>

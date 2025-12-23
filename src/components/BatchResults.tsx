@@ -1,6 +1,5 @@
-import { Download, Music, Video, CheckCircle, XCircle, Clock, ChevronDown, ChevronUp } from "lucide-react";
+import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { useState } from "react";
 
 interface VideoData {
@@ -59,19 +58,20 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
             result.data!.videoUrlNoWatermark,
             `tiktok-${result.data!.id}-hd.mp4`
           );
-        }, index * 500); // Stagger downloads
+        }, index * 500);
       }
     });
   };
 
   return (
-    <Card className="max-w-4xl mx-auto p-6 bg-card shadow-large animate-slide-up">
+    <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
       {/* Summary Header */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-border">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-border/50">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-primary">
             <CheckCircle className="h-5 w-5" />
-            <span className="font-semibold">{successCount} Success</span>
+            <span className="font-semibold font-display">{successCount} Success</span>
+            <Sparkles className="h-4 w-4" />
           </div>
           {failedCount > 0 && (
             <div className="flex items-center gap-2 text-destructive">
@@ -85,17 +85,19 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
           {successCount > 0 && (
             <Button
               onClick={handleDownloadAll}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="btn-glow text-primary-foreground rounded-xl border-0"
             >
-              <Download className="h-4 w-4 mr-2" />
+              <Zap className="h-4 w-4 mr-2" />
               Download All HD ({successCount})
             </Button>
           )}
           <Button
             onClick={onReset}
             variant="outline"
+            className="rounded-xl border-border/50"
           >
-            Download More
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            More
           </Button>
         </div>
       </div>
@@ -105,8 +107,10 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
         {results.map((result, index) => (
           <div
             key={index}
-            className={`border rounded-lg overflow-hidden transition-all ${
-              result.success ? 'border-border' : 'border-destructive/30 bg-destructive/5'
+            className={`rounded-2xl overflow-hidden transition-all ${
+              result.success 
+                ? 'bg-muted/30 border border-border/50' 
+                : 'bg-destructive/10 border border-destructive/30'
             }`}
           >
             {/* Result Header */}
@@ -125,10 +129,10 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
                   <img
                     src={result.data.thumbnail}
                     alt={result.data.title}
-                    className="w-12 h-16 object-cover rounded flex-shrink-0"
+                    className="w-12 h-16 object-cover rounded-xl flex-shrink-0"
                   />
                   <div className="flex-1 min-w-0 text-left">
-                    <p className="font-medium text-foreground truncate text-sm">
+                    <p className="font-medium text-foreground truncate text-sm font-display">
                       {result.data.title}
                     </p>
                     <p className="text-xs text-muted-foreground">
@@ -139,7 +143,7 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
               ) : (
                 <div className="flex-1 min-w-0 text-left">
                   <p className="text-sm text-foreground truncate">{result.url}</p>
-                  <p className="text-xs text-destructive">{result.error}</p>
+                  <p className="text-xs text-destructive">{result.error} 😢</p>
                 </div>
               )}
               
@@ -156,7 +160,7 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
 
             {/* Expanded Content */}
             {result.success && result.data && expandedIndex === index && (
-              <div className="p-4 pt-0 border-t border-border bg-muted/30">
+              <div className="p-4 pt-0 border-t border-border/30 bg-muted/20">
                 <div className="flex flex-wrap gap-2 mt-3">
                   <Button
                     size="sm"
@@ -164,10 +168,10 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
                       result.data!.videoUrlNoWatermark,
                       `tiktok-${result.data!.id}-hd.mp4`
                     )}
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="btn-glow text-primary-foreground rounded-xl border-0"
                   >
                     <Video className="h-4 w-4 mr-1" />
-                    HD (No Watermark)
+                    HD ✨
                   </Button>
                   
                   <Button
@@ -177,6 +181,7 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
                       result.data!.videoUrl,
                       `tiktok-${result.data!.id}.mp4`
                     )}
+                    className="rounded-xl border-border/50"
                   >
                     <Download className="h-4 w-4 mr-1" />
                     Video
@@ -190,9 +195,10 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
                         result.data!.musicUrl,
                         `tiktok-${result.data!.id}-audio.mp3`
                       )}
+                      className="rounded-xl border-border/50"
                     >
                       <Music className="h-4 w-4 mr-1" />
-                      Audio
+                      Audio 🎵
                     </Button>
                   )}
                 </div>
@@ -201,7 +207,7 @@ const BatchResults = ({ results, onReset }: BatchResultsProps) => {
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 };
 
