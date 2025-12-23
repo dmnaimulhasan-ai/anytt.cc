@@ -30,8 +30,8 @@ const Footer = () => {
             <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors">
               Terms
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors flex items-center gap-1">
-              Contact
+            <a href="https://t.me/GEN_ZDownloader" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors flex items-center gap-1">
+              Support
               <ExternalLink className="h-3 w-3" />
             </a>
           </nav>
