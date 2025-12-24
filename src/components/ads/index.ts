@@ -3,3 +3,4 @@ export { default as HeaderBannerAd } from "./HeaderBannerAd";
 export { default as DownloadBannerAd } from "./DownloadBannerAd";
 export { default as InterstitialAd } from "./InterstitialAd";
 export { default as RewardedAdModal } from "./RewardedAdModal";
+export { default as PropellerAdBanner } from "./PropellerAdBanner";
