@@ -1,12 +1,14 @@
 import { Zap, Sparkles, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { HeaderBannerAd } from "@/components/ads";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="py-4 px-4 md:px-6 relative z-20">
+      <HeaderBannerAd />
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="relative">
