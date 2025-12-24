@@ -7,7 +7,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
-import { DownloadBannerAd, InterstitialAd } from "@/components/ads";
 
 type Platform = 'tiktok' | 'youtube';
 
@@ -40,7 +39,6 @@ const HeroSection = () => {
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
-  const [showInterstitial, setShowInterstitial] = useState(false);
   const { toast } = useToast();
 
   const platformConfig = {
@@ -181,11 +179,6 @@ const HeroSection = () => {
 
     setProcessingIndex(-1);
     setIsLoading(false);
-
-    // Trigger interstitial ad after batch completion
-    if (results.length > 0) {
-      setShowInterstitial(true);
-    }
 
     const successCount = results.filter(r => r.success).length;
     toast({
@@ -471,16 +464,9 @@ const HeroSection = () => {
             </div>
           )
         ) : videoData ? (
-          <>
-            <VideoResult video={videoData} onReset={handleReset} platform={platform} />
-            <DownloadBannerAd />
-          </>
+          <VideoResult video={videoData} onReset={handleReset} platform={platform} />
         ) : (
-          <>
-            <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
-            <DownloadBannerAd />
-            <InterstitialAd isOpen={showInterstitial} onClose={() => setShowInterstitial(false)} />
-          </>
+          <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
         )}
       </div>
     </section>
