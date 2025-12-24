@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import AdPlaceholder, { ADS_ENABLED } from "./AdPlaceholder";
+import { ADS_ENABLED } from "./AdPlaceholder";
 
 interface InterstitialAdProps {
   isOpen: boolean;
@@ -55,9 +55,12 @@ const InterstitialAd = ({ isOpen, onClose, autoCloseDelay = 5 }: InterstitialAdP
           )}
         </div>
 
-        <AdPlaceholder type="interstitial" className="h-64 md:h-80 mt-8">
-          <span className="opacity-50">Interstitial Ad Content</span>
-        </AdPlaceholder>
+        <div className="h-64 md:h-80 mt-8 flex items-center justify-center bg-muted/20 rounded-xl overflow-hidden">
+          {/* PropellerAds interstitial content - shown via scripts in index.html */}
+          <div id="propeller-interstitial-ad" className="w-full h-full flex items-center justify-center">
+            <span className="text-muted-foreground text-sm">Loading ad...</span>
+          </div>
+        </div>
       </div>
     </div>
   );

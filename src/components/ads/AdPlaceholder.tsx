@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 // Set this to true when ready to activate ads
-export const ADS_ENABLED = false;
+export const ADS_ENABLED = true;
 
 interface AdPlaceholderProps {
   type: "banner" | "header" | "interstitial" | "rewarded";
