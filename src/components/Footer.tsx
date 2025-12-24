@@ -36,8 +36,8 @@ const Footer = () => {
             </a>
           </nav>
           
-          <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-            Made with <Heart className="h-4 w-4 text-primary fill-primary" /> for the culture
+          <p className="text-sm text-muted-foreground">
+            made by <span className="font-semibold text-foreground">NAIMUL</span>
           </p>
         </div>
       </div>
