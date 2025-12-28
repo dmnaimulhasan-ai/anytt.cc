@@ -1,6 +1,7 @@
-import { Download, Music, Video, User, Clock, Sparkles, ArrowLeft, Flame } from "lucide-react";
+import { Download, Music, Video, User, Clock, ArrowLeft, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStats } from "@/hooks/useStats";
+import { supabase } from "@/integrations/supabase/client";
 
 interface VideoData {
   id: string;
@@ -35,9 +36,17 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     trackDownload(platform, video.id);
     
     try {
-      // Fetch the file as a blob for proper download
-      const response = await fetch(url);
-      const blob = await response.blob();
+      // Use edge function proxy to bypass CORS
+      const response = await supabase.functions.invoke('proxy-download', {
+        body: { url, filename }
+      });
+
+      if (response.error) {
+        throw new Error(response.error.message);
+      }
+
+      // Get the blob from the response
+      const blob = response.data;
       const blobUrl = URL.createObjectURL(blob);
       
       const link = document.createElement('a');
@@ -52,7 +61,7 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
       URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error('Download failed:', error);
-      // Fallback to opening in new tab if blob download fails
+      // Fallback to opening in new tab
       window.open(url, '_blank');
     }
   };
