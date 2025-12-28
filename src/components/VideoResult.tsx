@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Download, Music, Video, User, Clock, ArrowLeft, Flame, Loader2 } from "lucide-react";
+import { Download, Music, Video, User, Clock, Sparkles, ArrowLeft, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStats } from "@/hooks/useStats";
 
@@ -22,11 +21,8 @@ interface VideoResultProps {
   platform?: string;
 }
 
-type DownloadType = 'hd' | 'video' | 'audio' | null;
-
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
-  const [downloading, setDownloading] = useState<DownloadType>(null);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -34,10 +30,9 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleDownload = async (url: string, filename: string, type: DownloadType) => {
+  const handleDownload = async (url: string, filename: string) => {
     // Track the download
     trackDownload(platform, video.id);
-    setDownloading(type);
     
     try {
       // Fetch the file as a blob for proper download
@@ -59,8 +54,6 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
       console.error('Download failed:', error);
       // Fallback to opening in new tab if blob download fails
       window.open(url, '_blank');
-    } finally {
-      setDownloading(null);
     }
   };
 
@@ -104,46 +97,31 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
           {/* Download Buttons */}
           <div className="space-y-2.5">
             <Button
-              onClick={() => handleDownload(video.videoUrlNoWatermark, `tiktok-${video.id}-hd.mp4`, 'hd')}
+              onClick={() => handleDownload(video.videoUrlNoWatermark, `tiktok-${video.id}-hd.mp4`)}
               className="w-full h-13 md:h-12 btn-glow text-primary-foreground rounded-2xl border-0 text-base font-bold"
-              disabled={downloading !== null}
             >
-              {downloading === 'hd' ? (
-                <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-              ) : (
-                <Video className="h-5 w-5 mr-2" />
-              )}
-              {downloading === 'hd' ? 'Downloading...' : 'Download HD 🔥'}
+              <Video className="h-5 w-5 mr-2" />
+              Download HD 🔥
             </Button>
             
             <div className="flex gap-2">
               <Button
-                onClick={() => handleDownload(video.videoUrl, `tiktok-${video.id}.mp4`, 'video')}
+                onClick={() => handleDownload(video.videoUrl, `tiktok-${video.id}.mp4`)}
                 variant="outline"
                 className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold"
-                disabled={downloading !== null}
               >
-                {downloading === 'video' ? (
-                  <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
-                ) : (
-                  <Download className="h-4 w-4 mr-1.5" />
-                )}
-                {downloading === 'video' ? 'Downloading...' : 'Video'}
+                <Download className="h-4 w-4 mr-1.5" />
+                Video
               </Button>
               
               {video.musicUrl && (
                 <Button
-                  onClick={() => handleDownload(video.musicUrl, `tiktok-${video.id}-audio.mp3`, 'audio')}
+                  onClick={() => handleDownload(video.musicUrl, `tiktok-${video.id}-audio.mp3`)}
                   variant="outline"
                   className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold"
-                  disabled={downloading !== null}
                 >
-                  {downloading === 'audio' ? (
-                    <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
-                  ) : (
-                    <Music className="h-4 w-4 mr-1.5" />
-                  )}
-                  {downloading === 'audio' ? 'Downloading...' : 'Audio'}
+                  <Music className="h-4 w-4 mr-1.5" />
+                  Audio
                 </Button>
               )}
             </div>
