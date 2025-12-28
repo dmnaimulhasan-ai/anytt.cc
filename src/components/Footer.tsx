@@ -1,10 +1,22 @@
-import { Zap, Heart, ExternalLink } from "lucide-react";
+import { Zap, Gift, ExternalLink } from "lucide-react";
 import StatsBar from "./StatsBar";
+import { Button } from "./ui/button";
+import { SMARTLINK_URL } from "./ads";
 
 const Footer = () => {
   return (
     <footer className="py-8 px-4 md:px-6 border-t border-border/20">
       <div className="container mx-auto">
+        {/* Promotional CTA */}
+        <div className="mb-8 flex justify-center">
+          <a href={SMARTLINK_URL} target="_blank" rel="noopener noreferrer">
+            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+              <Gift className="h-5 w-5" />
+              Claim Your Free Gift 🎁
+            </Button>
+          </a>
+        </div>
+
         {/* Stats Section */}
         <div className="mb-8">
           <StatsBar />
