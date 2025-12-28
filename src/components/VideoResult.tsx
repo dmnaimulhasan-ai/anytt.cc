@@ -30,18 +30,31 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleDownload = (url: string, filename: string) => {
+  const handleDownload = async (url: string, filename: string) => {
     // Track the download
     trackDownload(platform, video.id);
     
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      // Fetch the file as a blob for proper download
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = filename;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up the blob URL
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      // Fallback to opening in new tab if blob download fails
+      window.open(url, '_blank');
+    }
   };
 
   return (
