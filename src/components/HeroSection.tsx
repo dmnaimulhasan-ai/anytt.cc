@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
+import LoadingSpinner from "./LoadingSpinner";
 
 type Platform = 'tiktok' | 'youtube';
 
@@ -300,7 +301,9 @@ const HeroSection = () => {
           </div>
         )}
 
-        {!showResults ? (
+        {isLoading && !isBatchMode ? (
+          <LoadingSpinner platform={platformConfig[platform].name} />
+        ) : !showResults ? (
           isBatchMode ? (
             // Batch Mode Input
             <div 
