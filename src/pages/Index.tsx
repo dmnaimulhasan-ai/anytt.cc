@@ -4,7 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import HowToSection from "@/components/HowToSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
-import { SocialBarAd, NativeBannerAd, PopunderAd, BannerAd } from "@/components/ads";
+import { SocialBarAd, NativeBannerAd, PopunderAd, BannerAd, AdSenseAd } from "@/components/ads";
 
 const Index = () => {
   return (
@@ -19,6 +19,9 @@ const Index = () => {
       <main>
         <HeroSection />
         
+        {/* AdSense ad between hero and about */}
+        <AdSenseAd slot="1234567890" format="horizontal" />
+        
         {/* Native banner between hero and about */}
         <NativeBannerAd />
         
@@ -28,6 +31,9 @@ const Index = () => {
         <BannerAd />
         
         <HowToSection />
+        
+        {/* AdSense ad between how-to and FAQ */}
+        <AdSenseAd slot="0987654321" format="rectangle" />
         
         {/* Native banner between how-to and FAQ */}
         <NativeBannerAd />
