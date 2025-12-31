@@ -40,8 +40,14 @@ const Index = () => {
         
         <FAQSection />
         
+        {/* AdSense ad after FAQ */}
+        <AdSenseAd slot="5678901234" format="horizontal" />
+        
         {/* Banner ad before footer */}
         <BannerAd />
+        
+        {/* Native banner before footer */}
+        <NativeBannerAd />
       </main>
       <Footer />
     </div>
