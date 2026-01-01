@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Clipboard, X, Loader2, List, Link, Zap, Sparkles, Star, Youtube } from "lucide-react";
+import { Search, Clipboard, X, Loader2, List, Link, Zap, Sparkles, Star, Youtube, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,7 +9,7 @@ import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
 
-type Platform = 'tiktok' | 'youtube';
+type Platform = 'tiktok' | 'youtube' | 'facebook';
 
 interface VideoData {
   id: string;
@@ -58,6 +58,14 @@ const HeroSection = () => {
       function: 'youtube-download',
       icon: '▶️',
       color: 'destructive'
+    },
+    facebook: {
+      name: 'Facebook',
+      placeholder: 'Paste Facebook video link...',
+      batchPlaceholder: 'Paste Facebook video URLs here bestie 💕\nOne per line, up to 100 videos!',
+      function: 'facebook-download',
+      icon: '📘',
+      color: 'blue'
     }
   };
 
@@ -244,11 +252,11 @@ const HeroSection = () => {
         {/* Platform Toggle */}
         {!showResults && (
           <div className="flex flex-col items-center gap-4 mb-6 animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <div className="flex justify-center gap-3">
+            <div className="flex justify-center gap-2 flex-wrap">
               <Button
                 variant="ghost"
                 onClick={() => switchPlatform('tiktok')}
-                className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
+                className={`rounded-2xl px-4 h-11 text-sm font-semibold transition-all ${
                   platform === 'tiktok'
                     ? "glass-card text-foreground border-2 border-primary/50" 
                     : "text-muted-foreground hover:text-foreground"
@@ -260,7 +268,7 @@ const HeroSection = () => {
               <Button
                 variant="ghost"
                 onClick={() => switchPlatform('youtube')}
-                className={`rounded-2xl px-5 h-12 text-sm font-semibold transition-all ${
+                className={`rounded-2xl px-4 h-11 text-sm font-semibold transition-all ${
                   platform === 'youtube'
                     ? "glass-card text-foreground border-2 border-red-500/50" 
                     : "text-muted-foreground hover:text-foreground"
@@ -268,6 +276,18 @@ const HeroSection = () => {
               >
                 <Youtube className="h-4 w-4 mr-2 text-red-500" />
                 YouTube
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => switchPlatform('facebook')}
+                className={`rounded-2xl px-4 h-11 text-sm font-semibold transition-all ${
+                  platform === 'facebook'
+                    ? "glass-card text-foreground border-2 border-blue-500/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Facebook className="h-4 w-4 mr-2 text-blue-500" />
+                Facebook
               </Button>
             </div>
 
