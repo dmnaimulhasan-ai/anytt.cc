@@ -47,8 +47,8 @@ serve(async (req) => {
       );
     }
 
-    // Try RapidAPI Facebook Video Downloader (free tier available)
-    const result = await tryFacebookDownload(url);
+    // Try fdown.net API (proven working method)
+    const result = await tryFdownNet(url);
     
     if (result) {
       console.log('Successfully fetched video:', result.title?.substring(0, 50));
@@ -97,202 +97,124 @@ function extractVideoId(url: string): string {
   return Date.now().toString();
 }
 
-async function tryFacebookDownload(url: string): Promise<VideoData | null> {
-  // Method 1: Try FBDown API
+async function tryFdownNet(url: string): Promise<VideoData | null> {
   try {
-    console.log('Trying FBDown API...');
-    const fbdownResponse = await fetch('https://www.getfvid.com/downloader', {
+    console.log('Trying fdown.net API...');
+    
+    // Use fdown.net API - the proven working method
+    const response = await fetch('https://fdown.net/download.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Origin': 'https://www.getfvid.com',
-        'Referer': 'https://www.getfvid.com/',
-      },
-      body: `url=${encodeURIComponent(url)}`
-    });
-
-    if (fbdownResponse.ok) {
-      const html = await fbdownResponse.text();
-      console.log('GetFVid response length:', html.length);
-      
-      // Parse download links from HTML
-      const hdMatch = html.match(/href="(https:\/\/[^"]*fbcdn[^"]*)"[^>]*>.*?HD/is) ||
-                      html.match(/class="btn[^"]*"[^>]*href="(https:\/\/[^"]*fbcdn[^"]*)"/i);
-      const sdMatch = html.match(/href="(https:\/\/[^"]*fbcdn[^"]*)"[^>]*>.*?SD/is) ||
-                      html.match(/class="btn[^"]*"[^>]*href="(https:\/\/[^"]*fbcdn[^"]*)"[^>]*>.*?Normal/is);
-      
-      const videoUrl = hdMatch?.[1] || sdMatch?.[1];
-      
-      if (videoUrl) {
-        console.log('Found video URL from GetFVid');
-        return {
-          id: extractVideoId(url),
-          title: 'Facebook Video',
-          author: 'Facebook User',
-          authorAvatar: '',
-          thumbnail: '',
-          duration: 0,
-          videoUrl: sdMatch?.[1] || videoUrl,
-          videoUrlNoWatermark: hdMatch?.[1] || videoUrl,
-          musicUrl: '',
-          musicTitle: ''
-        };
-      }
-    }
-  } catch (error) {
-    console.log('GetFVid method failed:', error);
-  }
-
-  // Method 2: Try SaveFrom-style API
-  try {
-    console.log('Trying SaveFrom API...');
-    const saveFromResponse = await fetch(`https://api.savefrom.biz/api/convert`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-      },
-      body: JSON.stringify({ url })
-    });
-
-    if (saveFromResponse.ok) {
-      const data = await saveFromResponse.json();
-      console.log('SaveFrom response:', JSON.stringify(data).substring(0, 200));
-      
-      if (data.url || data.urls || data.medias) {
-        const videoUrl = data.url || data.urls?.[0]?.url || data.medias?.[0]?.url;
-        const hdUrl = data.urls?.find((u: any) => u.quality?.includes('HD') || u.quality?.includes('720'))?.url;
-        
-        if (videoUrl) {
-          return {
-            id: extractVideoId(url),
-            title: data.title || 'Facebook Video',
-            author: data.author || 'Facebook User',
-            authorAvatar: '',
-            thumbnail: data.thumbnail || data.thumb || '',
-            duration: data.duration || 0,
-            videoUrl: videoUrl,
-            videoUrlNoWatermark: hdUrl || videoUrl,
-            musicUrl: '',
-            musicTitle: ''
-          };
-        }
-      }
-    }
-  } catch (error) {
-    console.log('SaveFrom method failed:', error);
-  }
-
-  // Method 3: Direct Facebook graph scraping
-  try {
-    console.log('Trying direct Facebook fetch...');
-    const fbResponse = await fetch(url, {
-      headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
+        'Origin': 'https://fdown.net',
+        'Referer': 'https://fdown.net/',
       },
-      redirect: 'follow'
+      body: `URLz=${encodeURIComponent(url)}`
     });
 
-    if (fbResponse.ok) {
-      const html = await fbResponse.text();
-      console.log('Facebook page length:', html.length);
-      
-      // Try to find video URLs in the page source
-      const hdVideoMatch = html.match(/"playable_url_quality_hd"\s*:\s*"([^"]+)"/i) ||
-                           html.match(/hd_src\s*:\s*"([^"]+)"/i) ||
-                           html.match(/"hd_src"\s*:\s*"([^"]+)"/i);
-      
-      const sdVideoMatch = html.match(/"playable_url"\s*:\s*"([^"]+)"/i) ||
-                           html.match(/sd_src\s*:\s*"([^"]+)"/i) ||
-                           html.match(/"sd_src"\s*:\s*"([^"]+)"/i);
-      
-      const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i) ||
-                         html.match(/"title"\s*:\s*"([^"]+)"/i);
-      
-      const thumbMatch = html.match(/"thumbnailUrl"\s*:\s*"([^"]+)"/i) ||
-                         html.match(/"thumbnail"\s*:\s*\{\s*"uri"\s*:\s*"([^"]+)"/i);
-      
-      let hdUrl = hdVideoMatch?.[1];
-      let sdUrl = sdVideoMatch?.[1];
-      
-      // Unescape URLs
-      if (hdUrl) hdUrl = hdUrl.replace(/\\u0025/g, '%').replace(/\\\//g, '/').replace(/\\u([0-9a-fA-F]{4})/g, (_, code) => String.fromCharCode(parseInt(code, 16)));
-      if (sdUrl) sdUrl = sdUrl.replace(/\\u0025/g, '%').replace(/\\\//g, '/').replace(/\\u([0-9a-fA-F]{4})/g, (_, code) => String.fromCharCode(parseInt(code, 16)));
-      
-      const videoUrl = hdUrl || sdUrl;
-      
-      if (videoUrl) {
-        console.log('Found video URL from direct scrape');
-        let title = titleMatch?.[1] || 'Facebook Video';
-        title = title.replace(/\s*\|\s*Facebook\s*$/, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"');
-        
-        let thumbnail = thumbMatch?.[1];
-        if (thumbnail) thumbnail = thumbnail.replace(/\\\//g, '/');
-        
-        return {
-          id: extractVideoId(url),
-          title: title,
-          author: 'Facebook User',
-          authorAvatar: '',
-          thumbnail: thumbnail || '',
-          duration: 0,
-          videoUrl: sdUrl || videoUrl,
-          videoUrlNoWatermark: hdUrl || videoUrl,
-          musicUrl: '',
-          musicTitle: ''
-        };
-      }
+    if (!response.ok) {
+      console.log('fdown.net response not OK:', response.status);
+      return null;
     }
-  } catch (error) {
-    console.log('Direct Facebook fetch failed:', error);
-  }
 
-  // Method 4: Try fbdownloader.app API
-  try {
-    console.log('Trying fbdownloader.app API...');
-    const response = await fetch('https://v3.fbdownloader.app/api/ajaxSearch', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'Origin': 'https://fbdownloader.app',
-        'Referer': 'https://fbdownloader.app/',
-      },
-      body: `q=${encodeURIComponent(url)}`
-    });
+    const html = await response.text();
+    console.log('fdown.net response length:', html.length);
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log('fbdownloader.app response status:', data.status);
+    // Parse the HTML response to extract video links
+    // Look for SD link (id="sdlink")
+    const sdMatch = html.match(/id="sdlink"\s+href="([^"]+)"/i) ||
+                    html.match(/id="sdlink"[^>]*href="([^"]+)"/i);
+    
+    // Look for HD link (id="hdlink")  
+    const hdMatch = html.match(/id="hdlink"\s+href="([^"]+)"/i) ||
+                    html.match(/id="hdlink"[^>]*href="([^"]+)"/i);
+
+    // Extract cover photo
+    const coverMatch = html.match(/class="lib-img-show"[^>]*src="([^"]+)"/i) ||
+                       html.match(/lib-img-show[^>]*src="([^"]+)"/i);
+
+    // Extract title
+    const titleMatch = html.match(/class="lib-row lib-header"[^>]*>([^<]+)</i) ||
+                       html.match(/lib-header[^>]*>([^<]+)</i);
+
+    // Extract duration
+    const durationMatch = html.match(/Duration:\s*([^<]+)</i);
+
+    const sdUrl = sdMatch?.[1];
+    const hdUrl = hdMatch?.[1];
+    const videoUrl = hdUrl || sdUrl;
+
+    if (videoUrl) {
+      console.log('Found video URL from fdown.net, SD:', !!sdUrl, 'HD:', !!hdUrl);
       
-      if (data.status === 'ok' && data.links) {
-        const hdLink = data.links.find((l: any) => l.quality === 'HD' || l.quality === '720p');
-        const sdLink = data.links.find((l: any) => l.quality === 'SD' || l.quality === '360p') || data.links[0];
-        
-        if (hdLink?.url || sdLink?.url) {
-          return {
-            id: extractVideoId(url),
-            title: data.title || 'Facebook Video',
-            author: data.author || 'Facebook User',
-            authorAvatar: '',
-            thumbnail: data.thumbnail || '',
-            duration: data.duration || 0,
-            videoUrl: sdLink?.url || hdLink?.url,
-            videoUrlNoWatermark: hdLink?.url || sdLink?.url,
-            musicUrl: '',
-            musicTitle: ''
-          };
+      let title = titleMatch?.[1]?.trim() || 'Facebook Video';
+      title = title.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+      
+      const thumbnail = coverMatch?.[1] || '';
+      const durationStr = durationMatch?.[1]?.trim() || '';
+      
+      // Parse duration to seconds
+      let duration = 0;
+      if (durationStr) {
+        const timeParts = durationStr.match(/(\d+)/g);
+        if (timeParts) {
+          if (timeParts.length === 3) {
+            duration = parseInt(timeParts[0]) * 3600 + parseInt(timeParts[1]) * 60 + parseInt(timeParts[2]);
+          } else if (timeParts.length === 2) {
+            duration = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+          } else if (timeParts.length === 1) {
+            duration = parseInt(timeParts[0]);
+          }
         }
       }
+
+      return {
+        id: extractVideoId(url),
+        title: title,
+        author: 'Facebook User',
+        authorAvatar: '',
+        thumbnail: thumbnail,
+        duration: duration,
+        videoUrl: sdUrl || videoUrl,
+        videoUrlNoWatermark: hdUrl || videoUrl,
+        musicUrl: '',
+        musicTitle: ''
+      };
     }
+
+    // Fallback: Try alternative pattern matching for different page layouts
+    const altVideoMatch = html.match(/href="(https:\/\/[^"]*video[^"]*\.mp4[^"]*)"/i) ||
+                          html.match(/href="(https:\/\/[^"]*fbcdn[^"]*video[^"]*)"/i);
+    
+    if (altVideoMatch?.[1]) {
+      console.log('Found video URL from alternative pattern');
+      return {
+        id: extractVideoId(url),
+        title: 'Facebook Video',
+        author: 'Facebook User',
+        authorAvatar: '',
+        thumbnail: '',
+        duration: 0,
+        videoUrl: altVideoMatch[1],
+        videoUrlNoWatermark: altVideoMatch[1],
+        musicUrl: '',
+        musicTitle: ''
+      };
+    }
+
+    console.log('No video URL found in fdown.net response');
+    
+    // Debug: log a snippet of the response
+    if (html.length > 0) {
+      console.log('Response snippet:', html.substring(0, 500));
+    }
+
   } catch (error) {
-    console.log('fbdownloader.app method failed:', error);
+    console.error('fdown.net method failed:', error);
   }
 
-  console.log('All methods failed');
   return null;
 }
