@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -25,6 +26,40 @@ serve(async (req) => {
   }
 
   try {
+    // Rate limiting
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
+
+    const windowStart = new Date(Date.now() - 60 * 1000).toISOString();
+    
+    const { count } = await supabase
+      .from('rate_limits')
+      .select('*', { count: 'exact', head: true })
+      .eq('ip_address', clientIP)
+      .eq('endpoint', 'tiktok-download')
+      .gte('window_start', windowStart);
+
+    if ((count || 0) >= 15) {
+      console.log('Rate limit exceeded for tiktok-download, IP:', clientIP);
+      return new Response(
+        JSON.stringify({ success: false, error: 'Rate limit exceeded. Please wait a moment before trying again.' }),
+        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Track this request
+    await supabase.from('rate_limits').insert({
+      ip_address: clientIP,
+      endpoint: 'tiktok-download',
+      window_start: new Date().toISOString()
+    });
+
     const { url } = await req.json();
     
     if (!url) {
@@ -35,12 +70,21 @@ serve(async (req) => {
       );
     }
 
-    console.log('Processing TikTok URL:', url);
+    // Validate URL is a string and not too long
+    if (typeof url !== 'string' || url.length > 500) {
+      console.error('Invalid URL format');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Invalid URL format' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log('Processing TikTok URL:', url.substring(0, 100));
 
     // Validate TikTok URL
     const tiktokRegex = /(?:https?:\/\/)?(?:www\.|m\.)?(?:tiktok\.com|vm\.tiktok\.com)/i;
     if (!tiktokRegex.test(url)) {
-      console.error('Invalid TikTok URL:', url);
+      console.error('Invalid TikTok URL:', url.substring(0, 50));
       return new Response(
         JSON.stringify({ success: false, error: 'Please enter a valid TikTok URL' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -49,7 +93,7 @@ serve(async (req) => {
 
     // Use TikWM API to get video data (free, no API key required)
     const apiUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`;
-    console.log('Fetching from TikWM API:', apiUrl);
+    console.log('Fetching from TikWM API');
     
     const response = await fetch(apiUrl, {
       method: 'GET',
