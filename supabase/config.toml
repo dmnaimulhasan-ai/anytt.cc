@@ -8,3 +8,9 @@ verify_jwt = false
 
 [functions.facebook-download]
 verify_jwt = false
+
+[functions.proxy-download]
+verify_jwt = false
+
+[functions.track-analytics]
+verify_jwt = false
