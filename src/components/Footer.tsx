@@ -20,7 +20,7 @@ const Footer = () => {
               </div>
             </div>
             <span className="text-xl font-black font-display">
-              <span className="gradient-text">GEN-Z</span>
+              <span className="gradient-text">Any-TT</span>
             </span>
           </div>
           

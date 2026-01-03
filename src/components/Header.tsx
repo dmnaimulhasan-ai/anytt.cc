@@ -17,7 +17,7 @@ const Header = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-2xl font-black font-display tracking-tight">
-              <span className="gradient-text">GEN-Z</span>
+              <span className="gradient-text">Any-TT</span>
             </span>
             <span className="text-[10px] text-muted-foreground -mt-1 tracking-widest uppercase">Downloader</span>
           </div>

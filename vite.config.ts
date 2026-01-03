@@ -17,8 +17,8 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
-        name: "GEN-Z TikTok Downloader",
-        short_name: "GEN-Z",
+        name: "Any-TT TikTok Downloader",
+        short_name: "Any-TT",
         description: "Download TikTok videos without watermark",
         theme_color: "#0f0d17",
         background_color: "#0f0d17",
