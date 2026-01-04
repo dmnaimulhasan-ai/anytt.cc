@@ -1,4 +1,5 @@
 import { Zap, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import StatsBar from "./StatsBar";
 
 const Footer = () => {
@@ -11,8 +12,69 @@ const Footer = () => {
           <StatsBar />
         </div>
 
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-          <div className="flex items-center gap-3">
+        {/* Footer Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          {/* Downloaders */}
+          <div>
+            <h3 className="font-bold font-display mb-4 text-foreground">Downloaders</h3>
+            <nav className="space-y-2" aria-label="Downloader links">
+              <Link to="/tiktok-downloader" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                TikTok Downloader
+              </Link>
+              <Link to="/youtube-downloader" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                YouTube Downloader
+              </Link>
+              <Link to="/facebook-downloader" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Facebook Downloader
+              </Link>
+            </nav>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="font-bold font-display mb-4 text-foreground">Resources</h3>
+            <nav className="space-y-2" aria-label="Resource links">
+              <Link to="/about" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                About Us
+              </Link>
+              <Link to="/" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                How It Works
+              </Link>
+            </nav>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="font-bold font-display mb-4 text-foreground">Legal</h3>
+            <nav className="space-y-2" aria-label="Legal links">
+              <a href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Terms of Service
+              </a>
+            </nav>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="font-bold font-display mb-4 text-foreground">Support</h3>
+            <nav className="space-y-2" aria-label="Support links">
+              <a 
+                href="https://t.me/GEN_ZDownloader" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Telegram Support
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between pt-6 border-t border-border/20">
+          <Link to="/" className="flex items-center gap-3">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-xl blur opacity-50" />
               <div className="relative bg-gradient-to-r from-primary to-accent rounded-xl p-2">
@@ -20,22 +82,13 @@ const Footer = () => {
               </div>
             </div>
             <span className="text-xl font-black font-display">
-              <span className="gradient-text">Any-TT</span>
+              <span className="gradient-text">AnyTT</span>
             </span>
-          </div>
+          </Link>
           
-          <nav className="flex items-center gap-6 text-sm font-medium">
-            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors flex items-center gap-1">
-              Privacy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors">
-              Terms
-            </a>
-            <a href="https://t.me/GEN_ZDownloader" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground active:text-primary transition-colors flex items-center gap-1">
-              Support
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </nav>
+          <p className="text-sm text-muted-foreground text-center">
+            © {new Date().getFullYear()} AnyTT. Free video downloader for TikTok, YouTube & Facebook.
+          </p>
           
           <p className="text-sm text-muted-foreground">
             made by <span className="font-semibold text-foreground">NAIMUL</span>
