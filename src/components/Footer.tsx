@@ -34,6 +34,9 @@ const Footer = () => {
           <div>
             <h3 className="font-bold font-display mb-4 text-foreground">Resources</h3>
             <nav className="space-y-2" aria-label="Resource links">
+              <Link to="/blog" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Blog & Tutorials
+              </Link>
               <Link to="/about" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
                 About Us
               </Link>
