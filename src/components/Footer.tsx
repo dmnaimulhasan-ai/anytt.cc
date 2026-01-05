@@ -50,10 +50,10 @@ const Footer = () => {
           <div>
             <h3 className="font-bold font-display mb-4 text-foreground">Legal</h3>
             <nav className="space-y-2" aria-label="Legal links">
-              <a href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" target="_blank" rel="noopener noreferrer" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" target="_blank" rel="noopener noreferrer" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Terms of Service
               </a>
             </nav>
