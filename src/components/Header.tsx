@@ -1,4 +1,4 @@
-import { Zap, Sparkles, Menu, X, Youtube, Facebook, Info } from "lucide-react";
+import { Zap, Sparkles, Menu, X, Youtube, Facebook, Info, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
@@ -7,13 +7,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + "/");
 
   const navLinks = [
-    { path: "/", label: "Home", icon: <Sparkles className="h-4 w-4" /> },
+    { path: "/", label: "Home", icon: <Sparkles className="h-4 w-4" />, exact: true },
     { path: "/tiktok-downloader", label: "TikTok", icon: <span>🎵</span> },
     { path: "/youtube-downloader", label: "YouTube", icon: <Youtube className="h-4 w-4 text-red-500" /> },
     { path: "/facebook-downloader", label: "Facebook", icon: <Facebook className="h-4 w-4 text-blue-500" /> },
+    { path: "/blog", label: "Blog", icon: <BookOpen className="h-4 w-4" /> },
     { path: "/about", label: "About", icon: <Info className="h-4 w-4" /> },
   ];
 
@@ -53,7 +54,7 @@ const Header = () => {
               key={link.path}
               to={link.path} 
               className={`px-4 py-2 rounded-xl font-medium flex items-center gap-2 transition-all ${
-                isActive(link.path)
+                (link.exact ? location.pathname === link.path : isActive(link.path))
                   ? "text-foreground glass-card border border-primary/30"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
@@ -75,7 +76,7 @@ const Header = () => {
                 to={link.path} 
                 onClick={() => setIsMenuOpen(false)}
                 className={`font-medium flex items-center gap-3 p-4 rounded-2xl transition-colors ${
-                  isActive(link.path)
+                  (link.exact ? location.pathname === link.path : isActive(link.path))
                     ? "text-foreground glass-card border border-primary/30"
                     : "text-muted-foreground hover:bg-muted/50 active:bg-muted"
                 }`}
