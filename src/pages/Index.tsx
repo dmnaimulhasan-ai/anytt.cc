@@ -5,6 +5,8 @@ import HowToSection from "@/components/HowToSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
 import { Youtube, Facebook } from "lucide-react";
 import { 
@@ -55,6 +57,10 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        
+        {/* Native Banner Ad */}
+        <NativeBanner />
+        
         <AboutSection />
         
         {/* Platform Links Section */}
@@ -93,6 +99,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+        
+        {/* Banner Ad */}
+        <BannerAd />
         
         <HowToSection />
         <FAQSection />

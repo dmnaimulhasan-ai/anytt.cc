@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import SEOHead from "@/components/SEOHead";
 import PlatformDownloader from "@/components/PlatformDownloader";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
 import { Youtube } from "lucide-react";
 import { 
@@ -72,6 +74,9 @@ const FacebookDownloader = () => {
           </div>
         </section>
 
+        {/* Native Banner Ad */}
+        <NativeBanner />
+
         {/* FAQ Section */}
         <section className="py-16 px-4 md:px-6 bg-muted/20">
           <div className="container mx-auto max-w-3xl">
@@ -91,6 +96,9 @@ const FacebookDownloader = () => {
             </div>
           </div>
         </section>
+
+        {/* Banner Ad */}
+        <BannerAd />
 
         {/* Internal Links */}
         <section className="py-12 px-4 md:px-6">
