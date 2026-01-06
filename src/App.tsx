@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import FloatingSupportButton from "./components/FloatingSupportButton";
+import FloatingBanner from "./components/ads/FloatingBanner";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <FloatingSupportButton />
+      <FloatingBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
