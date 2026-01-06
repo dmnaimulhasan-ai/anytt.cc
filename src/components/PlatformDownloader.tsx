@@ -67,12 +67,12 @@ const PlatformDownloader = ({
       }
       toast({
         title: "✨ Pasted!",
-        description: "URL ready to go bestie",
+        description: "URL ready to download",
       });
     } catch (err) {
       toast({
         title: "😅 Oops",
-        description: "Paste manually pls",
+        description: "Please paste manually",
         variant: "destructive",
       });
     }
@@ -124,13 +124,13 @@ const PlatformDownloader = ({
     if (result.success && result.data) {
       setVideoData(result.data);
       toast({
-        title: "🎉 Slay!",
+        title: "🎉 Success!",
         description: "Video ready to download",
       });
     } else {
       toast({
-        title: "💀 Failed",
-        description: result.error || "Couldn't fetch video",
+        title: "❌ Failed",
+        description: result.error || "Could not fetch video",
         variant: "destructive",
       });
     }
@@ -156,7 +156,7 @@ const PlatformDownloader = ({
     if (urls.length > 100) {
       toast({
         title: "⚠️ Too many!",
-        description: "Max 100 at once bestie",
+        description: "Maximum 100 videos at once",
         variant: "destructive",
       });
       return;
