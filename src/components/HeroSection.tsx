@@ -46,7 +46,7 @@ const HeroSection = () => {
     tiktok: {
       name: 'TikTok',
       placeholder: 'Paste TikTok link...',
-      batchPlaceholder: 'Paste TikTok URLs here bestie 💕\nOne per line, up to 100 videos!',
+      batchPlaceholder: 'Paste TikTok URLs here\nOne per line, up to 100 videos',
       function: 'tiktok-download',
       icon: '🎵',
       color: 'primary'
@@ -54,7 +54,7 @@ const HeroSection = () => {
     youtube: {
       name: 'YouTube',
       placeholder: 'Paste YouTube link...',
-      batchPlaceholder: 'Paste YouTube URLs here bestie 💕\nOne per line, up to 100 videos!',
+      batchPlaceholder: 'Paste YouTube URLs here\nOne per line, up to 100 videos',
       function: 'youtube-download',
       icon: '▶️',
       color: 'destructive'
@@ -62,7 +62,7 @@ const HeroSection = () => {
     facebook: {
       name: 'Facebook',
       placeholder: 'Paste Facebook video link...',
-      batchPlaceholder: 'Paste Facebook video URLs here bestie 💕\nOne per line, up to 100 videos!',
+      batchPlaceholder: 'Paste Facebook video URLs here\nOne per line, up to 100 videos',
       function: 'facebook-download',
       icon: '📘',
       color: 'blue'
@@ -79,12 +79,12 @@ const HeroSection = () => {
       }
       toast({
         title: "✨ Pasted!",
-        description: "URL ready to go bestie",
+        description: "URL ready to download",
       });
     } catch (err) {
       toast({
         title: "😅 Oops",
-        description: "Paste manually pls",
+        description: "Please paste manually",
         variant: "destructive",
       });
     }
@@ -136,13 +136,13 @@ const HeroSection = () => {
     if (result.success && result.data) {
       setVideoData(result.data);
       toast({
-        title: "🎉 Slay!",
+        title: "🎉 Success!",
         description: "Video ready to download",
       });
     } else {
       toast({
-        title: "💀 Failed",
-        description: result.error || "Couldn't fetch video",
+        title: "❌ Failed",
+        description: result.error || "Could not fetch video",
         variant: "destructive",
       });
     }
@@ -168,7 +168,7 @@ const HeroSection = () => {
     if (urls.length > 100) {
       toast({
         title: "⚠️ Too many!",
-        description: "Max 100 at once bestie",
+        description: "Maximum 100 videos at once",
         variant: "destructive",
       });
       return;
