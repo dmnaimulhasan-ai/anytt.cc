@@ -4,9 +4,11 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data";
 import { BASE_URL } from "@/lib/seo-config";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const BlogPost = () => {
@@ -117,6 +119,9 @@ const BlogPost = () => {
               </div>
             </header>
             
+            {/* In-content Native Banner */}
+            <NativeBanner />
+            
             <div 
               className="prose prose-lg dark:prose-invert max-w-none
                 prose-headings:font-display prose-headings:font-bold
@@ -144,6 +149,9 @@ const BlogPost = () => {
               }}
             />
             
+            {/* Mid-content Banner Ad */}
+            <BannerAd />
+            
             {/* CTA Section */}
             <div className="mt-12 p-6 glass-card rounded-2xl text-center">
               <h3 className="text-xl font-bold font-display mb-2">Ready to Download Videos?</h3>
@@ -159,6 +167,22 @@ const BlogPost = () => {
                   <Button variant="outline">Facebook Downloader</Button>
                 </Link>
               </div>
+            </div>
+            
+            {/* Promotional Smartlink CTA */}
+            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 text-center">
+              <h3 className="text-xl font-bold font-display mb-2">🎁 Exclusive Deals & Offers</h3>
+              <p className="text-muted-foreground mb-4">Check out amazing deals and premium content!</p>
+              <a 
+                href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                  Discover Offers
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </article>

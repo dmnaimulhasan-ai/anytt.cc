@@ -1,6 +1,7 @@
-import { Zap, ExternalLink } from "lucide-react";
+import { Zap, ExternalLink, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
 import StatsBar from "./StatsBar";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
@@ -10,6 +11,31 @@ const Footer = () => {
         {/* Stats Section */}
         <div className="mb-8">
           <StatsBar />
+        </div>
+
+        {/* Promotional CTA Banner */}
+        <div className="mb-8 p-4 md:p-6 glass-card rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/5 to-accent/5">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-center md:text-left">
+              <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent">
+                <Gift className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h3 className="font-bold font-display text-lg">🎁 Exclusive Offers & Deals!</h3>
+                <p className="text-sm text-muted-foreground">Discover amazing deals and premium content</p>
+              </div>
+            </div>
+            <a 
+              href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
+                Claim Now
+                <ExternalLink className="h-4 w-4 ml-2" />
+              </Button>
+            </a>
+          </div>
         </div>
 
         {/* Footer Links Grid */}

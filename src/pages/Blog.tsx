@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { blogPosts } from "@/lib/blog-data";
 import { BASE_URL } from "@/lib/seo-config";
 
@@ -55,20 +57,34 @@ const Blog = () => {
               </p>
             </div>
             
+            {/* Native Banner Ad */}
+            <NativeBanner />
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
-                <BlogCard
-                  key={post.slug}
-                  slug={post.slug}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  date={post.date}
-                  readTime={post.readTime}
-                  category={post.category}
-                  image={post.image}
-                />
+              {blogPosts.map((post, index) => (
+                <>
+                  <BlogCard
+                    key={post.slug}
+                    slug={post.slug}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    date={post.date}
+                    readTime={post.readTime}
+                    category={post.category}
+                    image={post.image}
+                  />
+                  {/* Insert ad after every 3rd post */}
+                  {(index + 1) % 3 === 0 && index !== blogPosts.length - 1 && (
+                    <div key={`ad-${index}`} className="col-span-1 md:col-span-2 lg:col-span-3">
+                      <BannerAd />
+                    </div>
+                  )}
+                </>
               ))}
             </div>
+            
+            {/* Bottom Banner Ad */}
+            <BannerAd />
           </div>
         </section>
       </main>
