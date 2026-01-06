@@ -245,7 +245,7 @@ const HeroSection = () => {
         </h1>
         
         <p className="text-lg md:text-2xl text-muted-foreground mb-8 animate-fade-in max-w-xl mx-auto font-medium" style={{ animationDelay: "0.2s" }}>
-          Download vids without the watermark 
+          Download video without watermark 
           <span className="inline-block ml-2 animate-bounce">🚀</span>
         </p>
 
