@@ -1,20 +1,30 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import TikTokDownloader from "./pages/TikTokDownloader";
-import YouTubeDownloader from "./pages/YouTubeDownloader";
-import FacebookDownloader from "./pages/FacebookDownloader";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import NotFound from "./pages/NotFound";
 import FloatingSupportButton from "./components/FloatingSupportButton";
 import FloatingBanner from "./components/ads/FloatingBanner";
 
+// Lazy load non-critical routes to reduce initial bundle size
+const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
+const YouTubeDownloader = lazy(() => import("./pages/YouTubeDownloader"));
+const FacebookDownloader = lazy(() => import("./pages/FacebookDownloader"));
+const About = lazy(() => import("./pages/About"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
 const queryClient = new QueryClient();
+
+// Minimal loading fallback to avoid layout shift
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -24,17 +34,19 @@ const App = () => (
       <FloatingSupportButton />
       <FloatingBanner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
-          <Route path="/youtube-downloader" element={<YouTubeDownloader />} />
-          <Route path="/facebook-downloader" element={<FacebookDownloader />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
+            <Route path="/youtube-downloader" element={<YouTubeDownloader />} />
+            <Route path="/facebook-downloader" element={<FacebookDownloader />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
