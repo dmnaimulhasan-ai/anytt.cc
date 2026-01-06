@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
+      workbox: {
+        // Defer service worker registration to not block initial render
+        clientsClaim: true,
+        skipWaiting: true,
+      },
+      injectRegister: null, // Disable auto-inject, we'll register manually after load
       manifest: {
         name: "Any-TT TikTok Downloader",
         short_name: "Any-TT",
