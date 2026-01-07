@@ -46,11 +46,18 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
   const [unlockStates, setUnlockStates] = useState<UnlockState>({});
   const [countdowns, setCountdowns] = useState<{ [key: string]: number }>({});
   const [activeUnlock, setActiveUnlock] = useState<string | null>(null);
+  const [showSkip, setShowSkip] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
+    let skipTimeout: NodeJS.Timeout;
     
     if (activeUnlock && countdowns[activeUnlock] > 0) {
+      // Show skip button after 5 seconds
+      skipTimeout = setTimeout(() => {
+        setShowSkip(s => ({ ...s, [activeUnlock]: true }));
+      }, 5000);
+      
       interval = setInterval(() => {
         setCountdowns(prev => {
           const newValue = prev[activeUnlock] - 1;
@@ -65,6 +72,7 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     }
 
     return () => {
+      if (skipTimeout) clearTimeout(skipTimeout);
       if (interval) clearInterval(interval);
     };
   }, [activeUnlock, countdowns]);
@@ -83,6 +91,14 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     setUnlockStates(s => ({ ...s, [buttonId]: 'waiting' }));
     setCountdowns(c => ({ ...c, [buttonId]: UNLOCK_DELAY }));
     setActiveUnlock(buttonId);
+    setShowSkip(s => ({ ...s, [buttonId]: false }));
+  };
+
+  const handleSkip = (buttonId: string) => {
+    setUnlockStates(s => ({ ...s, [buttonId]: 'unlocked' }));
+    setCountdowns(c => ({ ...c, [buttonId]: 0 }));
+    setActiveUnlock(null);
+    setShowSkip(s => ({ ...s, [buttonId]: false }));
   };
 
   const getUnlockProgress = (buttonId: string) => {
@@ -196,6 +212,7 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     }
 
     if (state === 'waiting') {
+      const canSkip = showSkip[buttonId];
       return (
         <div className={`${isPrimary ? 'w-full' : 'flex-1'} p-3 rounded-2xl bg-muted/50 border border-primary/30 space-y-2`}>
           <div className="flex items-center justify-between text-sm">
@@ -206,6 +223,16 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
             <span className="font-bold text-primary text-lg">{countdown}s</span>
           </div>
           <Progress value={getUnlockProgress(buttonId)} className="h-2" />
+          {canSkip && (
+            <Button
+              onClick={() => handleSkip(buttonId)}
+              variant="ghost"
+              size="sm"
+              className="w-full h-8 text-xs text-muted-foreground hover:text-foreground mt-1"
+            >
+              Skip waiting →
+            </Button>
+          )}
         </div>
       );
     }
