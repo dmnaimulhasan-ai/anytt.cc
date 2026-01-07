@@ -34,7 +34,13 @@ interface UnlockState {
 }
 
 const SMARTLINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
-const UNLOCK_DELAY = 15; // seconds
+
+// Quality-based unlock delays (seconds)
+const UNLOCK_DELAYS: Record<string, number> = {
+  'hd': 20,      // HD takes longest
+  'video': 10,   // SD/Standard video
+  'audio': 5,    // Audio is fastest (free, no ads feel)
+};
 
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
@@ -87,9 +93,10 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     // Open smartlink in new tab
     window.open(SMARTLINK_URL, '_blank', 'noopener,noreferrer');
     
-    // Start countdown for this button
+    // Start countdown for this button with quality-based delay
+    const delay = UNLOCK_DELAYS[buttonId] || 15;
     setUnlockStates(s => ({ ...s, [buttonId]: 'waiting' }));
-    setCountdowns(c => ({ ...c, [buttonId]: UNLOCK_DELAY }));
+    setCountdowns(c => ({ ...c, [buttonId]: delay }));
     setActiveUnlock(buttonId);
     setShowSkip(s => ({ ...s, [buttonId]: false }));
   };
@@ -103,7 +110,8 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
 
   const getUnlockProgress = (buttonId: string) => {
     const countdown = countdowns[buttonId] || 0;
-    return ((UNLOCK_DELAY - countdown) / UNLOCK_DELAY) * 100;
+    const maxDelay = UNLOCK_DELAYS[buttonId] || 15;
+    return ((maxDelay - countdown) / maxDelay) * 100;
   };
 
   const handleDownload = async (url: string, filename: string) => {
