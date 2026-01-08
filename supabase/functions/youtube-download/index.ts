@@ -153,10 +153,23 @@ serve(async (req) => {
     
     // Check for error in response
     if (data.error) {
+      // noembed sometimes blocks edge runtimes (e.g. returns "401 Unauthorized"); don't hard-fail the UX.
       console.error('Noembed error:', data.error);
+      const fallback: VideoData = {
+        id: videoId,
+        title: 'YouTube Video',
+        author: 'Unknown',
+        authorAvatar: '',
+        thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+        duration: 0,
+        videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+        videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
+        musicUrl: '',
+        musicTitle: ''
+      };
       return new Response(
-        JSON.stringify({ success: false, error: 'Video not found or is private. Please check the URL.' }),
-        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ success: true, data: fallback, note: `Metadata provider error: ${String(data.error)}` }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
     
