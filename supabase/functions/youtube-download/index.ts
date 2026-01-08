@@ -117,34 +117,55 @@ serve(async (req) => {
 
     console.log('Extracted video ID:', videoId);
 
-    // Use free API - try multiple sources
+    // Use free noembed proxy service (more reliable from edge functions)
     console.log('Fetching video info for:', videoId);
     
-    // Try free ytdl API
-    const apiUrl = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${videoId}`;
+    const noembedUrl = `https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`;
+    const response = await fetch(noembedUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
+    });
     
-    // First try oEmbed for basic metadata (always works, no API key needed)
-    const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
-    const oembedResponse = await fetch(oembedUrl);
+    if (!response.ok) {
+      console.error('Noembed failed:', response.status);
+      // Fallback to basic info
+      const result: VideoData = {
+        id: videoId,
+        title: 'YouTube Video',
+        author: 'Unknown',
+        authorAvatar: '',
+        thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+        duration: 0,
+        videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+        videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
+        musicUrl: '',
+        musicTitle: ''
+      };
+      return new Response(
+        JSON.stringify({ success: true, data: result }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
     
-    if (!oembedResponse.ok) {
-      console.error('oEmbed failed:', oembedResponse.status);
+    const data = await response.json();
+    console.log('Got noembed data for:', data.title);
+    
+    // Check for error in response
+    if (data.error) {
+      console.error('Noembed error:', data.error);
       return new Response(
         JSON.stringify({ success: false, error: 'Video not found or is private. Please check the URL.' }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
     
-    const oembedData = await oembedResponse.json();
-    console.log('Got oEmbed data for:', oembedData.title);
-    
-    // Return video info with watch link (direct download requires premium APIs)
     const result: VideoData = {
       id: videoId,
-      title: oembedData.title || 'YouTube Video',
-      author: oembedData.author_name || 'Unknown',
+      title: data.title || 'YouTube Video',
+      author: data.author_name || 'Unknown',
       authorAvatar: '',
-      thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+      thumbnail: data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
       duration: 0,
       videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
       videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
