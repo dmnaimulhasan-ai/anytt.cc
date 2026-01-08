@@ -35,11 +35,11 @@ interface UnlockState {
 
 const SMARTLINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
 
-// Quality-based unlock delays (seconds) - 0 = instant unlock
+// Quality-based unlock delays (seconds)
 const UNLOCK_DELAYS: Record<string, number> = {
-  'hd': 10,      // HD takes 10 seconds
-  'video': 0,    // SD/Standard video is instant
-  'audio': 0,    // Audio is instant (free, no ads feel)
+  'hd': 20,      // HD takes longest
+  'video': 10,   // SD/Standard video
+  'audio': 5,    // Audio is fastest (free, no ads feel)
 };
 
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
@@ -90,18 +90,11 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
   };
 
   const handleUnlockClick = (buttonId: string) => {
-    const delay = UNLOCK_DELAYS[buttonId] || 0;
-    
-    // If delay is 0, unlock instantly without opening smartlink
-    if (delay === 0) {
-      setUnlockStates(s => ({ ...s, [buttonId]: 'unlocked' }));
-      return;
-    }
-    
-    // Open smartlink in new tab for delayed unlocks
+    // Open smartlink in new tab
     window.open(SMARTLINK_URL, '_blank', 'noopener,noreferrer');
     
     // Start countdown for this button with quality-based delay
+    const delay = UNLOCK_DELAYS[buttonId] || 15;
     setUnlockStates(s => ({ ...s, [buttonId]: 'waiting' }));
     setCountdowns(c => ({ ...c, [buttonId]: delay }));
     setActiveUnlock(buttonId);
