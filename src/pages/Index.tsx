@@ -79,16 +79,14 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground mt-1">Download without watermark</p>
               </Link>
               
-              <div 
-                className="glass-card rounded-2xl p-6 text-center border-2 border-transparent opacity-60 cursor-not-allowed relative"
+              <Link 
+                to="/youtube-downloader"
+                className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform border-2 border-transparent hover:border-red-500/50"
               >
-                <div className="absolute top-3 right-3 bg-muted text-muted-foreground text-[10px] px-2 py-1 rounded-full uppercase font-bold">
-                  Coming Soon
-                </div>
-                <Youtube className="h-10 w-10 text-red-500/50 mx-auto mb-3" />
-                <h3 className="text-xl font-bold font-display text-muted-foreground">YouTube Downloader</h3>
+                <Youtube className="h-10 w-10 text-red-500 mx-auto mb-3" />
+                <h3 className="text-xl font-bold font-display">YouTube Downloader</h3>
                 <p className="text-sm text-muted-foreground mt-1">HD & 4K quality</p>
-              </div>
+              </Link>
               
               <Link 
                 to="/facebook-downloader"
