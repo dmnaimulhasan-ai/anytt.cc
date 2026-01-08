@@ -117,91 +117,40 @@ serve(async (req) => {
 
     console.log('Extracted video ID:', videoId);
 
-    // Use a YouTube download API
-    const apiUrl = `https://yt-api.p.rapidapi.com/dl?id=${videoId}`;
-    console.log('Fetching from YouTube API');
+    // Use free API - try multiple sources
+    console.log('Fetching video info for:', videoId);
     
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'yt-api.p.rapidapi.com',
-        'x-rapidapi-key': Deno.env.get('RAPIDAPI_KEY') || '',
-      }
-    });
-
-    if (!response.ok) {
-      console.error('YouTube API error:', response.status, response.statusText);
-      
-      // Fallback: Return basic info using oEmbed
-      const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
-      const oembedResponse = await fetch(oembedUrl);
-      
-      if (oembedResponse.ok) {
-        const oembedData = await oembedResponse.json();
-        const result: VideoData = {
-          id: videoId,
-          title: oembedData.title || 'YouTube Video',
-          author: oembedData.author_name || 'Unknown',
-          authorAvatar: '',
-          thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-          duration: 0,
-          videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
-          videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
-          musicUrl: '',
-          musicTitle: ''
-        };
-
-        return new Response(
-          JSON.stringify({ success: true, data: result, note: 'Direct download not available. Use the link to watch.' }),
-          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-
+    // Try free ytdl API
+    const apiUrl = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?id=${videoId}`;
+    
+    // First try oEmbed for basic metadata (always works, no API key needed)
+    const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+    const oembedResponse = await fetch(oembedUrl);
+    
+    if (!oembedResponse.ok) {
+      console.error('oEmbed failed:', oembedResponse.status);
       return new Response(
-        JSON.stringify({ success: false, error: 'Failed to fetch video data. Please try again.' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({ success: false, error: 'Video not found or is private. Please check the URL.' }),
+        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
-
-    const data = await response.json();
-    console.log('YouTube API response status:', data.status);
-
-    if (data.status !== 'OK' || !data.title) {
-      console.error('YouTube API returned error:', data.message || 'Unknown error');
-      return new Response(
-        JSON.stringify({ 
-          success: false, 
-          error: data.message || 'Could not fetch video. Make sure the URL is correct and the video is public.' 
-        }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    console.log('Successfully fetched video:', data.title?.substring(0, 50));
-
-    // Find best quality video
-    let videoUrl = '';
-    if (data.formats && data.formats.length > 0) {
-      const mp4Formats = data.formats.filter((f: any) => f.mimeType?.includes('video/mp4'));
-      if (mp4Formats.length > 0) {
-        videoUrl = mp4Formats[0].url || '';
-      }
-    }
-
+    
+    const oembedData = await oembedResponse.json();
+    console.log('Got oEmbed data for:', oembedData.title);
+    
+    // Return video info with watch link (direct download requires premium APIs)
     const result: VideoData = {
       id: videoId,
-      title: data.title || 'YouTube Video',
-      author: data.channelTitle || 'Unknown',
+      title: oembedData.title || 'YouTube Video',
+      author: oembedData.author_name || 'Unknown',
       authorAvatar: '',
-      thumbnail: data.thumbnail?.[data.thumbnail.length - 1]?.url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-      duration: data.lengthSeconds || 0,
-      videoUrl: videoUrl || `https://www.youtube.com/watch?v=${videoId}`,
-      videoUrlNoWatermark: videoUrl || `https://www.youtube.com/watch?v=${videoId}`,
+      thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+      duration: 0,
+      videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      videoUrlNoWatermark: `https://www.youtube.com/watch?v=${videoId}`,
       musicUrl: '',
       musicTitle: ''
     };
-
-    console.log('Returning video data for:', result.author);
 
     return new Response(
       JSON.stringify({ success: true, data: result }),
