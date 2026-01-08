@@ -267,12 +267,15 @@ const HeroSection = () => {
               </Button>
               <Button
                 variant="ghost"
-                disabled
-                className="rounded-2xl px-4 h-11 text-sm font-semibold text-muted-foreground/50 cursor-not-allowed opacity-60"
+                onClick={() => switchPlatform('youtube')}
+                className={`rounded-2xl px-4 h-11 text-sm font-semibold transition-all ${
+                  platform === 'youtube'
+                    ? "glass-card text-foreground border-2 border-red-500/50" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
-                <Youtube className="h-4 w-4 mr-2 text-red-500/50" />
+                <Youtube className="h-4 w-4 mr-2 text-red-500" />
                 YouTube
-                <span className="ml-2 text-[10px] bg-muted px-1.5 py-0.5 rounded-full uppercase font-bold">Soon</span>
               </Button>
               <Button
                 variant="ghost"
