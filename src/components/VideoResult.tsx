@@ -37,9 +37,9 @@ const SMARTLINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787
 
 // Quality-based unlock delays (seconds)
 const UNLOCK_DELAYS: Record<string, number> = {
-  'hd': 20,      // HD takes longest
-  'video': 10,   // SD/Standard video
-  'audio': 5,    // Audio is fastest (free, no ads feel)
+  'hd': 5,       // HD is fastest (premium, no ads feel)
+  'video': 15,   // SD/Standard video
+  'audio': 20,   // Audio takes longest
 };
 
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
