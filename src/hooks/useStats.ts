@@ -78,8 +78,18 @@ export const useStats = () => {
   };
 
   useEffect(() => {
-    trackVisitor();
-    fetchStats();
+    // Defer analytics calls to not block critical render path
+    const deferAnalytics = () => {
+      trackVisitor();
+      fetchStats();
+    };
+
+    // Use requestIdleCallback if available, otherwise setTimeout
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(deferAnalytics, { timeout: 2000 });
+    } else {
+      setTimeout(deferAnalytics, 100);
+    }
   }, []);
 
   return { stats, isLoading, trackDownload };
