@@ -8,6 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
+import ResponsiveAd from "./ads/ResponsiveAd";
+import { useAdMonetization } from "@/hooks/useAdMonetization";
 
 interface VideoData {
   id: string;
@@ -55,7 +57,9 @@ const PlatformDownloader = ({
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
+  const [isAdDelaying, setIsAdDelaying] = useState(false);
   const { toast } = useToast();
+  const { handleDownloadClick } = useAdMonetization();
 
   const handlePaste = async () => {
     try {
@@ -116,6 +120,20 @@ const PlatformDownloader = ({
       return;
     }
 
+    // Smart ad monetization - first click triggers popunder with delay
+    const adResult = await handleDownloadClick();
+    
+    if (adResult.shouldDelay) {
+      setIsAdDelaying(true);
+      toast({
+        title: "⏳ Processing...",
+        description: "Your video will be ready in a moment",
+      });
+      
+      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
+      setIsAdDelaying(false);
+    }
+
     setIsLoading(true);
     setVideoData(null);
 
@@ -160,6 +178,20 @@ const PlatformDownloader = ({
         variant: "destructive",
       });
       return;
+    }
+
+    // Smart ad monetization - first click triggers popunder with delay
+    const adResult = await handleDownloadClick();
+    
+    if (adResult.shouldDelay) {
+      setIsAdDelaying(true);
+      toast({
+        title: "⏳ Processing...",
+        description: "Your videos will be ready in a moment",
+      });
+      
+      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
+      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -339,11 +371,14 @@ const PlatformDownloader = ({
                 
                 <Button
                   onClick={handleSearch}
-                  disabled={isLoading}
+                  disabled={isLoading || isAdDelaying}
                   className="flex-1 rounded-2xl h-14 btn-glow text-primary-foreground border-0 text-base font-bold"
                 >
-                  {isLoading ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
+                  {isLoading || isAdDelaying ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                      {isAdDelaying ? "Wait..." : "Loading"}
+                    </>
                   ) : (
                     <>
                       <Zap className="h-5 w-5 mr-2" />
@@ -352,6 +387,9 @@ const PlatformDownloader = ({
                   )}
                 </Button>
               </div>
+              
+              {/* Mobile: Ad after input */}
+              {url && <ResponsiveAd position="after-input" className="mt-2" />}
             </div>
 
             {/* Desktop: Inline */}
@@ -387,11 +425,14 @@ const PlatformDownloader = ({
               
               <Button
                 onClick={handleSearch}
-                disabled={isLoading}
+                disabled={isLoading || isAdDelaying}
                 className="rounded-full h-12 btn-glow text-primary-foreground px-8 border-0 font-bold text-base"
               >
-                {isLoading ? (
-                  <Loader2 className="h-5 w-5 animate-spin" />
+                {isLoading || isAdDelaying ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                    {isAdDelaying ? "Wait..." : ""}
+                  </>
                 ) : (
                   <>
                     <Zap className="h-5 w-5 mr-2" />
@@ -400,6 +441,9 @@ const PlatformDownloader = ({
                 )}
               </Button>
             </div>
+            
+            {/* Desktop: Ad after input */}
+            {url && <ResponsiveAd position="after-input" className="mt-4 hidden md:flex" />}
           </div>
         )
       ) : (
@@ -414,6 +458,9 @@ const PlatformDownloader = ({
               isProcessing={isLoading}
             />
           )}
+          
+          {/* Ad below download results */}
+          <ResponsiveAd position="below-results" className="mt-6" />
         </div>
       )}
     </div>
