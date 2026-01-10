@@ -8,6 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
+import ResponsiveAd from "./ads/ResponsiveAd";
+import { useAdMonetization } from "@/hooks/useAdMonetization";
 
 type Platform = 'tiktok' | 'youtube' | 'facebook';
 
@@ -40,7 +42,9 @@ const HeroSection = () => {
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
+  const [isAdDelaying, setIsAdDelaying] = useState(false);
   const { toast } = useToast();
+  const { handleDownloadClick } = useAdMonetization();
 
   const platformConfig = {
     tiktok: {
@@ -128,6 +132,20 @@ const HeroSection = () => {
       return;
     }
 
+    // Smart ad monetization - first click triggers popunder with delay
+    const adResult = await handleDownloadClick();
+    
+    if (adResult.shouldDelay) {
+      setIsAdDelaying(true);
+      toast({
+        title: "⏳ Processing...",
+        description: "Your video will be ready in a moment",
+      });
+      
+      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
+      setIsAdDelaying(false);
+    }
+
     setIsLoading(true);
     setVideoData(null);
 
@@ -172,6 +190,20 @@ const HeroSection = () => {
         variant: "destructive",
       });
       return;
+    }
+
+    // Smart ad monetization - first click triggers popunder with delay
+    const adResult = await handleDownloadClick();
+    
+    if (adResult.shouldDelay) {
+      setIsAdDelaying(true);
+      toast({
+        title: "⏳ Processing...",
+        description: "Your videos will be ready in a moment",
+      });
+      
+      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
+      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -420,11 +452,14 @@ const HeroSection = () => {
                   
                   <Button
                     onClick={handleSearch}
-                    disabled={isLoading}
+                    disabled={isLoading || isAdDelaying}
                     className="flex-1 rounded-2xl h-14 btn-glow text-primary-foreground border-0 text-base font-bold"
                   >
-                    {isLoading ? (
-                      <Loader2 className="h-5 w-5 animate-spin" />
+                    {isLoading || isAdDelaying ? (
+                      <>
+                        <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                        {isAdDelaying ? "Wait..." : "Loading"}
+                      </>
                     ) : (
                       <>
                         <Zap className="h-5 w-5 mr-2" />
@@ -433,6 +468,9 @@ const HeroSection = () => {
                     )}
                   </Button>
                 </div>
+                
+                {/* Mobile: Ad after input */}
+                {url && <ResponsiveAd position="after-input" className="mt-2" />}
               </div>
 
               {/* Desktop: Inline */}
@@ -468,25 +506,39 @@ const HeroSection = () => {
                 
                 <Button
                   onClick={handleSearch}
-                  disabled={isLoading}
+                  disabled={isLoading || isAdDelaying}
                   className="rounded-full h-12 btn-glow text-primary-foreground px-8 border-0 font-bold text-base"
                 >
-                  {isLoading ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
+                  {isLoading || isAdDelaying ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                      {isAdDelaying ? "Wait..." : ""}
+                    </>
                   ) : (
                     <>
                       <Sparkles className="h-4 w-4 mr-2" />
-                      Go
+                      Get Video
                     </>
                   )}
                 </Button>
               </div>
+              
+              {/* Desktop: Ad after input */}
+              {url && <ResponsiveAd position="after-input" className="mt-4 hidden md:flex" />}
             </div>
           )
         ) : videoData ? (
-          <VideoResult video={videoData} onReset={handleReset} platform={platform} />
+          <div className="space-y-6">
+            <VideoResult video={videoData} onReset={handleReset} platform={platform} />
+            {/* Ad below download results */}
+            <ResponsiveAd position="below-results" />
+          </div>
         ) : (
-          <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
+          <div className="space-y-6">
+            <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
+            {/* Ad below batch results */}
+            <ResponsiveAd position="below-results" />
+          </div>
         )}
       </div>
     </section>
