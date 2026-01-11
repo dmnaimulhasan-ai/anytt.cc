@@ -52,13 +52,10 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    let skipTimeout: NodeJS.Timeout;
     
     if (activeUnlock && countdowns[activeUnlock] > 0) {
-      // Show skip button after 5 seconds
-      skipTimeout = setTimeout(() => {
-        setShowSkip(s => ({ ...s, [activeUnlock]: true }));
-      }, 5000);
+      // Show skip button immediately
+      setShowSkip(s => ({ ...s, [activeUnlock]: true }));
       
       interval = setInterval(() => {
         setCountdowns(prev => {
@@ -74,7 +71,6 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     }
 
     return () => {
-      if (skipTimeout) clearTimeout(skipTimeout);
       if (interval) clearInterval(interval);
     };
   }, [activeUnlock, countdowns]);
