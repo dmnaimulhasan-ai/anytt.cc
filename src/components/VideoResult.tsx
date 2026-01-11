@@ -36,7 +36,7 @@ interface UnlockState {
 const SMARTLINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
 
 // Unified unlock delay for all qualities (seconds)
-const UNLOCK_DELAY = 10;
+const UNLOCK_DELAY = 5;
 
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
