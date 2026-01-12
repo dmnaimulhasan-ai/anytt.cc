@@ -33,7 +33,7 @@ interface UnlockState {
   [key: string]: 'locked' | 'waiting' | 'unlocked';
 }
 
-const SMARTLINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
+const SMARTLINK_URL = 'https://encouragingjawsordinarily.com/rqyzcy60dz?key=b49733451f653cb005e98c6fd641e507';
 
 // Unified unlock delay for all qualities (seconds)
 const UNLOCK_DELAY = 5;

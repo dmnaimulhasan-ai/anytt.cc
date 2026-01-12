@@ -8,7 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
-import ResponsiveAd from "./ads/ResponsiveAd";
+import NativeBanner from "./ads/NativeBanner";
 import { useAdMonetization } from "@/hooks/useAdMonetization";
 
 interface VideoData {
@@ -386,11 +386,8 @@ const PlatformDownloader = ({
                     </>
                   )}
                 </Button>
+                </div>
               </div>
-              
-              {/* Mobile: Ad after input */}
-              {url && <ResponsiveAd position="after-input" className="mt-2" />}
-            </div>
 
             {/* Desktop: Inline */}
             <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 border border-border/30">
@@ -441,9 +438,6 @@ const PlatformDownloader = ({
                 )}
               </Button>
             </div>
-            
-            {/* Desktop: Ad after input */}
-            {url && <ResponsiveAd position="after-input" className="mt-4 hidden md:flex" />}
           </div>
         )
       ) : (
@@ -459,8 +453,8 @@ const PlatformDownloader = ({
             />
           )}
           
-          {/* Ad below download results */}
-          <ResponsiveAd position="below-results" className="mt-6" />
+          {/* Native Banner below download results */}
+          <NativeBanner />
         </div>
       )}
     </div>
