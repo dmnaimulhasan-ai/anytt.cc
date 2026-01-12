@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
 
@@ -13,6 +14,7 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
   const loadedRef = useRef(false);
   const isMobile = useIsMobile();
   const [adFailed, setAdFailed] = useState(false);
+  const { trackAdEvent } = useAdAnalytics();
 
   useEffect(() => {
     if (!containerRef.current || loadedRef.current) return;
@@ -27,6 +29,12 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
     const timeoutId = setTimeout(() => {
       if (containerRef.current && !containerRef.current.querySelector('iframe')) {
         setAdFailed(true);
+        trackAdEvent({
+          eventType: "timeout",
+          adComponent: "ResponsiveAd",
+          adPosition: position,
+          errorReason: "Ad failed to load within timeout",
+        });
       }
     }, AD_LOAD_TIMEOUT);
     
@@ -41,7 +49,22 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
     const script = document.createElement("script");
     script.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
     script.async = true;
-    script.onerror = () => setAdFailed(true);
+    script.onerror = () => {
+      setAdFailed(true);
+      trackAdEvent({
+        eventType: "failure",
+        adComponent: "ResponsiveAd",
+        adPosition: position,
+        errorReason: "Script failed to load",
+      });
+    };
+    script.onload = () => {
+      trackAdEvent({
+        eventType: "load",
+        adComponent: "ResponsiveAd",
+        adPosition: position,
+      });
+    };
     containerRef.current.appendChild(script);
 
     return () => {
