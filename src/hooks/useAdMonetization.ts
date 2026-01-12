@@ -1,17 +1,12 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 
-const POPUNDER_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
-const DIRECT_LINK_URL = 'https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd';
+// New Adsterra Smartlink
+const SMARTLINK_URL = 'https://encouragingjawsordinarily.com/rqyzcy60dz?key=b49733451f653cb005e98c6fd641e507';
 
 const STORAGE_KEYS = {
-  LAST_POPUNDER: 'ad_last_popunder',
-  SESSION_DIRECT_LINKS: 'ad_session_direct_links',
-  FIRST_CLICK_DONE: 'ad_first_click_session',
+  SMARTLINK_SESSION: 'ad_smartlink_session',
+  POPUNDER_TRIGGERED: 'ad_popunder_triggered',
 };
-
-const POPUNDER_COOLDOWN_MS = 24 * 60 * 60 * 1000; // 24 hours
-const MAX_DIRECT_LINKS_PER_SESSION = 2;
-const DOWNLOAD_DELAY_MS = 2000; // 2 second delay
 
 interface AdMonetizationResult {
   shouldDelay: boolean;
@@ -21,130 +16,69 @@ interface AdMonetizationResult {
 
 export const useAdMonetization = () => {
   const hasTriggeredRef = useRef(false);
+  const popunderTriggeredRef = useRef(false);
 
-  // Check if popunder can be shown (24h cooldown)
-  const canShowPopunder = useCallback((): boolean => {
+  // Check if smartlink was already triggered this session
+  const isSmartlinkTriggered = useCallback((): boolean => {
     try {
-      const lastPopunder = localStorage.getItem(STORAGE_KEYS.LAST_POPUNDER);
-      if (!lastPopunder) return true;
-      
-      const lastTime = parseInt(lastPopunder, 10);
-      return Date.now() - lastTime >= POPUNDER_COOLDOWN_MS;
-    } catch {
-      return true;
-    }
-  }, []);
-
-  // Check if first click ad was already shown in this session
-  const isFirstClickDone = useCallback((): boolean => {
-    try {
-      return sessionStorage.getItem(STORAGE_KEYS.FIRST_CLICK_DONE) === 'true';
+      return sessionStorage.getItem(STORAGE_KEYS.SMARTLINK_SESSION) === 'true';
     } catch {
       return false;
     }
   }, []);
 
-  // Get current session direct link count
-  const getDirectLinkCount = useCallback((): number => {
+  // Trigger smartlink (one per session, on download click)
+  const triggerSmartlink = useCallback((): boolean => {
+    if (isSmartlinkTriggered()) return false;
+    
     try {
-      const count = sessionStorage.getItem(STORAGE_KEYS.SESSION_DIRECT_LINKS);
-      return count ? parseInt(count, 10) : 0;
-    } catch {
-      return 0;
-    }
-  }, []);
-
-  // Trigger popunder ad
-  const triggerPopunder = useCallback(() => {
-    try {
-      // Open popunder
-      const popup = window.open(POPUNDER_URL, '_blank', 'noopener,noreferrer');
-      
-      // Store timestamp
-      localStorage.setItem(STORAGE_KEYS.LAST_POPUNDER, Date.now().toString());
-      
-      // Try to focus back to main window (may not work in all browsers)
-      if (popup) {
-        window.focus();
-      }
-      
+      window.open(SMARTLINK_URL, '_blank', 'noopener,noreferrer');
+      sessionStorage.setItem(STORAGE_KEYS.SMARTLINK_SESSION, 'true');
       return true;
     } catch {
       return false;
     }
-  }, []);
+  }, [isSmartlinkTriggered]);
 
-  // Trigger direct link
-  const triggerDirectLink = useCallback(() => {
-    try {
-      const currentCount = getDirectLinkCount();
-      if (currentCount >= MAX_DIRECT_LINKS_PER_SESSION) return false;
-      
-      window.open(DIRECT_LINK_URL, '_blank', 'noopener,noreferrer');
-      sessionStorage.setItem(STORAGE_KEYS.SESSION_DIRECT_LINKS, (currentCount + 1).toString());
-      
-      return true;
-    } catch {
-      return false;
-    }
-  }, [getDirectLinkCount]);
-
-  // Main function: handle first download click monetization
+  // Handle download click - triggers smartlink once per session
   const handleDownloadClick = useCallback(async (): Promise<AdMonetizationResult> => {
-    // Check if this is a returning click (already showed ad this session)
-    if (isFirstClickDone()) {
+    // Check if already triggered this session
+    if (isSmartlinkTriggered()) {
       return { shouldDelay: false, delayMs: 0, showedAd: false };
     }
 
     // Prevent double-triggering
     if (hasTriggeredRef.current) {
-      return { shouldDelay: true, delayMs: DOWNLOAD_DELAY_MS, showedAd: false };
+      return { shouldDelay: false, delayMs: 0, showedAd: false };
     }
     hasTriggeredRef.current = true;
 
-    let showedAd = false;
+    // Trigger smartlink
+    const showedAd = triggerSmartlink();
 
-    // Try popunder first (if within 24h cooldown, use direct link)
-    if (canShowPopunder()) {
-      showedAd = triggerPopunder();
-    } else {
-      // Fallback to direct link
-      showedAd = triggerDirectLink();
-    }
-
-    // Mark first click as done for this session
-    try {
-      sessionStorage.setItem(STORAGE_KEYS.FIRST_CLICK_DONE, 'true');
-    } catch {
-      // Ignore storage errors
-    }
-
-    // Reset the ref after a delay to allow future clicks
+    // Reset ref after delay
     setTimeout(() => {
       hasTriggeredRef.current = false;
-    }, 3000);
+    }, 2000);
 
     return { 
-      shouldDelay: showedAd, 
-      delayMs: showedAd ? DOWNLOAD_DELAY_MS : 0, 
+      shouldDelay: false, 
+      delayMs: 0, 
       showedAd 
     };
-  }, [canShowPopunder, isFirstClickDone, triggerPopunder, triggerDirectLink]);
+  }, [isSmartlinkTriggered, triggerSmartlink]);
 
   // Check ad status for UI feedback
   const getAdStatus = useCallback(() => {
     return {
-      canShowPopunder: canShowPopunder(),
-      isFirstClickDone: isFirstClickDone(),
-      directLinksRemaining: MAX_DIRECT_LINKS_PER_SESSION - getDirectLinkCount(),
+      smartlinkTriggered: isSmartlinkTriggered(),
     };
-  }, [canShowPopunder, isFirstClickDone, getDirectLinkCount]);
+  }, [isSmartlinkTriggered]);
 
   // Reset session tracking (for testing)
   const resetSession = useCallback(() => {
     try {
-      sessionStorage.removeItem(STORAGE_KEYS.FIRST_CLICK_DONE);
-      sessionStorage.removeItem(STORAGE_KEYS.SESSION_DIRECT_LINKS);
+      sessionStorage.removeItem(STORAGE_KEYS.SMARTLINK_SESSION);
     } catch {
       // Ignore
     }
@@ -152,10 +86,51 @@ export const useAdMonetization = () => {
 
   return {
     handleDownloadClick,
-    canShowPopunder,
-    isFirstClickDone,
+    isSmartlinkTriggered,
     getAdStatus,
     resetSession,
-    triggerDirectLink,
+    triggerSmartlink,
   };
+};
+
+// Hook to handle popunder on first user interaction
+export const usePopunderTrigger = () => {
+  const triggeredRef = useRef(false);
+
+  useEffect(() => {
+    const handleInteraction = () => {
+      if (triggeredRef.current) return;
+      
+      // Check session storage
+      try {
+        if (sessionStorage.getItem(STORAGE_KEYS.POPUNDER_TRIGGERED) === 'true') {
+          triggeredRef.current = true;
+          return;
+        }
+      } catch {}
+
+      triggeredRef.current = true;
+      
+      // Mark as triggered in session
+      try {
+        sessionStorage.setItem(STORAGE_KEYS.POPUNDER_TRIGGERED, 'true');
+      } catch {}
+
+      // The popunder script is already loaded in index.html
+      // It will trigger automatically on user interaction
+      // We just need to ensure we don't interfere with it
+    };
+
+    // Listen for first interaction (tap or scroll)
+    const events = ['click', 'touchstart', 'scroll'];
+    events.forEach(event => {
+      document.addEventListener(event, handleInteraction, { once: true, passive: true });
+    });
+
+    return () => {
+      events.forEach(event => {
+        document.removeEventListener(event, handleInteraction);
+      });
+    };
+  }, []);
 };

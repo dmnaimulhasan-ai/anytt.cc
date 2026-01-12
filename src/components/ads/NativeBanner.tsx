@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
 
-const NativeBanner = () => {
+interface NativeBannerProps {
+  className?: string;
+}
+
+const NativeBanner = ({ className = "" }: NativeBannerProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const loadedRef = useRef(false);
   const [adFailed, setAdFailed] = useState(false);
   const { trackAdEvent } = useAdAnalytics();
 
   useEffect(() => {
-    const container = document.getElementById("container-3025235b7f9e8922019d79a8dd0ff449");
-    if (!container) return;
+    if (!containerRef.current || loadedRef.current) return;
+    loadedRef.current = true;
 
     const timeoutId = setTimeout(() => {
-      if (container && container.children.length <= 1) {
+      if (containerRef.current && containerRef.current.children.length <= 1) {
         setAdFailed(true);
         trackAdEvent({
           eventType: "timeout",
@@ -22,8 +28,9 @@ const NativeBanner = () => {
       }
     }, AD_LOAD_TIMEOUT);
 
+    // New Adsterra Native Banner script
     const script = document.createElement("script");
-    script.src = "https://evadereprimand.com/3025235b7f9e8922019d79a8dd0ff449/invoke.js";
+    script.src = "https://encouragingjawsordinarily.com/3025235b7f9e8922019d79a8dd0ff449/invoke.js";
     script.async = true;
     script.setAttribute("data-cfasync", "false");
     script.onerror = () => {
@@ -40,14 +47,14 @@ const NativeBanner = () => {
         adComponent: "NativeBanner",
       });
     };
-    container.appendChild(script);
+    containerRef.current.appendChild(script);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [trackAdEvent]);
 
   if (adFailed) {
     return (
-      <div className="flex justify-center my-6">
+      <div className={`flex justify-center my-6 ${className}`}>
         <div className="min-h-[90px] w-full max-w-2xl flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
           <div className="text-center p-4">
             <p className="text-sm text-muted-foreground">Recommended Content</p>
@@ -58,8 +65,12 @@ const NativeBanner = () => {
   }
 
   return (
-    <div className="flex justify-center my-6">
-      <div id="container-3025235b7f9e8922019d79a8dd0ff449"></div>
+    <div className={`flex justify-center my-6 ${className}`}>
+      <div 
+        ref={containerRef}
+        id="container-3025235b7f9e8922019d79a8dd0ff449" 
+        className="w-full max-w-2xl"
+      />
     </div>
   );
 };

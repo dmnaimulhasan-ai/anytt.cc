@@ -20,11 +20,8 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
     if (!containerRef.current || loadedRef.current) return;
     loadedRef.current = true;
     
-    const config = isMobile 
-      ? { width: 320, height: 100 }
-      : position === 'after-input' 
-        ? { width: 728, height: 90 }
-        : { width: 300, height: 250 };
+    // Mobile: 300x250, Desktop: 300x250 (centered)
+    const config = { width: 300, height: 250 };
 
     const timeoutId = setTimeout(() => {
       if (containerRef.current && !containerRef.current.querySelector('iframe')) {
@@ -46,8 +43,9 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
       params: {},
     };
 
+    // New Adsterra domain
     const script = document.createElement("script");
-    script.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
+    script.src = "https://encouragingjawsordinarily.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
     script.async = true;
     script.onerror = () => {
       setAdFailed(true);
@@ -71,17 +69,14 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
       clearTimeout(timeoutId);
       loadedRef.current = false;
     };
-  }, [isMobile, position]);
-
-  const minHeight = isMobile ? 100 : position === 'after-input' ? 90 : 250;
-  const minWidth = isMobile ? 320 : position === 'after-input' ? 728 : 300;
+  }, [isMobile, position, trackAdEvent]);
 
   if (adFailed) {
     return (
       <div className={`flex justify-center my-4 ${className}`}>
         <div 
           className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50"
-          style={{ minHeight, minWidth }}
+          style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
         >
           <div className="text-center p-4">
             <p className="text-sm text-muted-foreground">Sponsored</p>
@@ -96,8 +91,8 @@ const ResponsiveAd = ({ className = "", position = 'between-sections' }: Respons
     <div className={`flex justify-center my-4 ${className}`}>
       <div 
         ref={containerRef} 
-        className="flex items-center justify-center"
-        style={{ minHeight, minWidth }}
+        className="flex items-center justify-center overflow-hidden"
+        style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
       >
         <span className="text-xs text-muted-foreground/30">Sponsored</span>
       </div>

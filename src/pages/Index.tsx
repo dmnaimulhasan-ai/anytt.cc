@@ -6,10 +6,11 @@ import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
-import ResponsiveAd from "@/components/ads/ResponsiveAd";
+import ScrollBanner from "@/components/ads/ScrollBanner";
+import SocialBar from "@/components/ads/SocialBar";
 import { Link } from "react-router-dom";
 import { Youtube, Facebook } from "lucide-react";
+import { usePopunderTrigger } from "@/hooks/useAdMonetization";
 import { 
   seoConfig, 
   BASE_URL, 
@@ -42,6 +43,9 @@ const homeFaqs = [
 ];
 
 const Index = () => {
+  // Initialize popunder trigger on first user interaction
+  usePopunderTrigger();
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
@@ -59,7 +63,7 @@ const Index = () => {
       <main>
         <HeroSection />
         
-        {/* Native Banner Ad */}
+        {/* Native Banner Ad - Below download button */}
         <NativeBanner />
         
         <AboutSection />
@@ -103,20 +107,17 @@ const Index = () => {
           </div>
         </section>
         
-        {/* Ad between platform links and how-to */}
-        <ResponsiveAd position="between-sections" className="py-4" />
-        
-        {/* Banner Ad */}
-        <BannerAd />
+        {/* Scroll-triggered Banner - Shows at 40-60% scroll */}
+        <ScrollBanner />
         
         <HowToSection />
-        
-        {/* Ad between how-to and FAQ */}
-        <ResponsiveAd position="between-sections" className="py-4" />
         
         <FAQSection />
       </main>
       <Footer />
+      
+      {/* Mobile Social Bar - Sticky bottom */}
+      <SocialBar />
     </div>
   );
 };

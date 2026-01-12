@@ -5,31 +5,9 @@ const AD_LOAD_TIMEOUT = 8000;
 
 interface InlineAdProps {
   className?: string;
-  size?: 'leaderboard' | 'rectangle' | 'mobile';
 }
 
-const AD_CONFIGS = {
-  leaderboard: {
-    width: 728,
-    height: 90,
-    minWidth: 'min-w-[728px]',
-    minHeight: 'min-h-[90px]',
-  },
-  rectangle: {
-    width: 300,
-    height: 250,
-    minWidth: 'min-w-[300px]',
-    minHeight: 'min-h-[250px]',
-  },
-  mobile: {
-    width: 320,
-    height: 100,
-    minWidth: 'min-w-[320px]',
-    minHeight: 'min-h-[100px]',
-  },
-};
-
-const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
+const InlineAd = ({ className = "" }: InlineAdProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
   const [adFailed, setAdFailed] = useState(false);
@@ -39,7 +17,8 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
     if (!containerRef.current || loadedRef.current) return;
     loadedRef.current = true;
     
-    const config = AD_CONFIGS[size];
+    // 300x250 format for all devices
+    const config = { width: 300, height: 250 };
 
     const timeoutId = setTimeout(() => {
       if (containerRef.current && !containerRef.current.querySelector('iframe')) {
@@ -47,7 +26,6 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
         trackAdEvent({
           eventType: "timeout",
           adComponent: "InlineAd",
-          adPosition: size,
           errorReason: "Ad failed to load within timeout",
         });
       }
@@ -61,15 +39,15 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
       params: {},
     };
 
+    // New Adsterra domain
     const script = document.createElement("script");
-    script.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
+    script.src = "https://encouragingjawsordinarily.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
     script.async = true;
     script.onerror = () => {
       setAdFailed(true);
       trackAdEvent({
         eventType: "failure",
         adComponent: "InlineAd",
-        adPosition: size,
         errorReason: "Script failed to load",
       });
     };
@@ -77,7 +55,6 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
       trackAdEvent({
         eventType: "load",
         adComponent: "InlineAd",
-        adPosition: size,
       });
     };
     containerRef.current.appendChild(script);
@@ -86,16 +63,14 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
       clearTimeout(timeoutId);
       loadedRef.current = false;
     };
-  }, [size]);
-
-  const config = AD_CONFIGS[size];
+  }, [trackAdEvent]);
 
   if (adFailed) {
     return (
       <div className={`flex justify-center ${className}`}>
         <div 
-          className={`${config.minHeight} ${config.minWidth} flex items-center justify-center bg-muted/30 rounded-lg border border-border/50`}
-          style={{ minHeight: config.height, minWidth: config.width }}
+          className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50"
+          style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
         >
           <div className="text-center p-4">
             <p className="text-sm text-muted-foreground">Premium Content</p>
@@ -110,11 +85,9 @@ const InlineAd = ({ className = "", size = 'rectangle' }: InlineAdProps) => {
     <div className={`flex justify-center ${className}`}>
       <div 
         ref={containerRef} 
-        className={`${config.minHeight} ${config.minWidth} flex items-center justify-center`}
-        style={{ minHeight: config.height, minWidth: config.width }}
-      >
-        <span className="text-xs text-muted-foreground/50">Ad</span>
-      </div>
+        className="flex items-center justify-center overflow-hidden"
+        style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
+      />
     </div>
   );
 };

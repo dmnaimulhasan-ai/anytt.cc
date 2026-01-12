@@ -8,7 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
-import ResponsiveAd from "./ads/ResponsiveAd";
+import NativeBanner from "./ads/NativeBanner";
 import { useAdMonetization } from "@/hooks/useAdMonetization";
 
 type Platform = 'tiktok' | 'youtube' | 'facebook';
@@ -468,9 +468,6 @@ const HeroSection = () => {
                     )}
                   </Button>
                 </div>
-                
-                {/* Mobile: Ad after input */}
-                {url && <ResponsiveAd position="after-input" className="mt-2" />}
               </div>
 
               {/* Desktop: Inline */}
@@ -522,22 +519,19 @@ const HeroSection = () => {
                   )}
                 </Button>
               </div>
-              
-              {/* Desktop: Ad after input */}
-              {url && <ResponsiveAd position="after-input" className="mt-4 hidden md:flex" />}
             </div>
           )
         ) : videoData ? (
           <div className="space-y-6">
             <VideoResult video={videoData} onReset={handleReset} platform={platform} />
-            {/* Ad below download results */}
-            <ResponsiveAd position="below-results" />
+            {/* Native banner below download results */}
+            <NativeBanner />
           </div>
         ) : (
           <div className="space-y-6">
             <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
-            {/* Ad below batch results */}
-            <ResponsiveAd position="below-results" />
+            {/* Native banner below batch results */}
+            <NativeBanner />
           </div>
         )}
       </div>
