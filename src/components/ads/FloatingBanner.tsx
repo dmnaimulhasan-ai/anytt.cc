@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
+const AD_LOAD_TIMEOUT = 8000;
+
 const FloatingBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [adFailed, setAdFailed] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 10000); // Show after 10 seconds
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -17,7 +20,12 @@ const FloatingBanner = () => {
     if (isVisible && !isDismissed) {
       const container = document.getElementById("floating-banner-container");
       if (container && !container.hasChildNodes()) {
-        // Create atOptions script
+        const timeoutId = setTimeout(() => {
+          if (container && !container.querySelector('iframe')) {
+            setAdFailed(true);
+          }
+        }, AD_LOAD_TIMEOUT);
+
         const optionsScript = document.createElement("script");
         optionsScript.innerHTML = `
           atOptions = {
@@ -30,15 +38,20 @@ const FloatingBanner = () => {
         `;
         container.appendChild(optionsScript);
 
-        // Create invoke script
         const invokeScript = document.createElement("script");
         invokeScript.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
+        invokeScript.onerror = () => setAdFailed(true);
         container.appendChild(invokeScript);
+
+        return () => clearTimeout(timeoutId);
       }
     }
   }, [isVisible, isDismissed]);
 
   if (!isVisible || isDismissed) return null;
+
+  // Don't show floating banner if ad failed - just hide it
+  if (adFailed) return null;
 
   return (
     <div className="fixed bottom-4 right-4 z-50 animate-fade-in">
