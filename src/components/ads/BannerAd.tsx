@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
 
 const BannerAd = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [adFailed, setAdFailed] = useState(false);
+  const { trackAdEvent } = useAdAnalytics();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -12,6 +14,11 @@ const BannerAd = () => {
     const timeoutId = setTimeout(() => {
       if (containerRef.current && !containerRef.current.querySelector('iframe')) {
         setAdFailed(true);
+        trackAdEvent({
+          eventType: "timeout",
+          adComponent: "BannerAd",
+          errorReason: "Ad failed to load within timeout",
+        });
       }
     }, AD_LOAD_TIMEOUT);
 
@@ -25,7 +32,20 @@ const BannerAd = () => {
 
     const script = document.createElement("script");
     script.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
-    script.onerror = () => setAdFailed(true);
+    script.onerror = () => {
+      setAdFailed(true);
+      trackAdEvent({
+        eventType: "failure",
+        adComponent: "BannerAd",
+        errorReason: "Script failed to load",
+      });
+    };
+    script.onload = () => {
+      trackAdEvent({
+        eventType: "load",
+        adComponent: "BannerAd",
+      });
+    };
     containerRef.current.appendChild(script);
 
     return () => clearTimeout(timeoutId);

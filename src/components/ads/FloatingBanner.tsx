@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
 
@@ -7,6 +8,7 @@ const FloatingBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [adFailed, setAdFailed] = useState(false);
+  const { trackAdEvent } = useAdAnalytics();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +25,11 @@ const FloatingBanner = () => {
         const timeoutId = setTimeout(() => {
           if (container && !container.querySelector('iframe')) {
             setAdFailed(true);
+            trackAdEvent({
+              eventType: "timeout",
+              adComponent: "FloatingBanner",
+              errorReason: "Ad failed to load within timeout",
+            });
           }
         }, AD_LOAD_TIMEOUT);
 
@@ -40,7 +47,20 @@ const FloatingBanner = () => {
 
         const invokeScript = document.createElement("script");
         invokeScript.src = "https://evadereprimand.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
-        invokeScript.onerror = () => setAdFailed(true);
+        invokeScript.onerror = () => {
+          setAdFailed(true);
+          trackAdEvent({
+            eventType: "failure",
+            adComponent: "FloatingBanner",
+            errorReason: "Script failed to load",
+          });
+        };
+        invokeScript.onload = () => {
+          trackAdEvent({
+            eventType: "load",
+            adComponent: "FloatingBanner",
+          });
+        };
         container.appendChild(invokeScript);
 
         return () => clearTimeout(timeoutId);
