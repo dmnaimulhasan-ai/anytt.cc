@@ -7,6 +7,15 @@ interface BannerAdProps {
   className?: string;
 }
 
+/**
+ * 300x250 Banner Ad Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Clearly labeled as "Advertisement"
+ * - Placed in footer/content areas, NOT near download button
+ * - Mobile centered, no overflow
+ * - Not interrupting user actions
+ */
 const BannerAd = ({ className = "" }: BannerAdProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
@@ -37,7 +46,6 @@ const BannerAd = ({ className = "" }: BannerAdProps) => {
       params: {},
     };
 
-    // New Adsterra domain
     const script = document.createElement("script");
     script.src = "https://encouragingjawsordinarily.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
     script.async = true;
@@ -61,24 +69,21 @@ const BannerAd = ({ className = "" }: BannerAdProps) => {
   }, [trackAdEvent]);
 
   if (adFailed) {
-    return (
-      <div className={`flex justify-center my-6 ${className}`}>
-        <div className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-          <div className="text-center p-4">
-            <p className="text-sm text-muted-foreground">Premium Content</p>
-            <p className="text-xs text-muted-foreground/60 mt-1">Support our free service</p>
-          </div>
-        </div>
-      </div>
-    );
+    return null; // Don't show placeholder for failed ads
   }
 
   return (
-    <div className={`flex justify-center my-6 ${className}`}>
-      <div 
-        ref={containerRef} 
-        className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center overflow-hidden"
-      />
+    <div className={`my-6 ${className}`}>
+      {/* Clear advertisement label */}
+      <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
+        Sponsored
+      </p>
+      <div className="flex justify-center">
+        <div 
+          ref={containerRef} 
+          className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center overflow-hidden"
+        />
+      </div>
     </div>
   );
 };

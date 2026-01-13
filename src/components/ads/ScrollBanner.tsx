@@ -8,6 +8,15 @@ interface ScrollBannerProps {
   className?: string;
 }
 
+/**
+ * Scroll-triggered 300x250 Banner Ad
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Clearly labeled as "Advertisement"
+ * - Shows only after 40% scroll (not interrupting main actions)
+ * - Placed in content flow (not overlapping buttons)
+ * - Mobile centered, no overflow
+ */
 const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
@@ -19,9 +28,11 @@ const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+      
       const scrollProgress = window.scrollY / scrollHeight;
       
-      if (scrollProgress >= SCROLL_THRESHOLD && scrollProgress <= 0.8) {
+      if (scrollProgress >= SCROLL_THRESHOLD) {
         setIsVisible(true);
       }
     };
@@ -55,7 +66,6 @@ const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
       params: {}
     };
 
-    // Adsterra 300x250 Banner script
     const script = document.createElement("script");
     script.src = "https://encouragingjawsordinarily.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
     script.async = true;
@@ -78,28 +88,19 @@ const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
     return () => clearTimeout(timeoutId);
   }, [isVisible, trackAdEvent]);
 
-  if (!isVisible) return null;
-
-  if (adFailed) {
-    return (
-      <div className={`flex justify-center my-6 ${className}`}>
-        <div className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-          <div className="text-center p-4">
-            <p className="text-sm text-muted-foreground">Premium Content</p>
-            <p className="text-xs text-muted-foreground/60 mt-1">Support our free service</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (!isVisible || adFailed) return null;
 
   return (
-    <div className={`flex justify-center my-6 ${className}`}>
-      <div 
-        ref={containerRef} 
-        className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center overflow-hidden"
-      >
-        <span className="text-xs text-muted-foreground/30">Ad</span>
+    <div className={`my-6 ${className}`}>
+      {/* Clear advertisement label */}
+      <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
+        Advertisement
+      </p>
+      <div className="flex justify-center">
+        <div 
+          ref={containerRef} 
+          className="min-h-[250px] min-w-[300px] max-w-[300px] flex items-center justify-center overflow-hidden"
+        />
       </div>
     </div>
   );

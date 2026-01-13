@@ -9,7 +9,7 @@ import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
 import NativeBanner from "./ads/NativeBanner";
-import { useAdMonetization } from "@/hooks/useAdMonetization";
+import SmartlinkButton from "./ads/SmartlinkButton";
 
 interface VideoData {
   id: string;
@@ -41,6 +41,15 @@ interface PlatformDownloaderProps {
   accentColor: string;
 }
 
+/**
+ * Platform Downloader Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Download button has NO ads, NO delays - instant download
+ * - Smartlink is SEPARATE button (Support Us)
+ * - Clear ad labeling
+ * - No misleading UI
+ */
 const PlatformDownloader = ({
   platform,
   platformName,
@@ -57,9 +66,7 @@ const PlatformDownloader = ({
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
-  const [isAdDelaying, setIsAdDelaying] = useState(false);
   const { toast } = useToast();
-  const { handleDownloadClick } = useAdMonetization();
 
   const handlePaste = async () => {
     try {
@@ -110,6 +117,10 @@ const PlatformDownloader = ({
     }
   };
 
+  /**
+   * Handle search - NO ADS, direct video fetch
+   * Adsterra compliant: Download action has no ads attached
+   */
   const handleSearch = async () => {
     if (!url.trim()) {
       toast({
@@ -118,20 +129,6 @@ const PlatformDownloader = ({
         variant: "destructive",
       });
       return;
-    }
-
-    // Smart ad monetization - first click triggers popunder with delay
-    const adResult = await handleDownloadClick();
-    
-    if (adResult.shouldDelay) {
-      setIsAdDelaying(true);
-      toast({
-        title: "⏳ Processing...",
-        description: "Your video will be ready in a moment",
-      });
-      
-      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
-      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -178,20 +175,6 @@ const PlatformDownloader = ({
         variant: "destructive",
       });
       return;
-    }
-
-    // Smart ad monetization - first click triggers popunder with delay
-    const adResult = await handleDownloadClick();
-    
-    if (adResult.shouldDelay) {
-      setIsAdDelaying(true);
-      toast({
-        title: "⏳ Processing...",
-        description: "Your videos will be ready in a moment",
-      });
-      
-      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
-      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -371,14 +354,11 @@ const PlatformDownloader = ({
                 
                 <Button
                   onClick={handleSearch}
-                  disabled={isLoading || isAdDelaying}
+                  disabled={isLoading}
                   className="flex-1 rounded-2xl h-14 btn-glow text-primary-foreground border-0 text-base font-bold"
                 >
-                  {isLoading || isAdDelaying ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                      {isAdDelaying ? "Wait..." : "Loading"}
-                    </>
+                  {isLoading ? (
+                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
                   ) : (
                     <>
                       <Zap className="h-5 w-5 mr-2" />
@@ -386,8 +366,8 @@ const PlatformDownloader = ({
                     </>
                   )}
                 </Button>
-                </div>
               </div>
+            </div>
 
             {/* Desktop: Inline */}
             <div className="hidden md:flex glass-card rounded-full p-2 items-center gap-2 border border-border/30">
@@ -422,14 +402,11 @@ const PlatformDownloader = ({
               
               <Button
                 onClick={handleSearch}
-                disabled={isLoading || isAdDelaying}
+                disabled={isLoading}
                 className="rounded-full h-12 btn-glow text-primary-foreground px-8 border-0 font-bold text-base"
               >
-                {isLoading || isAdDelaying ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                    {isAdDelaying ? "Wait..." : ""}
-                  </>
+                {isLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin mr-2" />
                 ) : (
                   <>
                     <Zap className="h-5 w-5 mr-2" />
@@ -441,7 +418,7 @@ const PlatformDownloader = ({
           </div>
         )
       ) : (
-        <div className="mt-8 animate-fade-in">
+        <div className="mt-8 animate-fade-in space-y-6">
           {videoData && (
             <VideoResult video={videoData} onReset={handleClear} platform={platform} />
           )}
@@ -453,7 +430,10 @@ const PlatformDownloader = ({
             />
           )}
           
-          {/* Native Banner below download results */}
+          {/* Separate Smartlink Button - NOT on download */}
+          <SmartlinkButton />
+          
+          {/* Native Banner below results - clearly labeled */}
           <NativeBanner />
         </div>
       )}
