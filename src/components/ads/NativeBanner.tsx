@@ -7,6 +7,15 @@ interface NativeBannerProps {
   className?: string;
 }
 
+/**
+ * Native Banner Ad Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Clearly labeled as "Advertisement"
+ * - Not inside or overlapping download buttons
+ * - Mobile responsive
+ * - No misleading content
+ */
 const NativeBanner = ({ className = "" }: NativeBannerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
@@ -28,7 +37,7 @@ const NativeBanner = ({ className = "" }: NativeBannerProps) => {
       }
     }, AD_LOAD_TIMEOUT);
 
-    // New Adsterra Native Banner script
+    // Adsterra Native Banner script
     const script = document.createElement("script");
     script.src = "https://encouragingjawsordinarily.com/3025235b7f9e8922019d79a8dd0ff449/invoke.js";
     script.async = true;
@@ -53,24 +62,22 @@ const NativeBanner = ({ className = "" }: NativeBannerProps) => {
   }, [trackAdEvent]);
 
   if (adFailed) {
-    return (
-      <div className={`flex justify-center my-6 ${className}`}>
-        <div className="min-h-[90px] w-full max-w-2xl flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-          <div className="text-center p-4">
-            <p className="text-sm text-muted-foreground">Recommended Content</p>
-          </div>
-        </div>
-      </div>
-    );
+    return null; // Don't show placeholder for failed ads
   }
 
   return (
-    <div className={`flex justify-center my-6 ${className}`}>
-      <div 
-        ref={containerRef}
-        id="container-3025235b7f9e8922019d79a8dd0ff449" 
-        className="w-full max-w-2xl"
-      />
+    <div className={`my-6 ${className}`}>
+      {/* Clear advertisement label - Adsterra policy compliant */}
+      <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
+        Advertisement
+      </p>
+      <div className="flex justify-center">
+        <div 
+          ref={containerRef}
+          id="container-3025235b7f9e8922019d79a8dd0ff449" 
+          className="w-full max-w-2xl"
+        />
+      </div>
     </div>
   );
 };

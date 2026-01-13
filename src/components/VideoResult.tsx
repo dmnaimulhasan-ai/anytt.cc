@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Download, Music, Video, User, Clock, ArrowLeft, Flame, Loader2, ExternalLink, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Download, Music, Video, User, Clock, ArrowLeft, Flame, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useStats } from "@/hooks/useStats";
@@ -29,15 +29,14 @@ interface DownloadState {
   filename: string;
 }
 
-interface UnlockState {
-  [key: string]: 'locked' | 'waiting' | 'unlocked';
-}
-
-const SMARTLINK_URL = 'https://encouragingjawsordinarily.com/rqyzcy60dz?key=b49733451f653cb005e98c6fd641e507';
-
-// Unified unlock delay for all qualities (seconds)
-const UNLOCK_DELAY = 5;
-
+/**
+ * VideoResult Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Download buttons have NO ads, NO delays, NO timers
+ * - Downloads start INSTANTLY on click
+ * - NO smartlink attached to download buttons
+ */
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
   const [downloadState, setDownloadState] = useState<DownloadState>({
@@ -45,35 +44,6 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     progress: 0,
     filename: ''
   });
-  const [unlockStates, setUnlockStates] = useState<UnlockState>({});
-  const [countdowns, setCountdowns] = useState<{ [key: string]: number }>({});
-  const [activeUnlock, setActiveUnlock] = useState<string | null>(null);
-  const [showSkip, setShowSkip] = useState<{ [key: string]: boolean }>({});
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    if (activeUnlock && countdowns[activeUnlock] > 0) {
-      // Show skip button immediately
-      setShowSkip(s => ({ ...s, [activeUnlock]: true }));
-      
-      interval = setInterval(() => {
-        setCountdowns(prev => {
-          const newValue = prev[activeUnlock] - 1;
-          if (newValue <= 0) {
-            setUnlockStates(s => ({ ...s, [activeUnlock]: 'unlocked' }));
-            setActiveUnlock(null);
-            return { ...prev, [activeUnlock]: 0 };
-          }
-          return { ...prev, [activeUnlock]: newValue };
-        });
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [activeUnlock, countdowns]);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -81,29 +51,10 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleUnlockClick = (buttonId: string) => {
-    // Open smartlink in new tab
-    window.open(SMARTLINK_URL, '_blank', 'noopener,noreferrer');
-    
-    // Start countdown for this button
-    setUnlockStates(s => ({ ...s, [buttonId]: 'waiting' }));
-    setCountdowns(c => ({ ...c, [buttonId]: UNLOCK_DELAY }));
-    setActiveUnlock(buttonId);
-    setShowSkip(s => ({ ...s, [buttonId]: false }));
-  };
-
-  const handleSkip = (buttonId: string) => {
-    setUnlockStates(s => ({ ...s, [buttonId]: 'unlocked' }));
-    setCountdowns(c => ({ ...c, [buttonId]: 0 }));
-    setActiveUnlock(null);
-    setShowSkip(s => ({ ...s, [buttonId]: false }));
-  };
-
-  const getUnlockProgress = (buttonId: string) => {
-    const countdown = countdowns[buttonId] || 0;
-    return ((UNLOCK_DELAY - countdown) / UNLOCK_DELAY) * 100;
-  };
-
+  /**
+   * Direct download - NO ADS, NO DELAYS
+   * Adsterra compliant: Real download button must work instantly
+   */
   const handleDownload = async (url: string, filename: string) => {
     // Track the download
     trackDownload(platform, video.id);
@@ -140,12 +91,10 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
           const progress = Math.round((received / total) * 100);
           setDownloadState(prev => ({ ...prev, progress }));
         } else {
-          // If no content-length, show indeterminate progress
           setDownloadState(prev => ({ ...prev, progress: Math.min(prev.progress + 5, 95) }));
         }
       }
 
-      // Combine chunks into a single Uint8Array
       const blob = new Blob(chunks as BlobPart[]);
       const blobUrl = URL.createObjectURL(blob);
       
@@ -174,100 +123,8 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     }
   };
 
-  const renderDownloadButton = (
-    buttonId: string,
-    url: string,
-    filename: string,
-    label: string,
-    icon: React.ReactNode,
-    isPrimary: boolean = false
-  ) => {
-    const state = unlockStates[buttonId] || 'locked';
-    const countdown = countdowns[buttonId] || 0;
-    const isThisDownloading = downloadState.isDownloading && downloadState.filename === filename;
-
-    if (state === 'locked') {
-      return isPrimary ? (
-        <Button
-          onClick={() => handleUnlockClick(buttonId)}
-          disabled={downloadState.isDownloading || activeUnlock !== null}
-          className="w-full h-13 md:h-12 btn-glow text-primary-foreground rounded-2xl border-0 text-base font-bold disabled:opacity-50"
-        >
-          <ExternalLink className="h-5 w-5 mr-2" />
-          {label}
-        </Button>
-      ) : (
-        <Button
-          onClick={() => handleUnlockClick(buttonId)}
-          disabled={downloadState.isDownloading || activeUnlock !== null}
-          variant="outline"
-          className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold disabled:opacity-50"
-        >
-          <ExternalLink className="h-4 w-4 mr-1.5" />
-          {label}
-        </Button>
-      );
-    }
-
-    if (state === 'waiting') {
-      const canSkip = showSkip[buttonId];
-      return (
-        <div className={`${isPrimary ? 'w-full' : 'flex-1'} p-3 rounded-2xl bg-muted/50 border border-primary/30 space-y-2`}>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground flex items-center gap-2">
-              <Clock className="h-4 w-4 animate-pulse text-primary" />
-              Unlocking...
-            </span>
-            <span className="font-bold text-primary text-lg">{countdown}s</span>
-          </div>
-          <Progress value={getUnlockProgress(buttonId)} className="h-2" />
-          {canSkip && (
-            <Button
-              onClick={() => handleSkip(buttonId)}
-              variant="ghost"
-              size="sm"
-              className="w-full h-8 text-xs text-muted-foreground hover:text-foreground mt-1"
-            >
-              Skip waiting →
-            </Button>
-          )}
-        </div>
-      );
-    }
-
-    // Unlocked state
-    return isPrimary ? (
-      <Button
-        onClick={() => handleDownload(url, filename)}
-        disabled={downloadState.isDownloading}
-        className="w-full h-13 md:h-12 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-2xl border-0 text-base font-bold disabled:opacity-50 animate-pulse"
-      >
-        {isThisDownloading ? (
-          <Loader2 className="h-5 w-5 animate-spin mr-2" />
-        ) : (
-          <>
-            <CheckCircle className="h-5 w-5 mr-2" />
-            {icon}
-          </>
-        )}
-        Download Now 🔥
-      </Button>
-    ) : (
-      <Button
-        onClick={() => handleDownload(url, filename)}
-        disabled={downloadState.isDownloading}
-        variant="outline"
-        className="flex-1 h-12 rounded-2xl border-green-500/50 bg-green-500/10 hover:bg-green-500/20 active:scale-95 font-semibold disabled:opacity-50 text-green-500"
-      >
-        {isThisDownloading ? (
-          <Loader2 className="h-4 w-4 animate-spin mr-1.5" />
-        ) : (
-          <CheckCircle className="h-4 w-4 mr-1.5" />
-        )}
-        {label}
-      </Button>
-    );
-  };
+  const isDownloadingFile = (filename: string) => 
+    downloadState.isDownloading && downloadState.filename === filename;
 
   return (
     <div className="max-w-xl mx-auto glass-card rounded-3xl p-5 md:p-6 animate-bounce-in neon-border">
@@ -321,34 +178,64 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
             </div>
           )}
 
-          {/* Download Buttons with Unlock Flow */}
+          {/* Download Buttons - NO ADS, INSTANT DOWNLOAD */}
           <div className="space-y-2.5">
-            {renderDownloadButton(
-              'hd',
-              video.videoUrlNoWatermark,
-              `tiktok-${video.id}-hd.mp4`,
-              'Download HD 🔥',
-              <Video className="h-5 w-5 mr-2" />,
-              true
-            )}
-            
-            <div className="flex gap-2">
-              {renderDownloadButton(
-                'video',
-                video.videoUrl,
-                `tiktok-${video.id}.mp4`,
-                'Video',
-                <Download className="h-4 w-4 mr-1.5" />,
-                false
+            {/* Primary HD Download Button */}
+            <Button
+              onClick={() => handleDownload(
+                video.videoUrlNoWatermark,
+                `${platform}-${video.id}-hd.mp4`
               )}
+              disabled={downloadState.isDownloading}
+              className="w-full h-13 md:h-12 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-2xl border-0 text-base font-bold disabled:opacity-50"
+            >
+              {isDownloadingFile(`${platform}-${video.id}-hd.mp4`) ? (
+                <Loader2 className="h-5 w-5 animate-spin mr-2" />
+              ) : (
+                <>
+                  <CheckCircle className="h-5 w-5 mr-2" />
+                  <Video className="h-5 w-5 mr-2" />
+                </>
+              )}
+              Download HD 🔥
+            </Button>
+            
+            {/* Secondary Download Options */}
+            <div className="flex gap-2">
+              <Button
+                onClick={() => handleDownload(
+                  video.videoUrl,
+                  `${platform}-${video.id}.mp4`
+                )}
+                disabled={downloadState.isDownloading}
+                variant="outline"
+                className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold disabled:opacity-50"
+              >
+                {isDownloadingFile(`${platform}-${video.id}.mp4`) ? (
+                  <Loader2 className="h-4 w-4 animate-spin mr-1.5" />
+                ) : (
+                  <Download className="h-4 w-4 mr-1.5" />
+                )}
+                Video
+              </Button>
               
-              {video.musicUrl && renderDownloadButton(
-                'audio',
-                video.musicUrl,
-                `tiktok-${video.id}-audio.mp3`,
-                'Audio',
-                <Music className="h-4 w-4 mr-1.5" />,
-                false
+              {video.musicUrl && (
+                <Button
+                  onClick={() => handleDownload(
+                    video.musicUrl,
+                    `${platform}-${video.id}-audio.mp3`
+                  )}
+                  disabled={downloadState.isDownloading}
+                  variant="outline"
+                  className="flex-1 h-12 rounded-2xl border-border/50 hover:bg-muted/50 active:scale-95 font-semibold disabled:opacity-50"
+                >
+                  {isDownloadingFile(`${platform}-${video.id}-audio.mp3`) ? (
+                    <Loader2 className="h-4 w-4 animate-spin mr-1.5" />
+                  ) : (
+                    <Music className="h-4 w-4 mr-1.5" />
+                  )}
+                  Audio
+                </Button>
               )}
             </div>
           </div>

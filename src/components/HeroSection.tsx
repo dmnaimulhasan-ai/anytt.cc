@@ -9,7 +9,7 @@ import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
 import NativeBanner from "./ads/NativeBanner";
-import { useAdMonetization } from "@/hooks/useAdMonetization";
+import SmartlinkButton from "./ads/SmartlinkButton";
 
 type Platform = 'tiktok' | 'youtube' | 'facebook';
 
@@ -33,6 +33,14 @@ interface BatchVideoResult {
   error?: string;
 }
 
+/**
+ * Hero Section Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Download has NO ads, NO delays - instant action
+ * - Smartlink is on SEPARATE button
+ * - Clear ad/content separation
+ */
 const HeroSection = () => {
   const [url, setUrl] = useState("");
   const [batchUrls, setBatchUrls] = useState("");
@@ -42,9 +50,7 @@ const HeroSection = () => {
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
-  const [isAdDelaying, setIsAdDelaying] = useState(false);
   const { toast } = useToast();
-  const { handleDownloadClick } = useAdMonetization();
 
   const platformConfig = {
     tiktok: {
@@ -122,6 +128,9 @@ const HeroSection = () => {
     }
   };
 
+  /**
+   * Handle search - NO ADS, NO DELAYS - Adsterra compliant
+   */
   const handleSearch = async () => {
     if (!url.trim()) {
       toast({
@@ -130,20 +139,6 @@ const HeroSection = () => {
         variant: "destructive",
       });
       return;
-    }
-
-    // Smart ad monetization - first click triggers popunder with delay
-    const adResult = await handleDownloadClick();
-    
-    if (adResult.shouldDelay) {
-      setIsAdDelaying(true);
-      toast({
-        title: "⏳ Processing...",
-        description: "Your video will be ready in a moment",
-      });
-      
-      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
-      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -190,20 +185,6 @@ const HeroSection = () => {
         variant: "destructive",
       });
       return;
-    }
-
-    // Smart ad monetization - first click triggers popunder with delay
-    const adResult = await handleDownloadClick();
-    
-    if (adResult.shouldDelay) {
-      setIsAdDelaying(true);
-      toast({
-        title: "⏳ Processing...",
-        description: "Your videos will be ready in a moment",
-      });
-      
-      await new Promise(resolve => setTimeout(resolve, adResult.delayMs));
-      setIsAdDelaying(false);
     }
 
     setIsLoading(true);
@@ -452,14 +433,11 @@ const HeroSection = () => {
                   
                   <Button
                     onClick={handleSearch}
-                    disabled={isLoading || isAdDelaying}
+                    disabled={isLoading}
                     className="flex-1 rounded-2xl h-14 btn-glow text-primary-foreground border-0 text-base font-bold"
                   >
-                    {isLoading || isAdDelaying ? (
-                      <>
-                        <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                        {isAdDelaying ? "Wait..." : "Loading"}
-                      </>
+                    {isLoading ? (
+                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
                     ) : (
                       <>
                         <Zap className="h-5 w-5 mr-2" />
@@ -503,14 +481,11 @@ const HeroSection = () => {
                 
                 <Button
                   onClick={handleSearch}
-                  disabled={isLoading || isAdDelaying}
+                  disabled={isLoading}
                   className="rounded-full h-12 btn-glow text-primary-foreground px-8 border-0 font-bold text-base"
                 >
-                  {isLoading || isAdDelaying ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                      {isAdDelaying ? "Wait..." : ""}
-                    </>
+                  {isLoading ? (
+                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
                   ) : (
                     <>
                       <Sparkles className="h-4 w-4 mr-2" />
@@ -524,12 +499,16 @@ const HeroSection = () => {
         ) : videoData ? (
           <div className="space-y-6">
             <VideoResult video={videoData} onReset={handleReset} platform={platform} />
+            {/* Separate Smartlink Button - NOT on download */}
+            <SmartlinkButton />
             {/* Native banner below download results */}
             <NativeBanner />
           </div>
         ) : (
           <div className="space-y-6">
             <BatchResults results={batchResults} onReset={handleReset} autoDownload={true} isProcessing={isLoading} />
+            {/* Separate Smartlink Button */}
+            <SmartlinkButton />
             {/* Native banner below batch results */}
             <NativeBanner />
           </div>

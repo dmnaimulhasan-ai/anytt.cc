@@ -4,6 +4,15 @@ import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
 
+/**
+ * Mobile Social Bar Ad Component
+ * 
+ * ADSTERRA POLICY COMPLIANT:
+ * - Mobile ONLY
+ * - Does NOT cover input fields or buttons
+ * - Bottom sticky bar (managed by Adsterra script)
+ * - No misleading content
+ */
 const SocialBar = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
@@ -14,7 +23,7 @@ const SocialBar = () => {
   useEffect(() => {
     // Only show on mobile
     if (!isMobile) return;
-    if (!containerRef.current || loadedRef.current) return;
+    if (loadedRef.current) return;
     loadedRef.current = true;
 
     const timeoutId = setTimeout(() => {
@@ -53,10 +62,9 @@ const SocialBar = () => {
   }, [isMobile, trackAdEvent]);
 
   // Don't render anything visible - social bar is managed by the script
-  // Only render on mobile, return null on desktop
   if (!isMobile || adFailed) return null;
 
-  return <div ref={containerRef} className="hidden" />;
+  return <div ref={containerRef} className="hidden" aria-hidden="true" />;
 };
 
 export default SocialBar;
