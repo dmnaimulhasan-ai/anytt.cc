@@ -60,7 +60,8 @@ serve(async (req) => {
       window_start: new Date().toISOString()
     });
 
-    const { url } = await req.json();
+    const body = await req.json();
+    let url = body?.url;
     
     if (!url) {
       console.error('No URL provided');
@@ -70,21 +71,33 @@ serve(async (req) => {
       );
     }
 
-    // Validate URL is a string and not too long
-    if (typeof url !== 'string' || url.length > 500) {
-      console.error('Invalid URL format');
+    // Validate URL is a string
+    if (typeof url !== 'string') {
+      console.error('URL is not a string, type:', typeof url);
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid URL format' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Processing TikTok URL:', url.substring(0, 100));
+    // Clean and trim the URL
+    url = url.trim();
+    
+    // Check if too long after trimming
+    if (url.length > 500) {
+      console.error('URL too long:', url.length);
+      return new Response(
+        JSON.stringify({ success: false, error: 'URL is too long' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
-    // Validate TikTok URL
-    const tiktokRegex = /(?:https?:\/\/)?(?:www\.|m\.)?(?:tiktok\.com|vm\.tiktok\.com)/i;
+    console.log('Processing TikTok URL:', url);
+
+    // Validate TikTok URL - support various formats including vt.tiktok.com short links
+    const tiktokRegex = /(?:https?:\/\/)?(?:www\.|m\.|vm\.|vt\.)?tiktok\.com/i;
     if (!tiktokRegex.test(url)) {
-      console.error('Invalid TikTok URL:', url.substring(0, 50));
+      console.error('Invalid TikTok URL pattern:', url);
       return new Response(
         JSON.stringify({ success: false, error: 'Please enter a valid TikTok URL' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
