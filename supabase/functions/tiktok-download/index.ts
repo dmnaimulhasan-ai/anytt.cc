@@ -83,17 +83,6 @@ serve(async (req) => {
     // Clean and trim the URL
     url = url.trim();
     
-    // Check if too long after trimming
-    if (url.length > 500) {
-      console.error('URL too long:', url.length);
-      return new Response(
-        JSON.stringify({ success: false, error: 'URL is too long' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    console.log('Processing TikTok URL:', url);
-
     // Validate TikTok URL - support various formats including vt.tiktok.com short links
     const tiktokRegex = /(?:https?:\/\/)?(?:www\.|m\.|vm\.|vt\.)?tiktok\.com/i;
     if (!tiktokRegex.test(url)) {
@@ -103,6 +92,28 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
+
+    // Clean URL by removing tracking parameters - keep only the essential video path
+    // TikTok URLs with tracking can be 700+ chars, but the API only needs the base URL
+    try {
+      const urlObj = new URL(url);
+      // Keep only essential params, remove tracking junk
+      const essentialParams = ['video_id'];
+      const newSearchParams = new URLSearchParams();
+      essentialParams.forEach(param => {
+        if (urlObj.searchParams.has(param)) {
+          newSearchParams.set(param, urlObj.searchParams.get(param)!);
+        }
+      });
+      // Reconstruct clean URL with just origin + pathname
+      url = urlObj.origin + urlObj.pathname;
+      console.log('Cleaned TikTok URL:', url);
+    } catch (e) {
+      // If URL parsing fails, continue with original (might be a short link)
+      console.log('Could not parse URL, using as-is:', url.substring(0, 100));
+    }
+
+    console.log('Processing TikTok URL:', url);
 
     // Use TikWM API to get video data (free, no API key required)
     const apiUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`;
