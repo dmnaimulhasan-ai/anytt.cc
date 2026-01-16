@@ -1,26 +1,60 @@
+import { Shield, Zap, Smartphone, Globe } from "lucide-react";
+
+const features = [
+  {
+    icon: Shield,
+    title: "100% Safe",
+    description: "No registration required. We never store your data or videos.",
+  },
+  {
+    icon: Zap,
+    title: "Super Fast",
+    description: "Download videos in seconds with our optimized servers.",
+  },
+  {
+    icon: Smartphone,
+    title: "Works Everywhere",
+    description: "iPhone, Android, PC, Mac - works on any device with a browser.",
+  },
+  {
+    icon: Globe,
+    title: "No Limits",
+    description: "Unlimited downloads, completely free. No hidden fees.",
+  },
+];
+
+/**
+ * About Section - Feature highlights
+ * Clean cards, mobile-first layout
+ */
 const AboutSection = () => {
   return (
-    <section className="py-12 md:py-16 px-4 md:px-6 bg-muted/20">
+    <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-3xl">
-        <div className="glass-card rounded-3xl p-7 md:p-10 text-center relative overflow-hidden">
-          {/* Decorative gradient */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-secondary/20 to-transparent rounded-tr-full" />
-          
-          <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-black font-display mb-4">
-              The <span className="gradient-text">best</span> TikTok downloader 💫
-            </h2>
-            <div className="text-muted-foreground space-y-3 text-base md:text-lg max-w-xl mx-auto">
-              <p>
-                Download any TikTok video without watermark in HD. 
-                Works on any device - phone, tablet, or PC.
-              </p>
-              <p className="font-medium text-foreground">
-                No sign-ups. No limits. Just vibes. ✨
-              </p>
+        <h2 className="text-section text-center mb-4">
+          Why <span className="gradient-text">Anytt.cc</span>?
+        </h2>
+        <p className="text-center text-muted-foreground text-subhero mb-12 max-w-lg mx-auto">
+          The easiest way to download videos without watermark
+        </p>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="glass-card rounded-2xl p-5 flex items-start gap-4"
+            >
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center">
+                <feature.icon className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-1">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

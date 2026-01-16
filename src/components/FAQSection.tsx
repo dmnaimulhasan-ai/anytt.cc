@@ -5,65 +5,69 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface FAQSectionProps {
+  faqs?: FAQ[];
+}
+
+const defaultFaqs: FAQ[] = [
   {
-    question: "Is this actually free? 💸",
-    answer: "Yep! 100% free, no cap. No hidden fees, no subscriptions, no bs. Download unlimited videos.",
+    question: "Is it really free to use?",
+    answer: "Yes, Anytt.cc is completely free. No hidden fees, no subscriptions, no limits on downloads. Download as many videos as you want."
   },
   {
-    question: "Does it work on iPhone? 🍎",
-    answer: "For sure! Same process. iOS 13+ can save directly. We got you.",
+    question: "Do I need to install an app?",
+    answer: "No installation needed. Just open Anytt.cc in your browser, paste your video link, and download directly to your device."
   },
   {
-    question: "No watermark fr? 🎨",
-    answer: "That's the whole point bestie! Clean HD videos without TikTok logos.",
+    question: "What video quality is available?",
+    answer: "We provide HD quality downloads without watermark. The quality depends on the original video uploaded to TikTok or Facebook."
   },
   {
-    question: "Is this safe to use? 🔒",
-    answer: "Absolutely! No sketchy downloads, no registration. We don't store anything.",
+    question: "Does it work on iPhone?",
+    answer: "Yes! Anytt.cc works on iPhone, iPad, Android phones and tablets, and all desktop browsers including Chrome, Safari, and Firefox."
   },
   {
-    question: "What about other platforms? 📱",
-    answer: "We're working on Instagram Reels and YouTube Shorts. Stay tuned! 👀",
-  },
+    question: "Is my data safe?",
+    answer: "Absolutely. We don't store your videos or any personal data. Downloads are processed securely and we don't require any registration."
+  }
 ];
 
-const FAQSection = () => {
+/**
+ * FAQ Section - Accordion style
+ * Clean, readable, mobile-friendly
+ */
+const FAQSection = ({ faqs = defaultFaqs }: FAQSectionProps) => {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      </div>
+    <section className="py-20 px-4 bg-muted/30">
+      <div className="container mx-auto max-w-2xl">
+        <h2 className="text-section text-center mb-4">
+          Frequently Asked <span className="gradient-text">Questions</span>
+        </h2>
+        <p className="text-center text-muted-foreground mb-12">
+          Got questions? We've got answers.
+        </p>
 
-      <div className="container mx-auto max-w-2xl relative z-10">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-black font-display mb-2">
-            <span className="gradient-text">FAQ</span> 🤔
-          </h2>
-          <p className="text-muted-foreground">Got questions? We got answers.</p>
-        </div>
-        
-        <div className="glass-card rounded-3xl overflow-hidden">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`} 
-                className="border-b border-border/20 last:border-0"
-              >
-                <AccordionTrigger className="px-5 md:px-6 py-5 text-left hover:no-underline hover:bg-muted/20 active:bg-muted/30 text-foreground font-bold font-display text-base group">
-                  <span className="group-hover:text-primary transition-colors pr-4">
-                    {faq.question}
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent className="px-5 md:px-6 pb-5 text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqs.map((faq, index) => (
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="glass-card rounded-2xl border-0 overflow-hidden"
+            >
+              <AccordionTrigger className="px-5 py-4 text-left text-base font-semibold hover:no-underline hover:bg-muted/50 transition-colors">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-muted-foreground leading-relaxed">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );
