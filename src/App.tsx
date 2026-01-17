@@ -15,6 +15,11 @@ const FacebookDownloader = lazy(() => import("./pages/FacebookDownloader"));
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Download = lazy(() => import("./pages/Download"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const DMCA = lazy(() => import("./pages/DMCA"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -37,9 +42,14 @@ const App = () => (
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
             <Route path="/youtube-downloader" element={<YouTubeDownloader />} />
             <Route path="/facebook-downloader" element={<FacebookDownloader />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/dmca" element={<DMCA />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
