@@ -135,9 +135,9 @@ const HeroSection = () => {
 
           {/* Headline - VERY LARGE for mobile */}
           <h1 className="text-hero text-foreground">
-            TikTok & Facebook
+            TikTok video
             <br />
-            <span className="gradient-text">Video Downloader</span>
+            <span className="gradient-text">Downloader</span>
           </h1>
 
           {/* Subheading - Clear and readable */}
