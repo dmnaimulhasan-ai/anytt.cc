@@ -12,7 +12,6 @@ const Header = () => {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/tiktok-downloader", label: "TikTok" },
-    { path: "/facebook-downloader", label: "Facebook" },
     { path: "/about", label: "About" },
   ];
 
