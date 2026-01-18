@@ -1,5 +1,6 @@
-# https://www.robotstxt.org/robotstxt.html
-# AnyTT - Free Video Downloader
+# AnyTT - TikTok Video Downloader
+# https://anytt.cc
+# Last updated: 2026-01-18
 
 # Google
 User-agent: Googlebot
@@ -10,6 +11,10 @@ Crawl-delay: 1
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
 
 # Twitter/X
 User-agent: Twitterbot
@@ -35,18 +40,37 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# AI Search Bots (ChatGPT, Gemini, Grok)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
 # All other bots
 User-agent: *
 Allow: /
 Crawl-delay: 2
 
-# Sitemap location
-Sitemap: https://anytt.cc/sitemap.xml
-
-# Disallow download page (NOINDEX)
+# Disallow download page (NOINDEX - user-specific downloads)
 Disallow: /download
 Disallow: /download?*
+Disallow: /download/*
 
 # Disallow API/internal paths
 Disallow: /api/
 Disallow: /*.json$
+Disallow: /*?*sessionid=*
+Disallow: /*?*token=*
+
+# Sitemap location
+Sitemap: https://anytt.cc/sitemap.xml
