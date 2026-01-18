@@ -6,7 +6,7 @@ import PlatformDownloader from "@/components/PlatformDownloader";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
-import { Youtube, Facebook } from "lucide-react";
+import { Youtube } from "lucide-react";
 import { 
   seoConfig, 
   BASE_URL, 
@@ -111,13 +111,6 @@ const TikTokDownloader = () => {
               >
                 <Youtube className="h-5 w-5 text-red-500" />
                 <span className="font-semibold">YouTube Downloader</span>
-              </Link>
-              <Link 
-                to="/facebook-downloader" 
-                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-blue-500/30 hover:border-blue-500/60 transition-colors"
-              >
-                <Facebook className="h-5 w-5 text-blue-500" />
-                <span className="font-semibold">Facebook Downloader</span>
               </Link>
             </div>
           </div>
