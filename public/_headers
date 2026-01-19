@@ -9,8 +9,12 @@
   Referrer-Policy: origin-when-cross-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   
-  # Caching for HTML
-  Cache-Control: public, max-age=0, must-revalidate
+  # CRITICAL: No cache for HTML - always fetch fresh
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
 
 # Static Assets - Long Cache
 /assets/*
