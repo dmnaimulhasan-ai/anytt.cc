@@ -19,9 +19,27 @@ export default defineConfig(({ mode }) => ({
       workbox: {
         clientsClaim: true,
         skipWaiting: true,
+        cleanupOutdatedCaches: true,
         navigateFallback: "/offline.html",
         navigateFallbackDenylist: [/^\/api/, /^\/supabase/],
         runtimeCaching: [
+          {
+            urlPattern: /\.(?:html)$/i,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "html-cache",
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 },
+              networkTimeoutSeconds: 3,
+            },
+          },
+          {
+            urlPattern: /\.(?:js|css)$/i,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "static-resources",
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 7 },
+            },
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: "CacheFirst",
@@ -48,7 +66,7 @@ export default defineConfig(({ mode }) => ({
         background_color: "#0f0d17",
         display: "standalone",
         orientation: "portrait",
-        start_url: "/",
+        start_url: "/?v=2",
         icons: [
           {
             src: "/pwa-192x192.png",
