@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Search, Clipboard, X, Loader2, List, Link, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,11 +45,10 @@ interface PlatformDownloaderProps {
 /**
  * Platform Downloader Component
  * 
- * ADSTERRA POLICY COMPLIANT:
- * - Download button has NO ads, NO delays - instant download
+ * FEATURES:
+ * - Auto-loads video from URL query parameter
+ * - ADSTERRA POLICY COMPLIANT: Download button has NO ads, NO delays
  * - Smartlink is SEPARATE button (Support Us)
- * - Clear ad labeling
- * - No misleading UI
  */
 const PlatformDownloader = ({
   platform,
@@ -59,6 +59,7 @@ const PlatformDownloader = ({
   batchPlaceholder,
   accentColor
 }: PlatformDownloaderProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [url, setUrl] = useState("");
   const [batchUrls, setBatchUrls] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +67,47 @@ const PlatformDownloader = ({
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [batchResults, setBatchResults] = useState<BatchVideoResult[]>([]);
   const [processingIndex, setProcessingIndex] = useState(-1);
+  const [autoFetched, setAutoFetched] = useState(false);
   const { toast } = useToast();
+
+  // Auto-fetch video if URL is passed as query parameter
+  useEffect(() => {
+    const urlParam = searchParams.get('url');
+    if (urlParam && !autoFetched) {
+      const decodedUrl = decodeURIComponent(urlParam);
+      setUrl(decodedUrl);
+      setAutoFetched(true);
+      
+      // Clear the URL param to keep URL clean
+      setSearchParams({}, { replace: true });
+      
+      // Auto-fetch the video
+      fetchVideoFromUrl(decodedUrl);
+    }
+  }, [searchParams, autoFetched]);
+
+  const fetchVideoFromUrl = async (videoUrl: string) => {
+    setIsLoading(true);
+    setVideoData(null);
+
+    const result = await fetchVideo(videoUrl);
+    
+    if (result.success && result.data) {
+      setVideoData(result.data);
+      toast({
+        title: "🎉 Success!",
+        description: "Video ready to download",
+      });
+    } else {
+      toast({
+        title: "❌ Failed",
+        description: result.error || "Could not fetch video",
+        variant: "destructive",
+      });
+    }
+
+    setIsLoading(false);
+  };
 
   const handlePaste = async () => {
     try {
