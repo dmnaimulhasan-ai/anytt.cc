@@ -1,76 +1,19 @@
-# AnyTT - TikTok Video Downloader
+# AnyTT - TikTok & YouTube Downloader
 # https://anytt.cc
-# Last updated: 2026-01-18
 
-# Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-# Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Google Images
-User-agent: Googlebot-Image
-Allow: /
-
-# Twitter/X
-User-agent: Twitterbot
-Allow: /
-
-# Facebook
-User-agent: facebookexternalhit
-Allow: /
-
-# Yahoo
-User-agent: Slurp
-Allow: /
-
-# DuckDuckGo
-User-agent: DuckDuckBot
-Allow: /
-
-# Baidu
-User-agent: Baiduspider
-Allow: /
-
-# Yandex
-User-agent: YandexBot
-Allow: /
-
-# AI Search Bots (ChatGPT, Gemini, Grok)
-User-agent: GPTBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-# All other bots
 User-agent: *
 Allow: /
-Crawl-delay: 2
 
-# Disallow download page (NOINDEX - user-specific downloads)
+# Block dynamic download/result pages
 Disallow: /download
 Disallow: /download?*
 Disallow: /download/*
 
-# Disallow API/internal paths
+# Block internal / API / temp URLs
 Disallow: /api/
 Disallow: /*.json$
 Disallow: /*?*sessionid=*
 Disallow: /*?*token=*
 
-# Sitemap location
+# Sitemap
 Sitemap: https://anytt.cc/sitemap.xml
