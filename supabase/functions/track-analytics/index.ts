@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { hashIP } from "../_shared/hash-ip.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -21,10 +22,11 @@ serve(async (req) => {
 
     const { action, data } = await req.json();
     
-    // Get client IP for rate limiting
-    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-                     req.headers.get('x-real-ip') || 
-                     'unknown';
+    // Get client IP for rate limiting and hash it for privacy
+    const rawIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                  req.headers.get('x-real-ip') || 
+                  'unknown';
+    const clientIP = await hashIP(rawIP);
 
     // Simple rate limiting: 60 requests per minute per IP
     const windowStart = new Date(Date.now() - 60 * 1000).toISOString();
@@ -37,7 +39,7 @@ serve(async (req) => {
       .gte('window_start', windowStart);
 
     if ((count || 0) >= 60) {
-      console.log('Rate limit exceeded for IP:', clientIP);
+      console.log('Rate limit exceeded for hashed IP');
       return new Response(
         JSON.stringify({ success: false, error: 'Rate limit exceeded' }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }

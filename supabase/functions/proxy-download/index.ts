@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { hashIP } from "../_shared/hash-ip.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -77,10 +78,11 @@ serve(async (req) => {
       );
     }
 
-    // Rate limiting
-    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-                     req.headers.get('x-real-ip') || 
-                     'unknown';
+    // Rate limiting - hash IP for privacy
+    const rawIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                  req.headers.get('x-real-ip') || 
+                  'unknown';
+    const clientIP = await hashIP(rawIP);
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
@@ -97,7 +99,7 @@ serve(async (req) => {
       .gte('window_start', windowStart);
 
     if ((count || 0) >= 20) {
-      console.log('Rate limit exceeded for proxy-download, IP:', clientIP);
+      console.log('Rate limit exceeded for proxy-download');
       return new Response(
         JSON.stringify({ error: 'Rate limit exceeded. Please wait a moment.' }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
