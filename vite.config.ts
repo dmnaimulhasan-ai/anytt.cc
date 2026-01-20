@@ -15,22 +15,18 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "robots.txt", "offline.html"],
+      includeAssets: ["favicon.ico", "robots.txt"],
       workbox: {
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        navigateFallback: "/offline.html",
-        navigateFallbackDenylist: [/^\/api/, /^\/supabase/],
+        // Remove navigateFallback to prevent offline page showing incorrectly
+        // navigateFallback: null,
         runtimeCaching: [
           {
-            urlPattern: /\.(?:html)$/i,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "html-cache",
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 },
-              networkTimeoutSeconds: 3,
-            },
+            // Navigation requests - always try network first, no offline fallback
+            urlPattern: ({ request }) => request.mode === 'navigate',
+            handler: "NetworkOnly",
           },
           {
             urlPattern: /\.(?:js|css)$/i,
@@ -54,6 +50,14 @@ export default defineConfig(({ mode }) => ({
             options: {
               cacheName: "gstatic-fonts-cache",
               expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "image-cache",
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
             },
           },
         ],

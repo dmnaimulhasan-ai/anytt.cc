@@ -4,24 +4,20 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
-// Force service worker update and clear old caches on load
+// Unregister old service workers and clear all caches to fix offline page issue
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      for (const registration of registrations) {
-        // Force update check
-        await registration.update();
-      }
-      
-      // Clear old caches that might have stale UI
+      // Clear ALL caches to prevent offline page from showing
       if ('caches' in window) {
         const cacheNames = await caches.keys();
-        await Promise.all(
-          cacheNames
-            .filter(name => name.includes('workbox') || name.includes('static'))
-            .map(name => caches.delete(name))
-        );
+        await Promise.all(cacheNames.map(name => caches.delete(name)));
+      }
+      
+      // Update all service worker registrations
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (const registration of registrations) {
+        await registration.update();
       }
     } catch (e) {
       // Ignore errors
