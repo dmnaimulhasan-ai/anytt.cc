@@ -22,7 +22,14 @@ export default defineConfig(({ mode }) => ({
         cleanupOutdatedCaches: true,
         // Remove navigateFallback to prevent offline page showing incorrectly
         // navigateFallback: null,
+        // Exclude sitemap.xml, robots.txt and other SEO files from service worker
+        navigateFallbackDenylist: [/sitemap\.xml$/, /robots\.txt$/],
         runtimeCaching: [
+          {
+            // XML files (sitemap, etc.) - always fetch from network
+            urlPattern: /\.xml$/i,
+            handler: "NetworkOnly",
+          },
           {
             // Navigation requests - always try network first, no offline fallback
             urlPattern: ({ request }) => request.mode === 'navigate',
