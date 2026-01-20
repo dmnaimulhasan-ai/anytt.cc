@@ -1,4 +1,5 @@
 import { useParams, Navigate, Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -134,18 +135,21 @@ const BlogPost = () => {
                 prose-li:my-1
                 prose-table:border-border prose-th:bg-muted prose-td:border-border"
               dangerouslySetInnerHTML={{ 
-                __html: post.content
-                  .replace(/^## /gm, '<h2>')
-                  .replace(/^### /gm, '<h3>')
-                  .replace(/\n\n/g, '</p><p>')
-                  .replace(/<h2>(.+)/g, '</p><h2>$1</h2><p>')
-                  .replace(/<h3>(.+)/g, '</p><h3>$1</h3><p>')
-                  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                  .replace(/✅/g, '<span class="text-green-500">✅</span>')
-                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-                  .replace(/^- (.+)/gm, '<li>$1</li>')
-                  .replace(/(<li>.+<\/li>\n?)+/g, '<ul>$&</ul>')
-                  .replace(/^\d+\. (.+)/gm, '<li>$1</li>')
+                __html: DOMPurify.sanitize(
+                  post.content
+                    .replace(/^## /gm, '<h2>')
+                    .replace(/^### /gm, '<h3>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/<h2>(.+)/g, '</p><h2>$1</h2><p>')
+                    .replace(/<h3>(.+)/g, '</p><h3>$1</h3><p>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/✅/g, '<span class="text-green-500">✅</span>')
+                    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+                    .replace(/^- (.+)/gm, '<li>$1</li>')
+                    .replace(/(<li>.+<\/li>\n?)+/g, '<ul>$&</ul>')
+                    .replace(/^\d+\. (.+)/gm, '<li>$1</li>'),
+                  { ALLOWED_TAGS: ['h2', 'h3', 'p', 'a', 'strong', 'span', 'ul', 'ol', 'li'], ALLOWED_ATTR: ['href', 'class', 'target', 'rel'] }
+                )
               }}
             />
             
