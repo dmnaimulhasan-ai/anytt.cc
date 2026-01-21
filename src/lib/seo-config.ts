@@ -8,7 +8,7 @@ export const seoConfig = {
   home: {
     title: "AnyTT - Free TikTok & YouTube Video Downloader Without Watermark 2026",
     description: "Download TikTok & YouTube videos without watermark in HD quality. 100% free online video downloader - no registration, works on iPhone, Android & PC. Save videos instantly!",
-    keywords: "video downloader, TikTok downloader, YouTube downloader, download without watermark, HD video download, free video saver, AnyTT, TikTok video download, YouTube Shorts download, video downloader 2026, snaptik alternative, y2mate alternative, savefrom alternative",
+    keywords: "video downloader, TikTok downloader, YouTube downloader, download without watermark, HD video download, free video saver, AnyTT, TikTok video download, YouTube Shorts download, video downloader 2026, snaptik alternative, y2mate alternative",
     h1: "TikTok & YouTube Video Downloader",
     h2: "Download Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose AnyTT", "Frequently Asked Questions"]
