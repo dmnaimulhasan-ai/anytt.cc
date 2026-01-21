@@ -11,7 +11,7 @@ const faqData = [
     questions: [
       {
         question: "What is AnyTT?",
-        answer: "AnyTT is a free online video downloader that allows you to save videos from TikTok, YouTube, and Facebook without watermarks. It's fast, free, and works on all devices."
+        answer: "AnyTT is a free online video downloader that allows you to save videos from TikTok and YouTube without watermarks. It's fast, free, and works on all devices."
       },
       {
         question: "Is AnyTT free to use?",
@@ -54,23 +54,6 @@ const faqData = [
       {
         question: "Is downloading YouTube videos legal?",
         answer: "Downloading videos for personal use is generally acceptable, but you should respect copyright and the creator's rights. Don't redistribute copyrighted content."
-      }
-    ]
-  },
-  {
-    category: "Facebook Downloads",
-    questions: [
-      {
-        question: "How do I download Facebook videos?",
-        answer: "Copy the Facebook video URL (or Reels URL), paste it into AnyTT, and download. Works with public videos and Reels."
-      },
-      {
-        question: "Can I download Facebook Reels?",
-        answer: "Yes, Facebook Reels are fully supported. Just paste the Reels link and download in HD quality."
-      },
-      {
-        question: "Why can't I download some Facebook videos?",
-        answer: "Private videos or videos with restricted privacy settings cannot be downloaded. Only public videos are accessible."
       }
     ]
   },
@@ -123,9 +106,9 @@ const FAQPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHead
-        title="FAQ - AnyTT Video Downloader | Frequently Asked Questions"
-        description="Get answers to common questions about downloading TikTok, YouTube, and Facebook videos with AnyTT. Learn how to save videos without watermark."
+        <SEOHead
+          title="FAQ - AnyTT Video Downloader | Frequently Asked Questions"
+          description="Get answers to common questions about downloading TikTok and YouTube videos with AnyTT. Learn how to save videos without watermark."
         canonicalUrl={`${BASE_URL}/faq`}
         keywords="AnyTT FAQ, video downloader help, TikTok download questions, how to download videos, video saver FAQ"
         jsonLd={[
