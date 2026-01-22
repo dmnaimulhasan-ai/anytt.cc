@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -66,6 +67,54 @@ const Index = () => {
         <ScrollBanner />
         
         <FAQSection faqs={homeFaqs} />
+
+        {/* Internal links section for SEO */}
+        <section className="py-12 px-4 bg-muted/10">
+          <div className="container mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-bold font-display mb-6">Our Tools</h2>
+            <nav className="flex flex-wrap justify-center gap-4" aria-label="Downloader tools">
+              <Link 
+                to="/tiktok-downloader" 
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
+                title="Download TikTok videos without watermark"
+              >
+                <span className="text-xl">🎵</span>
+                <span className="font-semibold">TikTok Downloader</span>
+              </Link>
+              <Link 
+                to="/youtube-downloader" 
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-red-500/30 hover:border-red-500/60 transition-colors"
+                title="Download YouTube videos and Shorts"
+              >
+                <span className="text-xl">▶️</span>
+                <span className="font-semibold">YouTube Downloader</span>
+              </Link>
+            </nav>
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+              <Link 
+                to="/blog" 
+                className="text-muted-foreground hover:text-primary transition-colors"
+                title="Video download guides"
+              >
+                📚 Guides & Tutorials
+              </Link>
+              <Link 
+                to="/faq" 
+                className="text-muted-foreground hover:text-primary transition-colors"
+                title="Frequently asked questions"
+              >
+                ❓ FAQ
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-muted-foreground hover:text-primary transition-colors"
+                title="About AnyTT"
+              >
+                ℹ️ About Us
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
       

@@ -1,32 +1,31 @@
 # Lovable/Netlify Redirects Configuration
-# SEO Optimized - Prevents Duplicate Content
+# SEO Optimized - No redirect chains, clean URLs
 
-# Force HTTPS (Lovable handles this automatically)
-# http://anytt.cc/* https://anytt.cc/:splat 301!
-
-# Remove trailing slashes (prevents duplicate URLs)
-/tiktok-downloader/ /tiktok-downloader 301
-/youtube-downloader/ /youtube-downloader 301
-/faq/ /faq 301
-/blog/ /blog 301
-/about/ /about 301
-/privacy-policy/ /privacy-policy 301
-/terms-of-service/ /terms-of-service 301
-/dmca/ /dmca 301
-
-# Redirect removed Facebook page to homepage
-/facebook-downloader /tiktok-downloader 301
-/facebook-downloader/* /tiktok-downloader 301
-
-# Old URL redirects (if any existed)
-/save /tiktok-downloader 301
-/tiktok /tiktok-downloader 301
-/youtube /youtube-downloader 301
-/yt /youtube-downloader 301
+# Force HTTPS and www normalization (handled by Netlify)
+# All traffic goes to https://anytt.cc (canonical)
 
 # Static SEO files - serve directly (before SPA fallback)
 /sitemap.xml    /sitemap.xml    200!
 /robots.txt     /robots.txt     200!
+
+# Remove trailing slashes - DIRECT redirect (no chains)
+/tiktok-downloader/ /tiktok-downloader 301!
+/youtube-downloader/ /youtube-downloader 301!
+/faq/ /faq 301!
+/blog/ /blog 301!
+/about/ /about 301!
+/privacy-policy/ /privacy-policy 301!
+/terms-of-service/ /terms-of-service 301!
+/dmca/ /dmca 301!
+
+# Legacy URL redirects - DIRECT to final destination (no chains)
+/facebook-downloader /tiktok-downloader 301!
+/facebook-downloader/* /tiktok-downloader 301!
+/save /tiktok-downloader 301!
+/tiktok /tiktok-downloader 301!
+/youtube /youtube-downloader 301!
+/yt /youtube-downloader 301!
+/tt /tiktok-downloader 301!
 
 # SPA Fallback - Must be last
 /* /index.html 200

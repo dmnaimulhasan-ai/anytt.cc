@@ -100,19 +100,34 @@ const TikTokDownloader = () => {
         {/* Banner Ad */}
         <BannerAd />
 
-        {/* Internal Links */}
+        {/* Internal Links - SEO optimized with proper anchors */}
         <section className="py-12 px-4 md:px-6">
-          <div className="container mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold font-display mb-6">Try Other Downloaders</h2>
-            <div className="flex flex-wrap justify-center gap-4">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-2xl font-bold font-display mb-6 text-center">Explore More</h2>
+            <nav className="flex flex-wrap justify-center gap-4" aria-label="Related tools">
               <Link 
                 to="/youtube-downloader" 
                 className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-red-500/30 hover:border-red-500/60 transition-colors"
+                title="Download YouTube videos and Shorts for free"
               >
                 <Youtube className="h-5 w-5 text-red-500" />
                 <span className="font-semibold">YouTube Downloader</span>
               </Link>
-            </div>
+              <Link 
+                to="/blog" 
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
+                title="Read our video download guides"
+              >
+                <span className="font-semibold">📚 Guides & Tutorials</span>
+              </Link>
+              <Link 
+                to="/faq" 
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-secondary/30 hover:border-secondary/60 transition-colors"
+                title="Frequently asked questions about TikTok downloading"
+              >
+                <span className="font-semibold">❓ FAQ</span>
+              </Link>
+            </nav>
           </div>
         </section>
       </main>

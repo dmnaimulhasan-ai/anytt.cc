@@ -1,3 +1,5 @@
+import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -5,19 +7,35 @@ import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
+import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-data";
 import { BASE_URL } from "@/lib/seo-config";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
+const POSTS_PER_PAGE = 6;
+
+/**
+ * Blog Page - SEO Optimized with accessible pagination
+ * Uses proper semantic HTML and crawlable links
+ */
 const Blog = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  
   const breadcrumbItems = [
     { label: "Blog", href: "/blog" }
   ];
+
+  // Calculate pagination
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = blogPosts.slice(startIndex, endIndex);
 
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "AnyTT Blog - Video Download Guides & Tutorials",
-    "description": "Learn how to download videos from TikTok, YouTube, and Facebook with our step-by-step guides.",
+    "description": "Learn how to download videos from TikTok, YouTube, and more with our step-by-step guides.",
     "url": `${BASE_URL}/blog`,
     "publisher": {
       "@type": "Organization",
@@ -33,17 +51,23 @@ const Blog = () => {
     }))
   };
 
+  // Pagination handler
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
         title="Video Download Guides & Tutorials | AnyTT Blog"
-        description="Learn how to download videos from TikTok, YouTube, and Facebook. Step-by-step tutorials, tips, and guides for saving videos on any device."
+        description="Learn how to download videos from TikTok, YouTube, and more. Step-by-step tutorials, tips, and guides for saving videos on any device."
         canonicalUrl={`${BASE_URL}/blog`}
-        keywords="video download guide, tiktok tutorial, youtube download help, facebook video save, how to download videos"
+        keywords="video download guide, tiktok tutorial, youtube download help, how to download videos, video saver tips"
         jsonLd={[blogSchema]}
       />
       <Header />
-      <main className="pt-20">
+      <main>
         <section className="py-12 px-4 md:px-6">
           <div className="container mx-auto max-w-6xl">
             <Breadcrumb items={breadcrumbItems} />
@@ -53,38 +77,103 @@ const Blog = () => {
                 Video Download <span className="gradient-text">Guides & Tutorials</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Learn how to download videos from TikTok, YouTube, Facebook and more with our easy-to-follow guides.
+                Learn how to download videos from TikTok, YouTube, and more with our easy-to-follow guides.
               </p>
             </div>
             
             {/* Native Banner Ad */}
             <NativeBanner />
             
+            {/* Blog posts grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post, index) => (
-                <>
-                  <BlogCard
-                    key={post.slug}
-                    slug={post.slug}
-                    title={post.title}
-                    excerpt={post.excerpt}
-                    date={post.date}
-                    readTime={post.readTime}
-                    category={post.category}
-                    image={post.image}
-                  />
-                  {/* Insert ad after every 3rd post */}
-                  {(index + 1) % 3 === 0 && index !== blogPosts.length - 1 && (
-                    <div key={`ad-${index}`} className="col-span-1 md:col-span-2 lg:col-span-3">
-                      <BannerAd />
-                    </div>
-                  )}
-                </>
+              {currentPosts.map((post) => (
+                <BlogCard
+                  key={post.slug}
+                  slug={post.slug}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  date={post.date}
+                  readTime={post.readTime}
+                  category={post.category}
+                  image={post.image}
+                />
               ))}
             </div>
+
+            {/* Pagination - SEO friendly with proper navigation */}
+            {totalPages > 1 && (
+              <nav 
+                className="flex items-center justify-center gap-2 mt-12" 
+                aria-label="Blog pagination"
+                role="navigation"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  aria-label="Previous page"
+                  className="rounded-xl"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    onClick={() => goToPage(page)}
+                    className="rounded-xl min-w-[40px]"
+                    aria-label={`Page ${page}`}
+                    aria-current={currentPage === page ? "page" : undefined}
+                  >
+                    {page}
+                  </Button>
+                ))}
+                
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  aria-label="Next page"
+                  className="rounded-xl"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </nav>
+            )}
             
             {/* Bottom Banner Ad */}
             <BannerAd />
+
+            {/* Internal links for SEO */}
+            <div className="mt-12 text-center">
+              <h2 className="text-xl font-bold mb-4">Quick Links</h2>
+              <nav className="flex flex-wrap justify-center gap-4" aria-label="Quick navigation">
+                <Link 
+                  to="/tiktok-downloader" 
+                  className="text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+                  title="Download TikTok videos without watermark"
+                >
+                  TikTok Downloader
+                </Link>
+                <Link 
+                  to="/youtube-downloader" 
+                  className="text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+                  title="Download YouTube videos and Shorts"
+                >
+                  YouTube Downloader
+                </Link>
+                <Link 
+                  to="/faq" 
+                  className="text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
+                  title="Frequently asked questions"
+                >
+                  FAQ
+                </Link>
+              </nav>
+            </div>
           </div>
         </section>
       </main>

@@ -1,10 +1,25 @@
-# AnyTT - TikTok & YouTube Downloader
+# AnyTT - TikTok & YouTube Video Downloader
 # https://anytt.cc
+# Last updated: 2026-01-22
 
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Block dynamic download/result pages
+# Core pages - explicitly allow
+Allow: /tiktok-downloader
+Allow: /youtube-downloader
+Allow: /faq
+Allow: /about
+Allow: /blog
+Allow: /blog/*
+
+# Allow CSS and JS files for proper rendering
+Allow: /*.js$
+Allow: /*.css$
+Allow: /assets/*
+
+# Block dynamic/result pages (not indexable content)
 Disallow: /download
 Disallow: /download?*
 Disallow: /download/*
@@ -12,8 +27,17 @@ Disallow: /download/*
 # Block internal / API / temp URLs
 Disallow: /api/
 Disallow: /*.json$
-Disallow: /*?*sessionid=*
-Disallow: /*?*token=*
+Disallow: /*?sessionid=*
+Disallow: /*?token=*
+Disallow: /*?url=*
 
-# Sitemap
+# Block pagination parameters that create duplicate content
+Disallow: /*?page=*
+Disallow: /*?sort=*
+Disallow: /*?filter=*
+
+# Crawl delay for polite crawling (optional, helps server)
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://anytt.cc/sitemap.xml

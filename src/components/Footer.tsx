@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import StatsBar from "./StatsBar";
 
 /**
- * Footer - Clean and minimal
- * Mobile-first design
+ * Footer - SEO Optimized with proper internal linking
+ * Uses semantic HTML and proper <a href=""> links for crawlability
  */
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 border-t border-border">
+    <footer className="py-12 px-4 border-t border-border" role="contentinfo">
       <div className="container mx-auto max-w-3xl">
         
         {/* Stats */}
@@ -17,50 +17,123 @@ const Footer = () => {
           <StatsBar />
         </div>
 
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8 text-sm">
-          <div>
+        {/* Links Grid - SEO optimized with proper anchor tags */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-sm">
+          {/* Downloaders */}
+          <nav aria-label="Downloader tools">
             <h3 className="font-bold mb-3 text-foreground">Downloaders</h3>
-            <nav className="space-y-2">
-              <Link to="/tiktok-downloader" className="block text-muted-foreground hover:text-foreground transition-colors">
-                TikTok
-              </Link>
-              <Link to="/facebook-downloader" className="block text-muted-foreground hover:text-foreground transition-colors">
-                Facebook
-              </Link>
-            </nav>
-          </div>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/tiktok-downloader" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Download TikTok videos without watermark"
+                >
+                  TikTok Downloader
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/youtube-downloader" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Download YouTube videos and Shorts"
+                >
+                  YouTube Downloader
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-          <div>
+          {/* Resources */}
+          <nav aria-label="Resources">
+            <h3 className="font-bold mb-3 text-foreground">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/blog" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Video download guides and tutorials"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/faq" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Frequently asked questions"
+                >
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Company */}
+          <nav aria-label="Company information">
             <h3 className="font-bold mb-3 text-foreground">Company</h3>
-            <nav className="space-y-2">
-              <Link to="/about" className="block text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </Link>
-              <Link to="/blog" className="block text-muted-foreground hover:text-foreground transition-colors">
-                Blog
-              </Link>
-            </nav>
-          </div>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/about" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="About AnyTT"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://t.me/GEN_ZDownloader" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Contact us on Telegram"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-          <div>
-            <h3 className="font-bold mb-3 text-foreground">Support</h3>
-            <nav className="space-y-2">
-              <a 
-                href="https://t.me/GEN_ZDownloader" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Telegram
-              </a>
-            </nav>
-          </div>
+          {/* Legal */}
+          <nav aria-label="Legal information">
+            <h3 className="font-bold mb-3 text-foreground">Legal</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Privacy Policy"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-of-service" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="Terms of Service"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/dmca" 
+                  className="block text-muted-foreground hover:text-foreground transition-colors"
+                  title="DMCA Policy"
+                >
+                  DMCA
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border text-sm">
-          <Link to="/" className="text-xl font-bold">
+          <Link to="/" className="text-xl font-bold" title="AnyTT - Free Video Downloader">
             <span className="gradient-text">Anytt</span>
             <span className="text-foreground">.cc</span>
           </Link>
