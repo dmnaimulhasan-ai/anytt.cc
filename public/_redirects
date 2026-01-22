@@ -24,5 +24,9 @@
 /youtube /youtube-downloader 301
 /yt /youtube-downloader 301
 
+# Static SEO files - serve directly (before SPA fallback)
+/sitemap.xml    /sitemap.xml    200!
+/robots.txt     /robots.txt     200!
+
 # SPA Fallback - Must be last
 /* /index.html 200
