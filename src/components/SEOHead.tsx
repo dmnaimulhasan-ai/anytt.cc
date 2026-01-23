@@ -14,7 +14,7 @@ const SEOHead = ({
   description, 
   canonicalUrl, 
   keywords,
-  ogImage = "/pwa-512x512.png",
+  ogImage = "https://anytt.cc/og-image.jpg",
   jsonLd = []
 }: SEOHeadProps) => {
   useEffect(() => {
