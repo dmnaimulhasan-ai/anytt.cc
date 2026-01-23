@@ -1,6 +1,6 @@
-# AnyTT - TikTok & YouTube Video Downloader
+# Anytt cc - TikTok Video Downloader
 # https://anytt.cc
-# Last updated: 2026-01-22
+# Last updated: 2026-01-23
 
 # Allow all crawlers
 User-agent: *
@@ -8,7 +8,6 @@ Allow: /
 
 # Core pages - explicitly allow
 Allow: /tiktok-downloader
-Allow: /youtube-downloader
 Allow: /faq
 Allow: /about
 Allow: /blog
