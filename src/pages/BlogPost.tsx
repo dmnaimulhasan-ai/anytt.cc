@@ -145,9 +145,6 @@ const BlogPost = () => {
                 <Link to="/tiktok-downloader">
                   <Button>TikTok Downloader</Button>
                 </Link>
-                <Link to="/youtube-downloader">
-                  <Button variant="outline">YouTube Downloader</Button>
-                </Link>
               </div>
             </div>
             

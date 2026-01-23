@@ -7,8 +7,8 @@ const TermsOfService = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Terms of Service - AnyTT Video Downloader"
-        description="Read AnyTT's terms of service. Understand the rules and guidelines for using our free video downloader for TikTok, YouTube, and Facebook."
+        title="Terms of Service - AnyTT TikTok Video Downloader"
+        description="Read AnyTT's terms of service. Understand the rules and guidelines for using our free TikTok video downloader."
         canonicalUrl={`${BASE_URL}/terms-of-service`}
         keywords="AnyTT terms of service, video downloader terms, usage guidelines, legal terms"
         jsonLd={[getOrganizationSchema()]}
@@ -32,7 +32,7 @@ const TermsOfService = () => {
               <section>
                 <h2 className="text-xl font-bold mb-4">2. Service Description</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  AnyTT is a free online tool that allows users to download videos from TikTok, YouTube, and Facebook for personal use. We do not host any video content; we only provide links to content hosted on third-party platforms.
+                  AnyTT is a free online tool that allows users to download TikTok videos for personal use. We do not host any video content; we only provide links to content hosted on third-party platforms.
                 </p>
               </section>
 

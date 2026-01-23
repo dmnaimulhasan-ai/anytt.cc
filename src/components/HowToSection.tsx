@@ -5,7 +5,7 @@ const steps = [
     icon: Clipboard,
     step: "1",
     title: "Copy Link",
-    description: "Copy the video link from TikTok or Facebook app",
+    description: "Copy the video link from the TikTok app",
   },
   {
     icon: Search,

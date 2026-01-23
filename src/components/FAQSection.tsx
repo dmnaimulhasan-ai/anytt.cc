@@ -25,7 +25,7 @@ const defaultFaqs: FAQ[] = [
   },
   {
     question: "What video quality is available?",
-    answer: "We provide HD quality downloads without watermark. The quality depends on the original video uploaded to TikTok or Facebook."
+    answer: "We provide HD quality downloads without watermark. The quality depends on the original video uploaded to TikTok."
   },
   {
     question: "Does it work on iPhone?",

@@ -34,8 +34,8 @@ const Blog = () => {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "AnyTT Blog - Video Download Guides & Tutorials",
-    "description": "Learn how to download videos from TikTok, YouTube, and more with our step-by-step guides.",
+    "name": "AnyTT Blog - TikTok Video Download Guides & Tutorials",
+    "description": "Learn how to download TikTok videos without watermark with our step-by-step guides.",
     "url": `${BASE_URL}/blog`,
     "publisher": {
       "@type": "Organization",
@@ -77,10 +77,10 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Video Download Guides & Tutorials | AnyTT Blog"
-        description="Learn how to download videos from TikTok, YouTube, and more. Step-by-step tutorials, tips, and guides for saving videos on any device."
+        title="TikTok Download Guides & Tutorials | AnyTT Blog"
+        description="Learn how to download TikTok videos without watermark. Step-by-step tutorials, tips, and guides for saving TikTok videos on any device."
         canonicalUrl={`${BASE_URL}/blog`}
-        keywords="video download guide, tiktok tutorial, youtube download help, how to download videos, video saver tips"
+        keywords="tiktok download guide, tiktok tutorial, how to download tiktok videos, tiktok video saver tips"
         jsonLd={[blogSchema, breadcrumbJsonLd, itemListJsonLd]}
       />
       <Header />
@@ -91,10 +91,10 @@ const Blog = () => {
             
             <div className="text-center mb-12">
               <h1 className="text-3xl md:text-4xl font-black font-display mb-4">
-                Video Download <span className="gradient-text">Guides & Tutorials</span>
+                TikTok Download <span className="gradient-text">Guides & Tutorials</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Learn how to download videos from TikTok, YouTube, and more with our easy-to-follow guides.
+                Learn how to download TikTok videos without watermark with our easy-to-follow guides.
               </p>
             </div>
             
@@ -174,13 +174,6 @@ const Blog = () => {
                   title="Download TikTok videos without watermark"
                 >
                   TikTok Downloader
-                </Link>
-                <Link 
-                  to="/youtube-downloader" 
-                  className="text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
-                  title="Download YouTube videos and Shorts"
-                >
-                  YouTube Downloader
                 </Link>
                 <Link 
                   to="/faq" 
