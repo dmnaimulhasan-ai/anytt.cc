@@ -10,6 +10,9 @@ import FloatingBanner from "./components/ads/FloatingBanner";
 
 // Lazy load non-critical routes to reduce initial bundle size
 const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
+const TikTokDownloaderES = lazy(() => import("./pages/TikTokDownloaderES"));
+const TikTokDownloaderPT = lazy(() => import("./pages/TikTokDownloaderPT"));
+const TikTokDownloaderID = lazy(() => import("./pages/TikTokDownloaderID"));
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -43,6 +46,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
+            
+            {/* Multilingual landing pages */}
+            <Route path="/es/descargar-tiktok" element={<TikTokDownloaderES />} />
+            <Route path="/pt/baixar-tiktok" element={<TikTokDownloaderPT />} />
+            <Route path="/id/unduh-tiktok" element={<TikTokDownloaderID />} />
             
             {/* Legacy redirects - handled by _redirects for SEO */}
             

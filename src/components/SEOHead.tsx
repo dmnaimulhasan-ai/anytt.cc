@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 
+interface HreflangTag {
+  lang: string;
+  url: string;
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -7,6 +12,7 @@ interface SEOHeadProps {
   keywords?: string;
   ogImage?: string;
   jsonLd?: object[];
+  hreflang?: HreflangTag[];
 }
 
 const SEOHead = ({ 
@@ -15,7 +21,8 @@ const SEOHead = ({
   canonicalUrl, 
   keywords,
   ogImage = "https://anytt.cc/og-image.jpg",
-  jsonLd = []
+  jsonLd = [],
+  hreflang = []
 }: SEOHeadProps) => {
   useEffect(() => {
     // Update document title
@@ -60,6 +67,19 @@ const SEOHead = ({
       canonical.setAttribute('href', canonicalUrl);
       document.head.appendChild(canonical);
     }
+
+    // Hreflang tags
+    const existingHreflang = document.querySelectorAll('link[data-hreflang]');
+    existingHreflang.forEach(link => link.remove());
+    
+    hreflang.forEach((tag) => {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', tag.lang);
+      link.setAttribute('href', tag.url);
+      link.setAttribute('data-hreflang', tag.lang);
+      document.head.appendChild(link);
+    });
     
     // JSON-LD
     const existingScripts = document.querySelectorAll('script[data-seo-jsonld]');
@@ -77,8 +97,11 @@ const SEOHead = ({
       // Cleanup JSON-LD scripts on unmount
       const scripts = document.querySelectorAll('script[data-seo-jsonld]');
       scripts.forEach(script => script.remove());
+      // Cleanup hreflang on unmount
+      const hreflangLinks = document.querySelectorAll('link[data-hreflang]');
+      hreflangLinks.forEach(link => link.remove());
     };
-  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd]);
+  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd, hreflang]);
   
   return null;
 };
