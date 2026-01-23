@@ -10,17 +10,26 @@ export const BASE_URL = "https://anytt.cc";
 export const brandedKeywords = {
   // Primary branded keywords
   primary: "anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok",
-  // Multilingual variations
-  spanish: "anytt cc descargar tiktok, anytt descargador de videos, descargar tiktok sin marca de agua",
-  portuguese: "anytt cc baixar tiktok, anytt baixar video tiktok, baixar tiktok sem marca d'agua",
-  french: "anytt cc télécharger tiktok, anytt téléchargeur vidéo, télécharger tiktok sans filigrane",
-  german: "anytt cc tiktok herunterladen, anytt video downloader, tiktok ohne wasserzeichen",
-  indonesian: "anytt cc unduh tiktok, anytt download video tiktok, unduh tiktok tanpa watermark",
-  hindi: "anytt cc tiktok download, anytt वीडियो डाउनलोडर, टिकटॉक वीडियो डाउनलोड",
-  arabic: "anytt cc تحميل تيك توك, anytt تنزيل فيديو, تحميل تيك توك بدون علامة مائية",
-  russian: "anytt cc скачать тикток, anytt загрузчик видео, скачать тикток без водяного знака",
-  japanese: "anytt cc tiktokダウンロード, anytt 動画ダウンローダー, tiktok透かしなし",
-  korean: "anytt cc 틱톡 다운로드, anytt 동영상 다운로더, 틱톡 워터마크 없이"
+  // Spanish variations - expanded
+  spanish: "anytt cc descargar tiktok, anytt descargador de videos, descargar tiktok sin marca de agua, descargar video tiktok gratis sin marca de agua, bajar videos de tiktok gratis, descargar tiktok hd, guardar video tiktok sin logo, tiktok descargador gratis, descargar tiktok mp4, video tiktok sin watermark, como descargar tiktok sin marca",
+  // Portuguese variations - expanded  
+  portuguese: "anytt cc baixar tiktok, anytt baixar video tiktok, baixar tiktok sem marca d'agua, baixar video tiktok gratis sem marca d'agua, download tiktok gratis brasil, salvar video tiktok sem logo, baixador de tiktok hd, tiktok download gratis, como baixar tiktok sem marca, video tiktok sem watermark, baixar tiktok mp4 gratis",
+  // Indonesian variations - expanded
+  indonesian: "anytt cc unduh tiktok, anytt download video tiktok, unduh tiktok tanpa watermark, download video tiktok gratis tanpa watermark, simpan video tiktok tanpa logo, unduh tiktok hd gratis, cara download tiktok tanpa watermark, tiktok downloader indonesia, download tiktok mp4 gratis, video tiktok tanpa tanda air, unduh tiktok gratis",
+  // French variations
+  french: "anytt cc télécharger tiktok, anytt téléchargeur vidéo, télécharger tiktok sans filigrane, télécharger video tiktok gratuit sans filigrane, tiktok téléchargeur gratuit",
+  // German variations
+  german: "anytt cc tiktok herunterladen, anytt video downloader, tiktok ohne wasserzeichen, tiktok video kostenlos herunterladen ohne wasserzeichen, tiktok downloader kostenlos",
+  // Hindi variations
+  hindi: "anytt cc tiktok download, anytt वीडियो डाउनलोडर, टिकटॉक वीडियो डाउनलोड, टिकटॉक वीडियो बिना वॉटरमार्क डाउनलोड करें, टिकटॉक डाउनलोडर फ्री",
+  // Arabic variations
+  arabic: "anytt cc تحميل تيك توك, anytt تنزيل فيديو, تحميل تيك توك بدون علامة مائية, تحميل فيديو تيك توك مجاني بدون علامة مائية, تحميل تيك توك hd",
+  // Russian variations
+  russian: "anytt cc скачать тикток, anytt загрузчик видео, скачать тикток без водяного знака, скачать видео тикток бесплатно без водяного знака, тикток скачать бесплатно",
+  // Japanese variations
+  japanese: "anytt cc tiktokダウンロード, anytt 動画ダウンローダー, tiktok透かしなし, tiktok動画無料ダウンロード透かしなし, ティックトックダウンローダー無料",
+  // Korean variations
+  korean: "anytt cc 틱톡 다운로드, anytt 동영상 다운로더, 틱톡 워터마크 없이, 틱톡 동영상 무료 다운로드 워터마크 없이, 틱톡 다운로더 무료"
 };
 
 export const seoConfig = {
