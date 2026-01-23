@@ -143,14 +143,14 @@ const HeroSection = () => {
 
           {/* Headline - VERY LARGE for mobile */}
           <h1 className="text-hero text-foreground">
-            TikTok video
+            <span className="gradient-text">Anytt cc</span>
             <br />
-            <span className="gradient-text">Downloader</span>
+            TikTok Downloader
           </h1>
 
           {/* Subheading - Clear and readable */}
           <p className="text-subhero text-muted-foreground max-w-md mx-auto leading-relaxed">
-            Download videos without watermark in HD quality. 100% free, no registration, unlimited downloads.
+            Anytt cc - Download TikTok videos without watermark in HD. 100% free, no registration, unlimited downloads.
           </p>
 
           {/* Search Box */}

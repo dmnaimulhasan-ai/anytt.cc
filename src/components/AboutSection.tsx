@@ -4,22 +4,22 @@ const features = [
   {
     icon: Shield,
     title: "100% Safe",
-    description: "No registration required. We never store your data or videos.",
+    description: "No registration required. Anytt cc never stores your data or videos.",
   },
   {
     icon: Zap,
     title: "Super Fast",
-    description: "Download videos in seconds with our optimized servers.",
+    description: "Anytt cc downloads videos in seconds with optimized servers.",
   },
   {
     icon: Smartphone,
     title: "Works Everywhere",
-    description: "iPhone, Android, PC, Mac - works on any device with a browser.",
+    description: "iPhone, Android, PC, Mac - Anytt cc works on any device with a browser.",
   },
   {
     icon: Globe,
     title: "No Limits",
-    description: "Unlimited downloads, completely free. No hidden fees.",
+    description: "Unlimited downloads with Anytt cc, completely free. No hidden fees.",
   },
 ];
 
@@ -35,7 +35,7 @@ const AboutSection = () => {
           Why <span className="gradient-text">Anytt cc</span>?
         </h2>
         <p className="text-center text-muted-foreground text-subhero mb-12 max-w-lg mx-auto">
-          Anytt cc - The easiest way to download videos without watermark
+          Anytt cc - The easiest way to download TikTok videos without watermark
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">

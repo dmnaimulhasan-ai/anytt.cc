@@ -32,24 +32,24 @@ const SectionLoader = () => (
 
 const homeFaqs = [
   {
-    question: "How do I download TikTok videos without watermark?",
-    answer: "Simply paste the TikTok video URL into Anytt.cc and click download. Your video will be saved without watermark in HD quality."
+    question: "How do I download TikTok videos without watermark using Anytt cc?",
+    answer: "Simply paste the TikTok video URL into Anytt cc and click download. Your video will be saved without watermark in HD quality. Anytt cc makes downloading easy!"
   },
   {
-    question: "Is Anytt.cc free to use?",
-    answer: "Yes, Anytt.cc is 100% free with no hidden fees, subscriptions, or limits on downloads."
+    question: "Is Anytt cc free to use?",
+    answer: "Yes, Anytt cc is 100% free with no hidden fees, subscriptions, or limits on downloads. Use anytt.cc unlimited times!"
   },
   {
-    question: "What can I download with Anytt.cc?",
-    answer: "Anytt.cc supports downloading TikTok videos including Reels, Stories, and regular videos in HD quality."
+    question: "What can I download with Anytt cc?",
+    answer: "Anytt cc supports downloading TikTok videos including Reels, Stories, Slideshows, and regular videos in HD quality without watermark."
   },
   {
-    question: "Does it work on mobile devices?",
-    answer: "Yes, Anytt.cc works on all devices including iPhone, Android phones, tablets, and desktop computers."
+    question: "Does Anytt cc work on mobile devices?",
+    answer: "Yes, Anytt cc works on all devices including iPhone, Android phones, tablets, and desktop computers. Access anytt.cc from any browser!"
   },
   {
-    question: "Is it safe to use?",
-    answer: "Absolutely! Anytt.cc doesn't require any registration or personal information. We don't store any of your data."
+    question: "Is Anytt cc safe to use?",
+    answer: "Absolutely! Anytt cc doesn't require any registration or personal information. We don't store any of your data. Anytt cc is 100% safe and secure."
   }
 ];
 
