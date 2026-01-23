@@ -8,7 +8,7 @@ export const seoConfig = {
   home: {
     title: "AnyTT - Free TikTok Video Downloader Without Watermark 2026",
     description: "Download TikTok videos without watermark in HD quality. 100% free online video downloader - no registration, works on iPhone, Android & PC. Save TikTok videos instantly!",
-    keywords: "video downloader, TikTok downloader, download without watermark, HD video download, free video saver, AnyTT, TikTok video download, video downloader 2026, snaptik alternative, tiktok saver",
+    keywords: "tiktok downloader, tiktok video downloader, download tiktok video, tiktok no watermark, save tiktok video, tiktok saver, snaptik, ssstik, tiktok download, tiktok mp4, tiktok to mp3, tikmate, tiktok video saver, tiktok hd download, tiktok downloader online, download tiktok without watermark, tiktok video download free, tiktok audio download, musically downloader, douyin downloader, tiktok repost download, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, tiktok mp4 converter, download tiktok 4k, tiktok original quality, anytt",
     h1: "TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose AnyTT", "Frequently Asked Questions"]
@@ -16,23 +16,23 @@ export const seoConfig = {
   tiktok: {
     title: "TikTok Video Downloader - Download TikTok Without Watermark Free 2026",
     description: "Free TikTok video downloader. Save TikTok videos without watermark in HD quality. Works on iPhone, Android, and PC. No registration required. Download TikTok MP4 & MP3!",
-    keywords: "TikTok downloader, download TikTok video, TikTok without watermark, save TikTok, TikTok MP4, TikTok HD download, TikTok video saver, TikTok to MP3, sssTikTok, SnapTik alternative, TikTok download 2026, remove TikTok watermark",
+    keywords: "tiktok downloader, tiktok video downloader, download tiktok without watermark, tiktok no watermark, save tiktok, tiktok mp4 download, tiktok hd download, tiktok video saver, tiktok to mp3, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok audio extractor, tiktok sound download, tiktok music download, download tiktok iphone, download tiktok android, tiktok batch download, tiktok slideshow saver, tiktok photo download, tiktok carousel download, tiktok reels download, tiktok story saver, save tiktok offline, tiktok 1080p download, tiktok original sound, viral tiktok download",
     h1: "TikTok Video Downloader Without Watermark",
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
   },
   about: {
-    title: "About AnyTT - Free TikTok Video Downloader",
-    description: "AnyTT is a free online TikTok video downloader. Download TikTok videos without watermark in HD quality. Trusted by 50,000+ daily users worldwide.",
-    keywords: "about AnyTT, TikTok video downloader, free video download service, AnyTT features, best TikTok downloader 2026",
+    title: "About AnyTT - Best Free TikTok Video Downloader 2026",
+    description: "AnyTT is the best free TikTok video downloader. Download TikTok videos without watermark in HD quality. Trusted by millions of users worldwide. Fast, free, no registration!",
+    keywords: "about anytt, tiktok downloader, best tiktok downloader, free tiktok saver, tiktok video download service, anytt features, top tiktok downloader 2026, trusted tiktok tool, tiktok download website",
     h1: "About AnyTT Video Downloader",
     h2: "The Fastest Free TikTok Video Downloader Online",
     h3: ["Our Features", "Why Users Love Us", "Contact Us"]
   },
   faq: {
-    title: "FAQ - AnyTT TikTok Video Downloader | Common Questions Answered",
-    description: "Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device.",
-    keywords: "AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ, download troubleshooting",
+    title: "FAQ - TikTok Downloader Help | How to Download TikTok Videos",
+    description: "Get answers about downloading TikTok videos without watermark. Learn how to save TikTok on iPhone, Android, PC. Free TikTok video saver guide and troubleshooting.",
+    keywords: "tiktok downloader faq, how to download tiktok, save tiktok video help, tiktok download guide, tiktok saver tutorial, download tiktok iphone, download tiktok android, tiktok no watermark how, tiktok mp3 extract, tiktok troubleshooting",
     h1: "Frequently Asked Questions",
     h2: "Everything You Need to Know About AnyTT",
     h3: ["General Questions", "TikTok Questions", "Technical Support"]
