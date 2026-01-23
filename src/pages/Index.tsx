@@ -107,14 +107,6 @@ const Index = () => {
                 <span className="text-xl">🎵</span>
                 <span className="font-semibold">TikTok Downloader</span>
               </Link>
-              <Link 
-                to="/youtube-downloader" 
-                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-red-500/30 hover:border-red-500/60 transition-colors"
-                title="Download YouTube videos and Shorts"
-              >
-                <span className="text-xl">▶️</span>
-                <span className="font-semibold">YouTube Downloader</span>
-              </Link>
             </nav>
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
               <Link 
