@@ -9,10 +9,29 @@ import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-data";
-import { BASE_URL, getBreadcrumbSchema, getItemListSchema } from "@/lib/seo-config";
+import { BASE_URL, getBreadcrumbSchema, getItemListSchema, getFAQSchema } from "@/lib/seo-config";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const POSTS_PER_PAGE = 6;
+
+const blogFaqs = [
+  {
+    question: "How do I download TikTok videos without watermark?",
+    answer: "Copy the TikTok video URL, paste it into AnyTT.cc, and click Download. Your video will be saved without the TikTok watermark in HD quality."
+  },
+  {
+    question: "Can I download TikTok audio as MP3?",
+    answer: "Yes, AnyTT lets you extract and download TikTok audio/music as MP3 files. Just paste the video URL and select the MP3 option."
+  },
+  {
+    question: "Does AnyTT work on iPhone?",
+    answer: "Yes, AnyTT works perfectly on iPhone. Use Safari browser, paste the TikTok link, and download. Videos save to your Files or Photos app."
+  },
+  {
+    question: "Is AnyTT free to use?",
+    answer: "Yes, AnyTT is 100% free with no hidden fees, subscriptions, or download limits. Download unlimited TikTok videos forever."
+  }
+];
 
 /**
  * Blog Page - SEO Optimized with accessible pagination
@@ -81,7 +100,7 @@ const Blog = () => {
         description="Learn how to download TikTok videos without watermark. Step-by-step tutorials, tips, and guides for saving TikTok videos on any device."
         canonicalUrl={`${BASE_URL}/blog`}
         keywords="tiktok download guide, tiktok tutorial, how to download tiktok videos, tiktok video saver tips"
-        jsonLd={[blogSchema, breadcrumbJsonLd, itemListJsonLd]}
+        jsonLd={[blogSchema, breadcrumbJsonLd, itemListJsonLd, getFAQSchema(blogFaqs)]}
       />
       <Header />
       <main>

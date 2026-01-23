@@ -1,17 +1,36 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
-import { BASE_URL, getOrganizationSchema } from "@/lib/seo-config";
+import { BASE_URL, getOrganizationSchema, getFAQSchema } from "@/lib/seo-config";
+
+const dmcaFaqs = [
+  {
+    question: "Does AnyTT host any video content?",
+    answer: "No, AnyTT does not host, store, or control any video content. We only provide links to content hosted on TikTok's servers. All videos remain on their original platform."
+  },
+  {
+    question: "How do I report copyright infringement?",
+    answer: "Send a DMCA notice via Telegram to @GEN_ZDownloader including: identification of the copyrighted work, the infringing URL, your contact information, and a statement of good faith belief."
+  },
+  {
+    question: "How long does it take to process a DMCA notice?",
+    answer: "We aim to respond to all valid DMCA notices within 48 business hours. We will acknowledge receipt and take appropriate action promptly."
+  },
+  {
+    question: "Can I file a counter-notification?",
+    answer: "Yes, if you believe content was removed due to mistake or misidentification, you may submit a counter-notification with the required information as specified in the DMCA."
+  }
+];
 
 const DMCA = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="DMCA Policy - AnyTT Video Downloader"
+        title="DMCA Policy - AnyTT TikTok Video Downloader"
         description="AnyTT's DMCA policy and copyright complaint procedure. Learn how to report copyright infringement and our content removal process."
         canonicalUrl={`${BASE_URL}/dmca`}
-        keywords="AnyTT DMCA, copyright policy, content removal, DMCA takedown, copyright complaint"
-        jsonLd={[getOrganizationSchema()]}
+        keywords="AnyTT DMCA, copyright policy, content removal, DMCA takedown, copyright complaint, tiktok copyright"
+        jsonLd={[getOrganizationSchema(), getFAQSchema(dmcaFaqs)]}
       />
       <Header />
       
@@ -104,6 +123,22 @@ const DMCA = () => {
                   We aim to respond to all DMCA notices within 48 business hours.
                 </p>
               </section>
+            </div>
+          </div>
+
+          {/* FAQ Section for Rich Snippets */}
+          <div className="mt-12 glass-card rounded-3xl p-6 md:p-10">
+            <h2 className="text-2xl font-bold font-display mb-6">DMCA FAQ</h2>
+            <div className="space-y-4">
+              {dmcaFaqs.map((faq, index) => (
+                <details key={index} className="border-b border-border pb-4 last:border-0">
+                  <summary className="font-semibold cursor-pointer list-none flex justify-between items-center py-2">
+                    <span>{faq.question}</span>
+                    <span className="text-muted-foreground">+</span>
+                  </summary>
+                  <p className="mt-2 text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </div>
