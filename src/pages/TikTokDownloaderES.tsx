@@ -87,8 +87,11 @@ const TikTokDownloaderES = () => {
               <br />
               Descargador de TikTok
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
               Descarga videos de TikTok sin marca de agua en calidad HD. 100% gratis, sin registro, descargas ilimitadas.
+            </p>
+            <p className="text-sm text-muted-foreground/80 mb-8 max-w-xl mx-auto">
+              Descargar video TikTok gratis sin marca de agua • Video TikTok sin watermark • Guardar TikTok HD
             </p>
             
             <PlatformDownloader 
