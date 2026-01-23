@@ -10,7 +10,6 @@ import FloatingBanner from "./components/ads/FloatingBanner";
 
 // Lazy load non-critical routes to reduce initial bundle size
 const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
-const YouTubeDownloader = lazy(() => import("./pages/YouTubeDownloader"));
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -44,7 +43,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
-            <Route path="/youtube-downloader" element={<YouTubeDownloader />} />
             
             <Route path="/faq" element={<FAQ />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

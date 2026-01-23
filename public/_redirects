@@ -10,7 +10,6 @@
 
 # Remove trailing slashes - DIRECT redirect (no chains)
 /tiktok-downloader/ /tiktok-downloader 301!
-/youtube-downloader/ /youtube-downloader 301!
 /faq/ /faq 301!
 /blog/ /blog 301!
 /about/ /about 301!
@@ -21,10 +20,12 @@
 # Legacy URL redirects - DIRECT to final destination (no chains)
 /facebook-downloader /tiktok-downloader 301!
 /facebook-downloader/* /tiktok-downloader 301!
+/youtube-downloader /tiktok-downloader 301!
+/youtube-downloader/* /tiktok-downloader 301!
 /save /tiktok-downloader 301!
 /tiktok /tiktok-downloader 301!
-/youtube /youtube-downloader 301!
-/yt /youtube-downloader 301!
+/youtube /tiktok-downloader 301!
+/yt /tiktok-downloader 301!
 /tt /tiktok-downloader 301!
 
 # SPA Fallback - Must be last

@@ -6,8 +6,7 @@ import PlatformDownloader from "@/components/PlatformDownloader";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
-import { Youtube } from "lucide-react";
-import { 
+import {
   seoConfig, 
   BASE_URL, 
   getVideoObjectSchema, 
@@ -112,14 +111,6 @@ const TikTokDownloader = () => {
           <div className="container mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold font-display mb-6 text-center">Explore More</h2>
             <nav className="flex flex-wrap justify-center gap-4" aria-label="Related tools">
-              <Link 
-                to="/youtube-downloader" 
-                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-red-500/30 hover:border-red-500/60 transition-colors"
-                title="Download YouTube videos and Shorts for free"
-              >
-                <Youtube className="h-5 w-5 text-red-500" />
-                <span className="font-semibold">YouTube Downloader</span>
-              </Link>
               <Link 
                 to="/blog" 
                 className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
