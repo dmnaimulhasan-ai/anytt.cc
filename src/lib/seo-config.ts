@@ -4,12 +4,84 @@ export const BASE_URL = "https://anytt.cc";
  * SEO Configuration for all pages
  * Optimized for maximum organic traffic with target keywords
  */
+
+/**
+ * Primary TikTok Keywords organized by category
+ */
+export const tiktokKeywords = {
+  // 🔥 Primary Branded Keywords
+  primary: [
+    "tiktok video downloader",
+    "download tiktok video",
+    "tiktok downloader",
+    "tiktok video download",
+    "tiktok download online",
+    "tiktok video saver",
+    "save tiktok video",
+    "tiktok mp4 downloader",
+    "tiktok downloader online",
+    "free tiktok downloader"
+  ],
+  // 💰 High-Intent Keywords
+  highIntent: [
+    "download tiktok video without watermark",
+    "tiktok downloader no watermark",
+    "tiktok video downloader without logo",
+    "save tiktok video without watermark",
+    "tiktok hd video download"
+  ],
+  // 🎯 Long-Tail Keywords
+  longTail: [
+    "fast tiktok video downloader",
+    "tiktok video downloader for android",
+    "tiktok video downloader for iphone",
+    "tiktok video downloader for pc",
+    "download tiktok video mp4 hd",
+    "tiktok video downloader web tool"
+  ],
+  // 🎵 Audio / MP3 Keywords
+  audio: [
+    "tiktok mp3 downloader",
+    "download tiktok audio",
+    "tiktok sound downloader",
+    "tiktok music download",
+    "convert tiktok to mp3"
+  ],
+  // 🌍 Device / Platform Based
+  device: [
+    "tiktok downloader chrome",
+    "tiktok video downloader mobile",
+    "tiktok downloader app free",
+    "tiktok video downloader ios",
+    "tiktok downloader for windows"
+  ],
+  // 🚀 Feature Based Keywords
+  feature: [
+    "no watermark tiktok downloader",
+    "tiktok downloader hd quality",
+    "tiktok downloader without app",
+    "online tiktok downloader tool",
+    "tiktok video downloader fast",
+    "tiktok downloader safe"
+  ]
+};
+
+// Combined keywords string for meta tags
+export const allTiktokKeywords = [
+  ...tiktokKeywords.primary,
+  ...tiktokKeywords.highIntent,
+  ...tiktokKeywords.longTail,
+  ...tiktokKeywords.audio,
+  ...tiktokKeywords.device,
+  ...tiktokKeywords.feature
+].join(", ");
+
 /**
  * Multilingual branded keywords for global SEO reach
  */
 export const brandedKeywords = {
   // Primary branded keywords
-  primary: "anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok",
+  primary: `anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok, ${allTiktokKeywords}`,
   // Spanish variations - expanded
   spanish: "anytt cc descargar tiktok, anytt descargador de videos, descargar tiktok sin marca de agua, descargar video tiktok gratis sin marca de agua, bajar videos de tiktok gratis, descargar tiktok hd, guardar video tiktok sin logo, tiktok descargador gratis, descargar tiktok mp4, video tiktok sin watermark, como descargar tiktok sin marca",
   // Portuguese variations - expanded  
@@ -36,7 +108,7 @@ export const seoConfig = {
   home: {
     title: "Anytt cc - Free TikTok Video Downloader Without Watermark 2026",
     description: "Anytt cc - #1 TikTok video downloader. Download TikTok videos without watermark in HD quality. 100% free, no registration. Works on iPhone, Android & PC. Save TikTok videos instantly with anytt cc!",
-    keywords: `${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, tiktok downloader, tiktok video downloader, download tiktok video, tiktok no watermark, save tiktok video, tiktok saver, snaptik, ssstik, tiktok download, tiktok mp4, tiktok to mp3, tikmate, tiktok video saver, tiktok hd download, tiktok downloader online, download tiktok without watermark, tiktok video download free, tiktok audio download, douyin downloader, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k`,
+    keywords: `${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k`,
     h1: "Anytt cc - TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose Anytt cc", "Frequently Asked Questions"]
@@ -44,7 +116,7 @@ export const seoConfig = {
   tiktok: {
     title: "Anytt cc TikTok Downloader - Download Free TikTok Video Without Watermark 2026",
     description: "Anytt cc - The best free TikTok video downloader. Save TikTok videos without watermark in HD. Works on iPhone, Android, PC. No registration. Download TikTok MP4 & MP3 with anytt cc!",
-    keywords: `${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, tiktok downloader, tiktok video downloader, download tiktok without watermark, tiktok no watermark, save tiktok, tiktok mp4 download, tiktok hd download, tiktok video saver, tiktok to mp3, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok audio extractor, tiktok sound download, download tiktok iphone, download tiktok android, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download`,
+    keywords: `${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download`,
     h1: "Anytt cc - TikTok Video Downloader Without Watermark",
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
@@ -52,7 +124,7 @@ export const seoConfig = {
   about: {
     title: "About Anytt cc - Best Free TikTok Video Downloader 2026",
     description: "Anytt cc is the #1 free TikTok video downloader trusted by millions worldwide. Download TikTok videos without watermark in HD. Fast, free, no registration required. Learn about anytt cc!",
-    keywords: `${brandedKeywords.primary}, ${brandedKeywords.hindi}, ${brandedKeywords.russian}, about anytt cc, tiktok downloader, best tiktok downloader, free tiktok saver, tiktok video download service, anytt cc features, top tiktok downloader 2026, trusted tiktok tool`,
+    keywords: `${brandedKeywords.primary}, ${brandedKeywords.hindi}, ${brandedKeywords.russian}, about anytt cc, best tiktok downloader, free tiktok saver, tiktok video download service, anytt cc features, top tiktok downloader 2026, trusted tiktok tool`,
     h1: "About Anytt cc Video Downloader",
     h2: "The Fastest Free TikTok Video Downloader Online",
     h3: ["Our Features", "Why Users Love Anytt cc", "Contact Us"]

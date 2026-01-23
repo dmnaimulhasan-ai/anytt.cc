@@ -132,6 +132,71 @@ const TikTokDownloaderPT = () => {
           </div>
         </section>
 
+        {/* Keywords Section - Portuguese SEO */}
+        <section className="py-12 px-4 bg-muted/30">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              <span className="gradient-text">Anytt cc</span> - Sua Solução Completa de TikTok
+            </h2>
+            
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🔥 Baixador TikTok</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["baixar video tiktok", "tiktok downloader gratis", "salvar video tiktok", "download tiktok online"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">💰 Sem Marca D'água</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok sem watermark", "video sem logo", "baixar sem marca", "tiktok hd limpo"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎵 TikTok MP3</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok mp3 downloader", "baixar audio tiktok", "converter tiktok para mp3", "tiktok música"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🌍 Todos os Dispositivos</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok iphone", "tiktok android", "tiktok pc", "tiktok mac", "tiktok chrome"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🚀 Recursos</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["download rápido", "qualidade hd", "sem aplicativo", "ferramenta segura"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎯 Alta Qualidade</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok mp4 hd", "video 1080p", "download rápido", "tiktok web tool"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-12 px-4">
           <div className="container mx-auto max-w-3xl">

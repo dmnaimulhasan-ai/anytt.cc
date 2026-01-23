@@ -13,7 +13,8 @@ import {
   getFAQSchema, 
   getWebApplicationSchema,
   getHowToSchema,
-  getBreadcrumbSchema
+  getBreadcrumbSchema,
+  tiktokKeywords
 } from "@/lib/seo-config";
 
 const tiktokFaqs = [
@@ -99,6 +100,101 @@ const TikTokDownloader = () => {
                   <p className="mt-3 text-muted-foreground">{faq.answer}</p>
                 </details>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Keywords Section - SEO Rich Content */}
+        <section className="py-12 px-4 md:px-6">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              <span className="gradient-text">Anytt cc</span> - Your Complete TikTok Solution
+            </h2>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Primary Features */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🔥 TikTok Downloader
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.primary.slice(0, 5).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* No Watermark */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  💰 No Watermark
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.highIntent.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Audio/MP3 */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎵 TikTok MP3 Download
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.audio.map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Device Support */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🌍 Works Everywhere
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.device.map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Features */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🚀 Features
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.feature.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Long-tail */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎯 HD Quality
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.longTail.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
