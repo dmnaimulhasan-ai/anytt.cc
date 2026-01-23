@@ -1,7 +1,26 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
-import { BASE_URL, getOrganizationSchema } from "@/lib/seo-config";
+import { BASE_URL, getOrganizationSchema, getFAQSchema } from "@/lib/seo-config";
+
+const termsFaqs = [
+  {
+    question: "Can I use AnyTT for commercial purposes?",
+    answer: "No, AnyTT is intended for personal, non-commercial use only. You should not use downloaded content for commercial purposes without permission from the original creator."
+  },
+  {
+    question: "Is downloading TikTok videos legal?",
+    answer: "Downloading videos for personal use is generally acceptable. However, you should respect copyright laws and the creator's rights. Do not redistribute copyrighted content without permission."
+  },
+  {
+    question: "What happens if I misuse the service?",
+    answer: "We reserve the right to terminate access for users who abuse the service, violate copyright laws, or engage in prohibited activities."
+  },
+  {
+    question: "Does AnyTT guarantee service availability?",
+    answer: "We strive to keep AnyTT available 24/7, but we cannot guarantee uninterrupted service. We may modify or discontinue features at any time."
+  }
+];
 
 const TermsOfService = () => {
   return (
@@ -10,8 +29,8 @@ const TermsOfService = () => {
         title="Terms of Service - AnyTT TikTok Video Downloader"
         description="Read AnyTT's terms of service. Understand the rules and guidelines for using our free TikTok video downloader."
         canonicalUrl={`${BASE_URL}/terms-of-service`}
-        keywords="AnyTT terms of service, video downloader terms, usage guidelines, legal terms"
-        jsonLd={[getOrganizationSchema()]}
+        keywords="AnyTT terms of service, tiktok downloader terms, usage guidelines, legal terms, tiktok download rules"
+        jsonLd={[getOrganizationSchema(), getFAQSchema(termsFaqs)]}
       />
       <Header />
       
@@ -19,7 +38,7 @@ const TermsOfService = () => {
         <div className="container mx-auto max-w-3xl">
           <div className="glass-card rounded-3xl p-6 md:p-10">
             <h1 className="text-section mb-8">Terms of Service</h1>
-            <p className="text-muted-foreground mb-8">Last updated: January 2025</p>
+            <p className="text-muted-foreground mb-8">Last updated: January 2026</p>
 
             <div className="prose prose-lg max-w-none space-y-8">
               <section>
@@ -100,6 +119,22 @@ const TermsOfService = () => {
                   For questions about these terms, contact us via Telegram: <a href="https://t.me/GEN_ZDownloader" className="text-primary hover:underline">@GEN_ZDownloader</a>
                 </p>
               </section>
+            </div>
+          </div>
+
+          {/* FAQ Section for Rich Snippets */}
+          <div className="mt-12 glass-card rounded-3xl p-6 md:p-10">
+            <h2 className="text-2xl font-bold font-display mb-6">Terms FAQ</h2>
+            <div className="space-y-4">
+              {termsFaqs.map((faq, index) => (
+                <details key={index} className="border-b border-border pb-4 last:border-0">
+                  <summary className="font-semibold cursor-pointer list-none flex justify-between items-center py-2">
+                    <span>{faq.question}</span>
+                    <span className="text-muted-foreground">+</span>
+                  </summary>
+                  <p className="mt-2 text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </div>

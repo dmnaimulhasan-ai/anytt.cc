@@ -21,17 +21,13 @@ interface VideoData {
   musicTitle: string;
 }
 
-type Platform = 'tiktok' | 'youtube' | 'facebook';
+type Platform = 'tiktok';
 
 const platformConfig: Record<Platform, { name: string; functionName: string; color: string }> = {
   tiktok: { name: 'TikTok', functionName: 'tiktok-download', color: 'bg-[#000000]' },
-  youtube: { name: 'YouTube', functionName: 'youtube-download', color: 'bg-[#FF0000]' },
-  facebook: { name: 'Facebook', functionName: 'facebook-download', color: 'bg-[#1877F2]' },
 };
 
 const detectPlatform = (url: string): Platform => {
-  if (/facebook\.com|fb\.watch/i.test(url)) return 'facebook';
-  if (/youtube\.com|youtu\.be/i.test(url)) return 'youtube';
   return 'tiktok';
 };
 
