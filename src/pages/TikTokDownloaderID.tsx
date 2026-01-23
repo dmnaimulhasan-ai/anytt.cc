@@ -87,8 +87,11 @@ const TikTokDownloaderID = () => {
               <br />
               Pengunduh TikTok
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
               Download video TikTok tanpa watermark dalam kualitas HD. 100% gratis, tanpa registrasi, download tanpa batas.
+            </p>
+            <p className="text-sm text-muted-foreground/80 mb-8 max-w-xl mx-auto">
+              Download video TikTok gratis tanpa watermark • Cara download TikTok tanpa watermark • Simpan TikTok HD
             </p>
             
             <PlatformDownloader 
