@@ -9,7 +9,7 @@ import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-data";
-import { BASE_URL } from "@/lib/seo-config";
+import { BASE_URL, getBreadcrumbSchema, getItemListSchema } from "@/lib/seo-config";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const POSTS_PER_PAGE = 6;
@@ -40,7 +40,11 @@ const Blog = () => {
     "publisher": {
       "@type": "Organization",
       "name": "AnyTT",
-      "url": BASE_URL
+      "url": BASE_URL,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${BASE_URL}/pwa-192x192.png`
+      }
     },
     "blogPost": blogPosts.map(post => ({
       "@type": "BlogPosting",
@@ -50,6 +54,19 @@ const Blog = () => {
       "datePublished": post.date
     }))
   };
+
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: "Home", url: BASE_URL },
+    { name: "Blog", url: `${BASE_URL}/blog` }
+  ]);
+
+  const itemListJsonLd = getItemListSchema(
+    blogPosts.map((post, index) => ({
+      name: post.title,
+      url: `${BASE_URL}/blog/${post.slug}`,
+      position: index + 1
+    }))
+  );
 
   // Pagination handler
   const goToPage = (page: number) => {
@@ -64,7 +81,7 @@ const Blog = () => {
         description="Learn how to download videos from TikTok, YouTube, and more. Step-by-step tutorials, tips, and guides for saving videos on any device."
         canonicalUrl={`${BASE_URL}/blog`}
         keywords="video download guide, tiktok tutorial, youtube download help, how to download videos, video saver tips"
-        jsonLd={[blogSchema]}
+        jsonLd={[blogSchema, breadcrumbJsonLd, itemListJsonLd]}
       />
       <Header />
       <main>

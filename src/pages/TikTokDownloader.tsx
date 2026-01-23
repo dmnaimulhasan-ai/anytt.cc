@@ -12,7 +12,9 @@ import {
   BASE_URL, 
   getVideoObjectSchema, 
   getFAQSchema, 
-  getWebApplicationSchema 
+  getWebApplicationSchema,
+  getHowToSchema,
+  getBreadcrumbSchema
 } from "@/lib/seo-config";
 
 const tiktokFaqs = [
@@ -49,7 +51,12 @@ const TikTokDownloader = () => {
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("TikTok"),
-          getFAQSchema(tiktokFaqs)
+          getHowToSchema("TikTok"),
+          getFAQSchema(tiktokFaqs),
+          getBreadcrumbSchema([
+            { name: "Home", url: BASE_URL },
+            { name: "TikTok Downloader", url: `${BASE_URL}/tiktok-downloader` }
+          ])
         ]}
       />
       <Header />

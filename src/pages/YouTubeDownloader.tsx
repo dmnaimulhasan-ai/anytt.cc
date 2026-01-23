@@ -12,7 +12,9 @@ import {
   BASE_URL, 
   getVideoObjectSchema, 
   getFAQSchema, 
-  getWebApplicationSchema 
+  getWebApplicationSchema,
+  getHowToSchema,
+  getBreadcrumbSchema
 } from "@/lib/seo-config";
 
 const youtubeFaqs = [
@@ -49,7 +51,12 @@ const YouTubeDownloader = () => {
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("YouTube"),
-          getFAQSchema(youtubeFaqs)
+          getHowToSchema("YouTube"),
+          getFAQSchema(youtubeFaqs),
+          getBreadcrumbSchema([
+            { name: "Home", url: BASE_URL },
+            { name: "YouTube Downloader", url: `${BASE_URL}/youtube-downloader` }
+          ])
         ]}
       />
       <Header />

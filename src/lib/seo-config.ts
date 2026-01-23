@@ -196,12 +196,23 @@ export const getHowToSchema = (platform: string) => ({
   "@type": "HowTo",
   "name": `How to Download ${platform} Videos Without Watermark`,
   "description": `Step-by-step guide to download ${platform} videos for free using AnyTT`,
+  "image": `${BASE_URL}/pwa-512x512.png`,
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "tool": {
+    "@type": "HowToTool",
+    "name": "AnyTT Video Downloader"
+  },
   "step": [
     {
       "@type": "HowToStep",
       "position": 1,
       "name": "Copy Video Link",
-      "text": `Open ${platform} and copy the video URL you want to download`
+      "text": `Open ${platform} and copy the video URL you want to download`,
+      "image": `${BASE_URL}/pwa-192x192.png`
     },
     {
       "@type": "HowToStep",
@@ -217,4 +228,110 @@ export const getHowToSchema = (platform: string) => ({
     }
   ],
   "totalTime": "PT1M"
+});
+
+/**
+ * Article Schema for Blog Posts
+ */
+export const getArticleSchema = (article: {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  image?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.title,
+  "description": article.description,
+  "image": article.image || `${BASE_URL}/pwa-512x512.png`,
+  "author": {
+    "@type": "Organization",
+    "name": article.author || "AnyTT"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AnyTT",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${BASE_URL}/pwa-192x192.png`
+    }
+  },
+  "datePublished": article.datePublished,
+  "dateModified": article.dateModified || article.datePublished,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${BASE_URL}/blog/${article.slug}`
+  }
+});
+
+/**
+ * WebSite Schema with SearchAction for Sitelinks Search Box
+ */
+export const getWebSiteSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AnyTT",
+  "alternateName": "AnyTT Video Downloader",
+  "url": BASE_URL,
+  "description": "Free online video downloader for TikTok and YouTube without watermark",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${BASE_URL}/?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  }
+});
+
+/**
+ * ItemList Schema for Blog Index
+ */
+export const getItemListSchema = (items: Array<{ name: string; url: string; position: number }>) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": items.map(item => ({
+    "@type": "ListItem",
+    "position": item.position,
+    "name": item.name,
+    "url": item.url
+  }))
+});
+
+/**
+ * LocalBusiness/Service Schema (optional, for trust)
+ */
+export const getServiceSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Video Download Service",
+  "provider": {
+    "@type": "Organization",
+    "name": "AnyTT"
+  },
+  "description": "Free online video downloading service for TikTok and YouTube",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Video Download Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "TikTok Video Download"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "YouTube Video Download"
+        }
+      }
+    ]
+  }
 });
