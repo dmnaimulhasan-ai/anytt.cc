@@ -1,12 +1,9 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import HowToSection from "@/components/HowToSection";
-import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
-import ScrollBanner from "@/components/ads/ScrollBanner";
 import SocialBar from "@/components/ads/SocialBar";
 import { usePopunderTrigger } from "@/hooks/useAdMonetization";
 import { 
@@ -19,6 +16,19 @@ import {
   getServiceSchema,
   getBreadcrumbSchema
 } from "@/lib/seo-config";
+
+// Lazy load below-the-fold sections for better LCP
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const HowToSection = lazy(() => import("@/components/HowToSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const ScrollBanner = lazy(() => import("@/components/ads/ScrollBanner"));
+
+// Minimal section loader
+const SectionLoader = () => (
+  <div className="py-16 flex justify-center">
+    <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const homeFaqs = [
   {
@@ -68,13 +78,21 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
-        <HowToSection />
+        <Suspense fallback={<SectionLoader />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <HowToSection />
+        </Suspense>
         
         {/* Scroll-triggered Banner */}
-        <ScrollBanner />
+        <Suspense fallback={null}>
+          <ScrollBanner />
+        </Suspense>
         
-        <FAQSection faqs={homeFaqs} />
+        <Suspense fallback={<SectionLoader />}>
+          <FAQSection faqs={homeFaqs} />
+        </Suspense>
 
         {/* Internal links section for SEO */}
         <section className="py-12 px-4 bg-muted/10">
