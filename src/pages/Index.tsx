@@ -14,7 +14,10 @@ import {
   BASE_URL, 
   getWebApplicationSchema, 
   getFAQSchema, 
-  getOrganizationSchema 
+  getOrganizationSchema,
+  getWebSiteSchema,
+  getServiceSchema,
+  getBreadcrumbSchema
 } from "@/lib/seo-config";
 
 const homeFaqs = [
@@ -52,9 +55,14 @@ const Index = () => {
         canonicalUrl={BASE_URL}
         keywords={seoConfig.home.keywords}
         jsonLd={[
+          getWebSiteSchema(),
           getWebApplicationSchema(),
           getOrganizationSchema(),
-          getFAQSchema(homeFaqs)
+          getServiceSchema(),
+          getFAQSchema(homeFaqs),
+          getBreadcrumbSchema([
+            { name: "Home", url: BASE_URL }
+          ])
         ]}
       />
       <Header />

@@ -8,7 +8,7 @@ import BlogCard from "@/components/BlogCard";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
 import { getBlogPost, getRelatedPosts } from "@/lib/blog-data";
-import { BASE_URL } from "@/lib/seo-config";
+import { BASE_URL, getBreadcrumbSchema } from "@/lib/seo-config";
 import { Calendar, Clock, ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -54,30 +54,11 @@ const BlogPost = () => {
     }
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": BASE_URL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": `${BASE_URL}/blog`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.title,
-        "item": `${BASE_URL}/blog/${post.slug}`
-      }
-    ]
-  };
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: "Home", url: BASE_URL },
+    { name: "Blog", url: `${BASE_URL}/blog` },
+    { name: post.title, url: `${BASE_URL}/blog/${post.slug}` }
+  ]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -86,7 +67,7 @@ const BlogPost = () => {
         description={post.metaDescription}
         canonicalUrl={`${BASE_URL}/blog/${post.slug}`}
         keywords={post.keywords.join(", ")}
-        jsonLd={[articleSchema, breadcrumbSchema]}
+        jsonLd={[articleSchema, breadcrumbJsonLd]}
       />
       <Header />
       <main className="pt-20">
@@ -166,9 +147,6 @@ const BlogPost = () => {
                 </Link>
                 <Link to="/youtube-downloader">
                   <Button variant="outline">YouTube Downloader</Button>
-                </Link>
-                <Link to="/facebook-downloader">
-                  <Button variant="outline">Facebook Downloader</Button>
                 </Link>
               </div>
             </div>
