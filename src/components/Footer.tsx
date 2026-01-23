@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import StatsBar from "./StatsBar";
-import logo from "@/assets/logo.jpg";
 
 /**
  * Footer - SEO Optimized with proper internal linking
@@ -135,12 +134,9 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border text-sm">
-          <Link to="/" title="AnyTT - Free Video Downloader">
-            <img 
-              src={logo} 
-              alt="Anytt.cc - Free Video Downloader" 
-              className="h-8 w-auto"
-            />
+          <Link to="/" className="text-xl font-bold" title="AnyTT - Free Video Downloader">
+            <span className="gradient-text">Anytt</span>
+            <span className="text-foreground">.cc</span>
           </Link>
           
           <p className="text-muted-foreground text-center">

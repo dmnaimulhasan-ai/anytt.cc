@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.jpg";
 
 /**
  * Header - SEO Optimized Navigation
@@ -32,11 +31,10 @@ const Header = () => {
           className="flex items-center"
           title="AnyTT - Free TikTok & YouTube Video Downloader"
         >
-          <img 
-            src={logo} 
-            alt="Anytt.cc - Free Video Downloader" 
-            className="h-8 md:h-10 w-auto"
-          />
+          <span className="text-2xl font-extrabold tracking-tight">
+            <span className="gradient-text">Anytt</span>
+            <span className="text-foreground">.cc</span>
+          </span>
         </Link>
 
         {/* Mobile Menu Button */}
