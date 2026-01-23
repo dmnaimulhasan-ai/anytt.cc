@@ -18,24 +18,24 @@ import {
 
 const tiktokFaqs = [
   {
-    question: "How do I download TikTok videos without watermark?",
-    answer: "Simply paste the TikTok video URL into AnyTT and click download. Your video will be saved without the TikTok watermark in HD quality."
+    question: "How do I download TikTok videos without watermark using Anytt cc?",
+    answer: "Simply paste the TikTok video URL into Anytt cc and click download. Your video will be saved without the TikTok watermark in HD quality. Anytt cc makes it easy!"
   },
   {
-    question: "Is the TikTok downloader free?",
-    answer: "Yes, AnyTT TikTok downloader is 100% free with no hidden fees, subscriptions, or limits on downloads."
+    question: "Is the Anytt cc TikTok downloader free?",
+    answer: "Yes, Anytt cc TikTok video downloader is 100% free with no hidden fees, subscriptions, or limits on downloads. Use anytt cc unlimited times!"
   },
   {
-    question: "Does it work on iPhone and Android?",
-    answer: "Yes, our TikTok downloader works on all devices including iPhone, Android phones, tablets, and desktop computers."
+    question: "Does Anytt cc work on iPhone and Android?",
+    answer: "Yes, Anytt cc TikTok downloader works on all devices including iPhone, Android phones, tablets, and desktop computers. Access anytt.cc from any browser!"
   },
   {
-    question: "Can I download TikTok audio/music only?",
-    answer: "Yes, you can download just the audio/music from TikTok videos as MP3 files using our downloader."
+    question: "Can I download TikTok audio/music only with Anytt cc?",
+    answer: "Yes, you can download just the audio/music from TikTok videos as MP3 files using Anytt cc downloader."
   },
   {
-    question: "Is it safe to download TikTok videos?",
-    answer: "Absolutely! AnyTT doesn't require any registration or personal information. We don't store any of your data."
+    question: "Is Anytt cc safe to use?",
+    answer: "Absolutely! Anytt cc doesn't require any registration or personal information. We don't store any of your data. Anytt cc is 100% safe and secure."
   }
 ];
 
@@ -87,7 +87,7 @@ const TikTokDownloader = () => {
         <section className="py-16 px-4 md:px-6 bg-muted/20">
           <div className="container mx-auto max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-black font-display text-center mb-8">
-              <span className="gradient-text">TikTok Downloader</span> FAQ
+              <span className="gradient-text">Anytt cc</span> TikTok Downloader FAQ
             </h2>
             <div className="space-y-4">
               {tiktokFaqs.map((faq, index) => (
