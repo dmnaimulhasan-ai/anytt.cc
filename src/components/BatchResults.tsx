@@ -2,6 +2,7 @@ import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Z
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
+import LazyImage from "./LazyImage";
 
 interface VideoData {
   id: string;
@@ -150,10 +151,10 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
               
               {result.success && result.data ? (
                 <>
-                  <img
+                  <LazyImage
                     src={result.data.thumbnail}
-                    alt={result.data.title}
-                    className="w-12 h-16 object-cover rounded-xl flex-shrink-0"
+                    alt={`${result.data.title} thumbnail`}
+                    className="w-12 h-16 rounded-xl flex-shrink-0"
                   />
                   <div className="flex-1 min-w-0 text-left">
                     <p className="font-medium text-foreground truncate text-sm font-display">

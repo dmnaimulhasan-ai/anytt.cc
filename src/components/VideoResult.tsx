@@ -3,6 +3,7 @@ import { Download, Music, ArrowLeft, Loader2, Play, CheckCircle } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useStats } from "@/hooks/useStats";
+import LazyImage from "./LazyImage";
 
 interface VideoData {
   id: string;
@@ -135,10 +136,12 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     <div className="glass-card rounded-3xl p-6 max-w-md mx-auto">
       {/* Video Preview - Centered */}
       <div className="relative mb-6">
-        <img
+        <LazyImage
           src={video.thumbnail}
-          alt={video.title}
-          className="w-full aspect-video object-cover rounded-2xl bg-muted"
+          alt={`${video.title} - ${platform} video thumbnail`}
+          aspectRatio="video"
+          className="rounded-2xl"
+          priority
         />
         <div className="absolute bottom-3 right-3 bg-black/80 text-white px-3 py-1.5 rounded-xl text-sm font-semibold flex items-center gap-2">
           <Play className="h-3.5 w-3.5 fill-current" />
