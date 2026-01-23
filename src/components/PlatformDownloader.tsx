@@ -33,7 +33,7 @@ interface BatchVideoResult {
 }
 
 interface PlatformDownloaderProps {
-  platform: 'tiktok' | 'youtube' | 'facebook';
+  platform: 'tiktok';
   platformName: string;
   platformIcon: string;
   functionName: string;

@@ -32,16 +32,16 @@ const SectionLoader = () => (
 
 const homeFaqs = [
   {
-    question: "How do I download videos without watermark?",
-    answer: "Simply paste the video URL from TikTok into Anytt.cc and click download. Your video will be saved without watermark in HD quality."
+    question: "How do I download TikTok videos without watermark?",
+    answer: "Simply paste the TikTok video URL into Anytt.cc and click download. Your video will be saved without watermark in HD quality."
   },
   {
     question: "Is Anytt.cc free to use?",
     answer: "Yes, Anytt.cc is 100% free with no hidden fees, subscriptions, or limits on downloads."
   },
   {
-    question: "What platforms does Anytt.cc support?",
-    answer: "Anytt.cc supports downloading videos from TikTok including Reels, Stories, and regular videos."
+    question: "What can I download with Anytt.cc?",
+    answer: "Anytt.cc supports downloading TikTok videos including Reels, Stories, and regular videos in HD quality."
   },
   {
     question: "Does it work on mobile devices?",

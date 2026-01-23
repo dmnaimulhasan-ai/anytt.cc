@@ -32,7 +32,7 @@ const DMCA = () => {
               <section>
                 <h2 className="text-xl font-bold mb-4">2. Our Service</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  AnyTT is a video downloading tool that provides links to content hosted on third-party platforms (TikTok, YouTube). We do not host, store, or control any video content. All videos remain on their original platforms.
+                  AnyTT is a video downloading tool that provides links to content hosted on third-party platforms (TikTok). We do not host, store, or control any video content. All videos remain on their original platforms.
                 </p>
               </section>
 

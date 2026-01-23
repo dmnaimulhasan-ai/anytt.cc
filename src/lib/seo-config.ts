@@ -6,11 +6,11 @@ export const BASE_URL = "https://anytt.cc";
  */
 export const seoConfig = {
   home: {
-    title: "AnyTT - Free TikTok & YouTube Video Downloader Without Watermark 2026",
-    description: "Download TikTok & YouTube videos without watermark in HD quality. 100% free online video downloader - no registration, works on iPhone, Android & PC. Save videos instantly!",
-    keywords: "video downloader, TikTok downloader, YouTube downloader, download without watermark, HD video download, free video saver, AnyTT, TikTok video download, YouTube Shorts download, video downloader 2026, snaptik alternative, y2mate alternative",
-    h1: "TikTok & YouTube Video Downloader",
-    h2: "Download Videos Without Watermark in HD Quality",
+    title: "AnyTT - Free TikTok Video Downloader Without Watermark 2026",
+    description: "Download TikTok videos without watermark in HD quality. 100% free online video downloader - no registration, works on iPhone, Android & PC. Save TikTok videos instantly!",
+    keywords: "video downloader, TikTok downloader, download without watermark, HD video download, free video saver, AnyTT, TikTok video download, video downloader 2026, snaptik alternative, tiktok saver",
+    h1: "TikTok Video Downloader",
+    h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose AnyTT", "Frequently Asked Questions"]
   },
   tiktok: {
@@ -21,29 +21,21 @@ export const seoConfig = {
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
   },
-  youtube: {
-    title: "YouTube Video Downloader - Download YouTube Videos HD Free 2026",
-    description: "Free YouTube video downloader. Download YouTube videos in HD, Full HD & 4K. Save YouTube Shorts, music videos & more. Fast, free, works on all devices!",
-    keywords: "YouTube downloader, download YouTube video, YouTube to MP4, YouTube HD download, YouTube Shorts downloader, save YouTube video, YouTube 4K download, Y2Mate alternative, SaveFrom alternative, YouTube video converter, download YouTube free 2026",
-    h1: "YouTube Video Downloader - HD & 4K Quality",
-    h2: "Download YouTube Videos, Shorts & Music for Free",
-    h3: ["How to Download YouTube Videos", "Supported Formats", "FAQ"]
-  },
   about: {
-    title: "About AnyTT - Free Video Downloader for TikTok & YouTube",
-    description: "AnyTT is a free online video downloader supporting TikTok & YouTube. Download videos without watermark in HD quality. Trusted by 50,000+ daily users worldwide.",
-    keywords: "about AnyTT, video downloader, TikTok YouTube downloader, free video download service, AnyTT features, best video downloader 2026",
+    title: "About AnyTT - Free TikTok Video Downloader",
+    description: "AnyTT is a free online TikTok video downloader. Download TikTok videos without watermark in HD quality. Trusted by 50,000+ daily users worldwide.",
+    keywords: "about AnyTT, TikTok video downloader, free video download service, AnyTT features, best TikTok downloader 2026",
     h1: "About AnyTT Video Downloader",
-    h2: "The Fastest Free Video Downloader Online",
+    h2: "The Fastest Free TikTok Video Downloader Online",
     h3: ["Our Features", "Why Users Love Us", "Contact Us"]
   },
   faq: {
-    title: "FAQ - AnyTT Video Downloader | Common Questions Answered",
-    description: "Get answers to common questions about downloading TikTok & YouTube videos with AnyTT. Learn how to save videos without watermark on any device.",
-    keywords: "AnyTT FAQ, video downloader help, TikTok download questions, YouTube download help, how to download videos, video saver FAQ, download troubleshooting",
+    title: "FAQ - AnyTT TikTok Video Downloader | Common Questions Answered",
+    description: "Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device.",
+    keywords: "AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ, download troubleshooting",
     h1: "Frequently Asked Questions",
     h2: "Everything You Need to Know About AnyTT",
-    h3: ["General Questions", "Platform-Specific Questions", "Technical Support"]
+    h3: ["General Questions", "TikTok Questions", "Technical Support"]
   }
 };
 
@@ -51,9 +43,8 @@ export const seoConfig = {
  * Image Alt Text Templates
  */
 export const altTexts = {
-  logo: "AnyTT - Free Video Downloader Logo",
+  logo: "AnyTT - Free TikTok Video Downloader Logo",
   tiktokIcon: "TikTok video downloader icon - download TikTok without watermark",
-  youtubeIcon: "YouTube video downloader icon - save YouTube videos HD",
   downloadButton: "Download video button - save HD video without watermark",
   thumbnail: (platform: string, title: string) => `${platform} video thumbnail - ${title}`,
   step: (num: number, action: string) => `Step ${num}: ${action} - AnyTT video download guide`
@@ -65,10 +56,9 @@ export const altTexts = {
 export const internalLinks = {
   home: { path: "/", anchor: "AnyTT Video Downloader" },
   tiktok: { path: "/tiktok-downloader", anchor: "TikTok Video Downloader" },
-  youtube: { path: "/youtube-downloader", anchor: "YouTube Video Downloader" },
   faq: { path: "/faq", anchor: "FAQ - Common Questions" },
   about: { path: "/about", anchor: "About AnyTT" },
-  blog: { path: "/blog", anchor: "Video Download Tips & Guides" },
+  blog: { path: "/blog", anchor: "TikTok Download Tips & Guides" },
   privacy: { path: "/privacy-policy", anchor: "Privacy Policy" },
   terms: { path: "/terms-of-service", anchor: "Terms of Service" },
   dmca: { path: "/dmca", anchor: "DMCA Policy" }
@@ -97,9 +87,9 @@ export const getVideoObjectSchema = (platform: string) => ({
 export const getWebApplicationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "AnyTT Video Downloader",
+  "name": "AnyTT TikTok Video Downloader",
   "url": BASE_URL,
-  "description": "Free online video downloader for TikTok and YouTube. Download videos without watermark in HD quality.",
+  "description": "Free online TikTok video downloader. Download TikTok videos without watermark in HD quality.",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any",
   "browserRequirements": "Requires JavaScript",
@@ -121,7 +111,7 @@ export const getWebApplicationSchema = () => ({
   },
   "featureList": [
     "Download TikTok videos without watermark",
-    "Download YouTube videos in HD and 4K",
+    "HD quality video downloads",
     "No registration required",
     "Works on iPhone, Android, and PC",
     "Free forever with no limits",
@@ -148,7 +138,7 @@ export const getOrganizationSchema = () => ({
   "name": "AnyTT",
   "url": BASE_URL,
   "logo": `${BASE_URL}/pwa-512x512.png`,
-  "description": "AnyTT is a free online video downloader for TikTok and YouTube videos without watermark.",
+  "description": "AnyTT is a free online TikTok video downloader. Download videos without watermark in HD quality.",
   "foundingDate": "2024",
   "sameAs": [
     "https://t.me/GEN_ZDownloader"
@@ -163,7 +153,7 @@ export const getOrganizationSchema = () => ({
 export const getSoftwareApplicationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "AnyTT Video Downloader",
+  "name": "AnyTT TikTok Video Downloader",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web, iOS, Android",
   "offers": {
@@ -274,9 +264,9 @@ export const getWebSiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "AnyTT",
-  "alternateName": "AnyTT Video Downloader",
+  "alternateName": "AnyTT TikTok Video Downloader",
   "url": BASE_URL,
-  "description": "Free online video downloader for TikTok and YouTube without watermark",
+  "description": "Free online TikTok video downloader without watermark",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
@@ -307,16 +297,16 @@ export const getItemListSchema = (items: Array<{ name: string; url: string; posi
 export const getServiceSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Video Download Service",
+  "name": "TikTok Video Download Service",
   "provider": {
     "@type": "Organization",
     "name": "AnyTT"
   },
-  "description": "Free online video downloading service for TikTok and YouTube",
+  "description": "Free online TikTok video downloading service without watermark",
   "areaServed": "Worldwide",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Video Download Services",
+    "name": "TikTok Video Download Services",
     "itemListElement": [
       {
         "@type": "Offer",
@@ -329,7 +319,7 @@ export const getServiceSchema = () => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "YouTube Video Download"
+          "name": "TikTok Audio Download (MP3)"
         }
       }
     ]

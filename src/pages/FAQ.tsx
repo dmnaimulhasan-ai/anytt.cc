@@ -11,15 +11,15 @@ const faqData = [
     questions: [
       {
         question: "What is AnyTT?",
-        answer: "AnyTT is a free online video downloader that allows you to save videos from TikTok and YouTube without watermarks. It's fast, free, and works on all devices."
+        answer: "AnyTT is a free online TikTok video downloader that allows you to save TikTok videos without watermarks. It's fast, free, and works on all devices."
       },
       {
         question: "Is AnyTT free to use?",
-        answer: "Yes, AnyTT is 100% free with no hidden fees, subscriptions, or download limits. You can download unlimited videos without paying anything."
+        answer: "Yes, AnyTT is 100% free with no hidden fees, subscriptions, or download limits. You can download unlimited TikTok videos without paying anything."
       },
       {
         question: "Do I need to create an account?",
-        answer: "No registration or account is required. Simply paste the video URL and download instantly."
+        answer: "No registration or account is required. Simply paste the TikTok video URL and download instantly."
       }
     ]
   },
@@ -37,23 +37,10 @@ const faqData = [
       {
         question: "Does it work with private TikTok videos?",
         answer: "No, only public TikTok videos can be downloaded. Private videos require the owner's permission."
-      }
-    ]
-  },
-  {
-    category: "YouTube Downloads",
-    questions: [
-      {
-        question: "Can I download YouTube videos?",
-        answer: "Yes, AnyTT supports YouTube video downloads in multiple quality options including HD and Full HD."
       },
       {
-        question: "Can I download YouTube Shorts?",
-        answer: "Absolutely! YouTube Shorts work the same way - just paste the Shorts URL and download."
-      },
-      {
-        question: "Is downloading YouTube videos legal?",
-        answer: "Downloading videos for personal use is generally acceptable, but you should respect copyright and the creator's rights. Don't redistribute copyrighted content."
+        question: "Can I download TikTok slideshows?",
+        answer: "Yes, TikTok slideshows and photo carousels can be downloaded just like regular videos."
       }
     ]
   },
@@ -70,7 +57,7 @@ const faqData = [
       },
       {
         question: "What video quality is available?",
-        answer: "We offer HD quality downloads (usually 720p or 1080p) depending on the original video quality."
+        answer: "We offer HD quality downloads (usually 720p or 1080p) depending on the original TikTok video quality."
       },
       {
         question: "Why is my download slow?",
@@ -107,10 +94,10 @@ const FAQPage = () => {
   return (
     <div className="min-h-screen bg-background">
         <SEOHead
-          title="FAQ - AnyTT Video Downloader | Frequently Asked Questions"
-          description="Get answers to common questions about downloading TikTok and YouTube videos with AnyTT. Learn how to save videos without watermark."
+          title="FAQ - AnyTT TikTok Video Downloader | Frequently Asked Questions"
+          description="Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device."
         canonicalUrl={`${BASE_URL}/faq`}
-        keywords="AnyTT FAQ, video downloader help, TikTok download questions, how to download videos, video saver FAQ"
+        keywords="AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ"
         jsonLd={[
           getOrganizationSchema(),
           getFAQSchema(allFaqs)

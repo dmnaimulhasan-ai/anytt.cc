@@ -28,7 +28,7 @@ const Header = () => {
         <Link 
           to="/" 
           className="flex items-center"
-          title="AnyTT - Free TikTok & YouTube Video Downloader"
+          title="AnyTT - Free TikTok Video Downloader"
         >
           <span className="text-2xl font-extrabold tracking-tight">
             <span className="gradient-text">Anytt</span>
