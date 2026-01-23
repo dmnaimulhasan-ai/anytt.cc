@@ -33,15 +33,6 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
                   TikTok Downloader
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/youtube-downloader" 
-                  className="block text-muted-foreground hover:text-foreground transition-colors"
-                  title="Download YouTube videos and Shorts"
-                >
-                  YouTube Downloader
-                </Link>
-              </li>
             </ul>
           </nav>
 
