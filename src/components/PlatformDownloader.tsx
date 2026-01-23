@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Search, Clipboard, X, Loader2, List, Link, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +50,7 @@ interface PlatformDownloaderProps {
  * - ADSTERRA POLICY COMPLIANT: Download button has NO ads, NO delays
  * - Smartlink is SEPARATE button (Support Us)
  */
-const PlatformDownloader = ({
+const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>(({
   platform,
   platformName,
   platformIcon,
@@ -58,7 +58,7 @@ const PlatformDownloader = ({
   placeholder,
   batchPlaceholder,
   accentColor
-}: PlatformDownloaderProps) => {
+}, ref) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [url, setUrl] = useState("");
   const [batchUrls, setBatchUrls] = useState("");
@@ -248,7 +248,7 @@ const PlatformDownloader = ({
   const showResults = videoData || batchResults.length > 0;
 
   return (
-    <div className="w-full">
+    <div ref={ref} className="w-full">
       {/* Badge */}
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full tag-pill text-sm text-foreground">
@@ -480,6 +480,8 @@ const PlatformDownloader = ({
       )}
     </div>
   );
-};
+});
+
+PlatformDownloader.displayName = "PlatformDownloader";
 
 export default PlatformDownloader;
