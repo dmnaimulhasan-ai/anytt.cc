@@ -159,7 +159,7 @@ const HeroSection = () => {
             <div className="relative">
               <input
                 type="url"
-                placeholder="Paste TikTok or YouTube link..."
+                placeholder="Paste TikTok video link..."
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -200,15 +200,11 @@ const HeroSection = () => {
               )}
             </Button>
 
-            {/* Supported Platforms */}
+            {/* Supported Platform */}
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground pt-4">
               <span className="flex items-center gap-2">
                 <span className="text-lg">🎵</span>
-                TikTok
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-lg">▶️</span>
-                YouTube
+                TikTok Videos
               </span>
             </div>
 
