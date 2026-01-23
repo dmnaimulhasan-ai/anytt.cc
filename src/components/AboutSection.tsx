@@ -32,10 +32,10 @@ const AboutSection = () => {
     <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-3xl">
         <h2 className="text-section text-center mb-4">
-          Why <span className="gradient-text">Anytt.cc</span>?
+          Why <span className="gradient-text">Anytt cc</span>?
         </h2>
         <p className="text-center text-muted-foreground text-subhero mb-12 max-w-lg mx-auto">
-          The easiest way to download videos without watermark
+          Anytt cc - The easiest way to download videos without watermark
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
