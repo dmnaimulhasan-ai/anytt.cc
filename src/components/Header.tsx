@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 
 /**
  * Header - SEO Optimized Navigation
@@ -36,18 +37,6 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden h-12 w-12 rounded-xl"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
-
         {/* Desktop Nav - Semantic navigation */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
           {navLinks.map((link) => (
@@ -64,12 +53,30 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          
+          {/* Language Selector - Desktop */}
+          <LanguageSelector />
         </nav>
+
+        {/* Mobile: Language + Menu */}
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSelector />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-12 w-12 rounded-xl"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Menu - Full navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border py-4 px-4 animate-slide-up shadow-lg">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border py-4 px-4 animate-slide-up shadow-lg z-50">
           <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <Link 
