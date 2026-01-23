@@ -33,7 +33,7 @@ export const seoConfig = {
     h3: ["How to Download Videos", "Why Choose Anytt cc", "Frequently Asked Questions"]
   },
   tiktok: {
-    title: "Anytt cc TikTok Downloader - Download TikTok Without Watermark Free 2026",
+    title: "Anytt cc TikTok Downloader - Download Free TikTok Video Without Watermark 2026",
     description: "Anytt cc - The best free TikTok video downloader. Save TikTok videos without watermark in HD. Works on iPhone, Android, PC. No registration. Download TikTok MP4 & MP3 with anytt cc!",
     keywords: `${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, tiktok downloader, tiktok video downloader, download tiktok without watermark, tiktok no watermark, save tiktok, tiktok mp4 download, tiktok hd download, tiktok video saver, tiktok to mp3, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok audio extractor, tiktok sound download, download tiktok iphone, download tiktok android, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download`,
     h1: "Anytt cc - TikTok Video Downloader Without Watermark",
