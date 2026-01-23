@@ -1,3 +1,4 @@
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import StatsBar from "./StatsBar";
 
@@ -5,11 +6,11 @@ import StatsBar from "./StatsBar";
  * Footer - SEO Optimized with proper internal linking
  * Uses semantic HTML and proper <a href=""> links for crawlability
  */
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((props, ref) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 border-t border-border" role="contentinfo">
+    <footer ref={ref} className="py-12 px-4 border-t border-border" role="contentinfo" {...props}>
       <div className="container mx-auto max-w-3xl">
         
         {/* Stats */}
@@ -149,6 +150,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
