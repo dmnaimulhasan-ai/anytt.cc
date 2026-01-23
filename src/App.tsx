@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import FloatingSupportButton from "./components/FloatingSupportButton";
 import FloatingBanner from "./components/ads/FloatingBanner";
@@ -43,6 +43,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
+            
+            {/* Legacy redirects */}
+            <Route path="/youtube-downloader" element={<Navigate to="/tiktok-downloader" replace />} />
+            <Route path="/facebook-downloader" element={<Navigate to="/tiktok-downloader" replace />} />
             
             <Route path="/faq" element={<FAQ />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
