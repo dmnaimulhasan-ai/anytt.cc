@@ -1,7 +1,8 @@
+import React, { forwardRef } from "react";
 import { Download, Users, TrendingUp } from "lucide-react";
 import { useStats } from "@/hooks/useStats";
 
-const StatsBar = () => {
+const StatsBar = forwardRef<HTMLDivElement>((props, ref) => {
   const { stats, isLoading } = useStats();
 
   const formatNumber = (num: number) => {
@@ -24,7 +25,7 @@ const StatsBar = () => {
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 md:gap-8 py-4 animate-fade-in">
+    <div ref={ref} className="flex flex-wrap justify-center gap-4 md:gap-8 py-4 animate-fade-in" {...props}>
       <div className="flex items-center gap-2.5 px-4 py-2 rounded-2xl glass-card border border-border/30">
         <div className="p-1.5 rounded-lg bg-gradient-to-r from-primary to-accent">
           <Download className="h-4 w-4 text-primary-foreground" />
@@ -62,6 +63,8 @@ const StatsBar = () => {
       </div>
     </div>
   );
-};
+});
+
+StatsBar.displayName = "StatsBar";
 
 export default StatsBar;
