@@ -45,14 +45,6 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- About Page -->
-  <url>
-    <loc>https://anytt.cc/about</loc>
-    <lastmod>2026-01-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <!-- Blog Section -->
   <url>
     <loc>https://anytt.cc/blog</loc>
@@ -61,7 +53,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Blog Posts - TikTok Only -->
+  <!-- Blog Posts - TikTok Guides -->
   <url>
     <loc>https://anytt.cc/blog/how-to-download-tiktok-videos-without-watermark</loc>
     <lastmod>2026-01-23</lastmod>
@@ -91,6 +83,112 @@
     <lastmod>2026-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-video-downloader-no-watermark-2026</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-mp3-downloader-convert-audio</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/fast-tiktok-video-downloader-hd</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-downloader-chrome-no-extension</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-video-downloader-android-guide</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/no-watermark-tiktok-downloader-safe</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- NEW Blog Posts - Device & Feature Specific -->
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-downloader-iphone-15-16-guide</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/download-tiktok-slideshows-photo-videos</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-batch-downloader-multiple-videos</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/download-tiktok-live-videos-streams</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-to-gif-converter-guide</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/download-tiktok-safari-browser-guide</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-downloader-windows-11-pc</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/fix-tiktok-sound-not-downloading</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/download-tiktok-stories-feature</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/snaptik-ssstik-alternatives-comparison</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://anytt.cc/about</loc>
+    <lastmod>2026-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <!-- Legal Pages -->
