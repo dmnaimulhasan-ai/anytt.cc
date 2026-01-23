@@ -24,8 +24,6 @@
 /youtube-downloader/* /tiktok-downloader 301!
 /save /tiktok-downloader 301!
 /tiktok /tiktok-downloader 301!
-/youtube /tiktok-downloader 301!
-/yt /tiktok-downloader 301!
 /tt /tiktok-downloader 301!
 
 # SPA Fallback - Must be last

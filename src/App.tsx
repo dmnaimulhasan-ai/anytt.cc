@@ -44,9 +44,7 @@ const App = () => (
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
             
-            {/* Legacy redirects */}
-            <Route path="/youtube-downloader" element={<Navigate to="/tiktok-downloader" replace />} />
-            <Route path="/facebook-downloader" element={<Navigate to="/tiktok-downloader" replace />} />
+            {/* Legacy redirects - handled by _redirects for SEO */}
             
             <Route path="/faq" element={<FAQ />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
