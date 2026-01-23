@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Globe, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { setLanguagePreference } from "@/hooks/useLanguageRedirect";
 
 interface Language {
   code: string;
@@ -20,6 +21,7 @@ const languages: Language[] = [
 /**
  * Language Selector Dropdown
  * Allows users to switch between language versions
+ * Saves preference to prevent auto-redirect
  */
 const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,6 +61,12 @@ const LanguageSelector = () => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, []);
 
+  // Handle language selection - save preference
+  const handleLanguageSelect = (lang: Language) => {
+    setLanguagePreference(lang.code);
+    setIsOpen(false);
+  };
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -85,7 +93,7 @@ const LanguageSelector = () => {
               <Link
                 key={lang.code}
                 to={lang.path}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleLanguageSelect(lang)}
                 className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${
                   currentLang.code === lang.code
                     ? "bg-primary/10 text-primary"
