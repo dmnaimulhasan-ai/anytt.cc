@@ -77,6 +77,91 @@ export const allTiktokKeywords = [
 ].join(", ");
 
 /**
+ * Portuguese SEO Keywords - High Volume Brazilian/Portuguese Market
+ */
+export const portugueseKeywords = {
+  // Primary TikTok download terms
+  primary: [
+    "baixar video tiktok", "baixar tiktok", "download tiktok video", "tiktok download",
+    "salvar video tiktok", "baixar videos tiktok", "baixar vídeo tiktok", "baixar tiktok video",
+    "baixar video do tiktok", "baixar video tik tok", "baixar video.tiktok", "baixarvideo tiktok",
+    "baixar videos do tik tok gratis", "baixa video tiktok", "baixa videos tiktok", "salve vídeo tiktok",
+    "salva video tiktok", "vídeos tik tok baixar", "download video tiktok", "tiktok videos download",
+    "tiktok videos downloads", "tiktok download videos", "download tikok video", "dowload tiktok videos"
+  ],
+  // MP3/Audio conversion terms
+  mp3: [
+    "converter video para mp3", "transformar video em mp3", "tiktok mp3 downloader", "baixar musica mp3",
+    "conversor de vídeo mp3", "converter videos para mp3", "converte video para mp3", "convert video em mp3",
+    "mp3 vídeo converter", "conversor de vídeo para audio", "conversor de vídeos mp3", "converter video em audio mp3",
+    "baixar mp3 download youtube", "baixar audio mp3 youtube", "baixar musica mp3 online grátis",
+    "baixar musica do youtube online mp3", "download tik tok mp3", "dowload tiktok mp3", "tiktok mp3 dowload",
+    "mp3 tiktok downloader", "baixar musicas mp3", "baixar musica mp3 download gratis", "baixar musica mp3 link"
+  ],
+  // No watermark terms
+  noWatermark: [
+    "tiktok sem marca d'água", "tiktok sem marca dagua", "baixar tiktok sem marca d'agua",
+    "download tiktok sem marca d'água", "tiktok sem a marca d'água", "baixar video do tiktok sem a marca dagua",
+    "download video tiktok sem marca d agua", "download video tiktok sem marca d água",
+    "tiktok sem marc", "tirar marca d'água", "tirar marca d água", "tirar marca d'água de video tiktok",
+    "como tirar marca d'água de video do tiktok", "como tirar marca d água de video", "sem marca de agua tiktok",
+    "vídeo do tiktok sem marca", "salva video tiktok sem marca", "baixar tiktok sem marca da agua",
+    "tiktok sem marca d'água apk", "ttk sem marca dagua", "download tiktok without watermark",
+    "tik tok video download no watermark", "tiktok downloader no watermark"
+  ],
+  // Save/Saver terms
+  saver: [
+    "save tik tok", "save tik tol", "salva tik tok", "sabe tik tok", "save for tiktok", "save tiktok video",
+    "save.tiktok", "save tikto", "save tktk", "tt save", "titkok save", "save for download",
+    "tik tok saver", "salvar video", "salvar videos", "salvar audio mp3", "salvar story online",
+    "salvar video reels", "salvar vídeo", "salvar video do insta", "salvar stories com música"
+  ],
+  // Common misspellings
+  misspellings: [
+    "baixar vidro tiktok", "baxar video tiktok", "baixar tictoc", "baixar timtok", "baixar tktk",
+    "baoxar video tiktok", "baixar viedo tiktok", "baixar videi tiktok", "baixar viedo tiktok",
+    "baixar video tikto", "baixar video tiktom", "baixar video tikrok", "baixar video riktok",
+    "baiar video tiktok", "baixsr video tiktok", "baixae video tiktok", "baixar vid3o tiktok",
+    "baixar cideo tik tok", "baixar vidoe tiktok", "baixar bideo tiktok", "vbaixar video tiktok",
+    "baiuxar video tiktok", "abaixar video tiktok", "abaixa video tiktok", "abaixa video ttk",
+    "baixa ttk", "baixar tiktok.", "baixar. tiktok", "baixar.video.tiktok", "baixar video.tik tok",
+    "baixar video.tik.tok", "ttt.tiktok", "tiktok download vidoe", "tiktok donwload video",
+    "tiktok video dowload", "tiktok video dowl", "tiktok video dowloader"
+  ],
+  // Competitor/Alternative terms
+  competitors: [
+    "snaptik", "ssstik", "tikmate", "savett", "aha tik downloader", "tokdownloader",
+    "baixar video snap", "yts5"
+  ],
+  // App/Install terms
+  install: [
+    "instalar tiktok", "instalar tiktok grátis", "como instalar o tiktok", "como instalar tiktok",
+    "instala tiktok", "instalar aplicativo tiktok", "instalar aplicativo tik tok", "baixar tiktok apk",
+    "baixar tik tok apk", "baixar aplicativo tiktok", "aplicativo tiktok lite", "tiktok lite baixar e instalar",
+    "baixar o tiktok lite", "como faço para instalar o tiktok", "como baixar tik tok no pc", "baixar tiktok no pc"
+  ],
+  // Downloader/Tool terms
+  downloader: [
+    "tik tok video downloader", "video tiktok downloader", "tik tok vídeo downloader",
+    "tiktok video download", "tiktok url download", "link tiktok downloader", "tiktok download link",
+    "tiktok download links", "baixador de vídeos do tiktok", "baixador de video", "baixador de video online",
+    "melhor baixador de videos", "baixador de vídeo grátis", "baixador de vídeos gratuito", "abaixador de vídeo"
+  ]
+};
+
+// Combined Portuguese keywords string
+export const allPortugueseKeywords = [
+  ...portugueseKeywords.primary,
+  ...portugueseKeywords.mp3,
+  ...portugueseKeywords.noWatermark,
+  ...portugueseKeywords.saver,
+  ...portugueseKeywords.misspellings.slice(0, 20), // Top 20 misspellings
+  ...portugueseKeywords.competitors,
+  ...portugueseKeywords.install.slice(0, 10),
+  ...portugueseKeywords.downloader.slice(0, 10)
+].join(", ");
+
+/**
  * Multilingual branded keywords for global SEO reach
  */
 export const brandedKeywords = {
@@ -84,8 +169,8 @@ export const brandedKeywords = {
   primary: `anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok, ${allTiktokKeywords}`,
   // Spanish variations - expanded
   spanish: "anytt cc descargar tiktok, anytt descargador de videos, descargar tiktok sin marca de agua, descargar video tiktok gratis sin marca de agua, bajar videos de tiktok gratis, descargar tiktok hd, guardar video tiktok sin logo, tiktok descargador gratis, descargar tiktok mp4, video tiktok sin watermark, como descargar tiktok sin marca",
-  // Portuguese variations - expanded  
-  portuguese: "anytt cc baixar tiktok, anytt baixar video tiktok, baixar tiktok sem marca d'agua, baixar video tiktok gratis sem marca d'agua, download tiktok gratis brasil, salvar video tiktok sem logo, baixador de tiktok hd, tiktok download gratis, como baixar tiktok sem marca, video tiktok sem watermark, baixar tiktok mp4 gratis",
+  // Portuguese variations - massively expanded with user keywords
+  portuguese: `anytt cc baixar tiktok, anytt baixar video tiktok, ${allPortugueseKeywords}`,
   // Indonesian variations - expanded
   indonesian: "anytt cc unduh tiktok, anytt download video tiktok, unduh tiktok tanpa watermark, download video tiktok gratis tanpa watermark, simpan video tiktok tanpa logo, unduh tiktok hd gratis, cara download tiktok tanpa watermark, tiktok downloader indonesia, download tiktok mp4 gratis, video tiktok tanpa tanda air, unduh tiktok gratis",
   // French variations

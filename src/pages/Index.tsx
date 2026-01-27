@@ -51,6 +51,19 @@ const homeFaqs = [
   {
     question: "Is Anytt cc safe to use?",
     answer: "Absolutely! Anytt cc doesn't require any registration or personal information. We don't store any of your data. Anytt cc is 100% safe and secure."
+  },
+  // Portuguese SEO FAQs
+  {
+    question: "Como baixar vídeo do TikTok sem marca d'água?",
+    answer: "Com Anytt cc você pode baixar video tiktok sem marca d'água gratuitamente. Basta colar o link do TikTok e clicar em download. Baixar tiktok nunca foi tão fácil!"
+  },
+  {
+    question: "Como converter vídeo TikTok para MP3?",
+    answer: "Anytt cc permite transformar video em mp3 facilmente. Baixe o áudio de qualquer vídeo TikTok em formato MP3 grátis. Converter video para mp3 é simples e rápido!"
+  },
+  {
+    question: "Como salvar vídeo do TikTok no celular?",
+    answer: "Para salvar video tiktok no celular, copie o link do vídeo, cole no Anytt cc e clique em download. Funciona em iPhone e Android sem instalar nenhum aplicativo!"
   }
 ];
 
@@ -134,6 +147,36 @@ const Index = () => {
               >
                 ℹ️ About Us
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Popular Searches - SEO Keywords Section */}
+        <section className="py-10 px-4 bg-background border-t border-border/30">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h3 className="text-lg font-semibold text-foreground/80 mb-6">Popular Downloads</h3>
+            <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70 leading-relaxed">
+              <span>baixar video tiktok</span><span>•</span>
+              <span>tiktok sem marca d'água</span><span>•</span>
+              <span>converter video para mp3</span><span>•</span>
+              <span>save tik tok</span><span>•</span>
+              <span>transformar video em mp3</span><span>•</span>
+              <span>download tiktok video</span><span>•</span>
+              <span>salva tik tok</span><span>•</span>
+              <span>baixar tiktok gratis</span><span>•</span>
+              <span>tiktok mp3 downloader</span><span>•</span>
+              <span>baixar musica mp3</span><span>•</span>
+              <span>tirar marca d'água</span><span>•</span>
+              <span>tiktok downloader no watermark</span><span>•</span>
+              <span>baixar videos tiktok</span><span>•</span>
+              <span>conversor de vídeo mp3</span><span>•</span>
+              <span>salvar video tiktok</span><span>•</span>
+              <span>tik tok video downloader</span><span>•</span>
+              <span>baixar audio tiktok</span><span>•</span>
+              <span>download tiktok without watermark</span><span>•</span>
+              <span>snaptik alternative</span><span>•</span>
+              <span>ssstik</span><span>•</span>
+              <span>tikmate</span>
             </div>
           </div>
         </section>
