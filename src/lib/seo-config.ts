@@ -162,11 +162,100 @@ export const allPortugueseKeywords = [
 ].join(", ");
 
 /**
+ * English SEO Keywords - High Volume Global Market
+ */
+export const englishKeywords = {
+  // Competitor brand terms
+  competitors: [
+    "snaptik", "ssstiktok", "ssstik", "snaptic", "sniptik", "snapkit", "snap tik",
+    "musicallydown", "savetiktok", "tikmate", "ttdownloader", "tiktokio",
+    "godownloader", "snapsave", "getfvid", "downloadgram", "w3toys", "snapsaver",
+    "snapdownloader", "ssstiktok download", "snaptik app", "snaptik apk", "snaptic app",
+    "ssstik tok", "ssk tiktok", "ssg tiktok", "ssc tiktok", "sst tiktok", "sstik",
+    "tiktoksss", "fff tiktok", "ttdl", "tmate", "insaver", "storysave"
+  ],
+  // No watermark terms
+  noWatermark: [
+    "tiktok without watermark", "without watermark", "no watermark", "tiktok no watermark",
+    "tiktok watermark remover", "remove tiktok watermark", "watermark remover tiktok",
+    "download tiktok without watermark", "tiktok downloader no watermark", "tiktok without mark",
+    "tiktok download without watermark", "tik tok video download without watermark",
+    "video download without watermark", "download without watermark", "no watermark tiktok",
+    "tiktok video download without watermark hd", "free tiktok downloader without watermark",
+    "ssstiktok without watermark", "tiktok remove watermark", "tiktok watermark remove",
+    "tiktok logo remover", "tiktok tag remover", "tiktok water remover", "without watermark tiktok"
+  ],
+  // SS/TT tool variations
+  ssTools: [
+    "ss tiktok", "sss tiktok", "ss tik tok", "ssstik", "sstiktok", "ss tiktok downloader",
+    "tt downloader", "tt download", "tt video downloader", "tk downloader", "tt video download",
+    "sss tiktok download", "sss tik tok", "sss tik", "ss tiktok video downloader",
+    "sss.tiktok", "ss.tiktok", "ssstiktok.com", "ssstik.io", "ssstiktok video"
+  ],
+  // Common misspellings
+  misspellings: [
+    "tiktok vedio", "tiktok downloder", "titok download", "tak tok download",
+    "snaptic app", "sniptik", "tiktokio", "tikkok", "tik tuk", "tuktok",
+    "tiktok vedio download", "tak tak video download", "tic tac download",
+    "tik tik download", "tok tik download", "tiktok donwload", "tiktok dowload",
+    "tiktok downlod", "tictok download", "tiktok vidoe download", "tilk", "tikk"
+  ],
+  // HD/Quality terms
+  quality: [
+    "tiktok video download hd", "tiktok hd video downloader", "tiktok download 4k",
+    "tiktok video download without watermark hd", "tik tok video download hd",
+    "tiktok hd video download", "hd tik tok", "tiktok video download hd without watermark",
+    "tiktok video download 4k", "tiktok video downloader hd", "tik tok hd video"
+  ],
+  // Save/Saver terms
+  saver: [
+    "save tiktok", "tiktok save", "save from tik tok", "tiktok saver", "save tik tok",
+    "save tiktok video", "tiktok video save", "save tik tok video", "tik tok save",
+    "tiktok save video", "tiktok save without watermark", "save from tiktok without watermark",
+    "save video from tiktok", "save tiktok without watermark", "tiktok video saver"
+  ],
+  // App/APK terms
+  appTerms: [
+    "snaptik app", "snaptik apk", "tiktok downloader apk", "tiktok download app",
+    "tik tok video download app", "tiktok video downloader app", "tiktok download apk",
+    "tiktok video download apk", "tik tok download apk", "tiktok mod apk",
+    "tiktok lite download", "tiktok lite apk", "tik tok app download"
+  ],
+  // Download variations
+  download: [
+    "tiktok download", "download tiktok", "download tik tok", "tik tok download",
+    "tiktok download video", "download tiktok video", "tik tok download video",
+    "video tiktok download", "download video tiktok", "tiktok video download",
+    "download from tiktok", "download from tik tok", "tiktok link download",
+    "tiktok copy link download", "tiktok download link", "tiktok download online",
+    "online tiktok video downloader", "tiktok video downloader online", "download tik"
+  ],
+  // Converter terms
+  converter: [
+    "tiktok to mp4", "tiktok converter", "tiktok to mp4 converter", "tiktok mp3",
+    "tiktok mp3 downloader", "tiktok video download mp3", "tik tok musically mp3"
+  ]
+};
+
+// Combined English keywords string
+export const allEnglishKeywords = [
+  ...englishKeywords.competitors,
+  ...englishKeywords.noWatermark,
+  ...englishKeywords.ssTools,
+  ...englishKeywords.misspellings.slice(0, 15),
+  ...englishKeywords.quality,
+  ...englishKeywords.saver,
+  ...englishKeywords.appTerms.slice(0, 8),
+  ...englishKeywords.download.slice(0, 12),
+  ...englishKeywords.converter
+].join(", ");
+
+/**
  * Multilingual branded keywords for global SEO reach
  */
 export const brandedKeywords = {
-  // Primary branded keywords
-  primary: `anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok, ${allTiktokKeywords}`,
+  // Primary branded keywords + English SEO keywords
+  primary: `anytt cc, anytt, anytt.cc, any tt cc, anytt downloader, tt cc, anytt video downloader, anytt tiktok, ${allTiktokKeywords}, ${allEnglishKeywords}`,
   // Spanish variations - expanded
   spanish: "anytt cc descargar tiktok, anytt descargador de videos, descargar tiktok sin marca de agua, descargar video tiktok gratis sin marca de agua, bajar videos de tiktok gratis, descargar tiktok hd, guardar video tiktok sin logo, tiktok descargador gratis, descargar tiktok mp4, video tiktok sin watermark, como descargar tiktok sin marca",
   // Portuguese variations - massively expanded with user keywords
