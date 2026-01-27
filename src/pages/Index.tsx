@@ -5,7 +5,6 @@ import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SocialBar from "@/components/ads/SocialBar";
-import { usePopunderTrigger } from "@/hooks/useAdMonetization";
 import { useLanguageRedirect } from "@/hooks/useLanguageRedirect";
 import { 
   seoConfig, 
@@ -81,9 +80,6 @@ const homeFaqs = [
 ];
 
 const Index = () => {
-  // Initialize popunder trigger on first user interaction
-  usePopunderTrigger();
-  
   // Auto-redirect based on browser language preference
   useLanguageRedirect();
 
