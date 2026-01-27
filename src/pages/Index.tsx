@@ -52,6 +52,19 @@ const homeFaqs = [
     question: "Is Anytt cc safe to use?",
     answer: "Absolutely! Anytt cc doesn't require any registration or personal information. We don't store any of your data. Anytt cc is 100% safe and secure."
   },
+  // English SEO FAQs - Competitor & Feature Keywords
+  {
+    question: "Is Anytt cc better than SnapTik or SssTikTok?",
+    answer: "Yes! Anytt cc is a free snaptik alternative and ssstiktok alternative that downloads TikTok videos without watermark in HD quality. No app, no registration - just paste and download!"
+  },
+  {
+    question: "How does the TikTok watermark remover work?",
+    answer: "Anytt cc automatically removes TikTok watermarks when you download. Simply paste your TikTok link and we'll save the video without watermark, no editing required. Works like a tiktok logo remover!"
+  },
+  {
+    question: "Can I use ss tiktok or tt downloader features here?",
+    answer: "Absolutely! Anytt cc provides all ss tiktok and tt downloader features - download TikTok videos without watermark, save in HD quality, and convert to MP3. Better than ssstik or tikmate!"
+  },
   // Portuguese SEO FAQs
   {
     question: "Como baixar vídeo do TikTok sem marca d'água?",
@@ -156,27 +169,43 @@ const Index = () => {
           <div className="container mx-auto max-w-4xl text-center">
             <h3 className="text-lg font-semibold text-foreground/80 mb-6">Popular Downloads</h3>
             <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70 leading-relaxed">
+              {/* English Keywords - Competitors & Tools */}
+              <span>snaptik</span><span>•</span>
+              <span>ssstiktok</span><span>•</span>
+              <span>tiktok without watermark</span><span>•</span>
+              <span>download tiktok without watermark</span><span>•</span>
+              <span>tiktok watermark remover</span><span>•</span>
+              <span>ss tiktok</span><span>•</span>
+              <span>tt downloader</span><span>•</span>
+              <span>save tiktok</span><span>•</span>
+              <span>tiktok saver</span><span>•</span>
+              <span>snap tik</span><span>•</span>
+              <span>ssstik</span><span>•</span>
+              <span>no watermark tiktok</span><span>•</span>
+              <span>tiktok download hd</span><span>•</span>
+              <span>sss tiktok download</span><span>•</span>
+              <span>remove tiktok watermark</span><span>•</span>
+              <span>savetiktok</span><span>•</span>
+              <span>snaptik app</span><span>•</span>
+              <span>tiktok to mp4</span><span>•</span>
+              <span>tikmate</span><span>•</span>
+              <span>musicallydown</span><span>•</span>
+              <span>tiktok converter</span><span>•</span>
+              <span>ttdl</span><span>•</span>
+              <span>tiktokio</span><span>•</span>
+              <span>godownloader</span><span>•</span>
+              <span>snapsave</span><span>•</span>
+              {/* Portuguese Keywords */}
               <span>baixar video tiktok</span><span>•</span>
               <span>tiktok sem marca d'água</span><span>•</span>
               <span>converter video para mp3</span><span>•</span>
               <span>save tik tok</span><span>•</span>
               <span>transformar video em mp3</span><span>•</span>
-              <span>download tiktok video</span><span>•</span>
-              <span>salva tik tok</span><span>•</span>
+              <span>salvar video tiktok</span><span>•</span>
               <span>baixar tiktok gratis</span><span>•</span>
               <span>tiktok mp3 downloader</span><span>•</span>
-              <span>baixar musica mp3</span><span>•</span>
               <span>tirar marca d'água</span><span>•</span>
-              <span>tiktok downloader no watermark</span><span>•</span>
-              <span>baixar videos tiktok</span><span>•</span>
-              <span>conversor de vídeo mp3</span><span>•</span>
-              <span>salvar video tiktok</span><span>•</span>
-              <span>tik tok video downloader</span><span>•</span>
-              <span>baixar audio tiktok</span><span>•</span>
-              <span>download tiktok without watermark</span><span>•</span>
-              <span>snaptik alternative</span><span>•</span>
-              <span>ssstik</span><span>•</span>
-              <span>tikmate</span>
+              <span>tik tok video downloader</span>
             </div>
           </div>
         </section>
