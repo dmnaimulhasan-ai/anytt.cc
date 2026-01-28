@@ -99,7 +99,7 @@ const Blog = () => {
         title="TikTok Download Guides & Tutorials | AnyTT Blog"
         description="Learn how to download TikTok videos without watermark. Step-by-step tutorials, tips, and guides for saving TikTok videos on any device."
         canonicalUrl={`${BASE_URL}/blog`}
-        keywords="tiktok download guide, tiktok tutorial, how to download tiktok videos, tiktok video saver tips"
+        keywords="download TikTok, fast downloads, social media, video downloader, tiktok download guide, tiktok tutorial, how to download tiktok videos, tiktok video saver tips"
         jsonLd={[blogSchema, breadcrumbJsonLd, itemListJsonLd, getFAQSchema(blogFaqs)]}
       />
       <Header />

@@ -97,7 +97,7 @@ const FAQPage = () => {
           title="FAQ - AnyTT TikTok Video Downloader | Frequently Asked Questions"
           description="Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device."
         canonicalUrl={`${BASE_URL}/faq`}
-        keywords="AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ"
+        keywords="download TikTok, fast downloads, social media, video downloader, AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ"
         jsonLd={[
           getOrganizationSchema(),
           getFAQSchema(allFaqs)

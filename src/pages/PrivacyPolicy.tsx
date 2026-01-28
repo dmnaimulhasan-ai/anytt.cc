@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
         title="Privacy Policy - AnyTT TikTok Video Downloader"
         description="Read AnyTT's privacy policy. Learn how we protect your data and respect your privacy when using our free TikTok video downloader service."
         canonicalUrl={`${BASE_URL}/privacy-policy`}
-        keywords="AnyTT privacy policy, tiktok downloader privacy, data protection, user privacy, safe tiktok download"
+        keywords="download TikTok, fast downloads, social media, video downloader, AnyTT privacy policy, tiktok downloader privacy, data protection, user privacy, safe tiktok download"
         jsonLd={[getOrganizationSchema(), getFAQSchema(privacyFaqs)]}
       />
       <Header />
