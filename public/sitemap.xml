@@ -48,8 +48,16 @@
   <!-- Blog Section -->
   <url>
     <loc>https://anytt.cc/blog</loc>
-    <lastmod>2026-01-23</lastmod>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Ultimate Guide Blog Post - Pillar Content -->
+  <url>
+    <loc>https://anytt.cc/blog/ultimate-tiktok-download-guide-2026-complete</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
