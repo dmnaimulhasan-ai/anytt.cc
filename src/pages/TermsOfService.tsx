@@ -29,7 +29,7 @@ const TermsOfService = () => {
         title="Terms of Service - AnyTT TikTok Video Downloader"
         description="Read AnyTT's terms of service. Understand the rules and guidelines for using our free TikTok video downloader."
         canonicalUrl={`${BASE_URL}/terms-of-service`}
-        keywords="AnyTT terms of service, tiktok downloader terms, usage guidelines, legal terms, tiktok download rules"
+        keywords="download TikTok, fast downloads, social media, video downloader, AnyTT terms of service, tiktok downloader terms, usage guidelines, legal terms, tiktok download rules"
         jsonLd={[getOrganizationSchema(), getFAQSchema(termsFaqs)]}
       />
       <Header />

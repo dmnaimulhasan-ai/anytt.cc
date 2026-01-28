@@ -29,7 +29,7 @@ const DMCA = () => {
         title="DMCA Policy - AnyTT TikTok Video Downloader"
         description="AnyTT's DMCA policy and copyright complaint procedure. Learn how to report copyright infringement and our content removal process."
         canonicalUrl={`${BASE_URL}/dmca`}
-        keywords="AnyTT DMCA, copyright policy, content removal, DMCA takedown, copyright complaint, tiktok copyright"
+        keywords="download TikTok, fast downloads, social media, video downloader, AnyTT DMCA, copyright policy, content removal, DMCA takedown, copyright complaint, tiktok copyright"
         jsonLd={[getOrganizationSchema(), getFAQSchema(dmcaFaqs)]}
       />
       <Header />
