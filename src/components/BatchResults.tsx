@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -32,7 +33,7 @@ interface BatchResultsProps {
   isProcessing?: boolean;
 }
 
-const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = false }: BatchResultsProps) => {
+const BatchResults = forwardRef<HTMLDivElement, BatchResultsProps>(({ results, onReset, autoDownload = false, isProcessing = false }, ref) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -105,7 +106,7 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
   }, [autoDownload, hasAutoDownloaded, isProcessing, successCount, handleDownloadAll]);
 
   return (
-    <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
+    <div ref={ref} className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
       {/* Download Progress Bar */}
       {isDownloading && (
         <div className="mb-4">
@@ -269,6 +270,8 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
       </div>
     </div>
   );
-};
+});
+
+BatchResults.displayName = "BatchResults";
 
 export default BatchResults;
