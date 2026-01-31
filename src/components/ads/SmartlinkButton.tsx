@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { useState } from "react";
 import { Heart, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAdMonetization } from "@/hooks/useAdMonetization";
@@ -19,7 +19,7 @@ interface SmartlinkButtonProps {
  * - Soft disclosure text included
  * - No forced clicks, no misleading
  */
-const SmartlinkButton = forwardRef<HTMLDivElement, SmartlinkButtonProps>(({ className = "" }, ref) => {
+const SmartlinkButton = ({ className = "" }: SmartlinkButtonProps) => {
   const { isSmartlinkTriggered, triggerSmartlink } = useAdMonetization();
   const { trackAdEvent } = useAdAnalytics();
   const [hasClicked, setHasClicked] = useState(false);
@@ -43,7 +43,7 @@ const SmartlinkButton = forwardRef<HTMLDivElement, SmartlinkButtonProps>(({ clas
   if (alreadyTriggered) return null;
 
   return (
-    <div ref={ref} className={`text-center space-y-3 ${className}`}>
+    <div className={`text-center space-y-3 ${className}`}>
       {/* Soft disclosure */}
       <p className="text-xs text-muted-foreground/70">
         You may see a short ad in a new tab. Ads help keep this service free.
@@ -67,8 +67,6 @@ const SmartlinkButton = forwardRef<HTMLDivElement, SmartlinkButtonProps>(({ clas
       )}
     </div>
   );
-});
-
-SmartlinkButton.displayName = "SmartlinkButton";
+};
 
 export default SmartlinkButton;

@@ -1,7 +1,7 @@
-import { forwardRef, useState, useEffect, useCallback } from "react";
 import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import LazyImage from "./LazyImage";
 
@@ -32,7 +32,7 @@ interface BatchResultsProps {
   isProcessing?: boolean;
 }
 
-const BatchResults = forwardRef<HTMLDivElement, BatchResultsProps>(({ results, onReset, autoDownload = false, isProcessing = false }, ref) => {
+const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = false }: BatchResultsProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -105,7 +105,7 @@ const BatchResults = forwardRef<HTMLDivElement, BatchResultsProps>(({ results, o
   }, [autoDownload, hasAutoDownloaded, isProcessing, successCount, handleDownloadAll]);
 
   return (
-    <div ref={ref} className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
+    <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
       {/* Download Progress Bar */}
       {isDownloading && (
         <div className="mb-4">
@@ -269,8 +269,6 @@ const BatchResults = forwardRef<HTMLDivElement, BatchResultsProps>(({ results, o
       </div>
     </div>
   );
-});
-
-BatchResults.displayName = "BatchResults";
+};
 
 export default BatchResults;

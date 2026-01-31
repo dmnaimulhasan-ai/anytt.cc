@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
 
 const AD_LOAD_TIMEOUT = 8000;
@@ -16,7 +16,7 @@ interface NativeBannerProps {
  * - Mobile responsive
  * - No misleading content
  */
-const NativeBanner = forwardRef<HTMLDivElement, NativeBannerProps>(({ className = "" }, ref) => {
+const NativeBanner = ({ className = "" }: NativeBannerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
   const [adFailed, setAdFailed] = useState(false);
@@ -66,7 +66,7 @@ const NativeBanner = forwardRef<HTMLDivElement, NativeBannerProps>(({ className 
   }
 
   return (
-    <div ref={ref} className={`my-6 ${className}`}>
+    <div className={`my-6 ${className}`}>
       {/* Clear advertisement label - Adsterra policy compliant */}
       <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
         Advertisement
@@ -80,8 +80,6 @@ const NativeBanner = forwardRef<HTMLDivElement, NativeBannerProps>(({ className 
       </div>
     </div>
   );
-});
-
-NativeBanner.displayName = "NativeBanner";
+};
 
 export default NativeBanner;
