@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { ChevronRight, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,9 +11,9 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-const Breadcrumb = ({ items }: BreadcrumbProps) => {
+const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(({ items }, ref) => {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
+    <nav ref={ref} aria-label="Breadcrumb" className="mb-6">
       <ol 
         className="flex flex-wrap items-center gap-2 text-sm"
         itemScope 
@@ -63,6 +64,8 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
       </ol>
     </nav>
   );
-};
+});
+
+Breadcrumb.displayName = "Breadcrumb";
 
 export default Breadcrumb;
