@@ -1,5 +1,6 @@
-import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles } from "lucide-react";
+import { Download, Music, Video, CheckCircle, XCircle, ChevronDown, ChevronUp, Zap, ArrowLeft, Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import LazyImage from "./LazyImage";
@@ -34,6 +35,8 @@ interface BatchResultsProps {
 const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = false }: BatchResultsProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [hasAutoDownloaded, setHasAutoDownloaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
   
   const successCount = results.filter(r => r.success).length;
   const failedCount = results.filter(r => !r.success).length;
@@ -57,25 +60,38 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
 
   const { toast } = useToast();
 
-  const handleDownloadAll = useCallback(() => {
+  const handleDownloadAll = useCallback(async () => {
     const successfulResults = results.filter(r => r.success && r.data);
     
-    if (successfulResults.length === 0) return;
+    if (successfulResults.length === 0 || isDownloading) return;
+
+    setIsDownloading(true);
+    setDownloadProgress(0);
 
     toast({
       title: "🚀 Starting downloads!",
       description: `Downloading ${successfulResults.length} videos...`,
     });
 
-    successfulResults.forEach((result, index) => {
-      setTimeout(() => {
-        handleDownload(
-          result.data!.videoUrlNoWatermark,
-          `tiktok-${result.data!.id}-hd.mp4`
-        );
-      }, index * 300);
+    for (let i = 0; i < successfulResults.length; i++) {
+      const result = successfulResults[i];
+      handleDownload(
+        result.data!.videoUrlNoWatermark,
+        `tiktok-${result.data!.id}-hd.mp4`
+      );
+      setDownloadProgress(Math.round(((i + 1) / successfulResults.length) * 100));
+      // Delay between downloads to avoid browser blocking
+      if (i < successfulResults.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 400));
+      }
+    }
+
+    setIsDownloading(false);
+    toast({
+      title: "✅ All downloads complete!",
+      description: `${successfulResults.length} videos downloaded successfully`,
     });
-  }, [results, toast]);
+  }, [results, toast, isDownloading]);
 
   // Auto-download when batch completes (only after processing finishes)
   useEffect(() => {
@@ -90,6 +106,15 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
 
   return (
     <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 animate-slide-up neon-border">
+      {/* Download Progress Bar */}
+      {isDownloading && (
+        <div className="mb-4">
+          <Progress value={downloadProgress} className="h-2" />
+          <p className="text-xs text-muted-foreground text-center mt-2">
+            Downloading... {downloadProgress}%
+          </p>
+        </div>
+      )}
       {/* Summary Header */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-border/50">
         <div className="flex items-center gap-4">
@@ -110,10 +135,20 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
           {successCount > 0 && (
             <Button
               onClick={handleDownloadAll}
-              className="btn-glow text-primary-foreground rounded-xl border-0"
+              disabled={isDownloading}
+              className="btn-glow text-primary-foreground rounded-xl border-0 min-w-[180px]"
             >
-              <Zap className="h-4 w-4 mr-2" />
-              Download All HD ({successCount})
+              {isDownloading ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  {downloadProgress}%
+                </>
+              ) : (
+                <>
+                  <Zap className="h-4 w-4 mr-2" />
+                  Download All HD ({successCount})
+                </>
+              )}
             </Button>
           )}
           <Button

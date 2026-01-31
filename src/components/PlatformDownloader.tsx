@@ -222,11 +222,19 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
     setBatchResults([]);
     
     const results: BatchVideoResult[] = [];
+    const CHUNK_SIZE = 5; // Process 5 videos at a time for speed
 
-    for (let i = 0; i < urls.length; i++) {
+    // Process URLs in parallel chunks
+    for (let i = 0; i < urls.length; i += CHUNK_SIZE) {
+      const chunk = urls.slice(i, i + CHUNK_SIZE);
       setProcessingIndex(i);
-      const result = await fetchVideo(urls[i]);
-      results.push(result);
+      
+      // Fetch all videos in chunk simultaneously
+      const chunkResults = await Promise.all(
+        chunk.map(url => fetchVideo(url))
+      );
+      
+      results.push(...chunkResults);
       setBatchResults([...results]);
     }
 
@@ -236,7 +244,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
     const successCount = results.filter(r => r.success).length;
     toast({
       title: "🎊 Done!",
-      description: `Got ${successCount}/${urls.length} videos`,
+      description: `Got ${successCount}/${urls.length} videos - downloads starting!`,
     });
   };
 
@@ -467,6 +475,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
             <BatchResults 
               results={batchResults} 
               onReset={handleClear}
+              autoDownload={true}
               isProcessing={isLoading}
             />
           )}
