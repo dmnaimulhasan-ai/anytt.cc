@@ -3,13 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     
-    <!-- Google Analytics (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8VFHM6T4G"></script>
+    <!-- Google Analytics (gtag.js) - Deferred to improve FCP/LCP -->
     <script>
+      // Defer GA loading until after page load to reduce unused JS
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-Q8VFHM6T4G');
+      
+      // Load GA script after page becomes interactive
+      if (document.readyState === 'complete') {
+        loadGA();
+      } else {
+        window.addEventListener('load', loadGA);
+      }
+      function loadGA() {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q8VFHM6T4G';
+          s.async = true;
+          document.head.appendChild(s);
+        }, 2000); // 2s delay to prioritize FCP
+      }
     </script>
     
     <!-- Google Search Console Verification -->
