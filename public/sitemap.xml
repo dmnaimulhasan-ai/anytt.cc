@@ -237,6 +237,14 @@
     <priority>0.7</priority>
   </url>
   
+  <!-- Pinterest Blog Posts -->
+  <url>
+    <loc>https://anytt.cc/blog/how-to-download-pinterest-videos-free</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- About Page -->
   <url>
     <loc>https://anytt.cc/about</loc>
