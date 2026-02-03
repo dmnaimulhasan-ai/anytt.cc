@@ -78,6 +78,40 @@ export const tiktokKeywords = {
   ]
 };
 
+/**
+ * Pinterest Keywords organized by category
+ */
+export const pinterestKeywords = {
+  primary: [
+    "pinterest video downloader",
+    "download pinterest video",
+    "pinterest downloader",
+    "pinterest video download",
+    "save pinterest video",
+    "pinterest video saver",
+    "pinterest idea pin downloader",
+    "download pinterest idea pin"
+  ],
+  quality: [
+    "pinterest video download hd",
+    "pinterest hd video downloader",
+    "pinterest video download 1080p",
+    "high quality pinterest download"
+  ],
+  device: [
+    "pinterest video downloader iphone",
+    "pinterest video downloader android",
+    "pinterest video download pc",
+    "pinterest downloader mobile"
+  ],
+  feature: [
+    "free pinterest video downloader",
+    "pinterest video downloader online",
+    "pinterest downloader no app",
+    "pinterest video downloader free online"
+  ]
+};
+
 // Combined keywords string for meta tags
 export const allTiktokKeywords = [
   ...tiktokKeywords.primary,
