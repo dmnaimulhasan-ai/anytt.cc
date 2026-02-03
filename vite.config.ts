@@ -16,12 +16,12 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
+      // Defer SW registration to avoid render-blocking
+      injectRegister: null,
       workbox: {
         clientsClaim: true,
         skipWaiting: true,
         cleanupOutdatedCaches: true,
-        // Remove navigateFallback to prevent offline page showing incorrectly
-        // navigateFallback: null,
         // Exclude sitemap.xml, robots.txt and other SEO files from service worker
         navigateFallbackDenylist: [/sitemap\.xml$/, /robots\.txt$/],
         runtimeCaching: [
