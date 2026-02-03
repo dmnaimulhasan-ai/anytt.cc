@@ -97,8 +97,23 @@ serve(async (req) => {
 
     console.log('Processing Pinterest URL:', url);
 
-    // Fetch the Pinterest page directly
-    const response = await fetch(url, {
+    // Step 1: Resolve short URLs (pin.it) to full URLs
+    let resolvedUrl = url;
+    if (url.includes('pin.it')) {
+      console.log('Resolving short URL...');
+      const shortResponse = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        }
+      });
+      resolvedUrl = shortResponse.url;
+      console.log('Resolved to:', resolvedUrl);
+    }
+
+    // Step 2: Fetch the Pinterest page
+    const response = await fetch(resolvedUrl, {
       method: 'GET',
       headers: {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -106,7 +121,6 @@ serve(async (req) => {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Cache-Control': 'no-cache',
       },
-      redirect: 'follow'
     });
 
     if (!response.ok) {
@@ -119,133 +133,99 @@ serve(async (req) => {
 
     const html = await response.text();
     
-    // Extract video URL from various possible locations in the HTML
     let videoUrl = '';
     let thumbnail = '';
     let title = '';
     let author = '';
-    let authorAvatar = '';
     let pinId = '';
 
-    // Try to extract from __PWS_DATA__ JSON (Pinterest Web Service data)
-    const pwsMatch = html.match(/<script[^>]*id="__PWS_DATA__"[^>]*>([^<]+)<\/script>/);
-    if (pwsMatch) {
-      try {
-        const pwsData = JSON.parse(pwsMatch[1]);
-        
-        // Navigate through the data structure to find video info
-        const resources = pwsData?.props?.initialReduxState?.resources || {};
-        const pins = pwsData?.props?.initialReduxState?.pins || {};
-        
-        // Find pin data from resources or pins
-        for (const key in resources) {
-          const resource = resources[key];
-          if (resource?.data?.videos?.video_list) {
-            const videoList = resource.data.videos.video_list;
-            // Get the highest quality video available
-            const videoKey = Object.keys(videoList).find(k => 
-              videoList[k]?.url && videoList[k].url.includes('.mp4')
-            );
-            if (videoKey) {
-              videoUrl = videoList[videoKey].url;
-              thumbnail = resource.data.images?.orig?.url || resource.data.images?.['736x']?.url || '';
-              title = resource.data.title || resource.data.description || 'Pinterest Video';
-              pinId = resource.data.id || '';
-              
-              // Get author info
-              if (resource.data.pinner) {
-                author = resource.data.pinner.username || resource.data.pinner.full_name || '';
-                authorAvatar = resource.data.pinner.image_medium_url || '';
-              }
-              break;
-            }
-          }
-        }
-        
-        // Also check pins object
-        if (!videoUrl) {
-          for (const key in pins) {
-            const pin = pins[key];
-            if (pin?.videos?.video_list) {
-              const videoList = pin.videos.video_list;
-              const videoKey = Object.keys(videoList).find(k => 
-                videoList[k]?.url && videoList[k].url.includes('.mp4')
-              );
-              if (videoKey) {
-                videoUrl = videoList[videoKey].url;
-                thumbnail = pin.images?.orig?.url || pin.images?.['736x']?.url || '';
-                title = pin.title || pin.description || 'Pinterest Video';
-                pinId = pin.id || '';
-                break;
-              }
-            }
-          }
-        }
-      } catch (e) {
-        console.log('Failed to parse PWS data:', e);
+    // Method 1: Look for video tag with src attribute containing v1.pinimg.com
+    // Pattern: <video ... src="https://v1.pinimg.com/videos/...m3u8" ...>
+    const videoSrcMatch = html.match(/src="(https:\/\/v\d?\.pinimg\.com\/videos\/[^"]+)"/i);
+    if (videoSrcMatch) {
+      let extractedUrl = videoSrcMatch[1];
+      console.log('Found video src:', extractedUrl);
+      
+      // Convert HLS (m3u8) to MP4 if needed
+      if (extractedUrl.includes('hls') && extractedUrl.includes('.m3u8')) {
+        videoUrl = extractedUrl.replace('/hls/', '/720p/').replace('.m3u8', '.mp4');
+      } else if (extractedUrl.includes('.mp4')) {
+        videoUrl = extractedUrl;
+      } else {
+        // Try to construct 720p mp4 URL
+        videoUrl = extractedUrl.replace('hls', '720p').replace('m3u8', 'mp4');
       }
+      console.log('Converted to MP4:', videoUrl);
     }
 
-    // Try alternate method - look for video meta tags
+    // Method 2: Look for video in script data (PWS_DATA or initialReduxState)
     if (!videoUrl) {
-      const videoMetaMatch = html.match(/<meta[^>]*property="og:video"[^>]*content="([^"]+)"/);
-      if (videoMetaMatch) {
-        videoUrl = videoMetaMatch[1];
-      }
-    }
-
-    // Try to find video in embedded JSON-LD
-    if (!videoUrl) {
-      const jsonLdMatch = html.match(/<script type="application\/ld\+json"[^>]*>([^<]+)<\/script>/g);
-      if (jsonLdMatch) {
-        for (const match of jsonLdMatch) {
-          try {
-            const jsonContent = match.match(/>([^<]+)</)?.[1];
-            if (jsonContent) {
-              const jsonData = JSON.parse(jsonContent);
-              if (jsonData.contentUrl) {
-                videoUrl = jsonData.contentUrl;
-                thumbnail = jsonData.thumbnailUrl || thumbnail;
-                title = jsonData.name || title;
-              }
-            }
-          } catch (e) {
-            // Continue to next match
-          }
+      // Try to find video URLs in JSON data embedded in the page
+      const jsonDataMatches = html.matchAll(/"(https:\/\/v\d?\.pinimg\.com\/videos\/[^"]+\.mp4[^"]*)"/g);
+      for (const match of jsonDataMatches) {
+        if (match[1]) {
+          videoUrl = match[1].replace(/\\u002F/g, '/');
+          console.log('Found video URL in JSON data:', videoUrl);
+          break;
         }
       }
     }
 
-    // Get thumbnail from og:image if not found
-    if (!thumbnail) {
-      const ogImageMatch = html.match(/<meta[^>]*property="og:image"[^>]*content="([^"]+)"/);
-      if (ogImageMatch) {
-        thumbnail = ogImageMatch[1];
+    // Method 3: Look for video_list in JSON with V_720P or similar quality markers
+    if (!videoUrl) {
+      const v720Match = html.match(/"V_720P":\s*\{[^}]*"url":\s*"([^"]+)"/);
+      if (v720Match) {
+        videoUrl = v720Match[1].replace(/\\u002F/g, '/');
+        console.log('Found V_720P video:', videoUrl);
       }
     }
 
-    // Get title from og:title if not found
-    if (!title) {
-      const ogTitleMatch = html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/);
-      if (ogTitleMatch) {
-        title = ogTitleMatch[1];
+    // Method 4: Look for any video URL pattern in the page
+    if (!videoUrl) {
+      const anyVideoMatch = html.match(/https:\/\/v\d?\.pinimg\.com\/videos\/mc\/720p\/[^"'\s]+\.mp4/);
+      if (anyVideoMatch) {
+        videoUrl = anyVideoMatch[0];
+        console.log('Found video URL pattern:', videoUrl);
       }
     }
 
-    // Extract pin ID from URL if not found
-    if (!pinId) {
-      const pinIdMatch = url.match(/pin\/(\d+)/);
-      if (pinIdMatch) {
-        pinId = pinIdMatch[1];
+    // Get thumbnail from og:image
+    const ogImageMatch = html.match(/<meta[^>]*property="og:image"[^>]*content="([^"]+)"/);
+    if (ogImageMatch) {
+      thumbnail = ogImageMatch[1];
+    }
+
+    // Get title from og:title or title tag
+    const ogTitleMatch = html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/);
+    if (ogTitleMatch) {
+      title = ogTitleMatch[1];
+    } else {
+      const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/);
+      if (titleMatch) {
+        title = titleMatch[1];
       }
+    }
+
+    // Extract pin ID from URL
+    const pinIdMatch = resolvedUrl.match(/pin\/(\d+)/);
+    if (pinIdMatch) {
+      pinId = pinIdMatch[1];
+    }
+
+    // Try to get author from the page
+    const authorMatch = html.match(/"username":\s*"([^"]+)"/);
+    if (authorMatch) {
+      author = authorMatch[1];
     }
 
     if (!videoUrl) {
-      console.error('No video found in Pinterest pin');
+      console.error('No video found in Pinterest pin. HTML length:', html.length);
+      // Log a snippet of HTML for debugging
+      console.log('HTML snippet:', html.substring(0, 1000));
       return new Response(
         JSON.stringify({ 
           success: false, 
-          error: 'No video found. Make sure this is a Pinterest video pin (not an image).' 
+          error: 'No video found. Make sure this is a Pinterest video pin (not an image or Idea Pin).' 
         }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
@@ -257,7 +237,7 @@ serve(async (req) => {
       id: pinId || 'pinterest-' + Date.now(),
       title: title || 'Pinterest Video',
       author: author || 'Pinterest User',
-      authorAvatar: authorAvatar || '',
+      authorAvatar: '',
       thumbnail: thumbnail || '',
       duration: 0,
       videoUrl: videoUrl,
