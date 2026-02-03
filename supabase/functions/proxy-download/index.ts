@@ -9,6 +9,7 @@ const corsHeaders = {
 
 // Whitelist of allowed domains for proxy downloads (video CDN domains)
 const allowedDomains = [
+  // TikTok
   'tikwm.com',
   'tiktokcdn.com',
   'tiktokv.com',
@@ -17,10 +18,16 @@ const allowedDomains = [
   'muscdn.com',
   'byteoversea.com',
   'ibytedtos.com',
+  // Pinterest
+  'pinimg.com',
+  'pinterest.com',
+  'pinterestmail.com',
+  // YouTube
   'youtube.com',
   'googlevideo.com',
   'ytimg.com',
   'ggpht.com',
+  // Facebook/Instagram
   'fbcdn.net',
   'facebook.com',
   'fdown.net',

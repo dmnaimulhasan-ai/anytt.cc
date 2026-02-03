@@ -18,6 +18,7 @@ const Header = () => {
   const navLinks = [
     { path: "/", label: "Home", title: "AnyTT Home - Free Video Downloader" },
     { path: "/tiktok-downloader", label: "TikTok", title: "TikTok Video Downloader" },
+    { path: "/pinterest-downloader", label: "Pinterest", title: "Pinterest Video Downloader" },
     { path: "/blog", label: "Blog", title: "Video Download Guides" },
     { path: "/faq", label: "FAQ", title: "Frequently Asked Questions" },
   ];

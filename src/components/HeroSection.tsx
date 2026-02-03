@@ -17,12 +17,14 @@ const HeroSection = () => {
   // Platform detection patterns
   const platformPatterns = {
     tiktok: /(?:tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com)/i,
+    pinterest: /(?:pinterest\.(?:com|co\.uk|ca|de|fr|es|it|jp|au|nz|at|ch|ru|nl|pl|pt|se|dk|no|fi|be|ie|mx|br|ar|cl|co)|pin\.it)/i,
     youtube: /(?:youtube\.com|youtu\.be|youtube-nocookie\.com)/i,
   };
 
   // Detect platform from URL
-  const detectPlatform = (inputUrl: string): 'tiktok' | 'youtube' | null => {
+  const detectPlatform = (inputUrl: string): 'tiktok' | 'pinterest' | 'youtube' | null => {
     if (platformPatterns.tiktok.test(inputUrl)) return 'tiktok';
+    if (platformPatterns.pinterest.test(inputUrl)) return 'pinterest';
     if (platformPatterns.youtube.test(inputUrl)) return 'youtube';
     return null;
   };
@@ -54,9 +56,10 @@ const HeroSection = () => {
       // Auto-submit after paste if valid URL
       const platform = detectPlatform(text);
       if (platform && isValidUrl(text)) {
+        const platformNames = { tiktok: 'TikTok', pinterest: 'Pinterest', youtube: 'YouTube' };
         toast({
           title: "Pasted!",
-          description: `Detected ${platform === 'tiktok' ? 'TikTok' : 'YouTube'} link`,
+          description: `Detected ${platformNames[platform]} link`,
         });
         // Small delay to show toast, then redirect
         setTimeout(() => handleSearch(text), 300);
@@ -104,7 +107,7 @@ const HeroSection = () => {
     if (!platform) {
       toast({
         title: "Unsupported platform",
-        description: "We only support TikTok and YouTube videos",
+        description: "We support TikTok and Pinterest videos",
         variant: "destructive",
       });
       return;
@@ -114,9 +117,12 @@ const HeroSection = () => {
 
     // Redirect to platform-specific page with URL as query param
     const encodedUrl = encodeURIComponent(urlToProcess);
-    const targetPath = platform === 'tiktok' 
-      ? `/tiktok-downloader?url=${encodedUrl}`
-      : `/youtube-downloader?url=${encodedUrl}`;
+    const targetPaths: Record<string, string> = {
+      tiktok: `/tiktok-downloader?url=${encodedUrl}`,
+      pinterest: `/pinterest-downloader?url=${encodedUrl}`,
+      youtube: `/youtube-downloader?url=${encodedUrl}`,
+    };
+    const targetPath = targetPaths[platform];
 
     navigate(targetPath);
   };
