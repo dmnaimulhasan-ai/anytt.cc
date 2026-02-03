@@ -3767,6 +3767,483 @@ Downloading Pinterest videos is quick and easy with AnyTT.cc. Whether you're sav
 
 Ready to start saving? Visit [AnyTT.cc Pinterest Downloader](/pinterest-downloader) and download your first video in seconds!
     `
+  },
+  {
+    slug: "pinterest-idea-pin-download-guide",
+    title: "Pinterest Idea Pin Download Guide - Save Multi-Page Video Pins 2026",
+    metaTitle: "Download Pinterest Idea Pins - Save Story Pins & Video Ideas",
+    metaDescription: "Complete guide to download Pinterest Idea Pins in 2026. Save multi-page videos, Story Pins, and carousel content. Works on iPhone, Android & PC!",
+    excerpt: "Learn how to download Pinterest Idea Pins (formerly Story Pins). Save multi-page video content, tutorials, and creative pins to any device.",
+    date: "Feb 3, 2026",
+    readTime: "6 min read",
+    category: "Pinterest Guide",
+    image: "💡",
+    keywords: [
+      // Idea Pin Primary Terms (30+)
+      "pinterest idea pin download", "download idea pin", "idea pin downloader", "save idea pin",
+      "pinterest idea pin saver", "download pinterest idea pins", "idea pin video download", "pinterest idea download",
+      "idea pin download free", "free idea pin downloader", "idea pin saver online", "download idea pins online",
+      "pinterest idea pin save", "how to download idea pin", "idea pin download guide", "idea pin tutorial download",
+      "idea pin downloader 2026", "best idea pin downloader", "idea pin download app", "idea pin download website",
+      "pinterest idea video", "idea pin video saver", "save idea pin video", "download idea pin video",
+      "idea pin content download", "pinterest idea content", "idea pin media download", "idea pin clip download",
+      "anytt idea pin", "anytt.cc idea pin", "idea pin anytt", "idea pin downloader anytt",
+      
+      // Story Pin Terms (20+)
+      "pinterest story pin download", "download story pin", "story pin downloader", "save story pin",
+      "pinterest story download", "pinterest stories download", "download pinterest stories", "save pinterest stories",
+      "story pin saver", "pinterest story saver", "story pin video download", "download story pin video",
+      "story pin download free", "free story pin downloader", "story pin download online", "pinterest story online",
+      "how to download story pin", "story pin download guide", "story pin tutorial", "pinterest story tutorial",
+      
+      // Multi-page / Carousel Terms (15+)
+      "pinterest carousel download", "download pinterest carousel", "pinterest slideshow download", "multi-page pin download",
+      "pinterest multi page download", "download multi page pin", "pinterest pages download", "pin carousel saver",
+      "pinterest slide download", "download pinterest slides", "pinterest multiple images download", "carousel pin saver",
+      "pinterest album download", "pin album saver", "pinterest collection pin download",
+      
+      // Device Terms (20+)
+      "idea pin download iphone", "download idea pin iphone", "idea pin ios", "save idea pin iphone",
+      "idea pin download android", "download idea pin android", "idea pin samsung", "save idea pin android",
+      "idea pin download pc", "download idea pin pc", "idea pin windows", "idea pin mac download",
+      "idea pin download mobile", "idea pin mobile saver", "idea pin tablet download", "idea pin chrome",
+      "idea pin safari download", "idea pin browser download", "idea pin desktop", "idea pin laptop download",
+      
+      // Quality & Feature Terms (15+)
+      "idea pin hd download", "download idea pin hd", "idea pin high quality", "idea pin 1080p",
+      "idea pin original quality", "idea pin full quality", "idea pin video quality", "best quality idea pin",
+      "idea pin all pages", "download all idea pin pages", "idea pin complete download", "full idea pin download",
+      "idea pin batch download", "multiple idea pins download", "idea pin bulk download",
+      
+      // Portuguese & Spanish (10+)
+      "baixar idea pin", "download idea pin portugues", "salvar idea pin", "idea pin brasil",
+      "descargar idea pin", "download idea pin espanol", "guardar idea pin", "idea pin descarga"
+    ],
+    content: `
+## Pinterest Idea Pin Download Guide - Complete Tutorial 2026
+
+**Idea Pins** (formerly known as Story Pins) are Pinterest's most engaging content format. These multi-page video creations combine clips, images, text, and music into immersive stories. This guide shows you exactly how to **download Pinterest Idea Pins** to your device.
+
+## What Are Pinterest Idea Pins?
+
+Idea Pins are Pinterest's answer to Stories and Reels:
+
+- 📱 **Multi-page format** - Up to 20 pages of content
+- 🎬 **Video-first** - Built around video clips up to 60 seconds each
+- 🎵 **Music integration** - Original sounds and licensed tracks
+- ✏️ **Text overlays** - Titles, instructions, and captions
+- 🔗 **Non-expiring** - Unlike Stories, they stay on your profile forever
+
+## Why Download Idea Pins?
+
+People save Idea Pins for many reasons:
+
+- 📚 **Tutorials** - Step-by-step craft, cooking, or DIY instructions
+- 💪 **Workouts** - Exercise routines to follow offline
+- 🎨 **Creative inspiration** - Save design ideas for later reference
+- 📖 **Recipes** - Keep cooking videos accessible in the kitchen
+- 🌿 **Gardening tips** - Save seasonal planting guides
+
+## How to Download Pinterest Idea Pins
+
+### Step 1: Find the Idea Pin
+
+Open Pinterest and navigate to the Idea Pin you want to save. You'll recognize Idea Pins by:
+- Multiple page indicators (dots at the bottom)
+- Video play buttons on pages
+- The "Idea Pin" label
+
+### Step 2: Copy the Link
+
+Tap the **Share** button (arrow icon) on the Idea Pin. Select **Copy Link** to copy the URL.
+
+### Step 3: Use AnyTT Pinterest Downloader
+
+Visit [AnyTT.cc Pinterest Downloader](/pinterest-downloader). Paste your Idea Pin link into the download box and click **Download**.
+
+### Step 4: Save Your Content
+
+AnyTT will extract the video content from the Idea Pin. Download the video file to your device!
+
+## Idea Pin Download on iPhone
+
+Downloading Idea Pins on iOS:
+
+1. Open Pinterest app → find your Idea Pin
+2. Tap Share → Copy Link
+3. Open Safari → go to [AnyTT.cc](/pinterest-downloader)
+4. Paste the link → tap Download
+5. Tap and hold the video → Download Linked File
+6. Find it in Files app → move to Photos if desired
+
+**Tip:** iOS 14+ allows direct video downloads to the Files app, making the process seamless.
+
+## Idea Pin Download on Android
+
+For Android users:
+
+1. Open Pinterest → navigate to the Idea Pin
+2. Tap Share → Copy Link
+3. Open Chrome → visit [AnyTT.cc](/pinterest-downloader)
+4. Paste and tap Download
+5. Video saves to your Downloads folder
+6. Access from Gallery or Files app
+
+Most Android phones will show a notification when the download completes.
+
+## Idea Pin Download on PC/Mac
+
+Desktop downloading is straightforward:
+
+1. Visit pinterest.com → find the Idea Pin
+2. Click Share → Copy Link
+3. Open [AnyTT.cc Pinterest Downloader](/pinterest-downloader)
+4. Paste the URL → click Download
+5. Right-click video → Save Video As
+6. Choose save location
+
+## Understanding Idea Pin Content Types
+
+Idea Pins can contain various media:
+
+### Video Pages
+Most Idea Pins feature video clips. These are what AnyTT downloads - the main video content from your Idea Pin.
+
+### Image Pages
+Some Idea Pins mix videos with static images. The downloader focuses on extracting video content.
+
+### Text Overlays
+Text, stickers, and overlays are baked into the video. They'll appear in your downloaded file.
+
+### Music & Audio
+Original audio and music tracks are included in the downloaded video.
+
+## Tips for Better Idea Pin Downloads
+
+1. **Use the full URL** - Copy from your browser address bar for best results
+2. **Check for video content** - Make sure the Idea Pin contains video pages
+3. **Try different pages** - If multi-page, each video page may download separately
+4. **High-speed connection** - Ensure stable internet for smooth downloads
+
+## Idea Pin vs Regular Video Pin
+
+| Feature | Idea Pin | Video Pin |
+|---------|----------|-----------|
+| Pages | 1-20 pages | Single video |
+| Duration | 60 sec per page | Up to 10 min |
+| Music | Built-in library | User uploaded |
+| Format | Story-style | Standard video |
+| Download | May have multiple clips | Single file |
+
+## Frequently Asked Questions
+
+### Can I download all pages of an Idea Pin?
+
+AnyTT extracts the primary video content from Idea Pins. For multi-page Idea Pins with multiple videos, you may get the main video segment.
+
+### Are Idea Pin downloads free?
+
+Yes! AnyTT is completely free to use with no registration or limits.
+
+### Why can't I download some Idea Pins?
+
+Some Idea Pins may contain only images (no video) or may have privacy restrictions. Ensure the pin contains video content.
+
+### Can I download Idea Pins without an app?
+
+Absolutely! AnyTT works in your browser - no app installation needed.
+
+## Related Pinterest Guides
+
+- [How to Download Pinterest Videos Free](/blog/how-to-download-pinterest-videos-free)
+- [Pinterest Video Downloader](/pinterest-downloader)
+- [TikTok Video Downloader](/tiktok-downloader)
+
+## Conclusion
+
+Downloading Pinterest Idea Pins is simple with AnyTT.cc. Whether you're saving DIY tutorials, workout routines, or recipe videos, our free tool makes it easy to keep Idea Pin content for offline viewing.
+
+Start saving your favorite Idea Pins today at [AnyTT.cc Pinterest Downloader](/pinterest-downloader)!
+    `
+  },
+  {
+    slug: "best-pinterest-video-downloaders-2026",
+    title: "Best Pinterest Video Downloaders 2026 - Top 5 Free Tools Compared",
+    metaTitle: "Best Pinterest Video Downloaders 2026 - Free Download Tools",
+    metaDescription: "Compare the best Pinterest video downloaders in 2026. Free tools to save Pinterest videos, Idea Pins & Story Pins. Find which downloader works best!",
+    excerpt: "Discover the best Pinterest video downloaders of 2026. We compare top free tools for downloading Pinterest videos, Idea Pins, and more.",
+    date: "Feb 3, 2026",
+    readTime: "7 min read",
+    category: "Comparison",
+    image: "🏆",
+    keywords: [
+      // Best/Top Terms (30+)
+      "best pinterest video downloader", "top pinterest downloader", "best pinterest downloader 2026",
+      "best free pinterest downloader", "best pinterest video saver", "top pinterest video saver",
+      "best pinterest download tool", "top pinterest download site", "best pinterest download website",
+      "best pinterest downloader app", "top pinterest saver app", "best free pinterest video downloader",
+      "best pinterest downloader online", "top online pinterest downloader", "best web pinterest downloader",
+      "best pinterest video download", "top video pinterest downloader", "best pinterest clip downloader",
+      "best pinterest hd downloader", "best quality pinterest downloader", "best fast pinterest downloader",
+      "best safe pinterest downloader", "best trusted pinterest downloader", "best working pinterest downloader",
+      "best pinterest downloader that works", "most reliable pinterest downloader", "recommended pinterest downloader",
+      "popular pinterest downloader", "favorite pinterest downloader", "number one pinterest downloader",
+      
+      // Comparison Terms (25+)
+      "pinterest downloader comparison", "compare pinterest downloaders", "pinterest downloader vs",
+      "pinterest video downloader comparison", "which pinterest downloader", "pinterest downloader review",
+      "pinterest downloader reviews 2026", "pinterest video saver comparison", "best vs pinterest downloader",
+      "pinterest download tools compared", "pinterest downloader rankings", "pinterest downloader list",
+      "top 5 pinterest downloaders", "top 10 pinterest downloaders", "pinterest downloader guide",
+      "pinterest downloader roundup", "pinterest video tools 2026", "pinterest saver tools compared",
+      "pinterest download options", "pinterest downloader alternatives", "pinterest saver alternatives",
+      "anytt vs pinterest downloaders", "pinterest downloader features", "pinterest tool comparison",
+      "pinterest video download comparison",
+      
+      // Tool/App Terms (20+)
+      "pinterest download tool", "pinterest video tool", "pinterest saver tool", "pinterest download app",
+      "pinterest video app", "pinterest saver app", "pinterest download software", "pinterest video software",
+      "pinterest download service", "pinterest video service", "pinterest download site", "pinterest video site",
+      "pinterest download website", "pinterest video website", "online pinterest tool", "web pinterest tool",
+      "free pinterest tool", "pinterest tool free", "pinterest download utility", "pinterest video utility",
+      
+      // Feature-focused Terms (15+)
+      "pinterest downloader no watermark", "pinterest downloader hd", "pinterest downloader 1080p",
+      "pinterest downloader fast", "pinterest downloader safe", "pinterest downloader secure",
+      "pinterest downloader free no signup", "pinterest downloader no registration", "pinterest downloader easy",
+      "pinterest downloader simple", "pinterest downloader quick", "pinterest downloader instant",
+      "pinterest downloader unlimited", "pinterest batch downloader", "pinterest bulk downloader",
+      
+      // Platform Terms (15+)
+      "pinterest downloader iphone", "pinterest downloader android", "pinterest downloader pc",
+      "pinterest downloader mac", "pinterest downloader windows", "pinterest downloader mobile",
+      "pinterest downloader desktop", "pinterest downloader browser", "pinterest downloader chrome",
+      "pinterest downloader safari", "pinterest downloader firefox", "pinterest downloader online",
+      "pinterest downloader web", "pinterest downloader ios", "pinterest downloader tablet",
+      
+      // Related Terms (15+)
+      "pinterest video saver 2026", "pinterest download 2026", "pinterest saver 2026",
+      "download pinterest 2026", "save pinterest 2026", "pinterest tools 2026",
+      "pinterest apps 2026", "pinterest websites 2026", "pinterest services 2026",
+      "anytt pinterest", "anytt.cc pinterest", "pinterest anytt comparison",
+      "pinterest idea pin downloader best", "pinterest story downloader best", "best idea pin saver"
+    ],
+    content: `
+## Best Pinterest Video Downloaders 2026 - Complete Comparison
+
+Looking for the **best Pinterest video downloader**? We've tested the top tools available in 2026 to help you find the perfect solution for saving Pinterest videos, Idea Pins, and Story Pins.
+
+## Why You Need a Pinterest Video Downloader
+
+Pinterest is packed with valuable video content:
+- 🍳 Recipe tutorials you want to cook offline
+- 🏋️ Workout videos for the gym (no WiFi needed)
+- 🎨 DIY projects with step-by-step instructions
+- 💡 Creative inspiration to reference later
+
+A reliable downloader lets you save this content for offline viewing anytime.
+
+## Top 5 Pinterest Video Downloaders 2026
+
+### 1. AnyTT.cc - Best Overall
+
+**Rating: ⭐⭐⭐⭐⭐ (5/5)**
+
+[AnyTT.cc Pinterest Downloader](/pinterest-downloader) stands out as our top choice for 2026.
+
+**Pros:**
+- ✅ 100% free with no registration
+- ✅ HD quality downloads
+- ✅ Works on all devices (iPhone, Android, PC, Mac)
+- ✅ No app installation required
+- ✅ Fast processing speeds
+- ✅ Supports Idea Pins and video pins
+- ✅ Clean interface with no ads popup
+
+**Cons:**
+- ❌ None significant
+
+**Best For:** Everyone - from casual users to power savers
+
+### 2. Pinterest Save Button (Browser Extension)
+
+**Rating: ⭐⭐⭐⭐ (4/5)**
+
+Pinterest's official browser extension for saving pins to boards.
+
+**Pros:**
+- ✅ Official Pinterest tool
+- ✅ Integrates with your Pinterest account
+- ✅ Works across websites
+
+**Cons:**
+- ❌ Saves to Pinterest, not your device
+- ❌ Requires Pinterest account
+- ❌ Desktop only
+
+**Best For:** Organizing content within Pinterest ecosystem
+
+### 3. Screen Recording Apps
+
+**Rating: ⭐⭐⭐ (3/5)**
+
+Using built-in screen recording on your device.
+
+**Pros:**
+- ✅ Works with any video
+- ✅ No external tools needed
+- ✅ Captures exactly what you see
+
+**Cons:**
+- ❌ Lower quality than direct download
+- ❌ Time-consuming
+- ❌ Captures UI elements
+- ❌ Audio may not sync
+
+**Best For:** Last resort when other methods fail
+
+### 4. Download Manager Extensions
+
+**Rating: ⭐⭐⭐ (3/5)**
+
+Browser extensions that detect and download videos.
+
+**Pros:**
+- ✅ Works on multiple sites
+- ✅ One-click downloads
+
+**Cons:**
+- ❌ May not detect Pinterest videos
+- ❌ Desktop browsers only
+- ❌ Variable quality
+- ❌ Security concerns with some extensions
+
+**Best For:** Technical users who download from many sites
+
+### 5. Mobile Download Apps
+
+**Rating: ⭐⭐⭐ (3/5)**
+
+Third-party apps claiming Pinterest download features.
+
+**Pros:**
+- ✅ Dedicated mobile experience
+- ✅ Some offer batch downloads
+
+**Cons:**
+- ❌ Often contain ads
+- ❌ May require payment for features
+- ❌ Privacy concerns
+- ❌ App store restrictions
+
+**Best For:** Users who prefer native apps
+
+## Feature Comparison Table
+
+| Feature | AnyTT | Save Button | Screen Record | Extensions |
+|---------|-------|-------------|---------------|------------|
+| Free | ✅ | ✅ | ✅ | Varies |
+| No Registration | ✅ | ❌ | ✅ | Varies |
+| HD Quality | ✅ | N/A | ❌ | Varies |
+| iPhone Support | ✅ | ❌ | ✅ | ❌ |
+| Android Support | ✅ | ❌ | ✅ | ❌ |
+| Idea Pins | ✅ | Save only | ✅ | Varies |
+| No App Needed | ✅ | ✅ | ❌ | ✅ |
+| Fast Speed | ✅ | ✅ | ❌ | Varies |
+
+## Why AnyTT Wins
+
+After extensive testing, **AnyTT.cc** emerges as the best Pinterest video downloader for several reasons:
+
+### Universal Compatibility
+Works seamlessly on:
+- iPhone & iPad (Safari)
+- Android phones & tablets (Chrome)
+- Windows PC
+- Mac
+- Any modern browser
+
+### No Barriers
+- No account required
+- No app to install
+- No payment needed
+- No download limits
+
+### Quality First
+- Downloads in original HD quality
+- Preserves audio perfectly
+- Fast processing times
+
+### Privacy Focused
+- No data collection
+- No cookies required
+- No tracking
+
+## How to Use the Best Pinterest Downloader
+
+Using AnyTT.cc is simple:
+
+1. **Copy** the Pinterest video link
+2. **Paste** at [AnyTT.cc Pinterest Downloader](/pinterest-downloader)
+3. **Click** Download
+4. **Save** to your device
+
+That's it! No complicated steps or technical knowledge required.
+
+## What to Look for in a Pinterest Downloader
+
+When choosing a Pinterest video downloader, consider:
+
+### Must-Have Features
+- ✅ Free to use
+- ✅ No registration required
+- ✅ Works on your device
+- ✅ HD quality downloads
+- ✅ Fast processing
+
+### Nice-to-Have Features
+- ✅ Idea Pin support
+- ✅ Batch downloads
+- ✅ No ads
+- ✅ Clean interface
+
+### Red Flags to Avoid
+- ❌ Requires payment for basic features
+- ❌ Excessive ads and popups
+- ❌ Asks for Pinterest password
+- ❌ Requires app installation for simple tasks
+- ❌ Poor reviews or security concerns
+
+## Frequently Asked Questions
+
+### Which Pinterest downloader is safest?
+
+AnyTT.cc is the safest option as it's web-based, requires no login or personal information, and doesn't install anything on your device.
+
+### Can I download Pinterest videos on iPhone?
+
+Yes! AnyTT works perfectly on iPhone through Safari. No app needed.
+
+### Are Pinterest video downloaders legal?
+
+Downloading for personal use is generally acceptable. Always respect creators' rights and don't redistribute content commercially.
+
+### Which downloader has the best quality?
+
+AnyTT provides HD quality downloads, preserving the original video quality from Pinterest.
+
+## Related Guides
+
+- [How to Download Pinterest Videos Free](/blog/how-to-download-pinterest-videos-free)
+- [Pinterest Idea Pin Download Guide](/blog/pinterest-idea-pin-download-guide)
+- [Best TikTok Downloader Tools 2026](/blog/best-tiktok-downloader-tools-2026)
+
+## Conclusion
+
+After comparing all options, **AnyTT.cc** is the clear winner for the **best Pinterest video downloader in 2026**. It's free, fast, works everywhere, and delivers HD quality without any hassle.
+
+Ready to try the best? Visit [AnyTT.cc Pinterest Downloader](/pinterest-downloader) and start saving your favorite Pinterest videos today!
+    `
   }
 ];
 
@@ -3814,6 +4291,8 @@ export const getInternalLinks = (): { text: string; url: string; keywords: strin
   { text: "Pinterest Video Downloader", url: "/pinterest-downloader", keywords: ["pinterest", "pinterest video", "idea pin", "pin.it", "download pinterest"] },
   { text: "download TikTok videos without watermark", url: "/blog/how-to-download-tiktok-videos-without-watermark", keywords: ["no watermark", "without watermark", "remove watermark"] },
   { text: "download Pinterest videos free", url: "/blog/how-to-download-pinterest-videos-free", keywords: ["pinterest", "pinterest video", "idea pin", "save pinterest", "pinterest download"] },
+  { text: "Pinterest Idea Pin download guide", url: "/blog/pinterest-idea-pin-download-guide", keywords: ["idea pin", "story pin", "pinterest idea", "multi-page", "carousel"] },
+  { text: "best Pinterest video downloaders", url: "/blog/best-pinterest-video-downloaders-2026", keywords: ["best pinterest", "pinterest tools", "pinterest comparison", "top pinterest"] },
   { text: "TikTok MP3 downloader", url: "/blog/download-tiktok-audio-mp3", keywords: ["mp3", "audio", "music", "sound"] },
   { text: "download TikTok on iPhone", url: "/blog/download-tiktok-on-iphone", keywords: ["iphone", "ios", "safari"] },
   { text: "TikTok downloader for Android", url: "/blog/tiktok-video-downloader-android-guide", keywords: ["android", "samsung", "mobile"] },
