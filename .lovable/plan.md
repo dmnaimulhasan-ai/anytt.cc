@@ -1,53 +1,81 @@
 
+# Add Pinterest Video Downloader Blog Post
 
-# Fix TikTok Batch Download - One-Click Download All
+## Overview
+Add a comprehensive SEO-optimized blog post about how to download Pinterest videos, targeting high-value keywords to drive organic traffic to the new Pinterest downloader feature.
 
-## What's Wrong
+## Changes Required
 
-The batch download feature has two issues preventing "one-click download all":
+### 1. Add New Blog Post to `src/lib/blog-data.ts`
 
-1. The auto-download feature exists in the code but isn't being enabled
-2. Videos are processed slowly (one at a time), making users wait
+Insert a new `BlogPost` object targeting Pinterest download keywords with:
 
-## Solution Overview
+- **Slug**: `how-to-download-pinterest-videos-free`
+- **Title**: "How to Download Pinterest Videos Free - Complete Guide 2026"
+- **Category**: "Pinterest Guide"
+- **Keywords**: pinterest video downloader, download pinterest video, save pinterest video, pinterest idea pin download, pinterest video saver, pinterest download hd, free pinterest downloader
 
-I'll fix the batch download to work with a single click by:
-- Enable auto-download after all videos are fetched
-- Speed up video fetching with parallel processing
-- Add better progress feedback during downloads
+**Content Structure**:
+- Introduction explaining Pinterest video downloading
+- Step-by-step guide using AnyTT.cc
+- Device-specific instructions (iPhone, Android, PC)
+- Pinterest Idea Pins and Story Pins section
+- Tips for finding video pins vs image pins
+- FAQ section embedded in content
+- Internal links to TikTok-related posts and the Pinterest downloader page
 
-## Changes
+### 2. Update Internal Links in `src/lib/blog-data.ts`
 
-### 1. Enable Auto-Download in PlatformDownloader
-Pass `autoDownload={true}` to `BatchResults` component so downloads start automatically when processing completes.
+Add Pinterest-related internal link entries to `getInternalLinks()`:
+- Link to Pinterest downloader page (`/pinterest-downloader`)
+- Link to new Pinterest blog post
+- Keywords: pinterest, idea pin, pinterest video, pin.it
 
-### 2. Speed Up Batch Processing (Parallel Fetching)
-Instead of fetching videos one by one, fetch multiple videos simultaneously (up to 5 at a time) to dramatically speed up batch processing.
+### 3. Update Sitemap in `public/sitemap.xml`
 
-### 3. Improve Download All Function
-- Add download status tracking with progress indicator
-- Show clearer feedback during batch downloads
-- Handle browser download limitations gracefully
-
-### 4. Add Loading State During Downloads
-Show visual feedback when downloads are in progress so users know things are working.
+Add the new blog post URL:
+```xml
+<url>
+  <loc>https://anytt.cc/blog/how-to-download-pinterest-videos-free</loc>
+  <lastmod>2026-02-03</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+```
 
 ## Technical Details
 
-**File: `src/components/PlatformDownloader.tsx`**
-- Add parallel processing using `Promise.all` with chunking (5 concurrent requests)
-- Pass `autoDownload={true}` to BatchResults component
+### Blog Post Content (~1500 words)
 
-**File: `src/components/BatchResults.tsx`**
-- Add download progress tracking state
-- Improve the "Download All" button with loading state
-- Add success animation when all downloads complete
+The post will include:
+1. **Why Download Pinterest Videos?** - Use cases for saving recipes, tutorials, DIY projects
+2. **How to Download Pinterest Videos with AnyTT** - Step-by-step with images
+3. **Download Pinterest Videos on iPhone** - Safari-specific instructions
+4. **Download Pinterest Videos on Android** - Chrome browser guide
+5. **Download Pinterest Idea Pins** - Multi-page video pins
+6. **Video vs Image Pins** - How to identify downloadable content
+7. **Frequently Asked Questions** - Top Pinterest download queries
+8. **Related Guides** - Links to TikTok content and other resources
 
-## User Experience After Fix
+### SEO Optimization
 
-1. User pastes multiple TikTok URLs
-2. Clicks "Download All" button once
-3. Videos are fetched in parallel (5x faster)
-4. Downloads automatically start when ready
-5. User sees progress and completion status
+- Meta title under 60 characters with primary keyword
+- Meta description under 160 characters with CTA
+- H2/H3 hierarchy with target keywords
+- Internal links to `/pinterest-downloader` and related TikTok posts
+- External link to Pinterest
+- FAQ schema for rich snippets
 
+### Keywords Array (50+ terms)
+
+Primary: pinterest video downloader, download pinterest video, save pinterest video, pinterest downloader
+Device: pinterest download iphone, pinterest download android, pinterest download pc
+Feature: pinterest idea pin download, pinterest hd video, free pinterest downloader
+Competitor: pinterest video saver app, save pin video online
+
+## File Changes Summary
+
+| File | Change |
+|------|--------|
+| `src/lib/blog-data.ts` | Add new blog post object + update `getInternalLinks()` |
+| `public/sitemap.xml` | Add new URL entry |
