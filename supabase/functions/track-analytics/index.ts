@@ -75,7 +75,7 @@ serve(async (req) => {
       const videoId = data?.video_id;
 
       // Validate platform
-      const validPlatforms = ['tiktok', 'youtube', 'facebook'];
+      const validPlatforms = ['tiktok', 'youtube', 'facebook', 'pinterest'];
       if (!platform || !validPlatforms.includes(platform)) {
         return new Response(
           JSON.stringify({ success: false, error: 'Invalid platform' }),
