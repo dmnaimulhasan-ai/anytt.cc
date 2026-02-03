@@ -14,6 +14,7 @@ const TikTokDownloaderES = lazy(() => import("./pages/TikTokDownloaderES"));
 const TikTokDownloaderPT = lazy(() => import("./pages/TikTokDownloaderPT"));
 const TikTokDownloaderID = lazy(() => import("./pages/TikTokDownloaderID"));
 const PinterestDownloader = lazy(() => import("./pages/PinterestDownloader"));
+const PinterestFAQ = lazy(() => import("./pages/PinterestFAQ"));
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -48,7 +49,7 @@ const App = () => (
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
             <Route path="/pinterest-downloader" element={<PinterestDownloader />} />
-            
+            <Route path="/pinterest-faq" element={<PinterestFAQ />} />
             {/* Multilingual landing pages */}
             <Route path="/es/descargar-tiktok" element={<TikTokDownloaderES />} />
             <Route path="/pt/baixar-tiktok" element={<TikTokDownloaderPT />} />
