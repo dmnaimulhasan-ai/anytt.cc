@@ -7,9 +7,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
-import { getBlogPost, getRelatedPosts } from "@/lib/blog-data";
+import { getBlogPost, getRelatedPosts, getInternalLinks } from "@/lib/blog-data";
 import { BASE_URL, getBreadcrumbSchema } from "@/lib/seo-config";
-import { Calendar, Clock, ArrowLeft, ExternalLink } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ExternalLink, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const BlogPost = () => {
@@ -21,7 +21,14 @@ const BlogPost = () => {
   }
 
   const relatedPosts = getRelatedPosts(post.slug, 3);
+  const internalLinks = getInternalLinks();
 
+  // Get contextually relevant internal links based on post keywords
+  const relevantLinks = internalLinks.filter(link => 
+    link.keywords.some(keyword => 
+      post.keywords.some(pk => pk.toLowerCase().includes(keyword.toLowerCase()))
+    )
+  ).slice(0, 4);
   const breadcrumbItems = [
     { label: "Blog", href: "/blog" },
     { label: post.title, href: `/blog/${post.slug}` }
@@ -147,6 +154,28 @@ const BlogPost = () => {
                 </Link>
               </div>
             </div>
+
+            {/* Contextual Internal Links */}
+            {relevantLinks.length > 0 && (
+              <div className="mt-8 p-6 glass-card rounded-2xl">
+                <h3 className="text-lg font-bold font-display mb-4 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-primary" />
+                  Related Guides
+                </h3>
+                <ul className="space-y-2">
+                  {relevantLinks.map((link, index) => (
+                    <li key={index}>
+                      <Link 
+                        to={link.url} 
+                        className="text-primary hover:underline flex items-center gap-2"
+                      >
+                        → {link.text}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             
             {/* Promotional Smartlink CTA */}
             <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 text-center">
