@@ -3539,5 +3539,48 @@ export const getBlogPost = (slug: string): BlogPost | undefined => {
 };
 
 export const getRelatedPosts = (currentSlug: string, limit: number = 3): BlogPost[] => {
-  return blogPosts.filter(post => post.slug !== currentSlug).slice(0, limit);
+  const currentPost = getBlogPost(currentSlug);
+  if (!currentPost) {
+    return blogPosts.slice(0, limit);
+  }
+
+  const otherPosts = blogPosts.filter(post => post.slug !== currentSlug);
+  
+  // Score posts by relevance (category match + keyword overlap)
+  const scoredPosts = otherPosts.map(post => {
+    let score = 0;
+    
+    // Category match gives highest priority
+    if (post.category === currentPost.category) {
+      score += 10;
+    }
+    
+    // Count overlapping keywords
+    const currentKeywords = new Set(currentPost.keywords.map(k => k.toLowerCase()));
+    const matchingKeywords = post.keywords.filter(k => currentKeywords.has(k.toLowerCase()));
+    score += matchingKeywords.length;
+    
+    return { post, score };
+  });
+
+  // Sort by score descending, then by date (newer first)
+  scoredPosts.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+  });
+
+  return scoredPosts.slice(0, limit).map(item => item.post);
 };
+
+// Internal link suggestions for content enhancement
+export const getInternalLinks = (): { text: string; url: string; keywords: string[] }[] => [
+  { text: "TikTok Downloader", url: "/tiktok-downloader", keywords: ["download tiktok", "tiktok downloader", "save tiktok"] },
+  { text: "download TikTok videos without watermark", url: "/blog/how-to-download-tiktok-videos-without-watermark", keywords: ["no watermark", "without watermark", "remove watermark"] },
+  { text: "TikTok MP3 downloader", url: "/blog/download-tiktok-audio-mp3", keywords: ["mp3", "audio", "music", "sound"] },
+  { text: "download TikTok on iPhone", url: "/blog/download-tiktok-on-iphone", keywords: ["iphone", "ios", "safari"] },
+  { text: "TikTok downloader for Android", url: "/blog/tiktok-video-downloader-android-guide", keywords: ["android", "samsung", "mobile"] },
+  { text: "batch download multiple TikTok videos", url: "/blog/tiktok-batch-downloader-multiple-videos", keywords: ["batch", "multiple", "bulk"] },
+  { text: "TikTok SEO tips", url: "/blog/tiktok-seo-tips-creators-2026", keywords: ["seo", "algorithm", "viral", "fyp"] },
+  { text: "SnapTik alternative", url: "/blog/snaptik-alternative-tiktok-downloader-2026", keywords: ["snaptik", "alternative"] },
+  { text: "best TikTok downloader tools", url: "/blog/best-tiktok-downloader-tools-2026", keywords: ["best", "tools", "comparison"] },
+];
