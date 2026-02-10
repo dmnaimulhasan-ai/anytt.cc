@@ -1,81 +1,95 @@
 
-# Add Pinterest Video Downloader Blog Post
+
+# Add More Real Working SEO Keywords
 
 ## Overview
-Add a comprehensive SEO-optimized blog post about how to download Pinterest videos, targeting high-value keywords to drive organic traffic to the new Pinterest downloader feature.
+Expand the keyword coverage in `src/lib/seo-config.ts` and visible keyword sections on pages by adding proven, high-traffic keywords sourced from competitor analysis (SnapTik, SssTik, TikMate, SaveTT, TTDownloader) and real search trends for TikTok/Pinterest downloaders in 2026.
 
-## Changes Required
+## New Keywords to Add
 
-### 1. Add New Blog Post to `src/lib/blog-data.ts`
+### 1. Missing Competitor Brand Keywords
+Currently missing high-traffic competitor terms that users actively search:
+- **4k tokkit**, **toolsmart**, **tikdownloader**, **tiktokdownloader**, **savefrom**, **y2mate tiktok**, **keepvid tiktok**, **videoder tiktok**
+- **savett**, **tiktok download bot**, **tiktok dl**, **tiktok grabber**
+- **snaptik pro**, **snaptik online**, **snaptik download**, **ssstik download**, **ssstiktok app**
+- **tmate download**, **tik download**, **tiktok video grabber**
 
-Insert a new `BlogPost` object targeting Pinterest download keywords with:
+### 2. Missing High-Intent Action Keywords
+Real queries users type into Google:
+- **how to download tiktok video**, **how to save tiktok video**, **how to download tiktok without watermark**
+- **download tiktok video free**, **save tiktok video free**, **tiktok video download free online**
+- **copy tiktok link and download**, **paste tiktok link download**
+- **tiktok repost download**, **tiktok slideshow download**, **tiktok story download**, **tiktok live download**
+- **download tiktok draft**, **tiktok private video download**, **tiktok photo download**
 
-- **Slug**: `how-to-download-pinterest-videos-free`
-- **Title**: "How to Download Pinterest Videos Free - Complete Guide 2026"
-- **Category**: "Pinterest Guide"
-- **Keywords**: pinterest video downloader, download pinterest video, save pinterest video, pinterest idea pin download, pinterest video saver, pinterest download hd, free pinterest downloader
+### 3. Missing Device/Platform Specific Keywords
+- **tiktok downloader safari**, **tiktok downloader firefox**, **tiktok download mac**, **tiktok download linux**
+- **download tiktok on laptop**, **save tiktok on ipad**, **tiktok downloader tablet**
+- **tiktok downloader online free no app**, **tiktok downloader without login**, **tiktok downloader without sign up**
 
-**Content Structure**:
-- Introduction explaining Pinterest video downloading
-- Step-by-step guide using AnyTT.cc
-- Device-specific instructions (iPhone, Android, PC)
-- Pinterest Idea Pins and Story Pins section
-- Tips for finding video pins vs image pins
-- FAQ section embedded in content
-- Internal links to TikTok-related posts and the Pinterest downloader page
+### 4. Missing Format/Quality Keywords
+- **tiktok download 1080p**, **tiktok download full hd**, **tiktok download 720p**
+- **tiktok to gif**, **tiktok to mp4 converter online**, **tiktok audio download mp3 free**
+- **tiktok sound download**, **tiktok ringtone download**, **download tiktok sound as mp3**
 
-### 2. Update Internal Links in `src/lib/blog-data.ts`
+### 5. Missing Pinterest Keywords
+- **pinterest image downloader**, **pinterest photo downloader**, **save pinterest images**, **pinterest gif downloader**
+- **pinterest board downloader**, **download all pinterest images**, **pinterest bulk downloader**
+- **how to download pinterest video on iphone**, **how to save pinterest video android**
+- **pinterest reel download**, **pinterest story download**, **pinterest to mp4**
 
-Add Pinterest-related internal link entries to `getInternalLinks()`:
-- Link to Pinterest downloader page (`/pinterest-downloader`)
-- Link to new Pinterest blog post
-- Keywords: pinterest, idea pin, pinterest video, pin.it
+### 6. Missing Multilingual Keywords
 
-### 3. Update Sitemap in `public/sitemap.xml`
+**Spanish (high volume)**:
+- **descargar tiktok sin marca de agua gratis**, **bajar tiktok gratis**, **guardar video tiktok gratis**, **tiktok descargar video sin marca de agua**
 
-Add the new blog post URL:
-```xml
-<url>
-  <loc>https://anytt.cc/blog/how-to-download-pinterest-videos-free</loc>
-  <lastmod>2026-02-03</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-```
+**Turkish (emerging market)**:
+- **tiktok video indirme**, **tiktok indirme**, **tiktok video indir**, **tiktokvideo indirme siteleri**
 
-## Technical Details
+**Thai (high TikTok usage)**:
+- **โหลดtiktok**, **ดาวน์โหลด tiktok**, **โหลดวีดีโอ tiktok**
 
-### Blog Post Content (~1500 words)
+**Vietnamese (huge TikTok market)**:
+- **tải video tiktok**, **tải tiktok không logo**, **download video tiktok không watermark**
 
-The post will include:
-1. **Why Download Pinterest Videos?** - Use cases for saving recipes, tutorials, DIY projects
-2. **How to Download Pinterest Videos with AnyTT** - Step-by-step with images
-3. **Download Pinterest Videos on iPhone** - Safari-specific instructions
-4. **Download Pinterest Videos on Android** - Chrome browser guide
-5. **Download Pinterest Idea Pins** - Multi-page video pins
-6. **Video vs Image Pins** - How to identify downloadable content
-7. **Frequently Asked Questions** - Top Pinterest download queries
-8. **Related Guides** - Links to TikTok content and other resources
+## File Changes
 
-### SEO Optimization
+### File 1: `src/lib/seo-config.ts`
 
-- Meta title under 60 characters with primary keyword
-- Meta description under 160 characters with CTA
-- H2/H3 hierarchy with target keywords
-- Internal links to `/pinterest-downloader` and related TikTok posts
-- External link to Pinterest
-- FAQ schema for rich snippets
+**A) Add new `tiktokKeywords` categories:**
+- `actionIntent` - "how to" and action-based queries
+- `contentType` - slideshow, story, live, repost, photo queries
+- `formatQuality` - 1080p, gif, ringtone, full HD queries
+- `moreCompetitors` - 4k tokkit, savett, y2mate tiktok, etc.
 
-### Keywords Array (50+ terms)
+**B) Add new `pinterestKeywords` categories:**
+- `contentType` - image, gif, board, reel, story downloads
+- `actionIntent` - "how to download pinterest video" queries
 
-Primary: pinterest video downloader, download pinterest video, save pinterest video, pinterest downloader
-Device: pinterest download iphone, pinterest download android, pinterest download pc
-Feature: pinterest idea pin download, pinterest hd video, free pinterest downloader
-Competitor: pinterest video saver app, save pin video online
+**C) Add new `brandedKeywords` entries:**
+- `turkish` - TikTok download keywords in Turkish
+- `thai` - TikTok download keywords in Thai
+- `vietnamese` - TikTok download keywords in Vietnamese
 
-## File Changes Summary
+**D) Update combined keyword strings** to include new categories in `allTiktokKeywords`, `allEnglishKeywords`, and page-level `seoConfig` keyword fields.
 
-| File | Change |
-|------|--------|
-| `src/lib/blog-data.ts` | Add new blog post object + update `getInternalLinks()` |
-| `public/sitemap.xml` | Add new URL entry |
+### File 2: `src/pages/Index.tsx`
+
+Update the "Popular Downloads" visible keyword cloud section to include ~10 additional high-traffic terms:
+- tiktok reels download, tiktok slideshow download, tiktok to gif, how to download tiktok, tiktok dl, savett, 4k tokkit, pinterest video downloader, download tiktok free
+
+### File 3: `src/pages/PinterestDownloader.tsx`
+
+Update SEO keywords meta to include the new Pinterest keyword categories.
+
+### File 4: `src/pages/TikTokDownloader.tsx`
+
+Update SEO keywords meta to include new action intent and content type keywords.
+
+## Technical Notes
+
+- All changes are meta-tag and visible text only -- no functional or UX changes
+- Keywords are sourced from competitor traffic analysis (Ahrefs data on snaptik.app, ssstik.io), Google autocomplete patterns, and real search trends
+- Focus on keywords with proven search volume from competitor sites that collectively receive millions of monthly visits
+- Turkish, Thai, and Vietnamese markets are added because they represent top TikTok usage countries currently missing from the keyword strategy
+
