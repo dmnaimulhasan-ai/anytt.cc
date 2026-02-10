@@ -57,7 +57,7 @@ const PinterestDownloader = () => {
         title="Anytt cc Pinterest Video Downloader - Download Pinterest Videos Free HD 2026"
         description="Anytt cc - Free Pinterest video downloader. Download Pinterest videos & Idea Pins in HD quality. No registration, no app needed. Works on iPhone, Android & PC!"
         canonicalUrl={`${BASE_URL}/pinterest-downloader`}
-        keywords="pinterest video downloader, download pinterest video, pinterest downloader, save pinterest video, pinterest video saver, pinterest idea pin downloader, pinterest video download hd, free pinterest downloader"
+        keywords="pinterest video downloader, download pinterest video, pinterest downloader, save pinterest video, pinterest video saver, pinterest idea pin downloader, pinterest video download hd, free pinterest downloader, pinterest image downloader, pinterest photo downloader, save pinterest images, pinterest gif downloader, pinterest board downloader, pinterest bulk downloader, pinterest reel download, pinterest story download, pinterest to mp4, how to download pinterest video on iphone, how to save pinterest video android"
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("Pinterest"),

@@ -191,6 +191,17 @@ const Index = () => {
               <span>tiktokio</span><span>•</span>
               <span>godownloader</span><span>•</span>
               <span>snapsave</span><span>•</span>
+              {/* New high-traffic keywords */}
+              <span>tiktok reels download</span><span>•</span>
+              <span>tiktok slideshow download</span><span>•</span>
+              <span>tiktok to gif</span><span>•</span>
+              <span>how to download tiktok</span><span>•</span>
+              <span>tiktok dl</span><span>•</span>
+              <span>savett</span><span>•</span>
+              <span>4k tokkit</span><span>•</span>
+              <span>pinterest video downloader</span><span>•</span>
+              <span>download tiktok free</span><span>•</span>
+              <span>tiktok download 1080p</span><span>•</span>
               {/* Portuguese Keywords */}
               <span>baixar video tiktok</span><span>•</span>
               <span>tiktok sem marca d'água</span><span>•</span>
