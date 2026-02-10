@@ -75,6 +75,75 @@ export const tiktokKeywords = {
     "online tiktok downloader tool",
     "tiktok video downloader fast",
     "tiktok downloader safe"
+  ],
+  // 🔍 Action Intent Keywords (how to / action queries)
+  actionIntent: [
+    "how to download tiktok video",
+    "how to save tiktok video",
+    "how to download tiktok without watermark",
+    "download tiktok video free",
+    "save tiktok video free",
+    "tiktok video download free online",
+    "copy tiktok link and download",
+    "paste tiktok link download",
+    "tiktok downloader online free no app",
+    "tiktok downloader without login",
+    "tiktok downloader without sign up"
+  ],
+  // 📦 Content Type Keywords
+  contentType: [
+    "tiktok repost download",
+    "tiktok slideshow download",
+    "tiktok story download",
+    "tiktok live download",
+    "download tiktok draft",
+    "tiktok private video download",
+    "tiktok photo download",
+    "tiktok reels download"
+  ],
+  // 🎞️ Format & Quality Keywords
+  formatQuality: [
+    "tiktok download 1080p",
+    "tiktok download full hd",
+    "tiktok download 720p",
+    "tiktok to gif",
+    "tiktok to mp4 converter online",
+    "tiktok audio download mp3 free",
+    "tiktok sound download",
+    "tiktok ringtone download",
+    "download tiktok sound as mp3"
+  ],
+  // 🏷️ More Competitor Keywords
+  moreCompetitors: [
+    "4k tokkit",
+    "tikdownloader",
+    "tiktokdownloader",
+    "savefrom tiktok",
+    "y2mate tiktok",
+    "keepvid tiktok",
+    "videoder tiktok",
+    "savett",
+    "tiktok download bot",
+    "tiktok dl",
+    "tiktok grabber",
+    "snaptik pro",
+    "snaptik online",
+    "snaptik download",
+    "ssstik download",
+    "ssstiktok app",
+    "tmate download",
+    "tik download",
+    "tiktok video grabber"
+  ],
+  // 💻 Device/Platform Specific
+  deviceExtended: [
+    "tiktok downloader safari",
+    "tiktok downloader firefox",
+    "tiktok download mac",
+    "tiktok download linux",
+    "download tiktok on laptop",
+    "save tiktok on ipad",
+    "tiktok downloader tablet"
   ]
 };
 
@@ -109,6 +178,27 @@ export const pinterestKeywords = {
     "pinterest video downloader online",
     "pinterest downloader no app",
     "pinterest video downloader free online"
+  ],
+  // 📷 Content Type Keywords
+  contentType: [
+    "pinterest image downloader",
+    "pinterest photo downloader",
+    "save pinterest images",
+    "pinterest gif downloader",
+    "pinterest board downloader",
+    "download all pinterest images",
+    "pinterest bulk downloader",
+    "pinterest reel download",
+    "pinterest story download",
+    "pinterest to mp4"
+  ],
+  // 🔍 Action Intent
+  actionIntent: [
+    "how to download pinterest video on iphone",
+    "how to save pinterest video android",
+    "how to download pinterest images",
+    "save pinterest video to phone",
+    "pinterest video download without app"
   ]
 };
 
@@ -119,7 +209,12 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.longTail,
   ...tiktokKeywords.audio,
   ...tiktokKeywords.device,
-  ...tiktokKeywords.feature
+  ...tiktokKeywords.feature,
+  ...tiktokKeywords.actionIntent,
+  ...tiktokKeywords.contentType,
+  ...tiktokKeywords.formatQuality,
+  ...tiktokKeywords.moreCompetitors,
+  ...tiktokKeywords.deviceExtended
 ].join(", ");
 
 /**
@@ -321,14 +416,20 @@ export const brandedKeywords = {
   // Japanese variations
   japanese: "anytt cc tiktokダウンロード, anytt 動画ダウンローダー, tiktok透かしなし, tiktok動画無料ダウンロード透かしなし, ティックトックダウンローダー無料",
   // Korean variations
-  korean: "anytt cc 틱톡 다운로드, anytt 동영상 다운로더, 틱톡 워터마크 없이, 틱톡 동영상 무료 다운로드 워터마크 없이, 틱톡 다운로더 무료"
+  korean: "anytt cc 틱톡 다운로드, anytt 동영상 다운로더, 틱톡 워터마크 없이, 틱톡 동영상 무료 다운로드 워터마크 없이, 틱톡 다운로더 무료",
+  // Turkish variations (emerging market)
+  turkish: "tiktok video indirme, tiktok indirme, tiktok video indir, tiktokvideo indirme siteleri, tiktok indir, tiktok video indirme programı",
+  // Thai variations (high TikTok usage)
+  thai: "โหลดtiktok, ดาวน์โหลด tiktok, โหลดวีดีโอ tiktok, โหลดคลิป tiktok, ดาวน์โหลดวีดีโอ tiktok",
+  // Vietnamese variations (huge TikTok market)
+  vietnamese: "tải video tiktok, tải tiktok không logo, download video tiktok không watermark, tải video tiktok không có logo, tải nhạc tiktok"
 };
 
 export const seoConfig = {
   home: {
     title: "Anytt cc - Free TikTok Video Downloader Without Watermark 2026",
     description: "Anytt cc - #1 TikTok video downloader. Download TikTok videos without watermark in HD quality. 100% free, no registration. Works on iPhone, Android & PC. Save TikTok videos instantly with anytt cc!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k, 4k tokkit, savett, tiktok dl, how to download tiktok, tiktok reels download, tiktok to gif`,
     h1: "Anytt cc - TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose Anytt cc", "Frequently Asked Questions"]
@@ -336,7 +437,7 @@ export const seoConfig = {
   tiktok: {
     title: "Anytt cc TikTok Downloader - Download Free TikTok Video Without Watermark 2026",
     description: "Anytt cc - The best free TikTok video downloader. Save TikTok videos without watermark in HD. Works on iPhone, Android, PC. No registration. Download TikTok MP4 & MP3 with anytt cc!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download, how to download tiktok video, tiktok to gif, tiktok dl, 4k tokkit, savett, tiktok photo download, tiktok live download, tiktok download full hd`,
     h1: "Anytt cc - TikTok Video Downloader Without Watermark",
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
