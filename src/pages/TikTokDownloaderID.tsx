@@ -65,6 +65,9 @@ const TikTokDownloaderID = () => {
           { lang: "en", url: `${BASE_URL}/tiktok-downloader` },
           { lang: "es", url: `${BASE_URL}/es/descargar-tiktok` },
           { lang: "pt", url: `${BASE_URL}/pt/baixar-tiktok` },
+          { lang: "tr", url: `${BASE_URL}/tr/tiktok-indir` },
+          { lang: "th", url: `${BASE_URL}/th/tiktok-download` },
+          { lang: "vi", url: `${BASE_URL}/vi/tai-tiktok` },
           { lang: "x-default", url: `${BASE_URL}/tiktok-downloader` }
         ]}
       />
@@ -225,6 +228,9 @@ const TikTokDownloaderID = () => {
               <Link to="/tiktok-downloader" className="text-primary hover:underline">English</Link>
               <Link to="/es/descargar-tiktok" className="text-primary hover:underline">Español</Link>
               <Link to="/pt/baixar-tiktok" className="text-primary hover:underline">Português</Link>
+              <Link to="/tr/tiktok-indir" className="text-primary hover:underline">Türkçe</Link>
+              <Link to="/th/tiktok-download" className="text-primary hover:underline">ไทย</Link>
+              <Link to="/vi/tai-tiktok" className="text-primary hover:underline">Tiếng Việt</Link>
             </div>
           </div>
         </section>

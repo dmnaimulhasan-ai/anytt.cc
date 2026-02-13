@@ -25,14 +25,28 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
             <h3 className="font-bold mb-3 text-foreground">Downloaders</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  to="/tiktok-downloader" 
-                  className="block text-muted-foreground hover:text-foreground transition-colors"
-                  title="Download TikTok videos without watermark"
-                >
+                <Link to="/tiktok-downloader" className="block text-muted-foreground hover:text-foreground transition-colors" title="Download TikTok videos without watermark">
                   TikTok Downloader
                 </Link>
               </li>
+              <li>
+                <Link to="/pinterest-downloader" className="block text-muted-foreground hover:text-foreground transition-colors" title="Download Pinterest videos">
+                  Pinterest Downloader
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Languages */}
+          <nav aria-label="Language versions">
+            <h3 className="font-bold mb-3 text-foreground">Languages</h3>
+            <ul className="space-y-2">
+              <li><Link to="/es/descargar-tiktok" className="block text-muted-foreground hover:text-foreground transition-colors" title="Descargar TikTok en Español">🇪🇸 Español</Link></li>
+              <li><Link to="/pt/baixar-tiktok" className="block text-muted-foreground hover:text-foreground transition-colors" title="Baixar TikTok em Português">🇧🇷 Português</Link></li>
+              <li><Link to="/id/unduh-tiktok" className="block text-muted-foreground hover:text-foreground transition-colors" title="Unduh TikTok Indonesia">🇮🇩 Indonesia</Link></li>
+              <li><Link to="/tr/tiktok-indir" className="block text-muted-foreground hover:text-foreground transition-colors" title="TikTok İndir Türkçe">🇹🇷 Türkçe</Link></li>
+              <li><Link to="/th/tiktok-download" className="block text-muted-foreground hover:text-foreground transition-colors" title="ดาวน์โหลด TikTok ภาษาไทย">🇹🇭 ไทย</Link></li>
+              <li><Link to="/vi/tai-tiktok" className="block text-muted-foreground hover:text-foreground transition-colors" title="Tải TikTok Tiếng Việt">🇻🇳 Tiếng Việt</Link></li>
             </ul>
           </nav>
 
