@@ -16,6 +16,9 @@ const languages: Language[] = [
   { code: "es", name: "Spanish", nativeName: "Español", path: "/es/descargar-tiktok", flag: "🇪🇸" },
   { code: "pt", name: "Portuguese", nativeName: "Português", path: "/pt/baixar-tiktok", flag: "🇧🇷" },
   { code: "id", name: "Indonesian", nativeName: "Indonesia", path: "/id/unduh-tiktok", flag: "🇮🇩" },
+  { code: "tr", name: "Turkish", nativeName: "Türkçe", path: "/tr/tiktok-indir", flag: "🇹🇷" },
+  { code: "th", name: "Thai", nativeName: "ไทย", path: "/th/tiktok-download", flag: "🇹🇭" },
+  { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt", path: "/vi/tai-tiktok", flag: "🇻🇳" },
 ];
 
 /**
@@ -34,6 +37,9 @@ const LanguageSelector = () => {
     if (path.startsWith("/es/")) return languages[1];
     if (path.startsWith("/pt/")) return languages[2];
     if (path.startsWith("/id/")) return languages[3];
+    if (path.startsWith("/tr/")) return languages[4];
+    if (path.startsWith("/th/")) return languages[5];
+    if (path.startsWith("/vi/")) return languages[6];
     return languages[0];
   };
 

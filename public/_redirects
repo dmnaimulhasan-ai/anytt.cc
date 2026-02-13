@@ -26,5 +26,10 @@
 /tiktok /tiktok-downloader 301!
 /tt /tiktok-downloader 301!
 
+# New language routes - trailing slash redirects
+/tr/tiktok-indir/ /tr/tiktok-indir 301!
+/th/tiktok-download/ /th/tiktok-download 301!
+/vi/tai-tiktok/ /vi/tai-tiktok 301!
+
 # SPA Fallback - Must be last
 /* /index.html 200
