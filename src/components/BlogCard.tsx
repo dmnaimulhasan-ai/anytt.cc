@@ -17,7 +17,7 @@ const BlogCard = ({ slug, title, excerpt, date, readTime, category, image }: Blo
       to={`/blog/${slug}`}
       className="group glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 border-2 border-transparent hover:border-primary/30"
     >
-      <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+      <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center" role="img" aria-label={`Blog post: ${title}`}>
         <span className="text-4xl">{image || "📝"}</span>
       </div>
       <div className="p-5">
@@ -32,10 +32,10 @@ const BlogCard = ({ slug, title, excerpt, date, readTime, category, image }: Blo
         </p>
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
+            <time dateTime={date} className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
               {date}
-            </span>
+            </time>
             <span className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
               {readTime}

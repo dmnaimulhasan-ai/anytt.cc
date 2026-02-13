@@ -171,6 +171,7 @@ const HeroSection = () => {
                 onKeyDown={handleKeyDown}
                 className="input-large pr-14"
                 disabled={isLoading}
+                aria-label="Enter TikTok video URL to download"
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"
@@ -192,6 +193,7 @@ const HeroSection = () => {
               disabled={isLoading}
               className="btn-large btn-primary"
               type="button"
+              aria-label="Search and download TikTok video"
             >
               {isLoading ? (
                 <>

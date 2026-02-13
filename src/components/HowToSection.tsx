@@ -4,19 +4,19 @@ const steps = [
   {
     icon: Clipboard,
     step: "1",
-    title: "Copy Link",
+    title: "Copy TikTok Video Link",
     description: "Copy the video link from the TikTok app",
   },
   {
     icon: Search,
     step: "2",
-    title: "Paste & Search",
+    title: "Paste URL in Anytt cc",
     description: "Paste the link above and tap the search button",
   },
   {
     icon: Download,
     step: "3",
-    title: "Download",
+    title: "Download HD Video Free",
     description: "Choose quality and download your video instantly",
   },
 ];
@@ -30,7 +30,7 @@ const HowToSection = () => {
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-3xl">
         <h2 className="text-section text-center mb-4">
-          How to <span className="gradient-text">Download</span>
+          How to <span className="gradient-text">Download TikTok Videos</span> Without Watermark
         </h2>
         <p className="text-center text-muted-foreground text-subhero mb-12 max-w-md mx-auto">
           It's super easy. Just 3 simple steps.

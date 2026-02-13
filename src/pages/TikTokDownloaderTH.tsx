@@ -68,6 +68,7 @@ const TikTokDownloaderTH = () => {
         description="Anytt cc - ตัวดาวน์โหลดวิดีโอ TikTok ฟรีที่ดีที่สุด ดาวน์โหลดวิดีโอ TikTok ไม่มีลายน้ำ คุณภาพ HD ใช้งานได้บน iPhone, Android, PC ไม่ต้องลงทะเบียน"
         keywords="download TikTok, fast downloads, social media, video downloader, anytt cc, โหลดtiktok, ดาวน์โหลด tiktok, โหลดวีดีโอ tiktok, โหลดคลิป tiktok, ดาวน์โหลดวีดีโอ tiktok, โหลด tiktok ไม่มีลายน้ำ, เซฟวิดีโอ tiktok, tiktok mp3, โหลดเสียง tiktok"
         canonicalUrl={`${BASE_URL}/th/tiktok-download`}
+        lang="th"
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("TikTok"),
