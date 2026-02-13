@@ -114,6 +114,23 @@ const PinterestDownloader = () => {
           </div>
         </section>
 
+        {/* What is Anytt cc Pinterest Downloader - Descriptive Content */}
+        <section className="py-16 px-4 md:px-6">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-black font-display text-center mb-8">
+              What is <span className="gradient-text">Anytt cc</span> Pinterest Downloader?
+            </h2>
+            <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+              <p>
+                Anytt cc Pinterest Downloader is a free online tool that lets you download Pinterest videos and Idea Pins in HD quality. Whether you want to save recipe videos, DIY tutorials, or creative Idea Pins from Pinterest, Anytt cc makes it simple — just paste the pin URL and click download.
+              </p>
+              <p>
+                Our Pinterest video downloader works on all devices including iPhone, Android, Windows, and Mac. No app installation needed — everything happens right in your browser. Anytt cc downloads Pinterest videos in the highest available quality, up to 1080p HD, so you never lose detail. It's 100% free with no registration, no limits, and no hidden fees.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section className="py-12 px-4 md:px-6">
           <div className="container mx-auto max-w-4xl">

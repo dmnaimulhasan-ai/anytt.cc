@@ -53,6 +53,7 @@ const TikTokDownloaderID = () => {
         description="Anytt cc - Pengunduh video TikTok gratis terbaik. Download video TikTok tanpa watermark dalam HD. Berfungsi di iPhone, Android, PC. Tanpa registrasi diperlukan."
         keywords="download TikTok, fast downloads, social media, video downloader, anytt cc, anytt cc unduh tiktok, download tiktok tanpa watermark, pengunduh video tiktok, simpan video tiktok, tiktok tanpa logo, download tiktok gratis, tiktok mp4, tiktok hd, unduh video tiktok indonesia"
         canonicalUrl={`${BASE_URL}/id/unduh-tiktok`}
+        lang="id"
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("TikTok"),

@@ -116,6 +116,26 @@ const TikTokDownloader = () => {
           </div>
         </section>
 
+        {/* What is Anytt cc - Descriptive Content Section */}
+        <section className="py-16 px-4 md:px-6">
+          <div className="container mx-auto max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-black font-display text-center mb-8">
+              What is <span className="gradient-text">Anytt cc</span> TikTok Downloader?
+            </h2>
+            <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+              <p>
+                Anytt cc is a free online TikTok video downloader that lets you save TikTok videos without watermark in HD quality. Whether you want to download TikTok videos to your iPhone, Android phone, or computer, Anytt cc makes it fast and easy — no app installation or account registration required.
+              </p>
+              <p>
+                Unlike other TikTok downloaders like SnapTik, SssTikTok, or TikMate, Anytt cc removes the TikTok watermark automatically and delivers videos in their original 1080p HD resolution. You can also extract audio from any TikTok video as an MP3 file, making it perfect for saving trending sounds and music. Anytt cc supports batch downloading of up to 100 videos at once, saving you time when you need to download multiple TikTok clips.
+              </p>
+              <p>
+                Anytt cc is completely free with no hidden fees, no daily limits, and no annoying pop-ups. Just paste your TikTok link, click download, and your video is ready in seconds. It works on any device with a web browser — iPhone, Android, Windows, Mac, and even Chromebook.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Keywords Section - SEO Rich Content */}
         <section className="py-12 px-4 md:px-6">
           <div className="container mx-auto max-w-4xl">

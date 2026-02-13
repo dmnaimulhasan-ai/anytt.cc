@@ -13,6 +13,7 @@ interface SEOHeadProps {
   ogImage?: string;
   jsonLd?: object[];
   hreflang?: HreflangTag[];
+  lang?: string;
 }
 
 const SEOHead = ({ 
@@ -22,9 +23,13 @@ const SEOHead = ({
   keywords,
   ogImage = "https://anytt.cc/og-image.jpg",
   jsonLd = [],
-  hreflang = []
+  hreflang = [],
+  lang = "en"
 }: SEOHeadProps) => {
   useEffect(() => {
+    // Update document lang attribute
+    document.documentElement.lang = lang;
+    
     // Update document title
     document.title = title;
     
@@ -100,8 +105,10 @@ const SEOHead = ({
       // Cleanup hreflang on unmount
       const hreflangLinks = document.querySelectorAll('link[data-hreflang]');
       hreflangLinks.forEach(link => link.remove());
+      // Reset lang to default
+      document.documentElement.lang = "en";
     };
-  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd, hreflang]);
+  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd, hreflang, lang]);
   
   return null;
 };

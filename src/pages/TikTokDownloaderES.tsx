@@ -53,6 +53,7 @@ const TikTokDownloaderES = () => {
         description="Anytt cc - El mejor descargador de videos TikTok gratis. Descarga videos de TikTok sin marca de agua en HD. Funciona en iPhone, Android, PC. Sin registro necesario."
         keywords="download TikTok, fast downloads, social media, video downloader, anytt cc, anytt cc descargar tiktok, descargar tiktok sin marca de agua, descargador de videos tiktok, guardar video tiktok, tiktok sin logo, descargar tiktok gratis, tiktok mp4, tiktok hd, bajar videos tiktok"
         canonicalUrl={`${BASE_URL}/es/descargar-tiktok`}
+        lang="es"
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("TikTok"),

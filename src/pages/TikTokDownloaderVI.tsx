@@ -72,6 +72,7 @@ const TikTokDownloaderVI = () => {
         description="Anytt cc - Công cụ tải video TikTok miễn phí tốt nhất. Tải video TikTok không có logo chất lượng HD. Hoạt động trên iPhone, Android, PC. Không cần đăng ký."
         keywords="download TikTok, fast downloads, social media, video downloader, anytt cc, tải video tiktok, tải tiktok không logo, download video tiktok không watermark, tải video tiktok không có logo, tải nhạc tiktok, tải tiktok miễn phí, lưu video tiktok, tiktok mp4, tiktok hd"
         canonicalUrl={`${BASE_URL}/vi/tai-tiktok`}
+        lang="vi"
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("TikTok"),
