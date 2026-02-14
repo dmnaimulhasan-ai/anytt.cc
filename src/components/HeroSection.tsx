@@ -139,7 +139,7 @@ const HeroSection = () => {
       <div className="container mx-auto max-w-xl">
         
         {/* Main Content */}
-        <div className="text-center space-y-8 animate-fade-in">
+        <div className="text-center space-y-8">
           
           {/* Badge */}
           <div className="inline-flex items-center gap-2 tag-pill">

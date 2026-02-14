@@ -19,11 +19,13 @@ const TikTokDownloaderVI = lazy(() => import("./pages/TikTokDownloaderVI"));
 const PinterestDownloader = lazy(() => import("./pages/PinterestDownloader"));
 const PinterestFAQ = lazy(() => import("./pages/PinterestFAQ"));
 
-const About = lazy(() => import("./pages/About"));
+// Eagerly load LCP-critical pages (flagged by CWV)
+import About from "./pages/About";
+import FAQ from "./pages/FAQ";
+
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Download = lazy(() => import("./pages/Download"));
-const FAQ = lazy(() => import("./pages/FAQ"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const DMCA = lazy(() => import("./pages/DMCA"));
