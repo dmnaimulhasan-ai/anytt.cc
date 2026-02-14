@@ -4,9 +4,9 @@
 # Force HTTPS and www normalization (handled by Netlify)
 # All traffic goes to https://anytt.cc (canonical)
 
-# Static SEO files - serve directly (before SPA fallback)
-/sitemap.xml    /sitemap.xml    200!
-/robots.txt     /robots.txt     200!
+# Static files - serve directly with forced 200 (bypass SPA)
+/sitemap.xml    /sitemap.xml    200!  Content-Type=application/xml
+/robots.txt     /robots.txt     200!  Content-Type=text/plain
 
 # Remove trailing slashes - DIRECT redirect (no chains)
 /tiktok-downloader/ /tiktok-downloader 301!
