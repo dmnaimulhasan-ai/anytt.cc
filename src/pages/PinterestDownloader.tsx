@@ -12,7 +12,10 @@ import {
   getFAQSchema, 
   getWebApplicationSchema,
   getHowToSchema,
-  getBreadcrumbSchema
+  getBreadcrumbSchema,
+  pinterestKeywords,
+  allPinterestKeywords,
+  banglaKeywords
 } from "@/lib/seo-config";
 
 const pinterestFaqs = [
@@ -47,6 +50,27 @@ const pinterestFaqs = [
   {
     question: "Why can't I download some Pinterest pins?",
     answer: "Some pins are images, not videos. Anytt cc only downloads video pins. Make sure the pin contains a video before trying to download."
+  },
+  // New FAQ entries for expanded keywords
+  {
+    question: "Can I download an entire Pinterest board at once?",
+    answer: "Anytt cc supports bulk downloading of Pinterest videos from a board. Use our batch mode to paste multiple pin URLs and download them all at once — works as a Pinterest board bulk downloader!"
+  },
+  {
+    question: "Does Anytt cc support Pinterest carousel downloads?",
+    answer: "Yes! Anytt cc can download Pinterest carousel content. Simply paste the carousel pin URL and download the video content. Pinterest carousel downloader no watermark — fast and free!"
+  },
+  {
+    question: "Can I download Pinterest GIFs and images?",
+    answer: "Anytt cc focuses on Pinterest video content. For GIF-style animated pins, they are downloaded as short video clips. Pinterest gif downloader for mobile — works perfectly!"
+  },
+  {
+    question: "Can I use downloaded Pinterest images for Figma or Shopify?",
+    answer: "Yes! Download Pinterest images and videos with Anytt cc, then use them in Figma for mood boards or on Shopify for product inspiration. Pinterest image downloader for Figma and Shopify!"
+  },
+  {
+    question: "How do I bulk download Pinterest pins with titles?",
+    answer: "Use Anytt cc's batch download feature. Paste multiple Pinterest URLs (one per line) and download them all. Save Pinterest board to zip file — bulk download Pinterest pins with ease!"
   }
 ];
 
@@ -57,7 +81,7 @@ const PinterestDownloader = () => {
         title="Anytt cc Pinterest Video Downloader - Download Pinterest Videos Free HD 2026"
         description="Anytt cc - Free Pinterest video downloader. Download Pinterest videos & Idea Pins in HD quality. No registration, no app needed. Works on iPhone, Android & PC!"
         canonicalUrl={`${BASE_URL}/pinterest-downloader`}
-        keywords="pinterest video downloader, download pinterest video, pinterest downloader, save pinterest video, pinterest video saver, pinterest idea pin downloader, pinterest video download hd, free pinterest downloader, pinterest image downloader, pinterest photo downloader, save pinterest images, pinterest gif downloader, pinterest board downloader, pinterest bulk downloader, pinterest reel download, pinterest story download, pinterest to mp4, how to download pinterest video on iphone, how to save pinterest video android"
+        keywords={`${allPinterestKeywords}, ${banglaKeywords.pinterest.join(", ")}`}
         jsonLd={[
           getWebApplicationSchema(),
           getVideoObjectSchema("Pinterest"),
@@ -131,6 +155,101 @@ const PinterestDownloader = () => {
           </div>
         </section>
 
+        {/* Pinterest Keyword Cloud Section */}
+        <section className="py-12 px-4 md:px-6">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              <span className="gradient-text">Anytt cc</span> - Your Complete Pinterest Solution
+            </h2>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Board Downloader */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📋 Board Downloader
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.board.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pin Saver */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📌 Pin Saver
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.bulk.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Carousel Download */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎠 Carousel Download
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.carousel.map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Image & GIF */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🖼️ Image & GIF
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.imageAndGif.slice(0, 5).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bulk Download */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📦 Bulk Download
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.bulk.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* HD Quality */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎯 HD Quality
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {pinterestKeywords.quality.map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section className="py-12 px-4 md:px-6">
           <div className="container mx-auto max-w-4xl">
@@ -139,64 +258,29 @@ const PinterestDownloader = () => {
             </h2>
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {/* HD Quality */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  📹 HD Video Quality
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Download Pinterest videos in the highest available quality - up to 1080p HD.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">📹 HD Video Quality</h3>
+                <p className="text-sm text-muted-foreground">Download Pinterest videos in the highest available quality - up to 1080p HD.</p>
               </div>
-
-              {/* Idea Pins */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  💡 Idea Pins Support
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Download Pinterest Idea Pins and Story Pins with video content.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">💡 Idea Pins Support</h3>
+                <p className="text-sm text-muted-foreground">Download Pinterest Idea Pins and Story Pins with video content.</p>
               </div>
-
-              {/* No App */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  🌐 No App Needed
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Works directly in your browser - no app installation required.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">🌐 No App Needed</h3>
+                <p className="text-sm text-muted-foreground">Works directly in your browser - no app installation required.</p>
               </div>
-
-              {/* All Devices */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  📱 All Devices
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Works on iPhone, Android, Windows, Mac, and any device with a browser.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">📱 All Devices</h3>
+                <p className="text-sm text-muted-foreground">Works on iPhone, Android, Windows, Mac, and any device with a browser.</p>
               </div>
-
-              {/* Fast Download */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  ⚡ Fast Downloads
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Lightning-fast video processing and download speeds.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">⚡ Fast Downloads</h3>
+                <p className="text-sm text-muted-foreground">Lightning-fast video processing and download speeds.</p>
               </div>
-
-              {/* Free Forever */}
               <div className="glass-card rounded-2xl p-5">
-                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
-                  💰 100% Free
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Completely free with no hidden charges or subscriptions.
-                </p>
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">💰 100% Free</h3>
+                <p className="text-sm text-muted-foreground">Completely free with no hidden charges or subscriptions.</p>
               </div>
             </div>
           </div>
@@ -204,6 +288,48 @@ const PinterestDownloader = () => {
 
         {/* Banner Ad */}
         <BannerAd />
+
+        {/* Popular Pinterest Downloads - SEO Keywords Section */}
+        <section className="py-10 px-4 bg-muted/10 border-t border-border/30">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h3 className="text-sm font-medium text-muted-foreground mb-4">Popular Pinterest Downloads</h3>
+            <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/60 leading-relaxed">
+              <span>Pinterest video downloader</span><span>•</span>
+              <span>pin saver</span><span>•</span>
+              <span>board downloader</span><span>•</span>
+              <span>Pinterest carousel</span><span>•</span>
+              <span>Pinterest GIF</span><span>•</span>
+              <span>Pinterest boards</span><span>•</span>
+              <span>Pinterest image</span><span>•</span>
+              <span>pin downloader</span><span>•</span>
+              <span>Pinterest stories</span><span>•</span>
+              <span>bulk downloader</span><span>•</span>
+              <span>Pinterest tool</span><span>•</span>
+              <span>save Pinterest</span><span>•</span>
+              <span>Pinterest aesthetic</span><span>•</span>
+              <span>Pinterest links</span><span>•</span>
+              <span>Pinterest offline</span><span>•</span>
+              <span>Pinterest mobile</span><span>•</span>
+              <span>Idea Pin</span><span>•</span>
+              <span>pins download</span><span>•</span>
+              <span>board saver</span><span>•</span>
+              <span>Pinterest HD</span><span>•</span>
+              <span>Pinterest online</span><span>•</span>
+              <span>Pinterest free</span><span>•</span>
+              <span>Pinterest image downloader for Shopify</span><span>•</span>
+              <span>Pinterest image downloader for Figma</span><span>•</span>
+              <span>Pinterest board bulk downloader zip</span><span>•</span>
+              <span>Pinterest carousel downloader no watermark</span><span>•</span>
+              <span>save Pinterest board to Figma</span><span>•</span>
+              <span>Pinterest board to Canva export</span><span>•</span>
+              {/* Bangla Pinterest keywords */}
+              <span>পিন্টারেস্ট ভিডিও</span><span>•</span>
+              <span>পিন্টারেস্ট সেভার</span><span>•</span>
+              <span>বোর্ড ডাউনলোড</span><span>•</span>
+              <span>পিন্টারেস্ট ফটো</span>
+            </div>
+          </div>
+        </section>
 
         {/* Internal Links */}
         <section className="py-12 px-4 md:px-6">

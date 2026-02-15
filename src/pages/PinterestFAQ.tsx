@@ -120,6 +120,35 @@ const pinterestFaqData = [
         answer: "In the Pinterest app, tap Share on the pin and select 'Copy Link'. On desktop, copy the URL from your browser's address bar while viewing the pin."
       }
     ]
+  },
+  {
+    category: "Boards, Carousels & Bulk",
+    questions: [
+      {
+        question: "Can I download an entire Pinterest board at once?",
+        answer: "AnyTT supports bulk downloading. Use our batch mode to paste multiple pin URLs from a board and download them all at once. It works as a Pinterest board bulk downloader — save entire Pinterest board to gallery!"
+      },
+      {
+        question: "Does AnyTT support Pinterest carousel downloads?",
+        answer: "Yes! AnyTT can download Pinterest carousel content. Simply paste the carousel pin URL and download the video or image content. Pinterest carousel downloader no watermark!"
+      },
+      {
+        question: "How do I bulk download Pinterest pins with titles?",
+        answer: "Use AnyTT's batch download feature — paste multiple Pinterest URLs (one per line) and download them all. You can save Pinterest board to zip file for easy organization."
+      },
+      {
+        question: "Can I download Pinterest images for Figma or Shopify?",
+        answer: "Yes! Download Pinterest images with AnyTT and use them in Figma for mood boards, in Shopify for product inspiration, or in Canva for designs. Pinterest image downloader for Figma and Shopify!"
+      },
+      {
+        question: "Is there a way to save Pinterest boards for offline use?",
+        answer: "AnyTT lets you download Pinterest videos and save them locally for offline viewing. Perfect for saving boards for travel, client presentations, or research projects!"
+      },
+      {
+        question: "Can I download Pinterest GIFs?",
+        answer: "Yes! Animated content and GIF-style pins from Pinterest can be downloaded with AnyTT. They are saved as short video clips in MP4 format. Pinterest gif downloader for mobile!"
+      }
+    ]
   }
 ];
 

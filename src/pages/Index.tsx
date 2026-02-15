@@ -202,6 +202,17 @@ const Index = () => {
               <span>pinterest video downloader</span><span>•</span>
               <span>download tiktok free</span><span>•</span>
               <span>tiktok download 1080p</span><span>•</span>
+              {/* New expanded keywords */}
+              <span>TikTok 4K</span><span>•</span>
+              <span>TikTok carousel</span><span>•</span>
+              <span>photo mode</span><span>•</span>
+              <span>Pinterest board downloader</span><span>•</span>
+              <span>Pinterest carousel</span><span>•</span>
+              <span>pin saver</span><span>•</span>
+              <span>slideshow saver</span><span>•</span>
+              <span>TikTok captions</span><span>•</span>
+              <span>TikTok metadata</span><span>•</span>
+              <span>bulk downloader</span><span>•</span>
               {/* Portuguese Keywords */}
               <span>baixar video tiktok</span><span>•</span>
               <span>tiktok sem marca d'água</span><span>•</span>
@@ -212,7 +223,18 @@ const Index = () => {
               <span>baixar tiktok gratis</span><span>•</span>
               <span>tiktok mp3 downloader</span><span>•</span>
               <span>tirar marca d'água</span><span>•</span>
-              <span>tik tok video downloader</span>
+              <span>tik tok video downloader</span><span>•</span>
+              {/* Bangla Keywords */}
+              <span>টিকটক ভিডিও</span><span>•</span>
+              <span>লোগো ছাড়া</span><span>•</span>
+              <span>ভিডিও ডাউনলোড</span><span>•</span>
+              <span>পিন্টারেস্ট ভিডিও</span><span>•</span>
+              <span>গান ডাউনলোড</span><span>•</span>
+              <span>টিকটক এমপি৩</span><span>•</span>
+              <span>ওয়াটারমার্ক ছাড়া</span><span>•</span>
+              <span>টিকটক সেভার</span><span>•</span>
+              <span>পিন্টারেস্ট সেভার</span><span>•</span>
+              <span>এইচডি ভিডিও</span>
             </div>
           </div>
         </section>

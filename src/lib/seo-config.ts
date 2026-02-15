@@ -97,7 +97,6 @@ export const tiktokKeywords = {
     "tiktok story download",
     "tiktok live download",
     "download tiktok draft",
-    "tiktok private video download",
     "tiktok photo download",
     "tiktok reels download"
   ],
@@ -144,6 +143,83 @@ export const tiktokKeywords = {
     "download tiktok on laptop",
     "save tiktok on ipad",
     "tiktok downloader tablet"
+  ],
+  // 🖼️ Slideshow & Carousel
+  slideshow: [
+    "TikTok slideshow",
+    "slideshow saver",
+    "save TikTok slideshow as individual photos",
+    "download TikTok carousel images high quality",
+    "save TikTok slideshow with music mp4",
+    "save TikTok slideshow without music"
+  ],
+  // 📸 Photo Mode
+  photoMode: [
+    "TikTok photos",
+    "photo mode",
+    "TikTok carousel",
+    "download TikTok carousel as mp4",
+    "TikTok photo mode downloader online",
+    "download TikTok photos without username"
+  ],
+  // 🎬 Live & Story
+  liveAndStory: [
+    "TikTok live",
+    "TikTok story",
+    "TikTok clips",
+    "download TikTok live stream recording",
+    "TikTok story downloader no watermark 2026"
+  ],
+  // 🎥 HD & 4K
+  hdAnd4k: [
+    "TikTok HD",
+    "TikTok 4K",
+    "TikTok video downloader HD 1080p no watermark",
+    "TikTok 4K video saver free online",
+    "TikTok download 1080p",
+    "TikTok no watermark downloader for PC"
+  ],
+  // 🎵 Audio Extended
+  audioExtended: [
+    "TikTok mp3",
+    "TikTok audio",
+    "TikTok song",
+    "TikTok voiceover",
+    "TikTok music",
+    "extract TikTok original sound high quality",
+    "TikTok sound downloader to mp3 320kbps",
+    "TikTok background music downloader online",
+    "download TikTok song without video",
+    "download TikTok mp3 original sound only",
+    "convert TikTok to mp3 high resolution",
+    "TikTok sound effects downloader mp3"
+  ],
+  // 📋 Metadata & Captions
+  metadata: [
+    "TikTok metadata",
+    "TikTok captions",
+    "download TikTok clips with original captions",
+    "TikTok video metadata extractor free",
+    "download TikTok video with subtitles srt"
+  ],
+  // 📈 Trending & SEO
+  trending: [
+    "TikTok trends",
+    "TikTok trending",
+    "TikTok algorithm",
+    "TikTok SEO",
+    "TikTok hashtags"
+  ],
+  // 💬 Conversational
+  conversational: [
+    "how to download TikTok video without app",
+    "can I download TikTok slideshow as video",
+    "best way to download TikTok mp3 original",
+    "TikTok downloader for CapCut editing",
+    "TikTok video downloader for Android 15",
+    "TikTok video downloader for YouTube Shorts",
+    "download TikTok videos for Premiere Pro",
+    "save TikTok videos for offline viewing app"
   ]
 };
 
@@ -199,8 +275,147 @@ export const pinterestKeywords = {
     "how to download pinterest images",
     "save pinterest video to phone",
     "pinterest video download without app"
+  ],
+  // 📋 Board Download
+  board: [
+    "board downloader",
+    "board saver",
+    "Pinterest board bulk downloader zip",
+    "save entire Pinterest board to gallery",
+    "Pinterest board downloader pro free",
+    "download Pinterest board for offline use",
+    "Pinterest board downloader for researchers",
+    "save Pinterest board to zip file",
+    "download Pinterest board for Mac"
+  ],
+  // 🎠 Carousel
+  carousel: [
+    "Pinterest carousel",
+    "Pinterest carousel downloader no watermark",
+    "download Pinterest carousel images online",
+    "fastest way to save Pinterest carousels"
+  ],
+  // 🖼️ Image & GIF
+  imageAndGif: [
+    "Pinterest image",
+    "Pinterest GIF",
+    "Pinterest photo",
+    "Pinterest aesthetic",
+    "Pinterest HD",
+    "Pinterest image downloader for Shopify",
+    "Pinterest image downloader for Figma",
+    "Pinterest gif downloader for mobile",
+    "high speed Pinterest image saver"
+  ],
+  // 📦 Bulk Download
+  bulk: [
+    "bulk downloader",
+    "pin downloader",
+    "pin saver",
+    "bulk download Pinterest pins with titles",
+    "save Pinterest board to zip file",
+    "bulk Pinterest video downloader online",
+    "Pinterest video downloader high resolution"
+  ],
+  // 🔧 Utility
+  utility: [
+    "Pinterest tool",
+    "Pinterest free",
+    "Pinterest online",
+    "Pinterest mobile",
+    "Pinterest offline",
+    "Pinterest links",
+    "Pinterest video downloader no ads"
+  ],
+  // 💬 Conversational Pinterest
+  conversationalPinterest: [
+    "where to find best Pinterest board downloader",
+    "is there a free Pinterest carousel downloader",
+    "fastest way to save Pinterest carousels",
+    "save Pinterest pins for Procreate",
+    "download Pinterest board for interior design",
+    "save Pinterest landscape photos for desktop",
+    "save Pinterest board to Figma directly",
+    "Pinterest board to Canva export",
+    "save Pinterest board for client presentation"
   ]
 };
+
+/**
+ * Bangla Keywords for Bangladesh & West Bengal local SEO
+ */
+export const banglaKeywords = {
+  tiktok: [
+    "TikTok video download kivabe kore",
+    "no watermark TikTok download bangla",
+    "watermark chara TikTok download korar site",
+    "mobile gallery-te TikTok save korar upay",
+    "TikTok mp3 download bangla tutorial",
+    "HD quality TikTok download kivabe kore",
+    "TikTok photo download bangla trick",
+    "TikTok video download link sorasori",
+    "TikTok watermark remover bangla site",
+    "TikTok story download bangla free",
+    "TikTok video download bangla apps",
+    "TikTok theke audio download korar niyom",
+    "TikTok mp3 download bangla software",
+    "online-e video download korar sahaj niyom"
+  ],
+  pinterest: [
+    "Pinterest theke video download korar niyom",
+    "Pinterest board ekbare download bangla",
+    "Pinterest theke sob photo ekbare download",
+    "Pinterest image download korar link",
+    "Pinterest video download bangla tutorial",
+    "mobile-e Pinterest video save kivabe korbo",
+    "Pinterest image download korar apps bangla",
+    "Pinterest video download link copy paste",
+    "Pinterest board save korar best software"
+  ],
+  script: [
+    "টিকটক ভিডিও",
+    "লোগো ছাড়া",
+    "ভিডিও ডাউনলোড",
+    "পিন্টারেস্ট ভিডিও",
+    "গান ডাউনলোড",
+    "টিকটক এমপি৩",
+    "ওয়াটারমার্ক ছাড়া",
+    "লোগো রিমুভ",
+    "সেভ ভিডিও",
+    "টিকটক গান",
+    "পিন্টারেস্ট সেভার",
+    "বোর্ড ডাউনলোড",
+    "এইচডি ভিডিও",
+    "ফ্রি ডাউনলোড",
+    "অনলাইন টুল",
+    "টিকটক সেভার",
+    "ভিডিও সেভ",
+    "পিন্টারেস্ট ফটো",
+    "টিকটক লোগো",
+    "ডাউনলোড অ্যাপ"
+  ]
+};
+
+/**
+ * Format & Quality Keywords
+ */
+export const formatExtended = [
+  "MP4 downloader",
+  "MP3 extractor",
+  "HD 1080p",
+  "4K downloader",
+  "fast downloader",
+  "no login",
+  "bulk save",
+  "media saver",
+  "video converter",
+  "audio only",
+  "high res",
+  "one click",
+  "free online",
+  "slideshow saver",
+  "metadata tool"
+];
 
 // Combined keywords string for meta tags
 export const allTiktokKeywords = [
@@ -214,7 +429,38 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.contentType,
   ...tiktokKeywords.formatQuality,
   ...tiktokKeywords.moreCompetitors,
-  ...tiktokKeywords.deviceExtended
+  ...tiktokKeywords.deviceExtended,
+  ...tiktokKeywords.slideshow,
+  ...tiktokKeywords.photoMode,
+  ...tiktokKeywords.liveAndStory,
+  ...tiktokKeywords.hdAnd4k,
+  ...tiktokKeywords.audioExtended,
+  ...tiktokKeywords.metadata,
+  ...tiktokKeywords.trending,
+  ...tiktokKeywords.conversational
+].join(", ");
+
+// Combined Bangla keywords string
+export const allBanglaKeywords = [
+  ...banglaKeywords.tiktok,
+  ...banglaKeywords.pinterest,
+  ...banglaKeywords.script
+].join(", ");
+
+// Combined Pinterest extended keywords string
+export const allPinterestKeywords = [
+  ...pinterestKeywords.primary,
+  ...pinterestKeywords.quality,
+  ...pinterestKeywords.device,
+  ...pinterestKeywords.feature,
+  ...pinterestKeywords.contentType,
+  ...pinterestKeywords.actionIntent,
+  ...pinterestKeywords.board,
+  ...pinterestKeywords.carousel,
+  ...pinterestKeywords.imageAndGif,
+  ...pinterestKeywords.bulk,
+  ...pinterestKeywords.utility,
+  ...pinterestKeywords.conversationalPinterest
 ].join(", ");
 
 /**
@@ -429,7 +675,7 @@ export const seoConfig = {
   home: {
     title: "Anytt cc - Free TikTok Video Downloader Without Watermark 2026",
     description: "Anytt cc - #1 TikTok video downloader. Download TikTok videos without watermark in HD quality. 100% free, no registration. Works on iPhone, Android & PC. Save TikTok videos instantly with anytt cc!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k, 4k tokkit, savett, tiktok dl, how to download tiktok, tiktok reels download, tiktok to gif`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, ${allBanglaKeywords}, ${allPinterestKeywords}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k, 4k tokkit, savett, tiktok dl, how to download tiktok, tiktok reels download, tiktok to gif, TikTok carousel, TikTok 4K, photo mode, Pinterest board downloader, Pinterest carousel, pin saver, ${formatExtended.join(", ")}`,
     h1: "Anytt cc - TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose Anytt cc", "Frequently Asked Questions"]
@@ -437,7 +683,7 @@ export const seoConfig = {
   tiktok: {
     title: "Anytt cc TikTok Downloader - Download Free TikTok Video Without Watermark 2026",
     description: "Anytt cc - The best free TikTok video downloader. Save TikTok videos without watermark in HD. Works on iPhone, Android, PC. No registration. Download TikTok MP4 & MP3 with anytt cc!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download, how to download tiktok video, tiktok to gif, tiktok dl, 4k tokkit, savett, tiktok photo download, tiktok live download, tiktok download full hd`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download, how to download tiktok video, tiktok to gif, tiktok dl, 4k tokkit, savett, tiktok photo download, tiktok live download, tiktok download full hd, TikTok carousel, TikTok 4K, photo mode download, TikTok captions, TikTok metadata, TikTok voiceover, save TikTok slideshow, download TikTok carousel as mp4, TikTok video downloader HD 1080p no watermark, TikTok downloader for CapCut editing, ${formatExtended.join(", ")}`,
     h1: "Anytt cc - TikTok Video Downloader Without Watermark",
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
@@ -445,7 +691,7 @@ export const seoConfig = {
   about: {
     title: "About Anytt cc - Best Free TikTok Video Downloader 2026",
     description: "Anytt cc is the #1 free TikTok video downloader trusted by millions worldwide. Download TikTok videos without watermark in HD. Fast, free, no registration required. Learn about anytt cc!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.hindi}, ${brandedKeywords.russian}, about anytt cc, best tiktok downloader, free tiktok saver, tiktok video download service, anytt cc features, top tiktok downloader 2026, trusted tiktok tool`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.hindi}, ${brandedKeywords.russian}, about anytt cc, best tiktok downloader, free tiktok saver, tiktok video download service, anytt cc features, top tiktok downloader 2026, trusted tiktok tool, TikTok trends, TikTok trending, TikTok algorithm, TikTok SEO, TikTok hashtags`,
     h1: "About Anytt cc Video Downloader",
     h2: "The Fastest Free TikTok Video Downloader Online",
     h3: ["Our Features", "Why Users Love Anytt cc", "Contact Us"]
@@ -453,7 +699,7 @@ export const seoConfig = {
   faq: {
     title: "Anytt cc FAQ - TikTok Downloader Help | How to Download TikTok Videos",
     description: "Get answers about Anytt cc TikTok video downloader. Learn how to save TikTok on iPhone, Android, PC without watermark. Free anytt cc guide and troubleshooting tips!",
-    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.japanese}, ${brandedKeywords.korean}, tiktok downloader faq, how to download tiktok, save tiktok video help, tiktok download guide, anytt cc tutorial, download tiktok iphone, download tiktok android, tiktok no watermark how`,
+    keywords: `${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.japanese}, ${brandedKeywords.korean}, tiktok downloader faq, how to download tiktok, save tiktok video help, tiktok download guide, anytt cc tutorial, download tiktok iphone, download tiktok android, tiktok no watermark how, how to download TikTok video without app, can I download TikTok slideshow as video, best way to download TikTok mp3 original, TikTok downloader for CapCut editing`,
     h1: "Anytt cc - Frequently Asked Questions",
     h2: "Everything You Need to Know About Anytt cc",
     h3: ["General Questions", "TikTok Questions", "Technical Support"]
