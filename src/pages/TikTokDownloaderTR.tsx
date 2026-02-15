@@ -176,6 +176,33 @@ const TikTokDownloaderTR = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🖼️ Slayt & Carousel</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok slayt gösterisi", "carousel indir", "tiktok fotoğraf", "foto modu tiktok"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎥 4K Ultra HD</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok 4K", "tiktok HD 1080p", "yüksek kalite video", "tiktok 4K indir"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎬 Canlı & Hikaye</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok canlı indir", "tiktok hikaye", "tiktok klipler", "canlı yayın indir"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
               
               <div className="glass-card rounded-2xl p-5">
                 <h3 className="font-bold text-primary mb-3">🌍 Tüm Cihazlar</h3>

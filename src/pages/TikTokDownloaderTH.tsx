@@ -176,6 +176,33 @@ const TikTokDownloaderTH = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🖼️ สไลด์โชว์ & คาร์รูเซล</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok สไลด์โชว์", "ดาวน์โหลดคาร์รูเซล", "รูปภาพ tiktok", "โหมดรูปภาพ tiktok"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎥 4K Ultra HD</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok 4K", "tiktok HD 1080p", "วิดีโอคุณภาพสูง", "ดาวน์โหลด tiktok 4K"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎬 ไลฟ์ & สตอรี่</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok live ดาวน์โหลด", "tiktok story", "tiktok คลิป", "ดาวน์โหลดถ่ายทอดสด"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
               
               <div className="glass-card rounded-2xl p-5">
                 <h3 className="font-bold text-primary mb-3">🌍 ทุกอุปกรณ์</h3>

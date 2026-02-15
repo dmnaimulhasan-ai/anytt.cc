@@ -180,6 +180,33 @@ const TikTokDownloaderVI = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🖼️ Slideshow & Carousel</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok slideshow", "tải carousel", "ảnh tiktok", "chế độ ảnh tiktok"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎥 4K Ultra HD</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok 4K", "tiktok HD 1080p", "video chất lượng cao", "tải tiktok 4K"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3">🎬 Live & Story</h3>
+                <div className="flex flex-wrap gap-2">
+                  {["tiktok live tải", "tiktok story", "tiktok clips", "tải phát trực tiếp"].map((k, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">{k}</span>
+                  ))}
+                </div>
+              </div>
               
               <div className="glass-card rounded-2xl p-5">
                 <h3 className="font-bold text-primary mb-3">🌍 Mọi Thiết Bị</h3>

@@ -14,7 +14,8 @@ import {
   getWebApplicationSchema,
   getHowToSchema,
   getBreadcrumbSchema,
-  tiktokKeywords
+  tiktokKeywords,
+  banglaKeywords
 } from "@/lib/seo-config";
 
 const tiktokFaqs = [
@@ -49,6 +50,35 @@ const tiktokFaqs = [
   {
     question: "Is Anytt cc safe to use?",
     answer: "Absolutely! Anytt cc doesn't require any registration or personal information. We don't store any of your data. Anytt cc is 100% safe and secure."
+  },
+  // New FAQ entries for expanded keywords
+  {
+    question: "Can I download TikTok slideshows and carousels with Anytt cc?",
+    answer: "Yes! Anytt cc supports TikTok slideshow downloads. You can save TikTok slideshow as individual photos or download TikTok carousel images in high quality. Works as a slideshow saver and carousel downloader!"
+  },
+  {
+    question: "Does Anytt cc support TikTok 4K and HD 1080p downloads?",
+    answer: "Yes, Anytt cc downloads TikTok videos in the highest available quality — up to 4K and HD 1080p without watermark. It's the best TikTok 4K video saver free online!"
+  },
+  {
+    question: "Can I download TikTok live streams and stories?",
+    answer: "Anytt cc supports downloading TikTok stories and clips. For live stream recordings that have been saved by the creator, you can download them using Anytt cc. TikTok story downloader no watermark 2026!"
+  },
+  {
+    question: "Does Anytt cc support TikTok photo mode downloads?",
+    answer: "Yes! Anytt cc works with TikTok photo mode content. You can download TikTok carousel as mp4 or save individual photos. TikTok photo mode downloader online — free and fast!"
+  },
+  {
+    question: "Can I download TikTok videos with captions and metadata?",
+    answer: "Anytt cc downloads TikTok clips with original captions preserved. For metadata extraction, videos are saved with their full original quality. TikTok video metadata extractor free!"
+  },
+  {
+    question: "Can I use Anytt cc for CapCut editing or YouTube Shorts?",
+    answer: "Absolutely! Download TikTok videos with Anytt cc and use them in CapCut, Premiere Pro, or re-upload as YouTube Shorts. TikTok downloader for CapCut editing — perfect for content creators!"
+  },
+  {
+    question: "How to download TikTok video without app?",
+    answer: "With Anytt cc, you don't need any app! Just open anytt.cc in your browser, paste the TikTok link, and download. Works on Android 15, iPhone, PC, Mac — no app installation needed!"
   }
 ];
 
@@ -178,7 +208,91 @@ const TikTokDownloader = () => {
                   🎵 TikTok MP3 Download
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {tiktokKeywords.audio.map((keyword, i) => (
+                  {tiktokKeywords.audioExtended.slice(0, 5).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Slideshow & Carousel */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🖼️ Slideshow & Carousel
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.slideshow.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Photo Mode */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📸 Photo Mode
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.photoMode.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Live & Story */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎬 Live & Story
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.liveAndStory.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4K Ultra HD */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  🎥 4K Ultra HD
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.hdAnd4k.slice(0, 4).map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trending & SEO */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📈 Trending & SEO
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.trending.map((keyword, i) => (
+                    <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Captions & Metadata */}
+              <div className="glass-card rounded-2xl p-5">
+                <h3 className="font-bold text-primary mb-3 flex items-center gap-2">
+                  📋 Captions & Metadata
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {tiktokKeywords.metadata.slice(0, 4).map((keyword, i) => (
                     <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
                       {keyword}
                     </span>
@@ -268,7 +382,33 @@ const TikTokDownloader = () => {
               <span>tiktok grabber</span><span>•</span>
               <span>snaptik pro</span><span>•</span>
               <span>free tiktok downloader</span><span>•</span>
-              <span>online tiktok video downloader</span>
+              <span>online tiktok video downloader</span><span>•</span>
+              {/* New expanded keywords */}
+              <span>TikTok 4K</span><span>•</span>
+              <span>TikTok carousel</span><span>•</span>
+              <span>TikTok captions</span><span>•</span>
+              <span>photo mode download</span><span>•</span>
+              <span>save TikTok slideshow</span><span>•</span>
+              <span>TikTok metadata</span><span>•</span>
+              <span>TikTok voiceover</span><span>•</span>
+              <span>TikTok HD 1080p</span><span>•</span>
+              <span>TikTok song download</span><span>•</span>
+              <span>slideshow saver</span><span>•</span>
+              <span>TikTok clips download</span><span>•</span>
+              <span>TikTok audio extractor</span><span>•</span>
+              <span>TikTok trending</span><span>•</span>
+              <span>TikTok for CapCut</span><span>•</span>
+              <span>download TikTok carousel as mp4</span><span>•</span>
+              <span>TikTok mp3 320kbps</span><span>•</span>
+              <span>TikTok video downloader for Android 15</span><span>•</span>
+              <span>TikTok background music downloader</span><span>•</span>
+              {/* Bangla keywords */}
+              <span>টিকটক ভিডিও</span><span>•</span>
+              <span>লোগো ছাড়া</span><span>•</span>
+              <span>ভিডিও ডাউনলোড</span><span>•</span>
+              <span>টিকটক এমপি৩</span><span>•</span>
+              <span>ওয়াটারমার্ক ছাড়া</span><span>•</span>
+              <span>টিকটক সেভার</span>
             </div>
           </div>
         </section>
