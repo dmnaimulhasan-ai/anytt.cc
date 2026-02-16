@@ -383,32 +383,133 @@ const TikTokDownloader = () => {
               <span>snaptik pro</span><span>•</span>
               <span>free tiktok downloader</span><span>•</span>
               <span>online tiktok video downloader</span><span>•</span>
-              {/* New expanded keywords */}
+              {/* Short golden keywords */}
+              <span>TikTok mp3</span><span>•</span>
+              <span>TikTok photos</span><span>•</span>
+              <span>No watermark</span><span>•</span>
+              <span>TikTok slideshow</span><span>•</span>
+              <span>TikTok story</span><span>•</span>
+              <span>TikTok clips</span><span>•</span>
+              <span>TikTok audio</span><span>•</span>
+              <span>Save TikTok</span><span>•</span>
+              <span>TikTok live</span><span>•</span>
+              <span>TikTok HD</span><span>•</span>
+              <span>TikTok saver</span><span>•</span>
+              <span>TikTok downloader</span><span>•</span>
+              <span>TikTok watermark</span><span>•</span>
               <span>TikTok 4K</span><span>•</span>
+              <span>TikTok metadata</span><span>•</span>
               <span>TikTok carousel</span><span>•</span>
               <span>TikTok captions</span><span>•</span>
+              <span>TikTok song</span><span>•</span>
+              <span>TikTok voiceover</span><span>•</span>
+              <span>TikTok draft</span><span>•</span>
+              <span>TikTok profile</span><span>•</span>
+              <span>TikTok trends</span><span>•</span>
+              <span>TikTok music</span><span>•</span>
+              <span>TikTok trending</span><span>•</span>
+              <span>TikTok search</span><span>•</span>
+              <span>TikTok hashtags</span><span>•</span>
+              <span>TikTok algorithm</span><span>•</span>
+              <span>TikTok SEO</span><span>•</span>
+              <span>TikTok video</span><span>•</span>
+              <span>Photo mode</span><span>•</span>
+              <span>TikTok logo</span><span>•</span>
+              <span>TikTok rewatch</span><span>•</span>
+              <span>TikTok views</span><span>•</span>
+              <span>TikTok app</span><span>•</span>
+              {/* Long-tail golden keywords */}
               <span>photo mode download</span><span>•</span>
               <span>save TikTok slideshow</span><span>•</span>
-              <span>TikTok metadata</span><span>•</span>
-              <span>TikTok voiceover</span><span>•</span>
               <span>TikTok HD 1080p</span><span>•</span>
               <span>TikTok song download</span><span>•</span>
               <span>slideshow saver</span><span>•</span>
               <span>TikTok clips download</span><span>•</span>
               <span>TikTok audio extractor</span><span>•</span>
-              <span>TikTok trending</span><span>•</span>
               <span>TikTok for CapCut</span><span>•</span>
               <span>download TikTok carousel as mp4</span><span>•</span>
               <span>TikTok mp3 320kbps</span><span>•</span>
               <span>TikTok video downloader for Android 15</span><span>•</span>
               <span>TikTok background music downloader</span><span>•</span>
+              <span>TikTok video downloader HD 1080p no watermark</span><span>•</span>
+              <span>Save TikTok slideshow as individual photos</span><span>•</span>
+              <span>Download TikTok carousel images high quality</span><span>•</span>
+              <span>TikTok story downloader no watermark 2026</span><span>•</span>
+              <span>TikTok 4K video saver free online</span><span>•</span>
+              <span>Save TikTok slideshow with music mp4</span><span>•</span>
+              <span>TikTok no watermark downloader for PC</span><span>•</span>
+              <span>TikTok photo mode downloader online</span><span>•</span>
+              <span>Download TikTok live stream recording</span><span>•</span>
+              <span>TikTok video metadata extractor free</span><span>•</span>
+              <span>Download TikTok video with subtitles srt</span><span>•</span>
+              <span>Bulk download TikTok videos by hashtag</span><span>•</span>
+              <span>Download TikTok clips with original captions</span><span>•</span>
+              <span>TikTok video downloader no logo mac</span><span>•</span>
+              <span>TikTok video downloader without survey</span><span>•</span>
+              <span>Download TikTok videos for Premiere Pro</span><span>•</span>
+              <span>Save TikTok draft videos to gallery</span><span>•</span>
+              <span>TikTok video downloader no watermark Linux</span><span>•</span>
+              <span>Extract TikTok original sound high quality</span><span>•</span>
+              <span>TikTok sound downloader to mp3 320kbps</span><span>•</span>
+              <span>Download TikTok song without video</span><span>•</span>
+              <span>Save TikTok trending audio for ringtone</span><span>•</span>
+              <span>TikTok music downloader free no app</span><span>•</span>
+              <span>TikTok voiceover to text converter free</span><span>•</span>
+              <span>Download TikTok mp3 original sound only</span><span>•</span>
+              <span>TikTok background music downloader online</span><span>•</span>
+              <span>Convert TikTok to mp3 high resolution</span><span>•</span>
+              <span>TikTok downloader for CapCut editing</span><span>•</span>
+              <span>TikTok video downloader for YouTube Shorts</span><span>•</span>
+              <span>How to download TikTok video without app</span><span>•</span>
+              <span>Can I download TikTok slideshow as video</span><span>•</span>
+              <span>Best way to download TikTok mp3 original</span><span>•</span>
+              <span>Save TikTok profile picture full size</span><span>•</span>
+              <span>Save TikTok videos to Google Drive</span><span>•</span>
+              <span>Save TikTok videos for offline viewing app</span><span>•</span>
+              {/* Format keywords */}
+              <span>MP4 downloader</span><span>•</span>
+              <span>MP3 extractor</span><span>•</span>
+              <span>HD 1080p</span><span>•</span>
+              <span>4K downloader</span><span>•</span>
+              <span>fast downloader</span><span>•</span>
+              <span>no login</span><span>•</span>
+              <span>bulk save</span><span>•</span>
+              <span>media saver</span><span>•</span>
+              <span>video converter</span><span>•</span>
+              <span>audio only</span><span>•</span>
+              <span>high res</span><span>•</span>
+              <span>one click</span><span>•</span>
+              <span>free online</span><span>•</span>
+              <span>slideshow saver</span><span>•</span>
+              <span>metadata tool</span><span>•</span>
               {/* Bangla keywords */}
               <span>টিকটক ভিডিও</span><span>•</span>
               <span>লোগো ছাড়া</span><span>•</span>
               <span>ভিডিও ডাউনলোড</span><span>•</span>
               <span>টিকটক এমপি৩</span><span>•</span>
               <span>ওয়াটারমার্ক ছাড়া</span><span>•</span>
-              <span>টিকটক সেভার</span>
+              <span>লোগো রিমুভ</span><span>•</span>
+              <span>সেভ ভিডিও</span><span>•</span>
+              <span>টিকটক গান</span><span>•</span>
+              <span>এইচডি ভিডিও</span><span>•</span>
+              <span>ফ্রি ডাউনলোড</span><span>•</span>
+              <span>টিকটক সেভার</span><span>•</span>
+              <span>টিকটক লোগো</span><span>•</span>
+              <span>ডাউনলোড অ্যাপ</span><span>•</span>
+              {/* Bangla transliterated */}
+              <span>TikTok video download kivabe kore</span><span>•</span>
+              <span>no watermark TikTok download bangla</span><span>•</span>
+              <span>watermark chara TikTok download korar site</span><span>•</span>
+              <span>TikTok mp3 download bangla tutorial</span><span>•</span>
+              <span>HD quality TikTok download kivabe kore</span><span>•</span>
+              <span>TikTok photo download bangla trick</span><span>•</span>
+              <span>TikTok video download link sorasori</span><span>•</span>
+              <span>TikTok watermark remover bangla site</span><span>•</span>
+              <span>TikTok story download bangla free</span><span>•</span>
+              <span>TikTok theke audio download korar niyom</span><span>•</span>
+              <span>HD video download korar best site</span><span>•</span>
+              <span>mobile gallery-te TikTok save korar upay</span><span>•</span>
+              <span>online-e video download korar sahaj niyom</span>
             </div>
           </div>
         </section>

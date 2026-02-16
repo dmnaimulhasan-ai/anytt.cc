@@ -191,28 +191,77 @@ const Index = () => {
               <span>tiktokio</span><span>•</span>
               <span>godownloader</span><span>•</span>
               <span>snapsave</span><span>•</span>
-              {/* New high-traffic keywords */}
-              <span>tiktok reels download</span><span>•</span>
-              <span>tiktok slideshow download</span><span>•</span>
-              <span>tiktok to gif</span><span>•</span>
-              <span>how to download tiktok</span><span>•</span>
-              <span>tiktok dl</span><span>•</span>
-              <span>savett</span><span>•</span>
-              <span>4k tokkit</span><span>•</span>
-              <span>pinterest video downloader</span><span>•</span>
-              <span>download tiktok free</span><span>•</span>
-              <span>tiktok download 1080p</span><span>•</span>
-              {/* New expanded keywords */}
+              {/* Short golden TikTok keywords */}
+              <span>TikTok mp3</span><span>•</span>
+              <span>TikTok photos</span><span>•</span>
+              <span>No watermark</span><span>•</span>
+              <span>TikTok slideshow</span><span>•</span>
+              <span>TikTok story</span><span>•</span>
+              <span>TikTok clips</span><span>•</span>
+              <span>TikTok audio</span><span>•</span>
+              <span>Save TikTok</span><span>•</span>
+              <span>TikTok live</span><span>•</span>
+              <span>TikTok HD</span><span>•</span>
+              <span>TikTok saver</span><span>•</span>
+              <span>TikTok downloader</span><span>•</span>
+              <span>TikTok watermark</span><span>•</span>
               <span>TikTok 4K</span><span>•</span>
-              <span>TikTok carousel</span><span>•</span>
-              <span>photo mode</span><span>•</span>
-              <span>Pinterest board downloader</span><span>•</span>
-              <span>Pinterest carousel</span><span>•</span>
-              <span>pin saver</span><span>•</span>
-              <span>slideshow saver</span><span>•</span>
-              <span>TikTok captions</span><span>•</span>
               <span>TikTok metadata</span><span>•</span>
-              <span>bulk downloader</span><span>•</span>
+              <span>TikTok carousel</span><span>•</span>
+              <span>TikTok captions</span><span>•</span>
+              <span>TikTok song</span><span>•</span>
+              <span>TikTok voiceover</span><span>•</span>
+              <span>TikTok draft</span><span>•</span>
+              <span>TikTok profile</span><span>•</span>
+              <span>TikTok trends</span><span>•</span>
+              <span>TikTok music</span><span>•</span>
+              <span>TikTok trending</span><span>•</span>
+              <span>TikTok search</span><span>•</span>
+              <span>TikTok hashtags</span><span>•</span>
+              <span>TikTok algorithm</span><span>•</span>
+              <span>TikTok SEO</span><span>•</span>
+              <span>TikTok video</span><span>•</span>
+              <span>Photo mode</span><span>•</span>
+              <span>TikTok logo</span><span>•</span>
+              <span>TikTok rewatch</span><span>•</span>
+              <span>TikTok views</span><span>•</span>
+              <span>TikTok app</span><span>•</span>
+              {/* Short golden Pinterest keywords */}
+              <span>Pinterest video</span><span>•</span>
+              <span>Pin saver</span><span>•</span>
+              <span>Board downloader</span><span>•</span>
+              <span>Pinterest carousel</span><span>•</span>
+              <span>Pinterest GIF</span><span>•</span>
+              <span>Pinterest boards</span><span>•</span>
+              <span>Pinterest image</span><span>•</span>
+              <span>Pin downloader</span><span>•</span>
+              <span>Pinterest stories</span><span>•</span>
+              <span>Bulk downloader</span><span>•</span>
+              <span>Pinterest scraper</span><span>•</span>
+              <span>Pinterest search</span><span>•</span>
+              <span>Save Pinterest</span><span>•</span>
+              <span>Pinterest aesthetic</span><span>•</span>
+              <span>Pinterest extension</span><span>•</span>
+              <span>Pinterest metadata</span><span>•</span>
+              <span>Pinterest trends</span><span>•</span>
+              <span>Pinterest algorithm</span><span>•</span>
+              <span>Pinterest SEO</span><span>•</span>
+              <span>Idea Pin</span><span>•</span>
+              <span>Board saver</span><span>•</span>
+              <span>Pinterest HD</span><span>•</span>
+              <span>Pinterest free</span><span>•</span>
+              {/* Format keywords */}
+              <span>MP4 downloader</span><span>•</span>
+              <span>MP3 extractor</span><span>•</span>
+              <span>HD 1080p</span><span>•</span>
+              <span>4K downloader</span><span>•</span>
+              <span>fast downloader</span><span>•</span>
+              <span>no login</span><span>•</span>
+              <span>bulk save</span><span>•</span>
+              <span>video converter</span><span>•</span>
+              <span>audio only</span><span>•</span>
+              <span>free online</span><span>•</span>
+              <span>slideshow saver</span><span>•</span>
               {/* Portuguese Keywords */}
               <span>baixar video tiktok</span><span>•</span>
               <span>tiktok sem marca d'água</span><span>•</span>
@@ -224,7 +273,7 @@ const Index = () => {
               <span>tiktok mp3 downloader</span><span>•</span>
               <span>tirar marca d'água</span><span>•</span>
               <span>tik tok video downloader</span><span>•</span>
-              {/* Bangla Keywords */}
+              {/* Bangla Script Keywords */}
               <span>টিকটক ভিডিও</span><span>•</span>
               <span>লোগো ছাড়া</span><span>•</span>
               <span>ভিডিও ডাউনলোড</span><span>•</span>
@@ -232,9 +281,19 @@ const Index = () => {
               <span>গান ডাউনলোড</span><span>•</span>
               <span>টিকটক এমপি৩</span><span>•</span>
               <span>ওয়াটারমার্ক ছাড়া</span><span>•</span>
-              <span>টিকটক সেভার</span><span>•</span>
+              <span>লোগো রিমুভ</span><span>•</span>
+              <span>সেভ ভিডিও</span><span>•</span>
+              <span>টিকটক গান</span><span>•</span>
               <span>পিন্টারেস্ট সেভার</span><span>•</span>
-              <span>এইচডি ভিডিও</span>
+              <span>বোর্ড ডাউনলোড</span><span>•</span>
+              <span>এইচডি ভিডিও</span><span>•</span>
+              <span>ফ্রি ডাউনলোড</span><span>•</span>
+              <span>অনলাইন টুল</span><span>•</span>
+              <span>টিকটক সেভার</span><span>•</span>
+              <span>ভিডিও সেভ</span><span>•</span>
+              <span>পিন্টারেস্ট ফটো</span><span>•</span>
+              <span>টিকটক লোগো</span><span>•</span>
+              <span>ডাউনলোড অ্যাপ</span>
             </div>
           </div>
         </section>

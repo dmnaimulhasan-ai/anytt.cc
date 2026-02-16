@@ -294,39 +294,88 @@ const PinterestDownloader = () => {
           <div className="container mx-auto max-w-4xl text-center">
             <h3 className="text-sm font-medium text-muted-foreground mb-4">Popular Pinterest Downloads</h3>
             <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/60 leading-relaxed">
-              <span>Pinterest video downloader</span><span>•</span>
-              <span>pin saver</span><span>•</span>
-              <span>board downloader</span><span>•</span>
+              {/* Short golden Pinterest keywords */}
+              <span>Pinterest video</span><span>•</span>
+              <span>Pin saver</span><span>•</span>
+              <span>Board downloader</span><span>•</span>
               <span>Pinterest carousel</span><span>•</span>
               <span>Pinterest GIF</span><span>•</span>
               <span>Pinterest boards</span><span>•</span>
               <span>Pinterest image</span><span>•</span>
-              <span>pin downloader</span><span>•</span>
+              <span>Pin downloader</span><span>•</span>
               <span>Pinterest stories</span><span>•</span>
-              <span>bulk downloader</span><span>•</span>
+              <span>Bulk downloader</span><span>•</span>
               <span>Pinterest tool</span><span>•</span>
-              <span>save Pinterest</span><span>•</span>
+              <span>Pinterest scraper</span><span>•</span>
+              <span>Pinterest search</span><span>•</span>
+              <span>Save Pinterest</span><span>•</span>
               <span>Pinterest aesthetic</span><span>•</span>
               <span>Pinterest links</span><span>•</span>
               <span>Pinterest offline</span><span>•</span>
               <span>Pinterest mobile</span><span>•</span>
+              <span>Pinterest extension</span><span>•</span>
+              <span>Pinterest metadata</span><span>•</span>
+              <span>Pinterest engagement</span><span>•</span>
+              <span>Pinterest trends</span><span>•</span>
+              <span>Pinterest algorithm</span><span>•</span>
+              <span>Pinterest SEO</span><span>•</span>
               <span>Idea Pin</span><span>•</span>
-              <span>pins download</span><span>•</span>
-              <span>board saver</span><span>•</span>
+              <span>Pins download</span><span>•</span>
+              <span>Board saver</span><span>•</span>
               <span>Pinterest HD</span><span>•</span>
               <span>Pinterest online</span><span>•</span>
               <span>Pinterest free</span><span>•</span>
-              <span>Pinterest image downloader for Shopify</span><span>•</span>
-              <span>Pinterest image downloader for Figma</span><span>•</span>
+              <span>Pinterest photo</span><span>•</span>
+              {/* Long-tail Pinterest keywords */}
               <span>Pinterest board bulk downloader zip</span><span>•</span>
+              <span>Save entire Pinterest board to gallery</span><span>•</span>
+              <span>Download Pinterest carousel images online</span><span>•</span>
+              <span>Pinterest image saver for mood boards</span><span>•</span>
+              <span>Bulk download Pinterest pins with titles</span><span>•</span>
+              <span>Pinterest video downloader for iPhone 2026</span><span>•</span>
+              <span>Download Pinterest board for offline use</span><span>•</span>
               <span>Pinterest carousel downloader no watermark</span><span>•</span>
-              <span>save Pinterest board to Figma</span><span>•</span>
+              <span>Save Pinterest board to Figma directly</span><span>•</span>
+              <span>Pinterest board downloader pro free</span><span>•</span>
+              <span>Save Pinterest board to zip file</span><span>•</span>
+              <span>Pinterest image downloader for Figma</span><span>•</span>
+              <span>Bulk download Pinterest pins extension</span><span>•</span>
+              <span>Pinterest video downloader high resolution</span><span>•</span>
+              <span>Save Pinterest board for client presentation</span><span>•</span>
+              <span>Pinterest image scraper for mood board</span><span>•</span>
+              <span>Download Pinterest board for Mac</span><span>•</span>
+              <span>Pinterest gif downloader for mobile</span><span>•</span>
+              <span>Save Pinterest board to PDF</span><span>•</span>
+              <span>Pinterest board downloader with metadata</span><span>•</span>
+              <span>Download Pinterest pins without logging in</span><span>•</span>
+              <span>Pinterest image downloader for Shopify</span><span>•</span>
+              <span>Bulk Pinterest video downloader online</span><span>•</span>
+              <span>Save Pinterest ideas for offline travel</span><span>•</span>
+              <span>Pinterest board downloader for researchers</span><span>•</span>
+              <span>High speed Pinterest image saver</span><span>•</span>
               <span>Pinterest board to Canva export</span><span>•</span>
+              <span>Pinterest video downloader no ads</span><span>•</span>
+              <span>Save Pinterest pins for Procreate</span><span>•</span>
+              <span>Download Pinterest board for interior design</span><span>•</span>
+              <span>Save Pinterest landscape photos for desktop</span><span>•</span>
+              <span>Where to find best Pinterest board downloader</span><span>•</span>
+              <span>Is there a free Pinterest carousel downloader</span><span>•</span>
+              <span>Fastest way to save Pinterest carousels</span><span>•</span>
               {/* Bangla Pinterest keywords */}
               <span>পিন্টারেস্ট ভিডিও</span><span>•</span>
               <span>পিন্টারেস্ট সেভার</span><span>•</span>
               <span>বোর্ড ডাউনলোড</span><span>•</span>
-              <span>পিন্টারেস্ট ফটো</span>
+              <span>পিন্টারেস্ট ফটো</span><span>•</span>
+              {/* Bangla transliterated Pinterest */}
+              <span>Pinterest theke video download korar niyom</span><span>•</span>
+              <span>Pinterest board ekbare download bangla</span><span>•</span>
+              <span>Pinterest theke sob photo ekbare download</span><span>•</span>
+              <span>Pinterest image download korar link</span><span>•</span>
+              <span>Pinterest video download bangla tutorial</span><span>•</span>
+              <span>mobile-e Pinterest video save kivabe korbo</span><span>•</span>
+              <span>Pinterest image download korar apps bangla</span><span>•</span>
+              <span>Pinterest video download link copy paste</span><span>•</span>
+              <span>Pinterest board save korar best software</span>
             </div>
           </div>
         </section>

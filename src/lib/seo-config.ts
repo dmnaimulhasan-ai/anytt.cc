@@ -98,7 +98,20 @@ export const tiktokKeywords = {
     "tiktok live download",
     "download tiktok draft",
     "tiktok photo download",
-    "tiktok reels download"
+    "tiktok reels download",
+    "TikTok video",
+    "TikTok app",
+    "TikTok search",
+    "TikTok draft",
+    "TikTok profile",
+    "TikTok rewatch",
+    "TikTok views",
+    "No watermark",
+    "Save TikTok",
+    "TikTok saver",
+    "TikTok downloader",
+    "TikTok watermark",
+    "TikTok logo"
   ],
   // 🎞️ Format & Quality Keywords
   formatQuality: [
@@ -168,7 +181,9 @@ export const tiktokKeywords = {
     "TikTok story",
     "TikTok clips",
     "download TikTok live stream recording",
-    "TikTok story downloader no watermark 2026"
+    "TikTok story downloader no watermark 2026",
+    "TikTok story downloader extension chrome",
+    "TikTok story save korar apps"
   ],
   // 🎥 HD & 4K
   hdAnd4k: [
@@ -192,7 +207,11 @@ export const tiktokKeywords = {
     "download TikTok song without video",
     "download TikTok mp3 original sound only",
     "convert TikTok to mp3 high resolution",
-    "TikTok sound effects downloader mp3"
+    "TikTok sound effects downloader mp3",
+    "save TikTok trending audio for ringtone",
+    "TikTok voiceover to text converter free",
+    "TikTok music downloader free no app",
+    "audio only"
   ],
   // 📋 Metadata & Captions
   metadata: [
@@ -219,7 +238,16 @@ export const tiktokKeywords = {
     "TikTok video downloader for Android 15",
     "TikTok video downloader for YouTube Shorts",
     "download TikTok videos for Premiere Pro",
-    "save TikTok videos for offline viewing app"
+    "save TikTok videos for offline viewing app",
+    "save TikTok draft videos to gallery",
+    "TikTok video downloader no logo mac",
+    "TikTok video downloader without survey",
+    "TikTok video downloader no watermark Linux",
+    "bulk download TikTok videos by hashtag",
+    "save TikTok videos to Google Drive",
+    "TikTok video download by date range",
+    "save TikTok profile picture full size",
+    "sob social media video download site"
   ]
 };
 
@@ -286,7 +314,10 @@ export const pinterestKeywords = {
     "download Pinterest board for offline use",
     "Pinterest board downloader for researchers",
     "save Pinterest board to zip file",
-    "download Pinterest board for Mac"
+    "download Pinterest board for Mac",
+    "Pinterest board downloader with metadata",
+    "save Pinterest board to PDF",
+    "Pinterest boards"
   ],
   // 🎠 Carousel
   carousel: [
@@ -305,7 +336,10 @@ export const pinterestKeywords = {
     "Pinterest image downloader for Shopify",
     "Pinterest image downloader for Figma",
     "Pinterest gif downloader for mobile",
-    "high speed Pinterest image saver"
+    "high speed Pinterest image saver",
+    "Pinterest image saver for mood boards",
+    "Pinterest image scraper for mood board",
+    "save Pinterest landscape photos for desktop"
   ],
   // 📦 Bulk Download
   bulk: [
@@ -315,7 +349,10 @@ export const pinterestKeywords = {
     "bulk download Pinterest pins with titles",
     "save Pinterest board to zip file",
     "bulk Pinterest video downloader online",
-    "Pinterest video downloader high resolution"
+    "Pinterest video downloader high resolution",
+    "bulk download Pinterest pins extension",
+    "download Pinterest pins without logging in",
+    "Pins download"
   ],
   // 🔧 Utility
   utility: [
@@ -325,7 +362,21 @@ export const pinterestKeywords = {
     "Pinterest mobile",
     "Pinterest offline",
     "Pinterest links",
-    "Pinterest video downloader no ads"
+    "Pinterest video downloader no ads",
+    "Pinterest video",
+    "Pinterest scraper",
+    "Pinterest search",
+    "Pinterest extension",
+    "Pinterest metadata",
+    "Pinterest engagement",
+    "Pinterest trends",
+    "Pinterest algorithm",
+    "Pinterest SEO",
+    "Idea Pin",
+    "Pinterest stories",
+    "Pin saver",
+    "save Pinterest",
+    "Pinterest video downloader for iPhone 2026"
   ],
   // 💬 Conversational Pinterest
   conversationalPinterest: [
@@ -337,7 +388,8 @@ export const pinterestKeywords = {
     "save Pinterest landscape photos for desktop",
     "save Pinterest board to Figma directly",
     "Pinterest board to Canva export",
-    "save Pinterest board for client presentation"
+    "save Pinterest board for client presentation",
+    "save Pinterest ideas for offline travel"
   ]
 };
 
@@ -359,7 +411,12 @@ export const banglaKeywords = {
     "TikTok video download bangla apps",
     "TikTok theke audio download korar niyom",
     "TikTok mp3 download bangla software",
-    "online-e video download korar sahaj niyom"
+    "online-e video download korar sahaj niyom",
+    "HD video download korar best site",
+    "TikTok story save korar apps",
+    "free video downloader bangla search",
+    "mobile gallery-te TikTok save korar upay",
+    "sob social media video download site"
   ],
   pinterest: [
     "Pinterest theke video download korar niyom",
@@ -414,7 +471,9 @@ export const formatExtended = [
   "one click",
   "free online",
   "slideshow saver",
-  "metadata tool"
+  "metadata tool",
+  "zip download",
+  "private video"
 ];
 
 // Combined keywords string for meta tags
