@@ -111,6 +111,10 @@ const BlogPost = () => {
             {/* In-content Native Banner */}
             <NativeBanner />
             
+            {/* SECURITY NOTE: Blog content is static/hardcoded in src/lib/blog-data.ts (developer-controlled).
+                If blog content is ever sourced from a CMS, user input, or external API,
+                the markdown-to-HTML conversion below MUST be replaced with a proper markdown
+                library (e.g., react-markdown) and additional input validation must be added. */}
             <div 
               className="prose prose-lg dark:prose-invert max-w-none
                 prose-headings:font-display prose-headings:font-bold
