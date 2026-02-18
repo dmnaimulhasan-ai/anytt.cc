@@ -5,6 +5,7 @@
 # All traffic goes to https://anytt.cc (canonical)
 
 # Static files - serve directly with forced 200 (bypass SPA)
+/sitemap.xml/   /sitemap.xml    301!
 /sitemap.xml    /sitemap.xml    200!
 /robots.txt     /robots.txt     200!
 
