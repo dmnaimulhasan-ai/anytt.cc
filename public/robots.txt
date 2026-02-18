@@ -1,6 +1,6 @@
-# Anytt cc - TikTok Video Downloader
+# Anytt cc - TikTok & Pinterest Video Downloader
 # https://anytt.cc
-# Last updated: 2026-01-23
+# Last updated: 2026-02-18
 
 # Allow all crawlers
 User-agent: *
@@ -8,20 +8,26 @@ Allow: /
 
 # Core pages - explicitly allow
 Allow: /tiktok-downloader
+Allow: /pinterest-downloader
+Allow: /pinterest-faq
 Allow: /faq
 Allow: /about
 Allow: /blog
 Allow: /blog/*
+Allow: /download
+
+# Multilingual landing pages
+Allow: /es/descargar-tiktok
+Allow: /pt/baixar-tiktok
+Allow: /id/unduh-tiktok
+Allow: /tr/tiktok-indir
+Allow: /th/tiktok-download
+Allow: /vi/tai-tiktok
 
 # Allow CSS and JS files for proper rendering
 Allow: /*.js$
 Allow: /*.css$
 Allow: /assets/*
-
-# Block dynamic/result pages (not indexable content)
-Disallow: /download
-Disallow: /download?*
-Disallow: /download/*
 
 # Block internal / API / temp URLs
 Disallow: /api/
@@ -35,7 +41,7 @@ Disallow: /*?page=*
 Disallow: /*?sort=*
 Disallow: /*?filter=*
 
-# Crawl delay for polite crawling (optional, helps server)
+# Crawl delay for polite crawling
 Crawl-delay: 1
 
 # Sitemap location
