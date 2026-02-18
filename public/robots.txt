@@ -41,8 +41,5 @@ Disallow: /*?page=*
 Disallow: /*?sort=*
 Disallow: /*?filter=*
 
-# Crawl delay for polite crawling
-Crawl-delay: 1
-
 # Sitemap location
 Sitemap: https://anytt.cc/sitemap.xml
