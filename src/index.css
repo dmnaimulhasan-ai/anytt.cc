@@ -99,16 +99,26 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: 'cv11', 'ss01';
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Apply Inter only after it loads - avoids FOIT blocking LCP */
+  .fonts-loaded body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     font-weight: 800;
     letter-spacing: -0.02em;
+  }
+
+  .fonts-loaded h1, .fonts-loaded h2, .fonts-loaded h3,
+  .fonts-loaded h4, .fonts-loaded h5, .fonts-loaded h6 {
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 

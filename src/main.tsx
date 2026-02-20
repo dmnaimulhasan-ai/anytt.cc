@@ -4,6 +4,16 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(<App />);
 
+// Mark fonts loaded to swap from system fonts to Inter
+if (document.fonts) {
+  document.fonts.ready.then(() => {
+    document.documentElement.classList.add('fonts-loaded');
+  });
+} else {
+  // Fallback: assume fonts loaded after 1s
+  setTimeout(() => document.documentElement.classList.add('fonts-loaded'), 1000);
+}
+
 // Defer service worker registration to avoid render-blocking
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
