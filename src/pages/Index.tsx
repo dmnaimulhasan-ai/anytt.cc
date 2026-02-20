@@ -293,7 +293,24 @@ const Index = () => {
               <span>ভিডিও সেভ</span><span>•</span>
               <span>পিন্টারেস্ট ফটো</span><span>•</span>
               <span>টিকটক লোগো</span><span>•</span>
-              <span>ডাউনলোড অ্যাপ</span>
+              <span>ডাউনলোড অ্যাপ</span><span>•</span>
+              {/* TikTok Feature Keywords */}
+              <span>TikTok AI</span><span>•</span>
+              <span>TikTok filter</span><span>•</span>
+              <span>TikTok green screen</span><span>•</span>
+              <span>TikTok duet download</span><span>•</span>
+              <span>TikTok stitch download</span><span>•</span>
+              {/* Competitor Brand Keywords */}
+              <span>SnapSave</span><span>•</span>
+              <span>SaveFrom</span><span>•</span>
+              <span>Y2Mate TikTok</span><span>•</span>
+              <span>TikDown</span><span>•</span>
+              <span>TikSave</span><span>•</span>
+              <span>MusicalDown</span><span>•</span>
+              {/* Hindi Keywords */}
+              <span>टिकटॉक डाउनलोड</span><span>•</span>
+              <span>टिकटॉक वीडियो सेव</span><span>•</span>
+              <span>बिना वॉटरमार्क</span>
             </div>
           </div>
         </section>
