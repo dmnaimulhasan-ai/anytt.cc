@@ -248,6 +248,35 @@ export const tiktokKeywords = {
     "TikTok video download by date range",
     "save TikTok profile picture full size",
     "sob social media video download site"
+  ],
+  // 🔥 2026 Trending Keywords
+  trending2026: [
+    "TikTok Shop download", "TikTok Effect download", "TikTok template download",
+    "TikTok LIVE photo", "TikTok recap video", "TikTok mashup download",
+    "TikTok sound remix", "TikTok vertical video", "TikTok repost saver",
+    "download TikTok without login 2026", "TikTok batch downloader 2026",
+    "TikTok downloader 2026", "TikTok video download 2026",
+    "save TikTok 2026", "TikTok saver 2026", "best TikTok downloader 2026",
+    "TikTok no watermark 2026", "TikTok HD download 2026",
+    "TikTok download free 2026", "TikTok mp4 2026"
+  ],
+  // 🤖 AI & New Feature Keywords
+  aiFeatures: [
+    "TikTok AI generated video download", "TikTok AI avatar download",
+    "TikTok text to video download", "TikTok AI filter download",
+    "TikTok series download", "TikTok playlist download",
+    "TikTok AI video saver", "TikTok AI content download",
+    "download TikTok AI filter video", "save TikTok AI avatar",
+    "TikTok AI remix download", "TikTok AI effect download"
+  ],
+  // 🏆 New Competitor Keywords
+  newCompetitors: [
+    "Qload", "TikStar", "TikFast", "DownTik", "SSSTik Pro", "TokRepost",
+    "Vidma TikTok", "iGram TikTok", "FastTok",
+    "Qload alternative", "TikStar alternative", "TikFast download",
+    "DownTik alternative", "SSSTik Pro download", "TokRepost alternative",
+    "Vidma TikTok downloader", "iGram TikTok download", "FastTok alternative",
+    "better than Qload", "better than TikStar", "better than DownTik"
   ]
 };
 
@@ -476,6 +505,52 @@ export const formatExtended = [
   "private video"
 ];
 
+/**
+ * Urdu/Pakistan Market Keywords
+ */
+export const urduKeywords = [
+  "ٹک ٹاک ویڈیو ڈاؤنلوڈ", "واٹر مارک کے بغیر", "ٹک ٹاک ڈاؤنلوڈر",
+  "ویڈیو سیو", "ٹک ٹاک ایم پی تھری", "ٹک ٹاک ویڈیو سیو",
+  "ٹک ٹاک بغیر لوگو", "ٹک ٹاک ایچ ڈی", "ٹک ٹاک فری ڈاؤنلوڈ",
+  "ٹک ٹاک آڈیو ڈاؤنلوڈ", "ٹک ٹاک ویڈیو ڈاؤنلوڈر آن لائن",
+  "ٹک ٹاک واٹر مارک ہٹائیں", "ٹک ٹاک ویڈیو بغیر واٹر مارک",
+  "ٹک ٹاک سیور", "ٹک ٹاک ڈاؤنلوڈ فری"
+];
+
+/**
+ * Arabic Keywords
+ */
+export const arabicKeywords = [
+  "تحميل تيك توك", "تنزيل فيديو تيك توك", "بدون علامة مائية",
+  "تحميل تيك توك بدون حقوق", "محول تيك توك mp3",
+  "تحميل فيديو تيك توك بدون علامة", "تيك توك بدون لوغو",
+  "تنزيل تيك توك مجاني", "تحميل تيك توك HD", "تيك توك mp4 تحميل",
+  "حفظ فيديو تيك توك", "تيك توك تحميل بدون تسجيل",
+  "أفضل محمل تيك توك", "تيك توك تنزيل سريع", "تيك توك حفظ الفيديو"
+];
+
+/**
+ * Thai Expanded Keywords
+ */
+export const thaiExpandedKeywords = [
+  "โหลด tiktok ไม่มีลายน้ำ 2026", "โหลดเสียง tiktok mp3",
+  "ดาวน์โหลด tiktok ฟรี 2026", "โหลดวิดีโอ tiktok HD",
+  "เซฟวิดีโอ tiktok", "โหลด tiktok ไม่มีโลโก้",
+  "โหลดคลิป tiktok 4K", "tiktok downloader ไทย",
+  "โหลด tiktok เป็น mp4", "บันทึกวิดีโอ tiktok"
+];
+
+/**
+ * Vietnamese Expanded Keywords
+ */
+export const vietnameseExpandedKeywords = [
+  "tải video tiktok 4k", "tải nhạc tiktok mp3 miễn phí",
+  "tải tiktok không logo 2026", "tải video tiktok HD",
+  "lưu video tiktok không watermark", "tải tiktok mp4 miễn phí",
+  "tải video tiktok nhanh", "tiktok downloader việt nam",
+  "tải tiktok không cần đăng nhập", "tải video tiktok chất lượng cao"
+];
+
 // Combined keywords string for meta tags
 export const allTiktokKeywords = [
   ...tiktokKeywords.primary,
@@ -496,7 +571,14 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.audioExtended,
   ...tiktokKeywords.metadata,
   ...tiktokKeywords.trending,
-  ...tiktokKeywords.conversational
+  ...tiktokKeywords.conversational,
+  ...tiktokKeywords.trending2026,
+  ...tiktokKeywords.aiFeatures,
+  ...tiktokKeywords.newCompetitors,
+  ...urduKeywords,
+  ...arabicKeywords,
+  ...thaiExpandedKeywords,
+  ...vietnameseExpandedKeywords
 ].join(", ");
 
 // Combined Bangla keywords string

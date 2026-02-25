@@ -11,7 +11,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://anytt.cc/</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -19,7 +19,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- TikTok Downloader - Core Feature -->
   <url>
     <loc>https://anytt.cc/tiktok-downloader</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +27,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Pinterest Downloader - New Feature -->
   <url>
     <loc>https://anytt.cc/pinterest-downloader</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -41,19 +41,19 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Multilingual Landing Pages -->
   <url>
     <loc>https://anytt.cc/es/descargar-tiktok</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://anytt.cc/pt/baixar-tiktok</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://anytt.cc/id/unduh-tiktok</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -61,7 +61,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- FAQ Page -->
   <url>
     <loc>https://anytt.cc/faq</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,7 +69,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Blog Section -->
   <url>
     <loc>https://anytt.cc/blog</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -273,7 +273,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Turkish TikTok Downloader -->
   <url>
     <loc>https://anytt.cc/tr/tiktok-indir</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -281,7 +281,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Thai TikTok Downloader -->
   <url>
     <loc>https://anytt.cc/th/tiktok-download</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -289,7 +289,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Vietnamese TikTok Downloader -->
   <url>
     <loc>https://anytt.cc/vi/tai-tiktok</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -305,7 +305,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- About Page -->
   <url>
     <loc>https://anytt.cc/about</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
