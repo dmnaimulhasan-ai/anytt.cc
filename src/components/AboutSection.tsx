@@ -1,4 +1,5 @@
 import { Shield, Zap, Smartphone, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -55,6 +56,16 @@ const AboutSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* What is Anytt cc - SEO content block */}
+        <div className="mt-10 text-center text-muted-foreground text-sm leading-relaxed max-w-2xl mx-auto">
+          <h3 className="text-lg font-bold text-foreground mb-3">What is Anytt cc?</h3>
+          <p>
+            Anytt cc is a fast, free, and safe online tool for downloading TikTok videos without watermark. It works on all devices — iPhone, Android, Windows, Mac, and Chromebook — directly from your browser. No app needed, no sign-up required. Anytt cc supports HD 1080p and 4K downloads, MP3 audio extraction, batch downloads, slideshows, stories, and more.{' '}
+            <Link to="/faq" className="text-primary hover:underline">Read our FAQ</Link> or{' '}
+            <Link to="/blog" className="text-primary hover:underline">explore our guides</Link> to learn more.
+          </p>
         </div>
       </div>
     </section>
