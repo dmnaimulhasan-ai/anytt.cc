@@ -200,7 +200,7 @@ const Index = () => {
         </section>
 
         {/* Popular Searches - SEO Keywords Section */}
-        <section className="py-10 px-4 bg-background border-t border-border/30">
+        <section className="py-10 px-4 bg-background border-t border-border/30 hidden md:block">
           <div className="container mx-auto max-w-4xl text-center">
             <h3 className="text-lg font-semibold text-foreground/80 mb-6">Popular Downloads</h3>
             <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70 leading-relaxed">
