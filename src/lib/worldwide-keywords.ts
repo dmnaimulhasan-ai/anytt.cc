@@ -1218,6 +1218,296 @@ export const miscWorldwideKeywords = [
 ];
 
 // ==========================================
+// 🇮🇳 BHOJPURI KEYWORDS
+// ==========================================
+export const bhojpuriKeywords = [
+  "TikTok वीडियो डाउनलोड भोजपुरी",
+  "TikTok डाउनलोडर भोजपुरी",
+  "TikTok वीडियो सेव करीं",
+  "TikTok बिना वॉटरमार्क डाउनलोड",
+  "TikTok mp3 डाउनलोड भोजपुरी",
+  "TikTok HD डाउनलोड भोजपुरी",
+  "TikTok वीडियो डाउनलोड फ्री भोजपुरी",
+  "भोजपुरी TikTok वीडियो सेव",
+  "TikTok भोजपुरी गाना डाउनलोड",
+  "TikTok भोजपुरी रील्स डाउनलोड",
+  "भोजपुरी TikTok डाउनलोडर 2026",
+  "TikTok भोजपुरी ऑडियो डाउनलोड",
+  "TikTok वीडियो भोजपुरी बिना लोगो",
+  "भोजपुरी TikTok स्लाइडशो डाउनलोड",
+  "TikTok भोजपुरी mp4 डाउनलोड"
+];
+
+// ==========================================
+// 🇮🇳 CHHATTISGARHI KEYWORDS
+// ==========================================
+export const chhattisgarhiKeywords = [
+  "TikTok वीडियो डाउनलोड छत्तीसगढ़ी",
+  "TikTok डाउनलोडर छत्तीसगढ़",
+  "TikTok वीडियो सेव करव",
+  "TikTok बिना वॉटरमार्क छत्तीसगढ़ी",
+  "TikTok mp3 डाउनलोड छत्तीसगढ़ी",
+  "TikTok HD डाउनलोड छत्तीसगढ़",
+  "छत्तीसगढ़ी TikTok वीडियो डाउनलोड",
+  "TikTok छत्तीसगढ़ी गाना डाउनलोड",
+  "TikTok छत्तीसगढ़ी रील्स डाउनलोड",
+  "छत्तीसगढ़ी TikTok डाउनलोडर 2026"
+];
+
+// ==========================================
+// 🇮🇳 RAJASTHANI KEYWORDS
+// ==========================================
+export const rajasthaniKeywords = [
+  "TikTok वीडियो डाउनलोड राजस्थानी",
+  "TikTok डाउनलोडर राजस्थान",
+  "TikTok वीडियो सेव करो",
+  "TikTok बिना वॉटरमार्क राजस्थानी",
+  "TikTok mp3 डाउनलोड राजस्थानी",
+  "TikTok HD डाउनलोड राजस्थान",
+  "राजस्थानी TikTok वीडियो डाउनलोड",
+  "TikTok राजस्थानी गाना डाउनलोड",
+  "TikTok राजस्थानी रील्स डाउनलोड",
+  "राजस्थानी TikTok डाउनलोडर 2026",
+  "TikTok मारवाड़ी वीडियो डाउनलोड",
+  "TikTok मारवाड़ी गाना mp3"
+];
+
+// ==========================================
+// 🇮🇳 BENGALI MEGA EXPANDED KEYWORDS
+// ==========================================
+export const bengaliMegaKeywords = [
+  "টিকটক ভিডিও ডাউনলোড ওয়াটারমার্ক ছাড়া",
+  "টিকটক ডাউনলোডার ফ্রি ২০২৬",
+  "টিকটক ভিডিও সেভ করার নিয়ম",
+  "টিকটক ভিডিও ডাউনলোড HD",
+  "টিকটক mp3 ডাউনলোড ফ্রি",
+  "টিকটক অডিও সেভ করুন",
+  "টিকটক স্লাইডশো ডাউনলোড ফ্রি",
+  "টিকটক স্টোরি সেভ করার উপায়",
+  "টিকটক রিলস ডাউনলোড ফ্রি",
+  "টিকটক ভিডিও কনভার্ট mp4",
+  "টিকটক 4K ভিডিও ডাউনলোড",
+  "টিকটক ব্যাচ ডাউনলোড",
+  "টিকটক ডাউনলোড অ্যাপ ছাড়া",
+  "টিকটক ভিডিও গ্যালারিতে সেভ",
+  "টিকটক লোগো ছাড়া ভিডিও ডাউনলোড",
+  "সেরা টিকটক ডাউনলোডার ২০২৬",
+  "টিকটক ভিডিও ডাউনলোড আইফোন",
+  "টিকটক ভিডিও ডাউনলোড অ্যান্ড্রয়েড",
+  "টিকটক গান ডাউনলোড mp3",
+  "টিকটক ভিডিও ডাউনলোড লিংক",
+  "পিন্টারেস্ট ভিডিও ডাউনলোড ফ্রি",
+  "পিন্টারেস্ট ইমেজ সেভ করুন",
+  "পিন্টারেস্ট বোর্ড ডাউনলোড",
+  "পিন্টারেস্ট ডাউনলোডার বাংলা",
+  "পিন্টারেস্ট ভিডিও সেভ করার নিয়ম",
+  "TikTok video download bangla 2026",
+  "TikTok downloader bangla free",
+  "TikTok video save korar upay 2026",
+  "TikTok watermark chara download",
+  "TikTok mp3 download bangla free",
+  "TikTok HD video download bangla",
+  "TikTok slideshow download bangla",
+  "TikTok story save bangla",
+  "TikTok reels download bangla",
+  "TikTok audio download bangla",
+  "TikTok 4K download bangla",
+  "Pinterest video download bangla",
+  "TikTok batch download bangla",
+  "TikTok downloader app chara",
+  "sob cheye bhalo TikTok downloader"
+];
+
+// ==========================================
+// 🇮🇳 TAMIL EXPANDED KEYWORDS
+// ==========================================
+export const tamilExpandedKeywords = [
+  "TikTok வீடியோ பதிவிறக்கம் watermark இல்லாமல்",
+  "TikTok டவுன்லோடர் இலவசம் 2026",
+  "TikTok வீடியோ சேமிக்க வழி",
+  "TikTok HD வீடியோ பதிவிறக்கம்",
+  "TikTok mp3 பதிவிறக்கம் இலவசம்",
+  "TikTok ஆடியோ சேமி",
+  "TikTok ஸ்லைடுஷோ பதிவிறக்கம்",
+  "TikTok ஸ்டோரி சேமி",
+  "TikTok ரீல்ஸ் பதிவிறக்கம்",
+  "TikTok 4K பதிவிறக்கம்",
+  "Pinterest வீடியோ பதிவிறக்கம் தமிழ்",
+  "சிறந்த TikTok டவுன்லோடர் 2026",
+  "TikTok வீடியோ பதிவிறக்கம் iPhone",
+  "TikTok வீடியோ பதிவிறக்கம் Android",
+  "TikTok லோகோ இல்லாமல் பதிவிறக்கம்"
+];
+
+// ==========================================
+// 🇮🇳 TELUGU EXPANDED KEYWORDS
+// ==========================================
+export const teluguExpandedKeywords = [
+  "TikTok వీడియో డౌన్‌లోడ్ వాటర్‌మార్క్ లేకుండా",
+  "TikTok డౌన్‌లోడర్ ఉచితం 2026",
+  "TikTok వీడియో సేవ్ చేయడం ఎలా",
+  "TikTok HD వీడియో డౌన్‌లోడ్",
+  "TikTok mp3 డౌన్‌లోడ్ ఉచితం",
+  "TikTok ఆడియో సేవ్",
+  "TikTok స్లైడ్‌షో డౌన్‌లోడ్",
+  "TikTok స్టోరీ సేవ్",
+  "TikTok రీల్స్ డౌన్‌లోడ్",
+  "TikTok 4K డౌన్‌లోడ్",
+  "Pinterest వీడియో డౌన్‌లోడ్ తెలుగు",
+  "బెస్ట్ TikTok డౌన్‌లోడర్ 2026",
+  "TikTok లోగో లేకుండా డౌన్‌లోడ్",
+  "TikTok వీడియో డౌన్‌లోడ్ iPhone",
+  "TikTok వీడియో డౌన్‌లోడ్ Android"
+];
+
+// ==========================================
+// 🇮🇳 KANNADA EXPANDED KEYWORDS
+// ==========================================
+export const kannadaExpandedKeywords = [
+  "TikTok ವೀಡಿಯೊ ಡೌನ್‌ಲೋಡ್ ವಾಟರ್‌ಮಾರ್ಕ್ ಇಲ್ಲದೆ",
+  "TikTok ಡೌನ್‌ಲೋಡರ್ ಉಚಿತ 2026",
+  "TikTok ವೀಡಿಯೊ ಸೇವ್ ಮಾಡುವುದು ಹೇಗೆ",
+  "TikTok HD ವೀಡಿಯೊ ಡೌನ್‌ಲೋಡ್",
+  "TikTok mp3 ಡೌನ್‌ಲೋಡ್ ಉಚಿತ",
+  "TikTok ಆಡಿಯೋ ಸೇವ್",
+  "TikTok ರೀಲ್ಸ್ ಡೌನ್‌ಲೋಡ್",
+  "TikTok 4K ಡೌನ್‌ಲೋಡ್",
+  "Pinterest ವೀಡಿಯೊ ಡೌನ್‌ಲೋಡ್ ಕನ್ನಡ",
+  "ಅತ್ಯುತ್ತಮ TikTok ಡೌನ್‌ಲೋಡರ್ 2026"
+];
+
+// ==========================================
+// 🇮🇳 MALAYALAM EXPANDED KEYWORDS
+// ==========================================
+export const malayalamExpandedKeywords = [
+  "TikTok വീഡിയോ ഡൗൺലോഡ് വാട്ടർമാർക്ക് ഇല്ലാതെ",
+  "TikTok ഡൗൺലോഡർ സൗജന്യം 2026",
+  "TikTok വീഡിയോ സേവ് ചെയ്യുന്നത് എങ്ങനെ",
+  "TikTok HD വീഡിയോ ഡൗൺലോഡ്",
+  "TikTok mp3 ഡൗൺലോഡ് സൗജന്യം",
+  "TikTok ഓഡിയോ സേവ്",
+  "TikTok റീൽസ് ഡൗൺലോഡ്",
+  "TikTok 4K ഡൗൺലോഡ്",
+  "Pinterest വീഡിയോ ഡൗൺലോഡ് മലയാളം",
+  "മികച്ച TikTok ഡൗൺലോഡർ 2026"
+];
+
+// ==========================================
+// 🇮🇳 GUJARATI EXPANDED KEYWORDS
+// ==========================================
+export const gujaratiExpandedKeywords = [
+  "TikTok વીડિયો ડાઉનલોડ વોટરમાર્ક વિના",
+  "TikTok ડાઉનલોડર મફત 2026",
+  "TikTok વીડિયો સેવ કેવી રીતે કરવું",
+  "TikTok HD વીડિયો ડાઉનલોડ",
+  "TikTok mp3 ડાઉનલોડ મફત",
+  "TikTok ઓડિયો સેવ",
+  "TikTok રીલ્સ ડાઉનલોડ",
+  "TikTok 4K ડાઉનલોડ",
+  "Pinterest વીડિયો ડાઉનલોડ ગુજરાતી",
+  "શ્રેષ્ઠ TikTok ડાઉનલોડર 2026"
+];
+
+// ==========================================
+// 🇮🇳 PUNJABI EXPANDED KEYWORDS
+// ==========================================
+export const punjabiExpandedKeywords = [
+  "TikTok ਵੀਡੀਓ ਡਾਊਨਲੋਡ ਵਾਟਰਮਾਰਕ ਤੋਂ ਬਿਨਾਂ",
+  "TikTok ਡਾਊਨਲੋਡਰ ਮੁਫ਼ਤ 2026",
+  "TikTok ਵੀਡੀਓ ਸੇਵ ਕਿਵੇਂ ਕਰੀਏ",
+  "TikTok HD ਵੀਡੀਓ ਡਾਊਨਲੋਡ",
+  "TikTok mp3 ਡਾਊਨਲੋਡ ਮੁਫ਼ਤ",
+  "TikTok ਆਡੀਓ ਸੇਵ",
+  "TikTok ਰੀਲਜ਼ ਡਾਊਨਲੋਡ",
+  "TikTok 4K ਡਾਊਨਲੋਡ",
+  "Pinterest ਵੀਡੀਓ ਡਾਊਨਲੋਡ ਪੰਜਾਬੀ",
+  "ਸਭ ਤੋਂ ਵਧੀਆ TikTok ਡਾਊਨਲੋਡਰ 2026"
+];
+
+// ==========================================
+// 🇮🇳 MARATHI EXPANDED KEYWORDS
+// ==========================================
+export const marathiExpandedKeywords = [
+  "TikTok व्हिडिओ डाउनलोड वॉटरमार्क शिवाय",
+  "TikTok डाउनलोडर मोफत 2026",
+  "TikTok व्हिडिओ सेव कसे करावे",
+  "TikTok HD व्हिडिओ डाउनलोड",
+  "TikTok mp3 डाउनलोड मोफत",
+  "TikTok ऑडिओ सेव",
+  "TikTok रील्स डाउनलोड",
+  "TikTok 4K डाउनलोड",
+  "Pinterest व्हिडिओ डाउनलोड मराठी",
+  "सर्वोत्तम TikTok डाउनलोडर 2026"
+];
+
+// ==========================================
+// 🇮🇳 ODIA EXPANDED KEYWORDS
+// ==========================================
+export const odiaExpandedKeywords = [
+  "TikTok ଭିଡିଓ ଡାଉନଲୋଡ ୱାଟରମାର୍କ ବିନା",
+  "TikTok ଡାଉନଲୋଡର ମାଗଣା 2026",
+  "TikTok ଭିଡିଓ ସେଭ କରିବା କେମିତି",
+  "TikTok HD ଭିଡିଓ ଡାଉନଲୋଡ",
+  "TikTok mp3 ଡାଉନଲୋଡ ମାଗଣା",
+  "TikTok ଅଡିଓ ସେଭ",
+  "TikTok ରିଲ୍ସ ଡାଉନଲୋଡ",
+  "TikTok 4K ଡାଉନଲୋଡ",
+  "Pinterest ଭିଡିଓ ଡାଉନଲୋଡ ଓଡ଼ିଆ",
+  "ସର୍ବୋତ୍ତମ TikTok ଡାଉନଲୋଡର 2026"
+];
+
+// ==========================================
+// 🇮🇳 ASSAMESE EXPANDED KEYWORDS
+// ==========================================
+export const assameseExpandedKeywords = [
+  "TikTok ভিডিঅ' ডাউনলোড ৱাটাৰমাৰ্ক অবিহনে",
+  "TikTok ডাউনলোডাৰ বিনামূলীয়া 2026",
+  "TikTok ভিডিঅ' ছেভ কৰাৰ উপায়",
+  "TikTok HD ভিডিঅ' ডাউনলোড",
+  "TikTok mp3 ডাউনলোড বিনামূলীয়া",
+  "TikTok অডিঅ' ছেভ",
+  "TikTok ৰিলছ ডাউনলোড",
+  "TikTok 4K ডাউনলোড",
+  "Pinterest ভিডিঅ' ডাউনলোড অসমীয়া",
+  "শ্ৰেষ্ঠ TikTok ডাউনলোডাৰ 2026"
+];
+
+// ==========================================
+// 🇮🇳 HINDI BELT ROMANIZED KEYWORDS
+// ==========================================
+export const hindiBeltRomanizedKeywords = [
+  "TikTok video download Bhojpuri",
+  "TikTok downloader Bhojpuri free",
+  "Bhojpuri TikTok video save kaise kari",
+  "Bhojpuri gana TikTok download",
+  "TikTok Bhojpuri reels download",
+  "TikTok video download Chhattisgarhi",
+  "TikTok downloader Chhattisgarh free",
+  "Chhattisgarhi TikTok video save",
+  "Chhattisgarhi gana TikTok download",
+  "TikTok video download Rajasthani",
+  "TikTok downloader Rajasthan free",
+  "Rajasthani TikTok video save karo",
+  "Rajasthani gana TikTok download",
+  "Marwari TikTok video download",
+  "TikTok video download India 2026",
+  "best TikTok downloader India",
+  "TikTok download kaise kare",
+  "TikTok video save kaise kare",
+  "TikTok bina watermark download kare",
+  "TikTok mp3 download kaise kare",
+  "TikTok HD download India free",
+  "TikTok reels download India",
+  "TikTok slideshow download India",
+  "TikTok audio download India",
+  "TikTok 4K download India",
+  "Pinterest video download India",
+  "TikTok batch download India",
+  "TikTok downloader app nahi chahiye",
+  "TikTok download bina app ke"
+];
+
+// ==========================================
 // 📊 COMBINED EXPORT
 // ==========================================
 
@@ -1279,7 +1569,22 @@ export const allWorldwideKeywords = [
   ...kazakhKeywords,
   ...latamKeywords,
   ...globalEnglishLongTail,
-  ...miscWorldwideKeywords
+  ...miscWorldwideKeywords,
+  // Indian regional expanded
+  ...bhojpuriKeywords,
+  ...chhattisgarhiKeywords,
+  ...rajasthaniKeywords,
+  ...bengaliMegaKeywords,
+  ...tamilExpandedKeywords,
+  ...teluguExpandedKeywords,
+  ...kannadaExpandedKeywords,
+  ...malayalamExpandedKeywords,
+  ...gujaratiExpandedKeywords,
+  ...punjabiExpandedKeywords,
+  ...marathiExpandedKeywords,
+  ...odiaExpandedKeywords,
+  ...assameseExpandedKeywords,
+  ...hindiBeltRomanizedKeywords
 ];
 
 /**
