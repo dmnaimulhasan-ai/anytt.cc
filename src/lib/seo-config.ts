@@ -1,3 +1,5 @@
+import { allWorldwideKeywordsString } from "./worldwide-keywords";
+
 export const BASE_URL = "https://anytt.cc";
 
 /**
@@ -579,7 +581,7 @@ export const allTiktokKeywords = [
   ...arabicKeywords,
   ...thaiExpandedKeywords,
   ...vietnameseExpandedKeywords
-].join(", ");
+].join(", ") + ", " + allWorldwideKeywordsString;
 
 // Combined Bangla keywords string
 export const allBanglaKeywords = [
