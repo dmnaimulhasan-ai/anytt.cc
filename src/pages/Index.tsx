@@ -510,6 +510,43 @@ const Index = () => {
               <span>descargar TikTok México</span><span>•</span>
               <span>bajar video TikTok Colombia</span><span>•</span>
               <span>TikTok descargar Argentina</span><span>•</span>
+              {/* Bhojpuri Keywords */}
+              <span>TikTok वीडियो डाउनलोड भोजपुरी</span><span>•</span>
+              <span>भोजपुरी TikTok गाना डाउनलोड</span><span>•</span>
+              {/* Chhattisgarhi Keywords */}
+              <span>TikTok वीडियो डाउनलोड छत्तीसगढ़ी</span><span>•</span>
+              <span>छत्तीसगढ़ी TikTok डाउनलोडर</span><span>•</span>
+              {/* Rajasthani Keywords */}
+              <span>TikTok वीडियो डाउनलोड राजस्थानी</span><span>•</span>
+              <span>TikTok मारवाड़ी वीडियो डाउनलोड</span><span>•</span>
+              {/* Bengali Mega Keywords */}
+              <span>টিকটক ভিডিও ডাউনলোড ওয়াটারমার্ক ছাড়া</span><span>•</span>
+              <span>সেরা টিকটক ডাউনলোডার ২০২৬</span><span>•</span>
+              <span>টিকটক গান ডাউনলোড mp3</span><span>•</span>
+              {/* Tamil Expanded */}
+              <span>TikTok வீடியோ பதிவிறக்கம் watermark இல்லாமல்</span><span>•</span>
+              <span>சிறந்த TikTok டவுன்லோடர் 2026</span><span>•</span>
+              {/* Telugu Expanded */}
+              <span>TikTok వీడియో డౌన్‌లోడ్ వాటర్‌మార్క్ లేకుండా</span><span>•</span>
+              <span>బెస్ట్ TikTok డౌన్‌లోడర్ 2026</span><span>•</span>
+              {/* Kannada Expanded */}
+              <span>TikTok ವೀಡಿಯೊ ಡೌನ್‌ಲೋಡ್ ವಾಟರ್‌ಮಾರ್ಕ್ ಇಲ್ಲದೆ</span><span>•</span>
+              {/* Malayalam Expanded */}
+              <span>TikTok വീഡിയോ ഡൗൺലോഡ് വാട്ടർമാർക്ക് ഇല്ലാതെ</span><span>•</span>
+              {/* Gujarati Expanded */}
+              <span>TikTok વીડિયો ડાઉનલોડ વોટરમાર્ક વિના</span><span>•</span>
+              {/* Punjabi Expanded */}
+              <span>TikTok ਵੀਡੀਓ ਡਾਊਨਲੋਡ ਵਾਟਰਮਾਰਕ ਤੋਂ ਬਿਨਾਂ</span><span>•</span>
+              {/* Marathi Expanded */}
+              <span>TikTok व्हिडिओ डाउनलोड वॉटरमार्क शिवाय</span><span>•</span>
+              {/* Odia Expanded */}
+              <span>TikTok ଭିଡିଓ ଡାଉନଲୋଡ ୱାଟରମାର୍କ ବିନା</span><span>•</span>
+              {/* Assamese Expanded */}
+              <span>TikTok ভিডিঅ' ডাউনলোড ৱাটাৰমাৰ্ক অবিহনে</span><span>•</span>
+              {/* Hindi Belt Romanized */}
+              <span>TikTok download kaise kare</span><span>•</span>
+              <span>TikTok video save kaise kare</span><span>•</span>
+              <span>TikTok bina watermark download</span><span>•</span>
               {/* Comparison Keywords */}
               <span>anytt vs snaptik</span><span>•</span>
               <span>anytt vs ssstiktok</span><span>•</span>
