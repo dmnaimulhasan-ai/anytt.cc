@@ -23,6 +23,16 @@ const languageRoutes: LanguageRoute[] = [
     locales: ["id", "id-ID"], 
     path: "/id/unduh-tiktok" 
   },
+  { 
+    code: "bn", 
+    locales: ["bn", "bn-BD", "bn-IN"], 
+    path: "/bn/tiktok-download" 
+  },
+  { 
+    code: "hi", 
+    locales: ["hi", "hi-IN"], 
+    path: "/hi/tiktok-download" 
+  },
 ];
 
 const LANGUAGE_PREFERENCE_KEY = "anytt_language_preference";

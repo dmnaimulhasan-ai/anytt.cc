@@ -47,6 +47,8 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
               <li><Link to="/tr/tiktok-indir" className="block text-muted-foreground hover:text-foreground transition-colors" title="TikTok İndir Türkçe">🇹🇷 Türkçe</Link></li>
               <li><Link to="/th/tiktok-download" className="block text-muted-foreground hover:text-foreground transition-colors" title="ดาวน์โหลด TikTok ภาษาไทย">🇹🇭 ไทย</Link></li>
               <li><Link to="/vi/tai-tiktok" className="block text-muted-foreground hover:text-foreground transition-colors" title="Tải TikTok Tiếng Việt">🇻🇳 Tiếng Việt</Link></li>
+              <li><Link to="/bn/tiktok-download" className="block text-muted-foreground hover:text-foreground transition-colors" title="টিকটক ডাউনলোড বাংলা">🇧🇩 বাংলা</Link></li>
+              <li><Link to="/hi/tiktok-download" className="block text-muted-foreground hover:text-foreground transition-colors" title="टिकटॉक डाउनलोड हिन्दी">🇮🇳 हिन्दी</Link></li>
             </ul>
           </nav>
 

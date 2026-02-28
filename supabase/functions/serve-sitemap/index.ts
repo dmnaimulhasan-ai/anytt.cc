@@ -289,9 +289,39 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Vietnamese TikTok Downloader -->
   <url>
     <loc>https://anytt.cc/vi/tai-tiktok</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- Bengali TikTok Downloader -->
+  <url>
+    <loc>https://anytt.cc/bn/tiktok-download</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Hindi TikTok Downloader -->
+  <url>
+    <loc>https://anytt.cc/hi/tiktok-download</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- New Blog Posts -->
+  <url>
+    <loc>https://anytt.cc/blog/tiktok-downloader-2026-free-no-watermark-hd</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anytt.cc/blog/anytt-cc-vs-snaptik-vs-ssstik-comparison</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   
   <!-- Download Page -->
@@ -305,7 +335,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- About Page -->
   <url>
     <loc>https://anytt.cc/about</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
