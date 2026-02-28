@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
-import { BASE_URL, getFAQSchema, getOrganizationSchema } from "@/lib/seo-config";
+import { BASE_URL, getFAQSchema, getOrganizationSchema, goldenKeywordsString } from "@/lib/seo-config";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -97,7 +97,7 @@ const FAQPage = () => {
           title="FAQ - AnyTT TikTok Video Downloader | Frequently Asked Questions"
           description="Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device."
         canonicalUrl={`${BASE_URL}/faq`}
-        keywords="download TikTok, fast downloads, social media, video downloader, AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ"
+        keywords={`${goldenKeywordsString}, download TikTok, fast downloads, social media, video downloader, AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ`}
         jsonLd={[
           getOrganizationSchema(),
           getFAQSchema(allFaqs)
