@@ -18,6 +18,8 @@ const TikTokDownloaderID = lazy(() => import("./pages/TikTokDownloaderID"));
 const TikTokDownloaderTR = lazy(() => import("./pages/TikTokDownloaderTR"));
 const TikTokDownloaderTH = lazy(() => import("./pages/TikTokDownloaderTH"));
 const TikTokDownloaderVI = lazy(() => import("./pages/TikTokDownloaderVI"));
+const TikTokDownloaderBN = lazy(() => import("./pages/TikTokDownloaderBN"));
+const TikTokDownloaderHI = lazy(() => import("./pages/TikTokDownloaderHI"));
 const PinterestDownloader = lazy(() => import("./pages/PinterestDownloader"));
 const PinterestFAQ = lazy(() => import("./pages/PinterestFAQ"));
 
@@ -66,6 +68,8 @@ const App = () => (
             <Route path="/tr/tiktok-indir" element={<TikTokDownloaderTR />} />
             <Route path="/th/tiktok-download" element={<TikTokDownloaderTH />} />
             <Route path="/vi/tai-tiktok" element={<TikTokDownloaderVI />} />
+            <Route path="/bn/tiktok-download" element={<TikTokDownloaderBN />} />
+            <Route path="/hi/tiktok-download" element={<TikTokDownloaderHI />} />
             
             {/* Legacy redirects - handled by _redirects for SEO */}
             
