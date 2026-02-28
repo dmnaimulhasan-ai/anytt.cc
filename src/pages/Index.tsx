@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SocialBar from "@/components/ads/SocialBar";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 import { useLanguageRedirect } from "@/hooks/useLanguageRedirect";
 import { 
   seoConfig, 
@@ -120,6 +121,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <StickyMobileCTA />
         <Suspense fallback={<SectionLoader />}>
           <AboutSection />
         </Suspense>
