@@ -10,7 +10,7 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer ref={ref} className="py-12 px-4 border-t border-border" role="contentinfo" {...props}>
+    <footer ref={ref} className="py-8 md:py-12 px-4 border-t border-border" role="contentinfo" {...props}>
       <div className="container mx-auto max-w-3xl">
         
         {/* Stats */}
@@ -19,7 +19,7 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
 
         {/* Links Grid - SEO optimized with proper anchor tags */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8 text-sm">
           {/* Downloaders */}
           <nav aria-label="Downloader tools">
             <h3 className="font-bold mb-3 text-foreground">Downloaders</h3>

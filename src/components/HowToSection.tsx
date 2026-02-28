@@ -27,12 +27,12 @@ const steps = [
  */
 const HowToSection = () => {
   return (
-    <section className="py-20 px-4">
+    <section className="py-12 md:py-20 px-4">
       <div className="container mx-auto max-w-3xl">
-        <h2 className="text-section text-center mb-4">
+        <h2 className="text-section text-center mb-3 md:mb-4">
           How to <span className="gradient-text">Download TikTok Videos</span> Without Watermark
         </h2>
-        <p className="text-center text-muted-foreground text-subhero mb-12 max-w-md mx-auto">
+        <p className="text-center text-muted-foreground text-subhero mb-8 md:mb-12 max-w-md mx-auto">
           It's super easy. Just 3 simple steps.
         </p>
 

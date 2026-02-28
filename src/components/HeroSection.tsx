@@ -135,11 +135,11 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="hero-gradient min-h-[85vh] flex flex-col justify-center px-4 py-16">
+    <section className="hero-gradient min-h-[70vh] md:min-h-[85vh] flex flex-col justify-center px-4 py-10 md:py-16">
       <div className="container mx-auto max-w-xl">
         
         {/* Main Content */}
-        <div className="text-center space-y-8">
+        <div className="text-center space-y-5 md:space-y-8">
           
           {/* Badge */}
           <div className="inline-flex items-center gap-2 tag-pill">
@@ -160,7 +160,7 @@ const HeroSection = () => {
           </p>
 
           {/* Search Box */}
-          <div className="space-y-4 pt-6">
+          <div className="space-y-3 md:space-y-4 pt-4 md:pt-6">
             {/* URL Input - Large and easy to use */}
             <div className="relative">
               <input
@@ -209,7 +209,7 @@ const HeroSection = () => {
             </Button>
 
             {/* Supported Platform */}
-            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground pt-4">
+            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground pt-2 md:pt-4">
               <span className="flex items-center gap-2">
                 <span className="text-lg">🎵</span>
                 TikTok Videos

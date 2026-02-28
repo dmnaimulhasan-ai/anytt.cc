@@ -30,12 +30,12 @@ const features = [
  */
 const AboutSection = () => {
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section className="py-12 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-3xl">
-        <h2 className="text-section text-center mb-4">
+        <h2 className="text-section text-center mb-3 md:mb-4">
           Why Choose <span className="gradient-text">Anytt cc</span> TikTok Downloader?
         </h2>
-        <p className="text-center text-muted-foreground text-subhero mb-12 max-w-lg mx-auto">
+        <p className="text-center text-muted-foreground text-subhero mb-8 md:mb-12 max-w-lg mx-auto">
           Anytt cc - The easiest way to download TikTok videos without watermark
         </p>
 

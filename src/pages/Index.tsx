@@ -137,7 +137,7 @@ const Index = () => {
         </Suspense>
 
         {/* Internal links section for SEO */}
-        <section className="py-12 px-4 bg-muted/10">
+        <section className="py-8 md:py-12 px-4 bg-muted/10">
           <div className="container mx-auto max-w-3xl text-center">
             <h2 className="text-2xl font-bold font-display mb-6">Our Tools</h2>
             <nav className="flex flex-wrap justify-center gap-4" aria-label="Downloader tools">
@@ -177,7 +177,7 @@ const Index = () => {
         </section>
 
         {/* What is Anytt cc - Content Block for SEO */}
-        <section className="py-12 px-4 bg-background">
+        <section className="py-8 md:py-12 px-4 bg-background">
           <div className="container mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold font-display text-center mb-6">
               What is <span className="gradient-text">Anytt cc</span>?

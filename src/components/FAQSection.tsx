@@ -43,12 +43,12 @@ const defaultFaqs: FAQ[] = [
  */
 const FAQSection = ({ faqs = defaultFaqs }: FAQSectionProps) => {
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section className="py-12 md:py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-2xl">
-        <h2 className="text-section text-center mb-4">
+        <h2 className="text-section text-center mb-3 md:mb-4">
           Frequently Asked <span className="gradient-text">Questions</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12">
+        <p className="text-center text-muted-foreground mb-8 md:mb-12">
           Got questions? We've got answers.
         </p>
 
