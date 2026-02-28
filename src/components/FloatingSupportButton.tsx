@@ -6,7 +6,7 @@ const FloatingSupportButton = () => {
       href="https://t.me/GEN_ZDownloader"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 group"
+      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group"
       aria-label="Contact Support on Telegram"
     >
       <div className="relative">
@@ -14,8 +14,8 @@ const FloatingSupportButton = () => {
         <div className="absolute inset-0 bg-primary/40 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         {/* Button */}
-        <div className="relative bg-gradient-to-r from-primary to-accent p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-          <MessageCircle className="h-6 w-6 text-primary-foreground" />
+        <div className="relative bg-gradient-to-r from-primary to-accent p-3 md:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+          <MessageCircle className="h-5 w-5 md:h-6 md:w-6 text-primary-foreground" />
         </div>
         
         {/* Tooltip */}

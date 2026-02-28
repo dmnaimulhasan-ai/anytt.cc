@@ -24,7 +24,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="py-4 px-4 relative z-20" role="banner">
+    <header className="py-3 md:py-4 px-4 relative z-20" role="banner">
       <div className="container mx-auto flex items-center justify-between max-w-4xl">
         {/* Logo - Proper anchor with title */}
         <Link 
