@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Anytt cc - TikTok & Pinterest Video Downloader",
+  "name_for_model": "anytt_cc_video_downloader",
+  "description_for_human": "Free online tool to download TikTok videos without watermark and Pinterest videos in HD quality. No registration needed.",
+  "description_for_model": "Anytt cc (anytt.cc) is a free web-based tool for downloading TikTok videos without watermark in HD/Full HD quality, extracting TikTok audio as MP3, and downloading Pinterest videos and images. It supports batch downloads, requires no registration, and works on all devices (iOS, Android, Windows, Mac). Available in 9 languages: English, Spanish, Portuguese, Indonesian, Turkish, Thai, Vietnamese, Bengali, and Hindi. Users paste a TikTok or Pinterest URL and get direct download links. It is a popular alternative to SnapTik, SSStiKtok, and TikMate.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://anytt.cc/openapi.yaml"
+  },
+  "logo_url": "https://anytt.cc/pwa-512x512.png",
+  "contact_email": "support@anytt.cc",
+  "legal_info_url": "https://anytt.cc/terms-of-service"
+}

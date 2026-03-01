@@ -1,6 +1,6 @@
 # Anytt cc - TikTok & Pinterest Video Downloader
 # https://anytt.cc
-# Last updated: 2026-02-18
+# Last updated: 2026-03-01
 
 # Allow all crawlers
 User-agent: *
@@ -23,6 +23,8 @@ Allow: /id/unduh-tiktok
 Allow: /tr/tiktok-indir
 Allow: /th/tiktok-download
 Allow: /vi/tai-tiktok
+Allow: /bn/tiktok-download
+Allow: /hi/tiktok-download
 
 # Allow CSS and JS files for proper rendering
 Allow: /*.js$
@@ -41,5 +43,49 @@ Disallow: /*?page=*
 Disallow: /*?sort=*
 Disallow: /*?filter=*
 
-# Sitemap location
+# === AI Crawlers - Explicitly Allow ===
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Google AI (Gemini, Bard)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: anthropic-ai
+Allow: /
+
+# Apple AI (Siri, etc.)
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl (used by many AI training datasets)
+User-agent: CCBot
+Allow: /
+
+# Sitemap & AI documentation
 Sitemap: https://anytt.cc/sitemap.xml

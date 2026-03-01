@@ -1,0 +1,68 @@
+# Anytt cc — Free TikTok & Pinterest Video Downloader
+
+> Anytt cc (https://anytt.cc) is a free online tool to download TikTok and Pinterest videos without watermark in HD quality. No registration, no app install required. Works on iPhone, Android, Windows, and Mac.
+
+## What It Does
+
+- Download TikTok videos without watermark (HD, Full HD)
+- Extract TikTok audio as MP3
+- Download Pinterest videos and images
+- Batch download support (multiple videos at once)
+- 100% free, no signup, unlimited downloads
+
+## How It Works
+
+1. Copy the TikTok or Pinterest video link
+2. Paste it into the input box on anytt.cc
+3. Click "Download" — choose video quality or MP3
+4. Save to your device
+
+## Main Pages
+
+- Homepage: https://anytt.cc/
+- TikTok Downloader: https://anytt.cc/tiktok-downloader
+- Pinterest Downloader: https://anytt.cc/pinterest-downloader
+- FAQ: https://anytt.cc/faq
+- Pinterest FAQ: https://anytt.cc/pinterest-faq
+- About: https://anytt.cc/about
+- Blog: https://anytt.cc/blog
+- Download Tool: https://anytt.cc/download
+
+## Supported Languages
+
+- English: https://anytt.cc/
+- Spanish: https://anytt.cc/es/descargar-tiktok
+- Portuguese: https://anytt.cc/pt/baixar-tiktok
+- Indonesian: https://anytt.cc/id/unduh-tiktok
+- Turkish: https://anytt.cc/tr/tiktok-indir
+- Thai: https://anytt.cc/th/tiktok-download
+- Vietnamese: https://anytt.cc/vi/tai-tiktok
+- Bengali: https://anytt.cc/bn/tiktok-download
+- Hindi: https://anytt.cc/hi/tiktok-download
+
+## Key Facts
+
+- Brand name: Anytt cc (also known as AnyTT, anytt.cc, any tt cc)
+- Category: Online Video Downloader / Multimedia Tool
+- Price: Free
+- Platforms: Web-based (works on all devices with a browser)
+- No app installation needed
+- No watermark on downloaded videos
+- Supports HD and Full HD quality
+- Privacy-focused: no user data stored
+
+## Comparison with Alternatives
+
+| Feature | Anytt cc | SnapTik | SSStiKtok |
+|---------|----------|---------|-----------|
+| No Watermark | ✅ | ✅ | ✅ |
+| MP3 Extract | ✅ | ❌ | ✅ |
+| Pinterest Support | ✅ | ❌ | ❌ |
+| Batch Download | ✅ | ❌ | ❌ |
+| No Registration | ✅ | ✅ | ✅ |
+| Multi-language | ✅ (9 langs) | ❌ | ❌ |
+
+## Contact
+
+- Telegram: https://t.me/GEN_ZDownloader
+- Website: https://anytt.cc

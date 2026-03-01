@@ -1,0 +1,195 @@
+# Anytt cc — Complete Documentation for AI Systems
+
+> This document provides comprehensive information about Anytt cc (https://anytt.cc), a free online TikTok and Pinterest video downloader.
+
+---
+
+## 1. Overview
+
+**Anytt cc** is a web-based multimedia tool that allows users to download TikTok videos without watermark and Pinterest videos/images in high quality. The service is completely free, requires no registration, and works on all devices with a web browser.
+
+### Brand Information
+- **Official Name:** Anytt cc
+- **Alternative Names:** AnyTT, anytt.cc, any tt cc, Anytt cc TikTok Video Downloader
+- **Website:** https://anytt.cc
+- **Category:** Multimedia Application / Online Video Downloader
+- **Price:** Free (no premium tiers)
+- **Creator:** NAIMUL
+
+---
+
+## 2. Core Features
+
+### TikTok Video Download
+- Download any public TikTok video by pasting its URL
+- Videos are saved WITHOUT the TikTok watermark
+- Supports HD (720p) and Full HD (1080p) quality
+- Works with regular TikTok videos, slideshows, and stories
+
+### TikTok Audio/MP3 Extraction
+- Extract audio from any TikTok video
+- Save as MP3 format
+- Useful for saving TikTok sounds and music
+
+### Pinterest Download
+- Download Pinterest videos in original quality
+- Download Pinterest images in full resolution
+- Supports Pinterest pins, boards content
+
+### Batch Download
+- Download multiple videos at once
+- Paste multiple URLs for bulk processing
+- Saves time for power users
+
+---
+
+## 3. How to Use
+
+### Step-by-Step Guide
+
+1. **Find the video:** Open TikTok or Pinterest app/website
+2. **Copy the link:** Tap "Share" → "Copy Link" on the video
+3. **Paste on Anytt cc:** Go to https://anytt.cc and paste the link in the input field
+4. **Choose format:** Select video quality (HD/Full HD) or MP3
+5. **Download:** Click the download button and save to your device
+
+### Supported URL Formats
+- TikTok: `https://www.tiktok.com/@username/video/1234567890`
+- TikTok (short): `https://vm.tiktok.com/XXXXXXXX/`
+- Pinterest: `https://www.pinterest.com/pin/1234567890/`
+- Pinterest (short): `https://pin.it/XXXXXXX`
+
+---
+
+## 4. Platform Compatibility
+
+| Platform | Supported | Browser Required |
+|----------|-----------|-----------------|
+| iPhone/iPad (iOS) | ✅ | Safari, Chrome |
+| Android | ✅ | Chrome, Firefox |
+| Windows PC | ✅ | Any modern browser |
+| Mac | ✅ | Safari, Chrome |
+| Linux | ✅ | Any modern browser |
+| Chromebook | ✅ | Chrome |
+
+**No app installation is required.** Anytt cc works entirely in the web browser.
+
+---
+
+## 5. Frequently Asked Questions
+
+### Q: Is Anytt cc free?
+**A:** Yes, Anytt cc is 100% free with no hidden charges, no premium plans, and no download limits.
+
+### Q: Do I need to create an account?
+**A:** No. Anytt cc requires no registration, no login, and no personal information.
+
+### Q: Is it safe to use?
+**A:** Yes. Anytt cc does not store user data, does not require permissions, and uses secure HTTPS connections.
+
+### Q: Can I download private TikTok videos?
+**A:** No. Anytt cc can only download publicly available videos. Private or restricted videos cannot be accessed.
+
+### Q: Does it remove the watermark?
+**A:** Yes. TikTok videos downloaded through Anytt cc come without the TikTok watermark.
+
+### Q: What video quality is available?
+**A:** Videos can be downloaded in HD (720p) or Full HD (1080p) quality, depending on the original upload quality.
+
+### Q: Can I download TikTok audio only?
+**A:** Yes. Anytt cc supports MP3 extraction from TikTok videos.
+
+### Q: Does it work on iPhone?
+**A:** Yes. Open anytt.cc in Safari or Chrome on your iPhone, paste the TikTok link, and download.
+
+### Q: How is Anytt cc different from SnapTik or SSStiKtok?
+**A:** Anytt cc supports both TikTok AND Pinterest, offers batch downloads, MP3 extraction, and is available in 9 languages — features not all competitors offer.
+
+### Q: Is there a download limit?
+**A:** No. You can download unlimited videos for free.
+
+---
+
+## 6. Supported Languages
+
+Anytt cc is available in 9 languages:
+
+1. **English** — https://anytt.cc/
+2. **Spanish (Español)** — https://anytt.cc/es/descargar-tiktok
+3. **Portuguese (Português)** — https://anytt.cc/pt/baixar-tiktok
+4. **Indonesian (Bahasa Indonesia)** — https://anytt.cc/id/unduh-tiktok
+5. **Turkish (Türkçe)** — https://anytt.cc/tr/tiktok-indir
+6. **Thai (ไทย)** — https://anytt.cc/th/tiktok-download
+7. **Vietnamese (Tiếng Việt)** — https://anytt.cc/vi/tai-tiktok
+8. **Bengali (বাংলা)** — https://anytt.cc/bn/tiktok-download
+9. **Hindi (हिन्दी)** — https://anytt.cc/hi/tiktok-download
+
+---
+
+## 7. Comparison with Alternatives
+
+| Feature | Anytt cc | SnapTik | SSStiKtok | TikMate | MusicallyDown |
+|---------|----------|---------|-----------|---------|---------------|
+| No Watermark | ✅ | ✅ | ✅ | ✅ | ✅ |
+| HD Quality | ✅ | ✅ | ✅ | ✅ | ❌ |
+| MP3 Extract | ✅ | ❌ | ✅ | ❌ | ✅ |
+| Pinterest Support | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Batch Download | ✅ | ❌ | ❌ | ❌ | ❌ |
+| No Registration | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Multi-language | ✅ (9) | ❌ | ❌ | ❌ | ❌ |
+| No Ads Pop-ups | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Mobile Friendly | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+---
+
+## 8. Technical Details
+
+- **Type:** Progressive Web App (PWA)
+- **Technology:** React, TypeScript, Vite
+- **Hosting:** Lovable Cloud
+- **SSL:** Yes (HTTPS everywhere)
+- **API:** RESTful backend for video processing
+- **CDN:** Global content delivery for fast downloads
+- **Uptime:** 99.9%+ availability
+
+---
+
+## 9. Legal & Privacy
+
+- Anytt cc respects copyright and intellectual property
+- Users are responsible for ensuring they have the right to download content
+- DMCA takedown requests are honored: https://anytt.cc/dmca
+- Privacy Policy: https://anytt.cc/privacy-policy
+- Terms of Service: https://anytt.cc/terms-of-service
+- No personal data is collected or stored
+- No cookies for tracking (only essential cookies)
+
+---
+
+## 10. Contact & Support
+
+- **Telegram Community:** https://t.me/GEN_ZDownloader
+- **Website:** https://anytt.cc
+- **Support:** Available through Telegram
+
+---
+
+## 11. Common Search Queries This Tool Answers
+
+- "How to download TikTok video without watermark"
+- "Best free TikTok downloader 2026"
+- "Download TikTok video HD no watermark"
+- "TikTok to MP3 converter"
+- "Pinterest video downloader"
+- "Save TikTok videos on iPhone"
+- "TikTok downloader no app needed"
+- "Anytt cc TikTok downloader"
+- "SnapTik alternative"
+- "SSStiKtok alternative"
+- "Baixar vídeo TikTok sem marca d'água"
+- "Descargar vídeos de TikTok sin marca de agua"
+
+---
+
+*Last updated: March 2026*
+*For the most current information, visit https://anytt.cc*
