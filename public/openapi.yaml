@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Anytt cc - TikTok & Pinterest Video Downloader API
+  description: >
+    Anytt cc is a free online tool to download TikTok videos without watermark
+    and Pinterest videos/images in HD quality. No registration required.
+    Works on all devices including iOS, Android, Windows, and Mac.
+    Available in 9 languages.
+  version: "2.0"
+  contact:
+    name: Anytt cc Support
+    url: https://t.me/GEN_ZDownloader
+  termsOfService: https://anytt.cc/terms-of-service
+
+servers:
+  - url: https://gicmzzepxupzghcswqyd.supabase.co/functions/v1
+    description: Production API
+
+paths:
+  /tiktok-download:
+    post:
+      operationId: downloadTikTokVideo
+      summary: Download TikTok video without watermark
+      description: >
+        Accepts a TikTok video URL and returns direct download links
+        for the video without watermark in HD quality, plus MP3 audio extraction.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: The TikTok video URL to download
+                  example: https://www.tiktok.com/@user/video/1234567890
+      responses:
+        "200":
+          description: Video download links returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                      cover:
+                        type: string
+                      play:
+                        type: string
+                        description: Direct video download URL (no watermark)
+                      hdplay:
+                        type: string
+                        description: HD video download URL
+                      music:
+                        type: string
+                        description: MP3 audio download URL
+        "400":
+          description: Invalid URL provided
+        "429":
+          description: Rate limit exceeded
+
+  /pinterest-download:
+    post:
+      operationId: downloadPinterestMedia
+      summary: Download Pinterest video or image
+      description: >
+        Accepts a Pinterest pin URL and returns direct download links
+        for the video or image in the highest available quality.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: The Pinterest pin URL to download
+                  example: https://www.pinterest.com/pin/1234567890
+      responses:
+        "200":
+          description: Media download links returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+        "400":
+          description: Invalid URL provided
+        "429":
+          description: Rate limit exceeded

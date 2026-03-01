@@ -1,0 +1,7 @@
+# Anytt cc Security Contact
+# https://securitytxt.org/
+
+Contact: https://t.me/GEN_ZDownloader
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, bn
+Canonical: https://anytt.cc/.well-known/security.txt
