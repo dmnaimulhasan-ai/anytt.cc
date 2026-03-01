@@ -1,66 +1,59 @@
 
 
-# প্রতিদিন ১০০০+ ভিজিটর পাওয়ার জন্য অ্যাকশন প্ল্যান
+# AI (ChatGPT, Gemini, Perplexity) এর কাছে সাইট পরিচিত করার প্ল্যান
 
-আপনার সাইটে ইতিমধ্যেই ভালো SEO ফাউন্ডেশন আছে। এখন দরকার ট্র্যাফিক বাড়ানোর জন্য কিছু কংক্রিট টেকনিক্যাল ও কন্টেন্ট পরিবর্তন। নিচে দুটি ভাগে প্ল্যান দেওয়া হলো - (A) আপনাকে নিজে যা করতে হবে এবং (B) আমি কোডে যা পরিবর্তন করব।
-
----
-
-## A. আপনাকে নিজে যা করতে হবে (কোডের বাইরে)
-
-### 1. Google Search Console সেটআপ (সবচেয়ে জরুরি)
-- https://search.google.com/search-console এ গিয়ে `anytt.cc` অ্যাড করুন
-- Sitemap সাবমিট করুন: `sitemap.xml`
-- প্রতিটি প্রধান URL "Request Indexing" করুন
-
-### 2. সোশ্যাল মিডিয়া থেকে ট্র্যাফিক আনুন
-- **Reddit**: r/TikTok, r/socialmedia তে "How to download TikTok" প্রশ্নের উত্তর দিন, লিংক দিন
-- **Quora**: "TikTok downloader" সম্পর্কিত প্রশ্নে উত্তর দিন
-- **Telegram**: একটি চ্যানেল বানান (@AnyTTDownloader)
-- **YouTube**: ৩০-সেকেন্ডের টিউটোরিয়াল শর্টস বানান
-
-### 3. প্রতি সপ্তাহে ১টি নতুন ব্লগ পোস্ট
-- Google Trends দেখে ট্রেন্ডিং TikTok টপিক নিয়ে লিখুন
-- "People Also Ask" থেকে প্রশ্ন টার্গেট করুন
+AI সিস্টেমগুলো (ChatGPT, Google Gemini, Perplexity, Microsoft Copilot) ওয়েবসাইট থেকে তথ্য সংগ্রহ করে বিশেষ কিছু ফাইল ও স্ট্রাকচারের মাধ্যমে। নিচে সেগুলো যোগ করার প্ল্যান:
 
 ---
 
-## B. কোডে যা পরিবর্তন করব (টেকনিক্যাল)
+## 1. `llms.txt` ফাইল তৈরি (সবচেয়ে গুরুত্বপূর্ণ)
 
-### 1. নতুন হাই-ট্র্যাফিক ল্যান্ডিং পেজ তৈরি
-- `/bn/tiktok-download` - **বাংলা** TikTok ডাউনলোডার পেজ (বাংলাদেশ + পশ্চিমবঙ্গ = ৩০ কোটি মানুষ, কম্পিটিশন নেই)
-- `/hi/tiktok-download` - **হিন্দি** TikTok ডাউনলোডার পেজ (ভারতের সবচেয়ে বড় মার্কেট)
+এটি একটি নতুন স্ট্যান্ডার্ড যা AI মডেলদের বলে আপনার সাইট কী করে। ChatGPT, Perplexity, এবং অন্যান্য AI এই ফাইল পড়ে।
 
-### 2. ব্লগে ২টি নতুন SEO-ফোকাসড পোস্ট যোগ
-- "TikTok Downloader 2026 - Free No Watermark HD" (প্রাইমারি কীওয়ার্ড টার্গেট)
-- "Anytt cc vs SnapTik vs SssTik - Best TikTok Downloader Comparison" (কম্পিটিটর কীওয়ার্ড ক্যাপচার)
+**নতুন ফাইল:** `public/llms.txt`
+- সাইটের নাম, বর্ণনা, প্রধান ফিচার
+- প্রতিটি পেজের সংক্ষিপ্ত বিবরণ ও লিংক
+- সাপোর্টেড ল্যাঙ্গুয়েজ তালিকা
+- ব্যবহার নির্দেশিকা (কিভাবে কাজ করে)
 
-### 3. প্রতিটি পেজে Internal Linking উন্নত করা
-- ব্লগ পোস্ট থেকে মেইন টুল পেজে লিংক
-- FAQ থেকে ব্লগে লিংক
-- ফুটারে সব ল্যাঙ্গুয়েজ পেজের লিংক
+## 2. `llms-full.txt` ফাইল তৈরি
 
-### 4. সাইটম্যাপ ও রোবটস আপডেট
-- নতুন বাংলা ও হিন্দি পেজ সাইটম্যাপে যোগ
-- `lastmod` তারিখ আজকের তারিখে আপডেট
+AI মডেলদের জন্য বিস্তারিত তথ্য - FAQ, ফিচার তুলনা, সব কিছু এক জায়গায়।
+
+**নতুন ফাইল:** `public/llms-full.txt`
+
+## 3. robots.txt আপডেট
+
+AI ক্রলারদের (GPTBot, Google-Extended, PerplexityBot, ClaudeBot) জন্য এক্সপ্লিসিট Allow রুল এবং `llms.txt` এর লিংক যোগ।
+
+**পরিবর্তিত ফাইল:** `public/robots.txt`
+- GPTBot, ChatGPT-User, Google-Extended, PerplexityBot, ClaudeBot, Applebot-Extended এর জন্য Allow রুল
+- Bengali ও Hindi পেজের Allow রুল (এগুলো আগে যোগ হয়নি)
+
+## 4. Schema.org structured data উন্নত করা
+
+`index.html` এ `SoftwareApplication` স্কিমা যোগ করা যাতে AI সিস্টেম সাইটের ফিচার ভালোভাবে বুঝতে পারে।
+
+**পরিবর্তিত ফাইল:** `index.html`
+- `SoftwareApplication` JSON-LD স্কিমা যোগ (নাম, বর্ণনা, ফিচার, সাপোর্টেড প্ল্যাটফর্ম)
+
+## 5. `.well-known/ai-plugin.json` তৈরি
+
+OpenAI এর ChatGPT প্লাগিন ডিসকভারি ফরম্যাটে সাইটের তথ্য - এটি AI কে আপনার সাইট চিনতে সাহায্য করে।
+
+**নতুন ফাইল:** `public/.well-known/ai-plugin.json`
 
 ---
 
-## টেকনিক্যাল বিবরণ
+## টেকনিক্যাল সারাংশ
 
-### ফাইল তৈরি:
-- `src/pages/TikTokDownloaderBN.tsx` - বাংলা ল্যান্ডিং পেজ (বাংলা UI, FAQ, কীওয়ার্ড)
-- `src/pages/TikTokDownloaderHI.tsx` - হিন্দি ল্যান্ডিং পেজ
+| ফাইল | অ্যাকশন | উদ্দেশ্য |
+|-------|---------|---------|
+| `public/llms.txt` | নতুন তৈরি | AI মডেলদের জন্য সাইট সামারি |
+| `public/llms-full.txt` | নতুন তৈরি | AI মডেলদের জন্য বিস্তারিত তথ্য |
+| `public/.well-known/ai-plugin.json` | নতুন তৈরি | ChatGPT প্লাগিন ডিসকভারি |
+| `public/robots.txt` | আপডেট | AI ক্রলার Allow রুল যোগ |
+| `index.html` | আপডেট | SoftwareApplication স্কিমা যোগ |
 
-### ফাইল পরিবর্তন:
-- `src/App.tsx` - নতুন রাউট যোগ (`/bn/tiktok-download`, `/hi/tiktok-download`)
-- `src/lib/blog-data.ts` - ২টি নতুন ব্লগ পোস্ট যোগ
-- `src/lib/seo-config.ts` - বাংলা ও হিন্দি পেজের SEO কনফিগ যোগ
-- `src/components/Footer.tsx` - নতুন ল্যাঙ্গুয়েজ লিংক যোগ
-- `index.html` - নতুন hreflang ট্যাগ যোগ (bn, hi)
-- `public/sitemap.xml` - নতুন পেজ এন্ট্রি
-- `public/robots.txt` - নতুন পেজ Allow
-- `public/_redirects` - trailing slash রিডাইরেক্ট
-- `supabase/functions/serve-sitemap/index.ts` - ডায়নামিক সাইটম্যাপে নতুন পেজ যোগ
+এই পরিবর্তনের পর যখন কেউ ChatGPT বা Perplexity তে "best TikTok downloader" বা "anytt cc" জিজ্ঞেস করবে, AI আপনার সাইটের তথ্য দিতে পারবে।
 
-এই পরিবর্তনগুলো বাংলা ও হিন্দি মার্কেট (৫০ কোটি+ ইন্টারনেট ইউজার) ক্যাপচার করবে যেখানে প্রায় কোনো কম্পিটিশন নেই।
