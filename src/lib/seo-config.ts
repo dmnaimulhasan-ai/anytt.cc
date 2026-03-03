@@ -368,6 +368,59 @@ export const tiktokKeywords = {
     "savett cc tiktok", "save tt alternative", "save tt download",
     "savett cc no watermark", "savett cc mp3", "savett cc video",
     "savett free", "savett cc free download"
+  ],
+  // 🔵 SnapTik Competitor Keywords (multilingual)
+  snaptikCompetitor: [
+    "snaptik", "snaptik.app", "snap tik", "snap tik app", "snaptik app",
+    "snaptik video downloader", "snaptik tiktok downloader", "snaptik download",
+    "snaptik online", "snaptik pro", "snaptik alternative", "snaptik cc",
+    "better than snaptik", "snaptik vs anytt", "snaptik not working",
+    "snaptik down", "snaptik proxy", "sites like snaptik",
+    "snaptik slideshow download", "snaptik photo download", "snaptik mp3",
+    "snaptik no watermark", "snaptik hd", "snaptik 4k",
+    "snaptik ID", "snaptik Indonesia", "snaptik Deutsch", "snaptik francais",
+    "snaptik italiano", "snaptik pobierz", "snaptik español",
+    "스냅틱", "スナップティック", "snaptik 다운로드", "snaptikダウンロード",
+    "snaptik alternativa", "snaptik alternatywa", "snaptik alternative 2026"
+  ],
+  // 🟢 SSStiK Competitor Keywords (multilingual)
+  ssstikCompetitor: [
+    "ssstik", "ssstik.io", "ssstik download", "ssstik video downloader",
+    "ssstiktok", "ssstiktok.io", "ssstik app", "ssstik online",
+    "ssstik mp3", "ssstik mp4", "ssstik story download",
+    "ssstik alternative", "ssstik cc", "better than ssstik", "ssstik vs anytt",
+    "ssstik not working", "ssstik down", "ssstik proxy", "sites like ssstik",
+    "ssstik no watermark", "ssstik hd", "ssstik 4k",
+    "ssstik Indonesia", "ssstik Vietnam", "ssstik Thai", "ssstik Deutsch",
+    "ssstik francais", "ssstik italiano", "ssstik español",
+    "ssstik下载", "ssstik 다운로드", "ssstikダウンロード",
+    "ssstik alternativa", "ssstik alternatywa", "ssstik alternative 2026"
+  ],
+  // 🟡 TikMate Competitor Keywords
+  tikmateCompetitor: [
+    "tikmate", "tikmate.app", "tikmate online", "tikmate download",
+    "tikmate video downloader", "tikmate no watermark", "tikmate mp3",
+    "tikmate hd", "tikmate 4k", "tikmate alternative", "tikmate cc",
+    "better than tikmate", "tikmate vs anytt", "tikmate not working",
+    "tikmate down", "tikmate proxy", "sites like tikmate",
+    "tikmate apk", "tikmate app download", "tikmate for iPhone",
+    "tikmate Indonesia", "tikmate Thailand", "tikmate Vietnam",
+    "tikmate alternative 2026", "tikmate free download"
+  ],
+  // ⚔️ Cross-Competitor Comparison Keywords
+  competitorComparison: [
+    "snaptik vs ssstik", "snaptik vs tikmate", "ssstik vs tikmate",
+    "snaptik vs anytt", "ssstik vs anytt", "tikmate vs anytt",
+    "savett vs snaptik", "savett vs ssstik", "savett vs tikmate",
+    "best tiktok downloader snaptik or ssstik",
+    "snaptik ssstik tikmate comparison 2026",
+    "best tiktok downloader 2026 comparison",
+    "snaptik vs ssstik vs tikmate", "anytt vs snaptik vs ssstik",
+    "which tiktok downloader is best 2026",
+    "tiktok downloader comparison snaptik ssstik tikmate anytt",
+    "snaptik or tikmate which is better",
+    "ssstik or snaptik which is faster",
+    "anytt vs all tiktok downloaders 2026"
   ]
 };
 
@@ -671,6 +724,10 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.deviceSpecific2026,
   ...tiktokKeywords.aiPowered2026,
   ...tiktokKeywords.savettCompetitor,
+  ...tiktokKeywords.snaptikCompetitor,
+  ...tiktokKeywords.ssstikCompetitor,
+  ...tiktokKeywords.tikmateCompetitor,
+  ...tiktokKeywords.competitorComparison,
   ...urduKeywords,
   ...arabicKeywords,
   ...thaiExpandedKeywords,
