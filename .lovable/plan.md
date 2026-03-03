@@ -1,34 +1,27 @@
 
 
-# AI Discoverability সম্পূর্ণ করার প্ল্যান
+# React forwardRef Warning ফিক্স
 
-বর্তমানে `ai-plugin.json` ফাইলে `openapi.yaml` রেফারেন্স করা আছে কিন্তু ফাইলটি বিদ্যমান নেই। এছাড়া কিছু মেটা ট্যাগ যোগ করলে AI ক্রলাররা আরো সহজে সাইটের তথ্য খুঁজে পাবে।
+## সমস্যা
+`FloatingSupportButton` এবং `FloatingBanner` কম্পোনেন্ট `lazy()` দিয়ে লোড করা হচ্ছে যা React এ "Function components cannot be given refs" ওয়ার্নিং দেয়।
 
----
+## সমাধান
+এই দুটি কম্পোনেন্ট অত্যন্ত ছোট — `FloatingBanner` শুধু `null` রিটার্ন করে এবং `FloatingSupportButton` একটি সিম্পল লিংক। এদের lazy load করার দরকার নেই। সরাসরি import করলেই ওয়ার্নিং চলে যাবে এবং পারফরম্যান্সে কোনো প্রভাব পড়বে না।
 
-## 1. `public/openapi.yaml` তৈরি
+## টেকনিক্যাল পরিবর্তন
 
-`ai-plugin.json` এ এই ফাইলের রেফারেন্স আছে কিন্তু ফাইলটি নেই — এটা তৈরি করতে হবে। এতে সাইটের API/ফাংশনালিটির বর্ণনা থাকবে (TikTok ও Pinterest ডাউনলোড এন্ডপয়েন্ট)।
+**ফাইল:** `src/App.tsx`
 
-## 2. `index.html` এ AI মেটা লিংক যোগ
+- `lazy()` import সরিয়ে সরাসরি import করা:
+  ```typescript
+  import FloatingSupportButton from "./components/FloatingSupportButton";
+  import FloatingBanner from "./components/ads/FloatingBanner";
+  ```
+- `Suspense` wrapper সরানো (আর দরকার নেই):
+  ```tsx
+  <FloatingSupportButton />
+  <FloatingBanner />
+  ```
 
-HTML `<head>` এ নিচের ট্যাগ যোগ:
-```html
-<link rel="alternate" type="text/plain" href="https://anytt.cc/llms.txt" title="LLM Documentation" />
-<link rel="alternate" type="text/plain" href="https://anytt.cc/llms-full.txt" title="LLM Full Documentation" />
-```
-
-## 3. `public/.well-known/security.txt` তৈরি
-
-সাইটের বিশ্বস্ততা বাড়ানোর জন্য স্ট্যান্ডার্ড security.txt ফাইল যোগ।
-
----
-
-## টেকনিক্যাল সারাংশ
-
-| ফাইল | অ্যাকশন | উদ্দেশ্য |
-|-------|---------|---------|
-| `public/openapi.yaml` | নতুন তৈরি | ai-plugin.json এর রেফারেন্স পূরণ |
-| `index.html` | আপডেট | llms.txt মেটা লিংক যোগ |
-| `public/.well-known/security.txt` | নতুন তৈরি | সাইটের বিশ্বস্ততা বাড়ানো |
+এই একটি ফাইলেই পরিবর্তন — বাকি কোনো ফাইল পরিবর্তন লাগবে না।
 
