@@ -1,91 +1,108 @@
 
 
-# SaveTT.cc Competitor Keywords যোগ করা
+# SnapTik, SSStiK, TikMate Competitor Keywords যোগ করা
 
 ## বিশ্লেষণ
 
-SaveTT.cc এর সাইট স্ক্র্যাপ করে নিচের SEO keyword patterns পাওয়া গেছে:
+তিনটি competitor এর সাইট রিসার্চ করে তাদের SEO keyword patterns বের করা হয়েছে:
 
-### SaveTT.cc যে ভাষাগুলো টার্গেট করে
-EN, ES, PT, FR, DE, RU, AR, TH, BG, ID - মোট 10+ ভাষা
+### Competitor ভাষা Coverage
 
-### SaveTT.cc এর কী SEO Keywords আছে যা আমাদের নেই
+| Competitor | ভাষা সমূহ |
+|---|---|
+| **SnapTik** | EN, ID, AR, DE, FR, ES, RU, TR, PT, VI, TH, JA, IT, PL, KO (15 ভাষা) |
+| **SSStiK/SSStiKtok** | EN, ES, PT, VI, FR, ID, TH, ZH, AR, IT, JA, HI, DE, KO, TR, RU (16 ভাষা) |
+| **TikMate** | EN, ID, TH, VI, TR, PT, ES (7 ভাষা) |
 
-**Brand hijacking terms (savett variations):**
-- savett, save tt, savett.cc, save tt cc (কিছু ইতোমধ্যে আছে, আরো variation যোগ হবে)
+### যে keywords আমাদের নেই (নতুন যোগ হবে)
 
-**German (DE) keywords - সম্পূর্ণ নতুন market:**
-- TikTok-Downloader, TikTok herunterladen, TikTok ohne Wasserzeichen, TikTok Video herunterladen, TikTok Video speichern, TikTok kostenlos herunterladen, TikTok MP3 herunterladen, TikTok-Video-Downloader, TikTok herunterladen Android, TikTok herunterladen iPhone, TikTok herunterladen PC
+**1. SnapTik Brand Hijacking (~30 terms, multilingual)**
+- snaptik.app, snap tik app, snaptik video downloader, snaptik tiktok downloader
+- snaptik ID (Indonesian), snaptik Deutsch, snaptik francais
+- snaptik slideshow download, snaptik photo download
+- snaptik not working, snaptik alternative [language], snaptik vs anytt
+- Italian: "snaptik italiano", Polish: "snaptik pobierz", Korean: "스냅틱", Japanese: "スナップティック"
 
-**Russian (RU) keywords - expanded:**
-- загрузчик тикток, скачать тикток, скачать видео тикток, тикток без водяного знака, скачать тикток бесплатно, тикток видео скачать, тикток mp3 скачать, тикток скачать без водяного знака, загрузить тикток видео, тикток сохранить видео
+**2. SSStiK Brand Hijacking (~30 terms, multilingual)**
+- ssstik.io, ssstik download, ssstik video downloader, ssstiktok.io
+- ssstik mp3, ssstik mp4, ssstik story download
+- ssstik not working, ssstik down, ssstik proxy, ssstik alternative
+- ssstik Indonesia, ssstik Vietnam, ssstik Thai
+- Chinese: "ssstik下载", Korean: "ssstik 다운로드", Japanese: "ssstikダウンロード"
 
-**French (FR) keywords - expanded:**
-- télécharger tiktok, téléchargeur tiktok, télécharger vidéo tiktok, tiktok sans filigrane, télécharger tiktok gratuit, sauvegarder vidéo tiktok, tiktok mp3 télécharger, téléchargeur de vidéos tiktok
+**3. TikMate Brand Hijacking (~25 terms)**
+- tikmate.app, tikmate online, tikmate download, tikmate video downloader
+- tikmate no watermark, tikmate mp3, tikmate HD
+- tikmate not working, tikmate alternative, tikmate vs anytt
+- tikmate apk, tikmate app download, tikmate for iPhone
 
-**Bulgarian (BG) keywords - সম্পূর্ণ নতুন:**
-- изтегляне на TikTok видео, TikTok без воден знак, изтегли TikTok видео, TikTok видео изтегляне безплатно
+**4. New Language Keywords - Italian (~15 terms)**
+- scaricare video TikTok, scaricare TikTok senza filigrana, TikTok downloader italiano
+- scaricare video TikTok gratis, salvare video TikTok, TikTok mp3 scaricare
+- snaptik alternativa italiano, ssstik alternativa italiano
 
-**Spanish (ES) expanded:**
-- descargador de TikTok, descargar tiktok sin marca de agua, guardar video tiktok, descargar video tiktok gratis, tiktok descargador, descargar tiktok Android, descargar tiktok iPhone
+**5. New Language Keywords - Polish (~15 terms)**
+- pobierz wideo TikTok, TikTok bez znaku wodnego, pobierz TikTok za darmo
+- TikTok downloader polski, zapisz wideo TikTok, TikTok mp3 pobierz
+- snaptik alternatywa, ssstik alternatywa
 
-**SaveTT-specific competitor terms:**
-- savett alternative, savett cc alternative, better than savett, savett vs anytt, savett cc download, savett tiktok downloader, savett mp3, savett download
+**6. New Language Keywords - Korean (~15 terms)**
+- 틱톡 다운로드, 틱톡 워터마크 없이, 틱톡 동영상 저장, 틱톡 mp3 다운로드
+- 스냅틱 대안, ssstik 대안, 틱톡 다운로더 무료
+
+**7. New Language Keywords - Japanese (~15 terms)**
+- TikTok動画ダウンロード, TikTokウォーターマークなし, TikTok保存
+- TikTok mp3ダウンロード, スナップティック代替, TikTokダウンローダー無料
+
+**8. Cross-competitor "vs" and comparison keywords (~20 terms)**
+- snaptik vs ssstik, snaptik vs tikmate, ssstik vs tikmate
+- snaptik vs anytt, ssstik vs anytt, tikmate vs anytt
+- best tiktok downloader snaptik or ssstik
+- snaptik ssstik tikmate comparison 2026
 
 ## ফাইল পরিবর্তন
 
 ### 1. `src/lib/seo-config.ts`
 
-**নতুন category যোগ: `savettCompetitor`**
-- ~15 savett brand hijacking keywords
+**নতুন categories যোগ:**
+- `snaptikCompetitor` (~30 multilingual brand hijacking terms)
+- `ssstikCompetitor` (~30 multilingual brand hijacking terms)  
+- `tikmateCompetitor` (~25 brand hijacking terms)
+- `competitorComparison` (~20 "vs" and comparison terms)
 
-**`brandedKeywords.german` expand:**
-- ~15 নতুন German TikTok download keywords
-
-**`brandedKeywords.russian` expand:**
-- ~15 নতুন Russian keywords
-
-**`brandedKeywords.french` expand:**
-- ~12 নতুন French keywords
-
-**`brandedKeywords.spanish` expand:**
-- ~10 নতুন Spanish keywords
-
-**নতুন `brandedKeywords.bulgarian` যোগ:**
-- ~10 Bulgarian keywords
+**`allTiktokKeywords` array আপডেট:**
+- নতুন 4টি category include করা
 
 ### 2. `src/lib/worldwide-keywords.ts`
 
 **নতুন arrays যোগ:**
-- `germanKeywords` (~25 keywords) - TikTok download German market
-- `russianKeywords` (~20 keywords) - Russian market expansion
-- `frenchKeywords` (~20 keywords) - French market
-- `bulgarianKeywords` (~15 keywords) - Bulgarian market (savett.cc এর unique market)
-- `savettCompetitorKeywords` (~20 keywords) - savett brand hijacking across languages
+- `italianKeywords` (~15 terms) - Italian market (snaptik/ssstik উভয়ই target করে)
+- `polishKeywords` (~15 terms) - Polish market (snaptik target করে)
+- `koreanKeywords` (~15 terms) - Korean market (snaptik/ssstik উভয়ই target করে)
+- `japaneseKeywords` (~15 terms) - Japanese market (snaptik/ssstik উভয়ই target করে)
+- `competitorBrandKeywords` (~25 terms) - Cross-language competitor brand terms
 
-**`allWorldwideKeywords` update:**
-- সব নতুন arrays include করা
+**`allWorldwideKeywords` আপডেট:**
+- সব নতুন arrays push করা
 
 ## টেকনিক্যাল ডিটেইলস
 
 ```text
-seo-config.ts changes:
-  - Add savettCompetitor category to tiktokKeywords (~15 terms)
-  - Expand brandedKeywords.german (~15 new terms)
-  - Expand brandedKeywords.russian (~15 new terms)
-  - Expand brandedKeywords.french (~12 new terms)
-  - Expand brandedKeywords.spanish (~10 new terms)
-  - Add brandedKeywords.bulgarian (~10 new terms)
-  - Wire bulgarian into home/tiktok page keywords
+seo-config.ts:
+  - Add snaptikCompetitor category (~30 terms)
+  - Add ssstikCompetitor category (~30 terms)
+  - Add tikmateCompetitor category (~25 terms)
+  - Add competitorComparison category (~20 terms)
+  - Wire all into allTiktokKeywords
 
-worldwide-keywords.ts changes:
-  - Add germanKeywords array (~25 terms)
-  - Add russianKeywords array (~20 terms)
-  - Add frenchKeywords array (~20 terms)
-  - Add bulgarianKeywords array (~15 terms)
-  - Add savettCompetitorKeywords array (~20 terms)
-  - Include all in allWorldwideKeywords export
+worldwide-keywords.ts:
+  - Add italianKeywords (~15 terms)
+  - Add polishKeywords (~15 terms)
+  - Add koreanKeywords (~15 terms)
+  - Add japaneseKeywords (~15 terms)
+  - Add competitorBrandKeywords (~25 terms)
+  - Push all into allWorldwideKeywords
 ```
 
-মোট ~200 নতুন keyword যোগ হবে, যা SaveTT.cc এর সব major market (DE, RU, FR, BG, ES) কভার করবে এবং তাদের brand terms hijack করবে।
+মোট ~200 নতুন keyword যোগ হবে, যা SnapTik (15 ভাষা), SSStiK (16 ভাষা), এবং TikMate (7 ভাষা) এর সব major market কভার করবে এবং তাদের brand terms hijack করবে। নতুন Italian, Polish, Korean, Japanese market ও যোগ হবে যেগুলো আগে ছিল না।
 
