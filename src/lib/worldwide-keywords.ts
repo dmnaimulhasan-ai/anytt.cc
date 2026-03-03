@@ -1621,6 +1621,104 @@ export const globalTrending2026 = [
 // Append globalTrending2026 to allWorldwideKeywords
 allWorldwideKeywords.push(...globalTrending2026);
 
+// ==========================================
+// 🇩🇪 GERMAN SAVETT COMPETITOR KEYWORDS
+// ==========================================
+export const germanSavettKeywords = [
+  "TikTok-Downloader", "TikTok herunterladen", "TikTok ohne Wasserzeichen",
+  "TikTok Video herunterladen", "TikTok Video speichern kostenlos",
+  "TikTok kostenlos herunterladen", "TikTok MP3 herunterladen",
+  "TikTok-Video-Downloader", "TikTok herunterladen Android",
+  "TikTok herunterladen iPhone", "TikTok herunterladen PC",
+  "TikTok Video Download ohne Logo", "TikTok Downloader ohne Anmeldung",
+  "TikTok Video runterladen", "TikTok ohne Logo speichern",
+  "TikTok Downloader gratis 2026", "TikTok MP4 herunterladen",
+  "TikTok Slideshow herunterladen kostenlos", "TikTok Audio runterladen",
+  "bester TikTok Downloader ohne Wasserzeichen", "TikTok runterladen HD",
+  "savett deutsch", "savett alternative deutsch", "savett cc deutsch",
+  "TikTok Video herunterladen Mac", "TikTok herunterladen Chrome"
+];
+
+// ==========================================
+// 🇷🇺 RUSSIAN SAVETT COMPETITOR KEYWORDS
+// ==========================================
+export const russianSavettKeywords = [
+  "загрузчик тикток", "скачать тикток", "скачать видео тикток",
+  "тикток без водяного знака", "скачать тикток бесплатно",
+  "тикток видео скачать", "тикток mp3 скачать",
+  "тикток скачать без водяного знака", "загрузить тикток видео",
+  "тикток сохранить видео", "скачать тикток без логотипа",
+  "тикток загрузчик 2026", "скачать тикток HD качество",
+  "тикток скачать на андроид", "тикток скачать на айфон",
+  "savett альтернатива", "savett скачать тикток",
+  "лучше чем savett", "savett cc скачать", "savett замена"
+];
+
+// ==========================================
+// 🇫🇷 FRENCH SAVETT COMPETITOR KEYWORDS
+// ==========================================
+export const frenchSavettKeywords = [
+  "télécharger tiktok", "téléchargeur tiktok", "télécharger vidéo tiktok",
+  "tiktok sans filigrane", "télécharger tiktok gratuit",
+  "sauvegarder vidéo tiktok", "tiktok mp3 télécharger",
+  "téléchargeur de vidéos tiktok", "télécharger tiktok sans logo",
+  "tiktok télécharger sans inscription", "tiktok vidéo HD télécharger",
+  "savett alternative français", "savett cc télécharger",
+  "meilleur que savett", "savett français", "télécharger tiktok 2026 gratuit",
+  "savett cc alternative français", "tiktok téléchargeur en ligne 2026"
+];
+
+// ==========================================
+// 🇧🇬 BULGARIAN SAVETT COMPETITOR KEYWORDS
+// ==========================================
+export const bulgarianSavettKeywords = [
+  "изтегляне на TikTok видео", "TikTok без воден знак",
+  "изтегли TikTok видео", "TikTok видео изтегляне безплатно",
+  "TikTok изтегляне без лого", "запази TikTok видео",
+  "TikTok mp3 изтегляне", "TikTok downloader България",
+  "изтегли TikTok HD", "TikTok видео запазване",
+  "безплатно изтегляне TikTok", "TikTok без водно знаме 2026",
+  "savett алтернатива", "savett cc алтернатива",
+  "по-добър от savett", "savett български"
+];
+
+// ==========================================
+// 🇪🇸 SPANISH SAVETT COMPETITOR KEYWORDS
+// ==========================================
+export const spanishSavettKeywords = [
+  "descargador de TikTok", "descargar tiktok sin marca de agua",
+  "guardar video tiktok", "descargar video tiktok gratis",
+  "tiktok descargador", "descargar tiktok Android",
+  "descargar tiktok iPhone", "descargar tiktok sin logo",
+  "tiktok mp3 descargar gratis", "mejor descargador tiktok 2026",
+  "savett alternativa español", "savett cc alternativa",
+  "mejor que savett", "savett español", "savett cc español"
+];
+
+// ==========================================
+// 🏴‍☠️ SAVETT CROSS-LANGUAGE COMPETITOR KEYWORDS
+// ==========================================
+export const savettCompetitorKeywords = [
+  "savett", "savett.cc", "save tt", "save tt cc", "savett cc",
+  "savett download", "savett alternative", "savett cc alternative",
+  "better than savett", "savett vs anytt", "savett tiktok",
+  "savett mp3", "savett no watermark", "savett video downloader",
+  "savett cc download", "savett free", "savett online",
+  "savett cc tiktok downloader", "savett cc mp3 download",
+  "savett cc no watermark", "is savett safe", "savett review",
+  "savett not working", "savett cc not working", "savett down",
+  "sites like savett", "savett cc sites like", "savett proxy"
+];
+
+allWorldwideKeywords.push(
+  ...germanSavettKeywords,
+  ...russianSavettKeywords,
+  ...frenchSavettKeywords,
+  ...bulgarianSavettKeywords,
+  ...spanishSavettKeywords,
+  ...savettCompetitorKeywords
+);
+
 /**
  * All worldwide keywords as a comma-separated string for meta tags
  */
