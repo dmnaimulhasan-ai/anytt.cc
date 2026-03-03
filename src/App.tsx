@@ -6,9 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 
-// Lazy load non-critical global components
-const FloatingSupportButton = lazy(() => import("./components/FloatingSupportButton"));
-const FloatingBanner = lazy(() => import("./components/ads/FloatingBanner"));
+import FloatingSupportButton from "./components/FloatingSupportButton";
+import FloatingBanner from "./components/ads/FloatingBanner";
 
 // Lazy load non-critical routes to reduce initial bundle size
 const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
@@ -49,10 +48,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <Suspense fallback={null}>
-        <FloatingSupportButton />
-        <FloatingBanner />
-      </Suspense>
+      <FloatingSupportButton />
+      <FloatingBanner />
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
