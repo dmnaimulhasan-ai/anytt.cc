@@ -305,7 +305,58 @@ export const tiktokKeywords = {
     "Qload alternative", "TikStar alternative", "TikFast download",
     "DownTik alternative", "SSSTik Pro download", "TokRepost alternative",
     "Vidma TikTok downloader", "iGram TikTok download", "FastTok alternative",
-    "better than Qload", "better than TikStar", "better than DownTik"
+    "better than Qload", "better than TikStar", "better than DownTik",
+    "SaveTT", "TikDown", "MusicallyDown 2026", "TikSave pro",
+    "SnapInsta TikTok", "SaveFrom TikTok 2026",
+    "better than snaptik 2026", "snaptik alternative 2026",
+    "TikDown alternative", "SaveTT download", "TikSave pro alternative",
+    "MusicallyDown alternative 2026", "SaveFrom TikTok alternative",
+    "better than ssstik 2026", "ssstik alternative 2026",
+    "better than tikmate 2026", "tikmate alternative 2026"
+  ],
+  // 🆕 TikTok New Features 2026
+  newFeatures2026: [
+    "TikTok Notes download", "TikTok Search download", "TikTok Now download",
+    "TikTok Series download free", "TikTok Playlist saver",
+    "TikTok Duet download", "TikTok Stitch download no watermark",
+    "TikTok Green Screen download", "TikTok AI Song download",
+    "TikTok Shop video download", "TikTok product review download",
+    "TikTok creator tools download", "TikTok affiliate video save",
+    "TikTok Explore video download", "TikTok Remix download 2026",
+    "TikTok Collage download", "TikTok Templates download free"
+  ],
+  // 🗣️ Voice Search / Conversational 2026
+  voiceSearch2026: [
+    "download TikTok video without app 2026",
+    "how to save TikTok on Samsung Galaxy",
+    "TikTok downloader that actually works 2026",
+    "fastest TikTok downloader no ads",
+    "TikTok downloader for Chromebook",
+    "how to download TikTok on iPhone without app 2026",
+    "best free TikTok downloader no watermark 2026",
+    "TikTok video download kaise kare 2026",
+    "save TikTok video to camera roll 2026",
+    "download TikTok without watermark easy way",
+    "TikTok downloader works on all devices 2026",
+    "how to save TikTok videos on laptop 2026"
+  ],
+  // 📱 Device-Specific 2026
+  deviceSpecific2026: [
+    "TikTok downloader iOS 18", "TikTok downloader Android 16",
+    "TikTok download iPad", "TikTok download Apple Vision Pro",
+    "TikTok download Windows 11", "TikTok download macOS 16",
+    "TikTok downloader Samsung Galaxy S26", "TikTok download Pixel 10",
+    "TikTok downloader Chrome OS 2026", "TikTok download Firefox 2026",
+    "TikTok downloader Edge browser 2026", "TikTok download Opera 2026"
+  ],
+  // 🤖 AI-Powered Search 2026
+  aiPowered2026: [
+    "AI TikTok video downloader", "smart TikTok saver",
+    "auto download TikTok", "TikTok bulk AI downloader",
+    "TikTok caption extractor AI", "TikTok subtitle download AI",
+    "AI powered TikTok downloader 2026", "smart video saver TikTok",
+    "TikTok AI watermark remover", "AI TikTok mp3 extractor",
+    "TikTok auto batch download AI", "intelligent TikTok video saver"
   ]
 };
 
@@ -604,6 +655,10 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.trending2026,
   ...tiktokKeywords.aiFeatures,
   ...tiktokKeywords.newCompetitors,
+  ...tiktokKeywords.newFeatures2026,
+  ...tiktokKeywords.voiceSearch2026,
+  ...tiktokKeywords.deviceSpecific2026,
+  ...tiktokKeywords.aiPowered2026,
   ...urduKeywords,
   ...arabicKeywords,
   ...thaiExpandedKeywords,

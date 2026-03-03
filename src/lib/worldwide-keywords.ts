@@ -1588,6 +1588,40 @@ export const allWorldwideKeywords = [
 ];
 
 /**
+ * Global Trending 2026 - Multilingual emerging keywords
+ */
+export const globalTrending2026 = [
+  // Tagalog 2026
+  "paano mag download TikTok 2026", "TikTok downloader Pilipinas 2026",
+  "TikTok walang watermark 2026 bagong paraan", "libreng TikTok saver 2026",
+  "TikTok mp3 download Pilipinas 2026", "i-save TikTok video 2026",
+  "TikTok HD download tagalog 2026", "pinakamabilis na TikTok downloader 2026",
+  // Malay 2026
+  "muat turun TikTok 2026 Malaysia", "TikTok downloader terbaik 2026",
+  "muat turun TikTok tanpa watermark 2026", "TikTok saver percuma 2026",
+  "muat turun video TikTok HD 2026", "simpan TikTok tanpa logo 2026",
+  "TikTok mp3 muat turun 2026", "cara muat turun TikTok 2026",
+  // Swahili
+  "pakua video TikTok 2026", "TikTok downloader bure Afrika",
+  "pakua TikTok bila watermark 2026", "TikTok saver bure 2026",
+  "pakua TikTok HD Afrika 2026", "TikTok mp3 pakua bure",
+  // Amharic romanized
+  "TikTok video download Ethiopia 2026", "TikTok downloader Amharic 2026",
+  // Hausa
+  "download TikTok video Hausa 2026", "TikTok downloader Nigeria 2026",
+  // Global English trending 2026
+  "TikTok downloader no ads 2026", "fastest TikTok saver 2026",
+  "TikTok batch download 2026 free", "TikTok playlist downloader 2026",
+  "TikTok series saver 2026", "download TikTok notes 2026",
+  "TikTok AI video saver 2026", "TikTok duet downloader 2026",
+  "TikTok stitch saver no watermark 2026", "TikTok shop video saver 2026",
+  "save TikTok without login 2026", "TikTok downloader unlimited 2026"
+];
+
+// Append globalTrending2026 to allWorldwideKeywords
+allWorldwideKeywords.push(...globalTrending2026);
+
+/**
  * All worldwide keywords as a comma-separated string for meta tags
  */
 export const allWorldwideKeywordsString = allWorldwideKeywords.join(", ");
