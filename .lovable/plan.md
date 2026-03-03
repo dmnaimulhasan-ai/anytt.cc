@@ -1,77 +1,91 @@
 
-# Trending SEO Keywords যোগ করা - 2026
 
-## যা যোগ করা হবে
+# SaveTT.cc Competitor Keywords যোগ করা
 
-বর্তমানে 2000+ keywords আছে। নিচের নতুন trending categories যোগ করা হবে:
+## বিশ্লেষণ
 
-### 1. seo-config.ts - নতুন Trending Categories
+SaveTT.cc এর সাইট স্ক্র্যাপ করে নিচের SEO keyword patterns পাওয়া গেছে:
 
-**TikTok New Features 2026:**
-- TikTok Notes download, TikTok Search download, TikTok Now download
-- TikTok Series download free, TikTok Playlist saver
-- TikTok Duet download, TikTok Stitch download no watermark
-- TikTok Green Screen download, TikTok AI Song download
+### SaveTT.cc যে ভাষাগুলো টার্গেট করে
+EN, ES, PT, FR, DE, RU, AR, TH, BG, ID - মোট 10+ ভাষা
 
-**Voice Search / Conversational 2026:**
-- "download TikTok video without app 2026"
-- "how to save TikTok on Samsung Galaxy"
-- "TikTok downloader that actually works 2026"
-- "fastest TikTok downloader no ads"
-- "TikTok downloader for Chromebook"
+### SaveTT.cc এর কী SEO Keywords আছে যা আমাদের নেই
 
-**TikTok Commerce & Creator Keywords:**
-- TikTok Shop video download, TikTok product review download
-- TikTok creator tools download, TikTok affiliate video save
+**Brand hijacking terms (savett variations):**
+- savett, save tt, savett.cc, save tt cc (কিছু ইতোমধ্যে আছে, আরো variation যোগ হবে)
 
-**New Competitor Keywords 2026:**
-- SaveTT, TikDown, MusicallyDown 2026, TikSave pro
-- SnapInsta TikTok, SaveFrom TikTok 2026
-- "better than snaptik 2026", "snaptik alternative 2026"
+**German (DE) keywords - সম্পূর্ণ নতুন market:**
+- TikTok-Downloader, TikTok herunterladen, TikTok ohne Wasserzeichen, TikTok Video herunterladen, TikTok Video speichern, TikTok kostenlos herunterladen, TikTok MP3 herunterladen, TikTok-Video-Downloader, TikTok herunterladen Android, TikTok herunterladen iPhone, TikTok herunterladen PC
 
-**Device-Specific 2026:**
-- TikTok downloader iOS 18, TikTok downloader Android 16
-- TikTok download iPad, TikTok download Apple Vision Pro
-- TikTok download Windows 11, TikTok download macOS 16
+**Russian (RU) keywords - expanded:**
+- загрузчик тикток, скачать тикток, скачать видео тикток, тикток без водяного знака, скачать тикток бесплатно, тикток видео скачать, тикток mp3 скачать, тикток скачать без водяного знака, загрузить тикток видео, тикток сохранить видео
 
-**AI-Powered Search Queries:**
-- "AI TikTok video downloader", "smart TikTok saver"
-- "auto download TikTok", "TikTok bulk AI downloader"
-- "TikTok caption extractor AI", "TikTok subtitle download AI"
+**French (FR) keywords - expanded:**
+- télécharger tiktok, téléchargeur tiktok, télécharger vidéo tiktok, tiktok sans filigrane, télécharger tiktok gratuit, sauvegarder vidéo tiktok, tiktok mp3 télécharger, téléchargeur de vidéos tiktok
 
-### 2. worldwide-keywords.ts - নতুন ভাষা যোগ
+**Bulgarian (BG) keywords - সম্পূর্ণ নতুন:**
+- изтегляне на TikTok видео, TikTok без воден знак, изтегли TikTok видео, TikTok видео изтегляне безплатно
 
-**Tagalog 2026 Trending:**
-- "paano mag download TikTok 2026", "TikTok downloader Pilipinas 2026"
+**Spanish (ES) expanded:**
+- descargador de TikTok, descargar tiktok sin marca de agua, guardar video tiktok, descargar video tiktok gratis, tiktok descargador, descargar tiktok Android, descargar tiktok iPhone
 
-**Malay 2026 Trending:**
-- "muat turun TikTok 2026 Malaysia", "TikTok downloader terbaik 2026"
+**SaveTT-specific competitor terms:**
+- savett alternative, savett cc alternative, better than savett, savett vs anytt, savett cc download, savett tiktok downloader, savett mp3, savett download
 
-**Swahili Expanded:**
-- "pakua video TikTok 2026", "TikTok downloader bure Afrika"
+## ফাইল পরিবর্তন
 
-### 3. ফাইল পরিবর্তন
+### 1. `src/lib/seo-config.ts`
 
-**src/lib/seo-config.ts:**
-- `tiktokKeywords` অবজেক্টে 3টি নতুন category যোগ: `newFeatures2026`, `voiceSearch2026`, `deviceSpecific2026`
-- `tiktokKeywords.newCompetitors` এ 15+ নতুন competitor term যোগ
-- `allTiktokKeywords` array তে নতুন categories include
+**নতুন category যোগ: `savettCompetitor`**
+- ~15 savett brand hijacking keywords
 
-**src/lib/worldwide-keywords.ts:**
-- নতুন `globalTrending2026` array তৈরি (~40 keywords)
-- `allWorldwideKeywords` export এ নতুন array যোগ
+**`brandedKeywords.german` expand:**
+- ~15 নতুন German TikTok download keywords
+
+**`brandedKeywords.russian` expand:**
+- ~15 নতুন Russian keywords
+
+**`brandedKeywords.french` expand:**
+- ~12 নতুন French keywords
+
+**`brandedKeywords.spanish` expand:**
+- ~10 নতুন Spanish keywords
+
+**নতুন `brandedKeywords.bulgarian` যোগ:**
+- ~10 Bulgarian keywords
+
+### 2. `src/lib/worldwide-keywords.ts`
+
+**নতুন arrays যোগ:**
+- `germanKeywords` (~25 keywords) - TikTok download German market
+- `russianKeywords` (~20 keywords) - Russian market expansion
+- `frenchKeywords` (~20 keywords) - French market
+- `bulgarianKeywords` (~15 keywords) - Bulgarian market (savett.cc এর unique market)
+- `savettCompetitorKeywords` (~20 keywords) - savett brand hijacking across languages
+
+**`allWorldwideKeywords` update:**
+- সব নতুন arrays include করা
 
 ## টেকনিক্যাল ডিটেইলস
 
 ```text
 seo-config.ts changes:
-  - Add ~60 new English keywords in 3 new categories
-  - Add ~15 new competitor keywords
-  - Wire into allTiktokKeywords aggregation
+  - Add savettCompetitor category to tiktokKeywords (~15 terms)
+  - Expand brandedKeywords.german (~15 new terms)
+  - Expand brandedKeywords.russian (~15 new terms)
+  - Expand brandedKeywords.french (~12 new terms)
+  - Expand brandedKeywords.spanish (~10 new terms)
+  - Add brandedKeywords.bulgarian (~10 new terms)
+  - Wire bulgarian into home/tiktok page keywords
 
 worldwide-keywords.ts changes:
-  - Add globalTrending2026 array (~40 multilingual trending terms)
-  - Add to allWorldwideKeywords export
+  - Add germanKeywords array (~25 terms)
+  - Add russianKeywords array (~20 terms)
+  - Add frenchKeywords array (~20 terms)
+  - Add bulgarianKeywords array (~15 terms)
+  - Add savettCompetitorKeywords array (~20 terms)
+  - Include all in allWorldwideKeywords export
 ```
 
-মোট ~115 নতুন trending keyword যোগ হবে, যা 2026 এর নতুন TikTok features, AI trends, voice search patterns এবং নতুন competitor terms কভার করবে।
+মোট ~200 নতুন keyword যোগ হবে, যা SaveTT.cc এর সব major market (DE, RU, FR, BG, ES) কভার করবে এবং তাদের brand terms hijack করবে।
+
