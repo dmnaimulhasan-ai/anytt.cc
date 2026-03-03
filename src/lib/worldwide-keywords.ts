@@ -1710,13 +1710,89 @@ export const savettCompetitorKeywords = [
   "sites like savett", "savett cc sites like", "savett proxy"
 ];
 
+// ==========================================
+// 🇰🇷 KOREAN COMPETITOR KEYWORDS
+// ==========================================
+export const koreanCompetitorKeywords = [
+  "틱톡 다운로드", "틱톡 워터마크 없이", "틱톡 동영상 저장",
+  "틱톡 mp3 다운로드", "틱톡 다운로더 무료", "틱톡 동영상 다운로드 2026",
+  "틱톡 HD 다운로드", "틱톡 4K 다운로드", "틱톡 슬라이드쇼 다운로드",
+  "스냅틱 대안", "ssstik 대안", "틱메이트 대안",
+  "스냅틱 다운로드", "ssstik 다운로드", "틱톡 다운로더 비교",
+  "최고의 틱톡 다운로더 2026"
+];
+
+// ==========================================
+// 🇯🇵 JAPANESE COMPETITOR KEYWORDS
+// ==========================================
+export const japaneseCompetitorKeywords = [
+  "TikTok動画ダウンロード", "TikTokウォーターマークなし", "TikTok保存",
+  "TikTok mp3ダウンロード", "TikTokダウンローダー無料", "TikTok動画保存2026",
+  "TikTok HDダウンロード", "TikTok 4Kダウンロード",
+  "スナップティック代替", "ssstikダウンロード", "ssstik代替",
+  "TikTokダウンローダー比較", "最高のTikTokダウンローダー2026",
+  "スナップティックダウンロード", "ティックメイト代替"
+];
+
+// ==========================================
+// 🔵 SNAPTIK CROSS-LANGUAGE COMPETITOR KEYWORDS
+// ==========================================
+export const snaptikCompetitorKeywords = [
+  "snaptik", "snaptik.app", "snap tik app", "snaptik download",
+  "snaptik alternative", "snaptik not working", "snaptik down",
+  "snaptik proxy", "snaptik review", "is snaptik safe",
+  "snaptik vs anytt cc", "sites like snaptik", "snaptik free",
+  "snaptik tiktok downloader free", "snaptik video saver",
+  "snaptik slideshow", "snaptik photo mode", "snaptik mp3 download",
+  "snaptik no watermark hd", "snaptik batch download",
+  "snaptik alternative Indonesia", "snaptik alternative Vietnam",
+  "snaptik alternative Thai", "snaptik alternative español",
+  "snaptik alternative deutsch", "snaptik alternative français"
+];
+
+// ==========================================
+// 🟢 SSSTIK CROSS-LANGUAGE COMPETITOR KEYWORDS
+// ==========================================
+export const ssstikCompetitorKeywords = [
+  "ssstik", "ssstik.io", "ssstiktok", "ssstiktok.io",
+  "ssstik download", "ssstik alternative", "ssstik not working",
+  "ssstik down", "ssstik proxy", "ssstik review", "is ssstik safe",
+  "ssstik vs anytt cc", "sites like ssstik", "ssstik free",
+  "ssstik tiktok downloader free", "ssstik video saver",
+  "ssstik story download", "ssstik mp3 download", "ssstik mp4 download",
+  "ssstik no watermark hd", "ssstik batch download",
+  "ssstik alternative Indonesia", "ssstik alternative Vietnam",
+  "ssstik alternative Thai", "ssstik alternative español",
+  "ssstik alternative deutsch", "ssstik alternative français",
+  "ssstik中文", "ssstik下载器"
+];
+
+// ==========================================
+// 🟡 TIKMATE CROSS-LANGUAGE COMPETITOR KEYWORDS
+// ==========================================
+export const tikmateCompetitorKeywords = [
+  "tikmate", "tikmate.app", "tikmate online", "tikmate download",
+  "tikmate alternative", "tikmate not working", "tikmate down",
+  "tikmate proxy", "tikmate review", "is tikmate safe",
+  "tikmate vs anytt cc", "sites like tikmate", "tikmate free",
+  "tikmate apk download", "tikmate app download", "tikmate for iPhone",
+  "tikmate no watermark", "tikmate hd download", "tikmate mp3",
+  "tikmate alternative Indonesia", "tikmate alternative Thailand",
+  "tikmate alternative Vietnam"
+];
+
 allWorldwideKeywords.push(
   ...germanSavettKeywords,
   ...russianSavettKeywords,
   ...frenchSavettKeywords,
   ...bulgarianSavettKeywords,
   ...spanishSavettKeywords,
-  ...savettCompetitorKeywords
+  ...savettCompetitorKeywords,
+  ...koreanCompetitorKeywords,
+  ...japaneseCompetitorKeywords,
+  ...snaptikCompetitorKeywords,
+  ...ssstikCompetitorKeywords,
+  ...tikmateCompetitorKeywords
 );
 
 /**
