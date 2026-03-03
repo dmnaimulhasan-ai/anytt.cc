@@ -357,6 +357,17 @@ export const tiktokKeywords = {
     "AI powered TikTok downloader 2026", "smart video saver TikTok",
     "TikTok AI watermark remover", "AI TikTok mp3 extractor",
     "TikTok auto batch download AI", "intelligent TikTok video saver"
+  ],
+  // 🏴‍☠️ SaveTT.cc Competitor Keywords
+  savettCompetitor: [
+    "savett", "save tt", "savett.cc", "save tt cc", "savett cc",
+    "savett alternative", "savett cc alternative", "better than savett",
+    "savett vs anytt", "savett cc download", "savett tiktok downloader",
+    "savett mp3", "savett download", "savett video downloader",
+    "savett no watermark", "savett tiktok mp3", "savett online",
+    "savett cc tiktok", "save tt alternative", "save tt download",
+    "savett cc no watermark", "savett cc mp3", "savett cc video",
+    "savett free", "savett cc free download"
   ]
 };
 
@@ -659,6 +670,7 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.voiceSearch2026,
   ...tiktokKeywords.deviceSpecific2026,
   ...tiktokKeywords.aiPowered2026,
+  ...tiktokKeywords.savettCompetitor,
   ...urduKeywords,
   ...arabicKeywords,
   ...thaiExpandedKeywords,
