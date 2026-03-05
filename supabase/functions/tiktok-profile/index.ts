@@ -90,32 +90,43 @@ serve(async (req) => {
 
     console.log('Fetching TikTok profile:', username);
 
-    // Use TikWM API with POST method for user posts
+    // Use TikWM API - POST with proper headers including Referer
     const apiUrl = `https://www.tikwm.com/api/user/posts`;
-    
-    const formData = new URLSearchParams();
-    formData.append('unique_id', username);
-    formData.append('count', '30');
     
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Referer': 'https://www.tikwm.com/',
+        'Origin': 'https://www.tikwm.com',
       },
-      body: formData.toString()
+      body: `unique_id=${encodeURIComponent(username)}&count=30&cursor=0`
     });
 
+    console.log('TikWM response status:', response.status);
+    const responseText = await response.text();
+    console.log('TikWM response body preview:', responseText.substring(0, 300));
+
     if (!response.ok) {
-      console.error('TikWM profile API error:', response.status);
+      console.error('TikWM profile API error:', response.status, responseText.substring(0, 200));
       return new Response(
-        JSON.stringify({ success: false, error: 'Failed to fetch profile. Please try again.' }),
+        JSON.stringify({ success: false, error: `API returned ${response.status}. Please try again.` }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    const data = await response.json();
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (e) {
+      console.error('Failed to parse response JSON');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Invalid API response' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
     if (data.code !== 0 || !data.data) {
       console.error('TikWM profile error:', data.msg);
