@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Download, Music, ArrowLeft, Loader2, Play, CheckCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Download, Music, ArrowLeft, Loader2, Play, Pause, CheckCircle, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useStats } from "@/hooks/useStats";
+import { useDownloadHistory } from "@/hooks/useDownloadHistory";
 import LazyImage from "./LazyImage";
 
 interface VideoData {
