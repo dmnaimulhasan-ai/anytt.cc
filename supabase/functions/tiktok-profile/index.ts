@@ -90,15 +90,21 @@ serve(async (req) => {
 
     console.log('Fetching TikTok profile:', username);
 
-    // Use TikWM API to fetch user profile videos
-    const apiUrl = `https://www.tikwm.com/api/user/posts?unique_id=${encodeURIComponent(username)}&count=30`;
+    // Use TikWM API with POST method for user posts
+    const apiUrl = `https://www.tikwm.com/api/user/posts`;
+    
+    const formData = new URLSearchParams();
+    formData.append('unique_id', username);
+    formData.append('count', '30');
     
     const response = await fetch(apiUrl, {
-      method: 'GET',
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-      }
+      },
+      body: formData.toString()
     });
 
     if (!response.ok) {
