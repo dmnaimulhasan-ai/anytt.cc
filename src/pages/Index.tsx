@@ -23,6 +23,7 @@ const AboutSection = lazy(() => import("@/components/AboutSection"));
 const HowToSection = lazy(() => import("@/components/HowToSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ScrollBanner = lazy(() => import("@/components/ads/ScrollBanner"));
+const DownloadHistory = lazy(() => import("@/components/DownloadHistory"));
 
 // Minimal section loader
 const SectionLoader = () => (
