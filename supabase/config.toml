@@ -14,3 +14,15 @@ verify_jwt = false
 
 [functions.track-ad-analytics]
 verify_jwt = false
+
+[functions.tiktok-profile]
+verify_jwt = false
+
+[functions.pinterest-download]
+verify_jwt = false
+
+[functions.serve-robots]
+verify_jwt = false
+
+[functions.serve-sitemap]
+verify_jwt = false
