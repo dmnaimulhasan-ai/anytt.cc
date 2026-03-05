@@ -130,7 +130,61 @@ serve(async (req) => {
       console.log('TikWM user/posts failed, using fallback');
     }
 
-    // 2) Fallback: scrape profile page and resolve each video via working TikWM single-video API
+    // 2) Fallback A: TikWM search endpoint (more stable than user/posts)
+    if (videos.length === 0) {
+      console.log('Using fallback search endpoint for:', username);
+      try {
+        const searchResp = await fetch(
+          `https://www.tikwm.com/api/feed/search?keywords=${encodeURIComponent(username)}&count=30&cursor=0`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            }
+          }
+        );
+
+        if (searchResp.ok) {
+          const searchData = await searchResp.json();
+          const rawVideos = searchData?.data?.videos || searchData?.videos || [];
+
+          const matched = rawVideos.filter((v: any) => {
+            const uid = String(v?.author?.unique_id || v?.author?.uniqueId || '').toLowerCase();
+            return uid === username.toLowerCase();
+          });
+
+          const picked = (matched.length ? matched : rawVideos).slice(0, 12);
+          videos = picked.map((v: any) => ({
+            id: v.video_id || v.id || '',
+            title: v.title || 'TikTok Video',
+            thumbnail: v.cover || v.origin_cover || '',
+            duration: v.duration || 0,
+            videoUrl: v.play || '',
+            videoUrlNoWatermark: v.hdplay || v.wmplay || v.play || '',
+            musicUrl: v.music || '',
+            plays: v.play_count || 0,
+            likes: v.digg_count || 0,
+            comments: v.comment_count || 0,
+          }));
+
+          if (picked[0]?.author) {
+            profileData = {
+              unique_id: picked[0].author?.unique_id || username,
+              nickname: picked[0].author?.nickname || username,
+              avatar: picked[0].author?.avatar || '',
+              follower_count: picked[0].author?.follower_count || 0,
+              following_count: picked[0].author?.following_count || 0,
+              total_favorited: picked[0].author?.total_favorited || 0,
+              video_count: videos.length,
+            };
+          }
+        }
+      } catch {
+        console.log('Search fallback failed, trying HTML scrape fallback');
+      }
+    }
+
+    // 3) Fallback B: scrape profile page and resolve each video via working single-video API
     if (videos.length === 0) {
       console.log('Using fallback profile scraping for:', username);
       const profileUrl = `https://www.tiktok.com/@${encodeURIComponent(username)}`;
@@ -142,60 +196,49 @@ serve(async (req) => {
         }
       });
 
-      if (!profileResponse.ok) {
-        return new Response(
-          JSON.stringify({ success: false, error: 'Could not fetch this profile. Make sure the username is public and valid.' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
+      if (profileResponse.ok) {
+        const html = await profileResponse.text();
+        const videoMatches = [...html.matchAll(/\/@[\w.]+\/video\/\d+/g)];
+        const videoPaths = Array.from(new Set(videoMatches.map(m => m[0]))).slice(0, 12);
 
-      const html = await profileResponse.text();
-
-      const videoMatches = [...html.matchAll(/\/@[\w.]+\/video\/\d+/g)];
-      const videoPaths = Array.from(new Set(videoMatches.map(m => m[0]))).slice(0, 12);
-
-      if (videoPaths.length === 0) {
-        return new Response(
-          JSON.stringify({ success: false, error: 'No public videos found for this profile.' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-
-      const resolved = await Promise.all(
-        videoPaths.map(async (path) => {
-          try {
-            const fullVideoUrl = `https://www.tiktok.com${path}`;
-            const r = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(fullVideoUrl)}`, {
-              headers: {
-                'Accept': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        if (videoPaths.length > 0) {
+          const resolved = await Promise.all(
+            videoPaths.map(async (path) => {
+              try {
+                const fullVideoUrl = `https://www.tiktok.com${path}`;
+                const r = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(fullVideoUrl)}`, {
+                  headers: {
+                    'Accept': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                  }
+                });
+                if (!r.ok) return null;
+                const d = await r.json();
+                if (d?.code !== 0 || !d?.data) return null;
+                const v = d.data;
+                return {
+                  id: v.id || '',
+                  title: v.title || 'TikTok Video',
+                  thumbnail: v.cover || v.origin_cover || '',
+                  duration: v.duration || 0,
+                  videoUrl: v.play || '',
+                  videoUrlNoWatermark: v.hdplay || v.play || '',
+                  musicUrl: v.music || '',
+                  plays: v.play_count || 0,
+                  likes: v.digg_count || 0,
+                  comments: v.comment_count || 0,
+                } as ProfileVideo;
+              } catch {
+                return null;
               }
-            });
-            if (!r.ok) return null;
-            const d = await r.json();
-            if (d?.code !== 0 || !d?.data) return null;
-            const v = d.data;
-            return {
-              id: v.id || '',
-              title: v.title || 'TikTok Video',
-              thumbnail: v.cover || v.origin_cover || '',
-              duration: v.duration || 0,
-              videoUrl: v.play || '',
-              videoUrlNoWatermark: v.hdplay || v.play || '',
-              musicUrl: v.music || '',
-              plays: v.play_count || 0,
-              likes: v.digg_count || 0,
-              comments: v.comment_count || 0,
-            } as ProfileVideo;
-          } catch {
-            return null;
-          }
-        })
-      );
+            })
+          );
 
-      videos = resolved.filter((v): v is ProfileVideo => Boolean(v));
+          videos = resolved.filter((v): v is ProfileVideo => Boolean(v));
+        }
+      }
 
-      profileData = {
+      profileData = profileData || {
         unique_id: username,
         nickname: username,
         avatar: '',
