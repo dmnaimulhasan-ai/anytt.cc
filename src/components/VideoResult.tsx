@@ -57,8 +57,34 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
    * Optimized download handler with streaming for faster downloads
    * Uses chunked transfer for better mobile performance
    */
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
   const handleDownload = async (url: string, filename: string) => {
     trackDownload(platform, video.id);
+    addToHistory({
+      id: video.id,
+      title: video.title,
+      author: video.author,
+      thumbnail: video.thumbnail,
+      platform,
+      videoUrl: video.videoUrlNoWatermark || video.videoUrl,
+    });
+    // Dispatch event for PWA install prompt
+    window.dispatchEvent(new Event('anytt:download-complete'));
     setDownloadState({ isDownloading: true, progress: 0, filename });
 
     try {
