@@ -90,65 +90,121 @@ serve(async (req) => {
 
     console.log('Fetching TikTok profile:', username);
 
-    // Use TikWM API - POST with proper headers including Referer
-    const apiUrl = `https://www.tikwm.com/api/user/posts`;
-    
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://www.tikwm.com/',
-        'Origin': 'https://www.tikwm.com',
-      },
-      body: `unique_id=${encodeURIComponent(username)}&count=30&cursor=0`
-    });
+    // 1) Try TikWM user/posts endpoint first
+    let profileData: any = null;
+    let videos: ProfileVideo[] = [];
 
-    console.log('TikWM response status:', response.status);
-    const responseText = await response.text();
-    console.log('TikWM response body preview:', responseText.substring(0, 300));
-
-    if (!response.ok) {
-      console.error('TikWM profile API error:', response.status, responseText.substring(0, 200));
-      return new Response(
-        JSON.stringify({ success: false, error: `API returned ${response.status}. Please try again.` }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    let data;
     try {
-      data = JSON.parse(responseText);
+      const apiUrl = `https://www.tikwm.com/api/user/posts`;
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Referer': 'https://www.tikwm.com/',
+          'Origin': 'https://www.tikwm.com',
+        },
+        body: `unique_id=${encodeURIComponent(username)}&count=30&cursor=0`
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data?.code === 0 && data?.data) {
+          profileData = data.data;
+          videos = (profileData.videos || []).map((v: any) => ({
+            id: v.video_id || v.id || '',
+            title: v.title || 'TikTok Video',
+            thumbnail: v.cover || v.origin_cover || '',
+            duration: v.duration || 0,
+            videoUrl: v.play || '',
+            videoUrlNoWatermark: v.hdplay || v.wmplay || v.play || '',
+            musicUrl: v.music || '',
+            plays: v.play_count || 0,
+            likes: v.digg_count || 0,
+            comments: v.comment_count || 0,
+          }));
+        }
+      }
     } catch (e) {
-      console.error('Failed to parse response JSON');
-      return new Response(
-        JSON.stringify({ success: false, error: 'Invalid API response' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      console.log('TikWM user/posts failed, using fallback');
     }
 
-    if (data.code !== 0 || !data.data) {
-      console.error('TikWM profile error:', data.msg);
-      return new Response(
-        JSON.stringify({ success: false, error: data.msg || 'Could not find this user. Make sure the username is correct.' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
+    // 2) Fallback: scrape profile page and resolve each video via working TikWM single-video API
+    if (videos.length === 0) {
+      console.log('Using fallback profile scraping for:', username);
+      const profileUrl = `https://www.tiktok.com/@${encodeURIComponent(username)}`;
+      const profileResponse = await fetch(profileUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Accept': 'text/html,application/xhtml+xml',
+          'Accept-Language': 'en-US,en;q=0.9'
+        }
+      });
 
-    const profileData = data.data;
-    const videos: ProfileVideo[] = (profileData.videos || []).map((v: any) => ({
-      id: v.video_id || v.id || '',
-      title: v.title || 'TikTok Video',
-      thumbnail: v.cover || v.origin_cover || '',
-      duration: v.duration || 0,
-      videoUrl: v.play || '',
-      videoUrlNoWatermark: v.hdplay || v.wmplay || v.play || '',
-      musicUrl: v.music || '',
-      plays: v.play_count || 0,
-      likes: v.digg_count || 0,
-      comments: v.comment_count || 0,
-    }));
+      if (!profileResponse.ok) {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Could not fetch this profile. Make sure the username is public and valid.' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      const html = await profileResponse.text();
+
+      const videoMatches = [...html.matchAll(/href="(\/@[\w.]+\/video\/\d+)"/g)];
+      const videoPaths = Array.from(new Set(videoMatches.map(m => m[1]))).slice(0, 12);
+
+      if (videoPaths.length === 0) {
+        return new Response(
+          JSON.stringify({ success: false, error: 'No public videos found for this profile.' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      const resolved = await Promise.all(
+        videoPaths.map(async (path) => {
+          try {
+            const fullVideoUrl = `https://www.tiktok.com${path}`;
+            const r = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(fullVideoUrl)}`, {
+              headers: {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+              }
+            });
+            if (!r.ok) return null;
+            const d = await r.json();
+            if (d?.code !== 0 || !d?.data) return null;
+            const v = d.data;
+            return {
+              id: v.id || '',
+              title: v.title || 'TikTok Video',
+              thumbnail: v.cover || v.origin_cover || '',
+              duration: v.duration || 0,
+              videoUrl: v.play || '',
+              videoUrlNoWatermark: v.hdplay || v.play || '',
+              musicUrl: v.music || '',
+              plays: v.play_count || 0,
+              likes: v.digg_count || 0,
+              comments: v.comment_count || 0,
+            } as ProfileVideo;
+          } catch {
+            return null;
+          }
+        })
+      );
+
+      videos = resolved.filter((v): v is ProfileVideo => Boolean(v));
+
+      profileData = {
+        unique_id: username,
+        nickname: username,
+        avatar: '',
+        follower_count: 0,
+        following_count: 0,
+        total_favorited: 0,
+        video_count: videos.length,
+      };
+    }
 
     const result: ProfileData = {
       username: profileData.unique_id || username,
@@ -160,6 +216,13 @@ serve(async (req) => {
       videos,
       totalVideos: profileData.video_count || videos.length,
     };
+
+    if (result.videos.length === 0) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'No downloadable videos found for this profile.' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
     console.log(`Profile ${username}: ${videos.length} videos fetched`);
 
