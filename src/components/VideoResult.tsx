@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Download, Music, ArrowLeft, Loader2, Play, CheckCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Download, Music, ArrowLeft, Loader2, Play, Pause, CheckCircle, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useStats } from "@/hooks/useStats";
+import { useDownloadHistory } from "@/hooks/useDownloadHistory";
 import LazyImage from "./LazyImage";
 
 interface VideoData {
@@ -36,11 +37,15 @@ interface DownloadState {
  */
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
+  const { addToHistory } = useDownloadHistory();
   const [downloadState, setDownloadState] = useState<DownloadState>({
     isDownloading: false,
     progress: 0,
     filename: ''
   });
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -52,8 +57,34 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
    * Optimized download handler with streaming for faster downloads
    * Uses chunked transfer for better mobile performance
    */
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
   const handleDownload = async (url: string, filename: string) => {
     trackDownload(platform, video.id);
+    addToHistory({
+      id: video.id,
+      title: video.title,
+      author: video.author,
+      thumbnail: video.thumbnail,
+      platform,
+      videoUrl: video.videoUrlNoWatermark || video.videoUrl,
+    });
+    // Dispatch event for PWA install prompt
+    window.dispatchEvent(new Event('anytt:download-complete'));
     setDownloadState({ isDownloading: true, progress: 0, filename });
 
     try {
@@ -134,18 +165,51 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
 
   return (
     <div className="glass-card rounded-3xl p-6 max-w-md mx-auto">
-      {/* Video Preview - Centered */}
-      <div className="relative mb-6">
-        <LazyImage
-          src={video.thumbnail}
-          alt={`${video.title} - ${platform} video thumbnail`}
-          aspectRatio="video"
-          className="rounded-2xl"
-          priority
-        />
-        <div className="absolute bottom-3 right-3 bg-black/80 text-white px-3 py-1.5 rounded-xl text-sm font-semibold flex items-center gap-2">
-          <Play className="h-3.5 w-3.5 fill-current" />
-          {formatDuration(video.duration)}
+      {/* Video Preview Player */}
+      <div className="relative mb-6 rounded-2xl overflow-hidden bg-black">
+        {isPlaying ? (
+          <video
+            ref={videoRef}
+            src={video.videoUrlNoWatermark || video.videoUrl}
+            className="w-full aspect-video object-contain"
+            muted={isMuted}
+            autoPlay
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+            onClick={togglePlay}
+          />
+        ) : (
+          <div className="relative cursor-pointer" onClick={togglePlay}>
+            <LazyImage
+              src={video.thumbnail}
+              alt={`${video.title} - ${platform} video thumbnail`}
+              aspectRatio="video"
+              className="rounded-2xl"
+              priority
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div className="p-4 rounded-full bg-primary/90 text-primary-foreground shadow-lg">
+                <Play className="h-8 w-8 fill-current" />
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Controls overlay */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-2">
+          {isPlaying && (
+            <>
+              <button onClick={togglePlay} className="p-2 rounded-full bg-black/70 text-white">
+                <Pause className="h-4 w-4" />
+              </button>
+              <button onClick={toggleMute} className="p-2 rounded-full bg-black/70 text-white">
+                {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              </button>
+            </>
+          )}
+          <div className="bg-black/80 text-white px-3 py-1.5 rounded-xl text-sm font-semibold flex items-center gap-2">
+            <Play className="h-3.5 w-3.5 fill-current" />
+            {formatDuration(video.duration)}
+          </div>
         </div>
       </div>
 
