@@ -61,6 +61,7 @@ const App = () => (
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
             <Route path="/pinterest-downloader" element={<PinterestDownloader />} />
             <Route path="/pinterest-faq" element={<PinterestFAQ />} />
+            <Route path="/tiktok-profile-downloader" element={<TikTokProfilePage />} />
             {/* Multilingual landing pages */}
             <Route path="/es/descargar-tiktok" element={<TikTokDownloaderES />} />
             <Route path="/pt/baixar-tiktok" element={<TikTokDownloaderPT />} />
