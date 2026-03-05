@@ -151,8 +151,8 @@ serve(async (req) => {
 
       const html = await profileResponse.text();
 
-      const videoMatches = [...html.matchAll(/href="(\/@[\w.]+\/video\/\d+)"/g)];
-      const videoPaths = Array.from(new Set(videoMatches.map(m => m[1]))).slice(0, 12);
+      const videoMatches = [...html.matchAll(/\/@[\w.]+\/video\/\d+/g)];
+      const videoPaths = Array.from(new Set(videoMatches.map(m => m[0]))).slice(0, 12);
 
       if (videoPaths.length === 0) {
         return new Response(
