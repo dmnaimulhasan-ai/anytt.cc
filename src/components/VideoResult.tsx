@@ -37,11 +37,15 @@ interface DownloadState {
  */
 const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) => {
   const { trackDownload } = useStats();
+  const { addToHistory } = useDownloadHistory();
   const [downloadState, setDownloadState] = useState<DownloadState>({
     isDownloading: false,
     progress: 0,
     filename: ''
   });
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
