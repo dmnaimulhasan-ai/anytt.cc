@@ -123,6 +123,9 @@ const Index = () => {
       <main>
         <HeroSection />
         <StickyMobileCTA />
+        <Suspense fallback={null}>
+          <DownloadHistory />
+        </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <AboutSection />
         </Suspense>

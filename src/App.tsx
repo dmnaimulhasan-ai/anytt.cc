@@ -51,6 +51,7 @@ const App = () => (
       <Sonner />
       <FloatingSupportButton />
       <FloatingBanner />
+      <InstallPrompt />
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>

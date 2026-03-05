@@ -165,18 +165,51 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
 
   return (
     <div className="glass-card rounded-3xl p-6 max-w-md mx-auto">
-      {/* Video Preview - Centered */}
-      <div className="relative mb-6">
-        <LazyImage
-          src={video.thumbnail}
-          alt={`${video.title} - ${platform} video thumbnail`}
-          aspectRatio="video"
-          className="rounded-2xl"
-          priority
-        />
-        <div className="absolute bottom-3 right-3 bg-black/80 text-white px-3 py-1.5 rounded-xl text-sm font-semibold flex items-center gap-2">
-          <Play className="h-3.5 w-3.5 fill-current" />
-          {formatDuration(video.duration)}
+      {/* Video Preview Player */}
+      <div className="relative mb-6 rounded-2xl overflow-hidden bg-black">
+        {isPlaying ? (
+          <video
+            ref={videoRef}
+            src={video.videoUrlNoWatermark || video.videoUrl}
+            className="w-full aspect-video object-contain"
+            muted={isMuted}
+            autoPlay
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+            onClick={togglePlay}
+          />
+        ) : (
+          <div className="relative cursor-pointer" onClick={togglePlay}>
+            <LazyImage
+              src={video.thumbnail}
+              alt={`${video.title} - ${platform} video thumbnail`}
+              aspectRatio="video"
+              className="rounded-2xl"
+              priority
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div className="p-4 rounded-full bg-primary/90 text-primary-foreground shadow-lg">
+                <Play className="h-8 w-8 fill-current" />
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Controls overlay */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-2">
+          {isPlaying && (
+            <>
+              <button onClick={togglePlay} className="p-2 rounded-full bg-black/70 text-white">
+                <Pause className="h-4 w-4" />
+              </button>
+              <button onClick={toggleMute} className="p-2 rounded-full bg-black/70 text-white">
+                {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              </button>
+            </>
+          )}
+          <div className="bg-black/80 text-white px-3 py-1.5 rounded-xl text-sm font-semibold flex items-center gap-2">
+            <Play className="h-3.5 w-3.5 fill-current" />
+            {formatDuration(video.duration)}
+          </div>
         </div>
       </div>
 
