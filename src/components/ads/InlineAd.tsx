@@ -7,6 +7,9 @@ interface InlineAdProps {
   className?: string;
 }
 
+/**
+ * Monetag In-Page Push (replaces Adsterra Inline Ad)
+ */
 const InlineAd = ({ className = "" }: InlineAdProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
@@ -16,32 +19,19 @@ const InlineAd = ({ className = "" }: InlineAdProps) => {
   useEffect(() => {
     if (!containerRef.current || loadedRef.current) return;
     loadedRef.current = true;
-    
-    // 300x250 format for all devices
-    const config = { width: 300, height: 250 };
 
     const timeoutId = setTimeout(() => {
-      if (containerRef.current && !containerRef.current.querySelector('iframe')) {
-        setAdFailed(true);
-        trackAdEvent({
-          eventType: "timeout",
-          adComponent: "InlineAd",
-          errorReason: "Ad failed to load within timeout",
-        });
-      }
+      setAdFailed(true);
+      trackAdEvent({
+        eventType: "timeout",
+        adComponent: "InlineAd",
+        errorReason: "Ad failed to load within timeout",
+      });
     }, AD_LOAD_TIMEOUT);
-    
-    (window as any).atOptions = {
-      key: "59788b78ce7ac0220b51b6164bbec986",
-      format: "iframe",
-      height: config.height,
-      width: config.width,
-      params: {},
-    };
 
-    // New Adsterra domain
     const script = document.createElement("script");
-    script.src = "https://encouragingjawsordinarily.com/59788b78ce7ac0220b51b6164bbec986/invoke.js";
+    script.dataset.zone = "10733016";
+    script.src = "https://nap5k.com/tag.min.js";
     script.async = true;
     script.onerror = () => {
       setAdFailed(true);
@@ -52,6 +42,7 @@ const InlineAd = ({ className = "" }: InlineAdProps) => {
       });
     };
     script.onload = () => {
+      clearTimeout(timeoutId);
       trackAdEvent({
         eventType: "load",
         adComponent: "InlineAd",
@@ -59,23 +50,14 @@ const InlineAd = ({ className = "" }: InlineAdProps) => {
     };
     containerRef.current.appendChild(script);
 
-    return () => {
-      clearTimeout(timeoutId);
-      loadedRef.current = false;
-    };
+    return () => clearTimeout(timeoutId);
   }, [trackAdEvent]);
 
   if (adFailed) {
     return (
       <div className={`flex justify-center ${className}`}>
-        <div 
-          className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50"
-          style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
-        >
-          <div className="text-center p-4">
-            <p className="text-sm text-muted-foreground">Premium Content</p>
-            <p className="text-xs text-muted-foreground/60 mt-1">Support our free service</p>
-          </div>
+        <div className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50 p-4" style={{ minHeight: 100 }}>
+          <p className="text-sm text-muted-foreground">Support our free service</p>
         </div>
       </div>
     );
@@ -83,11 +65,7 @@ const InlineAd = ({ className = "" }: InlineAdProps) => {
 
   return (
     <div className={`flex justify-center ${className}`}>
-      <div 
-        ref={containerRef} 
-        className="flex items-center justify-center overflow-hidden"
-        style={{ minHeight: 250, minWidth: 300, maxWidth: 300 }}
-      />
+      <div ref={containerRef} className="w-full max-w-2xl" />
     </div>
   );
 };
