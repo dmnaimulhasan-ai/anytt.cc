@@ -8,17 +8,6 @@ interface SmartlinkButtonProps {
   className?: string;
 }
 
-/**
- * Smartlink Button Component
- * 
- * ADSTERRA POLICY COMPLIANT:
- * - Separate button from download (NOT on download button)
- * - Clear labeling ("Support Us" / "Continue")
- * - Opens in new tab
- * - Max 1 trigger per session
- * - Soft disclosure text included
- * - No forced clicks, no misleading
- */
 const SmartlinkButton = ({ className = "" }: SmartlinkButtonProps) => {
   const { isSmartlinkTriggered, triggerSmartlink } = useAdMonetization();
   const { trackAdEvent } = useAdAnalytics();
@@ -39,12 +28,10 @@ const SmartlinkButton = ({ className = "" }: SmartlinkButtonProps) => {
     });
   };
 
-  // Don't show if already used this session
   if (alreadyTriggered) return null;
 
   return (
     <div className={`text-center space-y-3 ${className}`}>
-      {/* Soft disclosure */}
       <p className="text-xs text-muted-foreground/70">
         You may see a short ad in a new tab. Ads help keep this service free.
       </p>

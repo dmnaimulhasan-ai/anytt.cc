@@ -17,11 +17,13 @@ if (document.fonts) {
 // Defer service worker registration to avoid render-blocking
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // Register SW after page load to improve FCP/LCP
     setTimeout(async () => {
       try {
-        // Register the service worker
+        // Register the main service worker
         await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+        
+        // Register Monetag push notification service worker
+        await navigator.serviceWorker.register('/monetag-sw.js', { scope: '/monetag-sw' });
         
         // Update existing registrations
         const registrations = await navigator.serviceWorker.getRegistrations();
@@ -31,6 +33,6 @@ if ('serviceWorker' in navigator) {
       } catch (e) {
         // SW registration failed, ignore
       }
-    }, 3000); // 3s delay to prioritize content rendering
+    }, 3000);
   });
 }
