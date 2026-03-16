@@ -1,67 +1,49 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
+import { ExternalLink, Sparkles, TrendingUp, Award } from "lucide-react";
 
-const AD_LOAD_TIMEOUT = 8000;
+const DIRECT_LINK_URL = "https://omg10.com/4/1073301";
+
+const NATIVE_VARIATIONS = [
+  { icon: Sparkles, label: "Recommended", title: "Discover Something New", desc: "Curated for you — tap to explore", color: "text-primary" },
+  { icon: TrendingUp, label: "Trending", title: "Popular Right Now", desc: "See what everyone's talking about", color: "text-secondary" },
+  { icon: Award, label: "Featured", title: "Editor's Pick", desc: "Hand-picked content just for you", color: "text-accent" },
+];
 
 interface NativeBannerProps {
   className?: string;
 }
 
-/**
- * Monetag In-Page Push Banner (replaces Adsterra Native Banner)
- */
 const NativeBanner = ({ className = "" }: NativeBannerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const loadedRef = useRef(false);
-  const [adFailed, setAdFailed] = useState(false);
+  const [variation] = useState(() => NATIVE_VARIATIONS[Math.floor(Math.random() * NATIVE_VARIATIONS.length)]);
   const { trackAdEvent } = useAdAnalytics();
 
-  useEffect(() => {
-    if (!containerRef.current || loadedRef.current) return;
-    loadedRef.current = true;
+  const handleClick = () => {
+    trackAdEvent({ eventType: "click", adComponent: "NativeBanner" });
+    window.open(DIRECT_LINK_URL, "_blank", "noopener,noreferrer");
+  };
 
-    const timeoutId = setTimeout(() => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "timeout",
-        adComponent: "NativeBanner",
-        errorReason: "Ad failed to load within timeout",
-      });
-    }, AD_LOAD_TIMEOUT);
-
-    const script = document.createElement("script");
-    script.dataset.zone = "10733016";
-    script.src = "https://nap5k.com/tag.min.js";
-    script.async = true;
-    script.onerror = () => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "failure",
-        adComponent: "NativeBanner",
-        errorReason: "Script failed to load",
-      });
-    };
-    script.onload = () => {
-      clearTimeout(timeoutId);
-      trackAdEvent({
-        eventType: "load",
-        adComponent: "NativeBanner",
-      });
-    };
-    containerRef.current.appendChild(script);
-
-    return () => clearTimeout(timeoutId);
-  }, [trackAdEvent]);
-
-  if (adFailed) return null;
+  const Icon = variation.icon;
 
   return (
-    <div className={`my-6 ${className}`}>
-      <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
-        Advertisement
-      </p>
-      <div className="flex justify-center">
-        <div ref={containerRef} className="w-full max-w-2xl" />
+    <div className={`my-6 px-4 ${className}`}>
+      <div
+        onClick={handleClick}
+        className="cursor-pointer mx-auto max-w-2xl glass-card rounded-2xl p-5 transition-all hover:shadow-lg hover:border-primary/30 active:scale-[0.98]"
+      >
+        <div className="flex items-start gap-4">
+          <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center ${variation.color}`}>
+            <Icon className="w-5 h-5" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-medium">{variation.label}</span>
+            </div>
+            <p className="font-bold text-foreground text-sm">{variation.title}</p>
+            <p className="text-xs text-muted-foreground mt-0.5">{variation.desc}</p>
+          </div>
+          <ExternalLink className="w-4 h-4 text-muted-foreground/40 flex-shrink-0 mt-1" />
+        </div>
       </div>
     </div>
   );

@@ -1,71 +1,44 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
+import { ArrowRight } from "lucide-react";
 
-const AD_LOAD_TIMEOUT = 8000;
+const DIRECT_LINK_URL = "https://omg10.com/4/1073301";
+
+const INLINE_VARIATIONS = [
+  { emoji: "🎁", text: "Claim Your Free Reward", cta: "Get It Now" },
+  { emoji: "⚡", text: "Flash Deal — Limited Time", cta: "Grab It" },
+  { emoji: "🔥", text: "Hot Offer Just For You", cta: "Explore" },
+  { emoji: "💎", text: "Premium Content Unlocked", cta: "View Now" },
+];
 
 interface InlineAdProps {
   className?: string;
 }
 
-/**
- * Monetag In-Page Push (replaces Adsterra Inline Ad)
- */
 const InlineAd = ({ className = "" }: InlineAdProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const loadedRef = useRef(false);
-  const [adFailed, setAdFailed] = useState(false);
+  const [variation] = useState(() => INLINE_VARIATIONS[Math.floor(Math.random() * INLINE_VARIATIONS.length)]);
   const { trackAdEvent } = useAdAnalytics();
 
-  useEffect(() => {
-    if (!containerRef.current || loadedRef.current) return;
-    loadedRef.current = true;
-
-    const timeoutId = setTimeout(() => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "timeout",
-        adComponent: "InlineAd",
-        errorReason: "Ad failed to load within timeout",
-      });
-    }, AD_LOAD_TIMEOUT);
-
-    const script = document.createElement("script");
-    script.dataset.zone = "10733016";
-    script.src = "https://nap5k.com/tag.min.js";
-    script.async = true;
-    script.onerror = () => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "failure",
-        adComponent: "InlineAd",
-        errorReason: "Script failed to load",
-      });
-    };
-    script.onload = () => {
-      clearTimeout(timeoutId);
-      trackAdEvent({
-        eventType: "load",
-        adComponent: "InlineAd",
-      });
-    };
-    containerRef.current.appendChild(script);
-
-    return () => clearTimeout(timeoutId);
-  }, [trackAdEvent]);
-
-  if (adFailed) {
-    return (
-      <div className={`flex justify-center ${className}`}>
-        <div className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50 p-4" style={{ minHeight: 100 }}>
-          <p className="text-sm text-muted-foreground">Support our free service</p>
-        </div>
-      </div>
-    );
-  }
+  const handleClick = () => {
+    trackAdEvent({ eventType: "click", adComponent: "InlineAd" });
+    window.open(DIRECT_LINK_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
-    <div className={`flex justify-center ${className}`}>
-      <div ref={containerRef} className="w-full max-w-2xl" />
+    <div className={`my-4 px-4 ${className}`}>
+      <div
+        onClick={handleClick}
+        className="cursor-pointer mx-auto max-w-2xl rounded-2xl bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-primary/20 p-4 flex items-center justify-between gap-3 transition-all hover:border-primary/40 hover:shadow-md active:scale-[0.98]"
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">{variation.emoji}</span>
+          <span className="font-semibold text-sm text-foreground">{variation.text}</span>
+        </div>
+        <div className="flex-shrink-0 bg-primary text-primary-foreground px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1">
+          {variation.cta} <ArrowRight className="w-3 h-3" />
+        </div>
+      </div>
+      <p className="text-[10px] text-muted-foreground/40 text-center mt-1 uppercase tracking-wider">Ad</p>
     </div>
   );
 };

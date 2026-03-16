@@ -1,21 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
+import { X, ExternalLink } from "lucide-react";
 
-const AD_LOAD_TIMEOUT = 8000;
-const SCROLL_THRESHOLD = 0.4;
+const DIRECT_LINK_URL = "https://omg10.com/4/1073301";
+const SCROLL_THRESHOLD = 0.05;
 
-interface ScrollBannerProps {
-  className?: string;
-}
-
-/**
- * Scroll-triggered Monetag In-Page Push Banner
- */
-const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const loadedRef = useRef(false);
+const ScrollBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [adFailed, setAdFailed] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const { trackAdEvent } = useAdAnalytics();
 
   useEffect(() => {
@@ -26,57 +18,42 @@ const ScrollBanner = ({ className = "" }: ScrollBannerProps) => {
         setIsVisible(true);
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (!isVisible || !containerRef.current || loadedRef.current) return;
-    loadedRef.current = true;
+  const handleClick = () => {
+    trackAdEvent({ eventType: "click", adComponent: "ScrollBanner" });
+    window.open(DIRECT_LINK_URL, "_blank", "noopener,noreferrer");
+  };
 
-    const timeoutId = setTimeout(() => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "timeout",
-        adComponent: "ScrollBanner",
-        errorReason: "Ad failed to load within timeout",
-      });
-    }, AD_LOAD_TIMEOUT);
-
-    const script = document.createElement("script");
-    script.dataset.zone = "10733016";
-    script.src = "https://nap5k.com/tag.min.js";
-    script.async = true;
-    script.onerror = () => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "failure",
-        adComponent: "ScrollBanner",
-        errorReason: "Script failed to load",
-      });
-    };
-    script.onload = () => {
-      clearTimeout(timeoutId);
-      trackAdEvent({
-        eventType: "load",
-        adComponent: "ScrollBanner",
-      });
-    };
-    containerRef.current.appendChild(script);
-
-    return () => clearTimeout(timeoutId);
-  }, [isVisible, trackAdEvent]);
-
-  if (!isVisible || adFailed) return null;
+  if (!isVisible || dismissed) return null;
 
   return (
-    <div className={`my-6 ${className}`}>
-      <p className="text-[10px] text-muted-foreground/50 text-center mb-2 uppercase tracking-wider">
-        Advertisement
-      </p>
-      <div className="flex justify-center">
-        <div ref={containerRef} className="w-full max-w-2xl" />
+    <div className="fixed bottom-4 left-4 right-4 z-40 animate-in slide-in-from-bottom-4 duration-300">
+      <div className="mx-auto max-w-md rounded-2xl bg-card border border-border shadow-xl p-3 flex items-center gap-3">
+        <div
+          onClick={handleClick}
+          className="flex-1 flex items-center gap-3 cursor-pointer"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg flex-shrink-0">
+            🎁
+          </div>
+          <div className="min-w-0">
+            <p className="font-bold text-foreground text-sm">Special Offer</p>
+            <p className="text-[11px] text-muted-foreground">Tap to claim your reward</p>
+          </div>
+          <ExternalLink className="w-4 h-4 text-primary flex-shrink-0" />
+        </div>
+        <button
+          onClick={(e) => { e.stopPropagation(); setDismissed(true); }}
+          className="flex-shrink-0 p-1.5 rounded-lg hover:bg-muted transition-colors text-muted-foreground"
+          aria-label="Dismiss"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
+      <p className="text-[9px] text-muted-foreground/40 text-center mt-1">Sponsored</p>
     </div>
   );
 };
