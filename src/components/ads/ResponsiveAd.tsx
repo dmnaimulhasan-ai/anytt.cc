@@ -1,75 +1,44 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useAdAnalytics } from "@/hooks/useAdAnalytics";
+import { ArrowRight } from "lucide-react";
 
-const AD_LOAD_TIMEOUT = 8000;
+const DIRECT_LINK_URL = "https://omg10.com/4/1073301";
+
+const VARIATIONS = [
+  { emoji: "🌟", text: "You might like this", cta: "Check it out" },
+  { emoji: "🎯", text: "Picked for you", cta: "See more" },
+  { emoji: "✨", text: "Something special", cta: "Discover" },
+];
 
 interface ResponsiveAdProps {
   className?: string;
-  position?: 'after-input' | 'below-results' | 'between-sections';
+  position?: "after-input" | "below-results" | "between-sections";
 }
 
-/**
- * Monetag In-Page Push (replaces Adsterra Responsive Ad)
- */
-const ResponsiveAd = ({ className = "", position = 'between-sections' }: ResponsiveAdProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const loadedRef = useRef(false);
-  const [adFailed, setAdFailed] = useState(false);
+const ResponsiveAd = ({ className = "", position = "between-sections" }: ResponsiveAdProps) => {
+  const [variation] = useState(() => VARIATIONS[Math.floor(Math.random() * VARIATIONS.length)]);
   const { trackAdEvent } = useAdAnalytics();
 
-  useEffect(() => {
-    if (!containerRef.current || loadedRef.current) return;
-    loadedRef.current = true;
-
-    const timeoutId = setTimeout(() => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "timeout",
-        adComponent: "ResponsiveAd",
-        adPosition: position,
-        errorReason: "Ad failed to load within timeout",
-      });
-    }, AD_LOAD_TIMEOUT);
-
-    const script = document.createElement("script");
-    script.dataset.zone = "10733016";
-    script.src = "https://nap5k.com/tag.min.js";
-    script.async = true;
-    script.onerror = () => {
-      setAdFailed(true);
-      trackAdEvent({
-        eventType: "failure",
-        adComponent: "ResponsiveAd",
-        adPosition: position,
-        errorReason: "Script failed to load",
-      });
-    };
-    script.onload = () => {
-      clearTimeout(timeoutId);
-      trackAdEvent({
-        eventType: "load",
-        adComponent: "ResponsiveAd",
-        adPosition: position,
-      });
-    };
-    containerRef.current.appendChild(script);
-
-    return () => clearTimeout(timeoutId);
-  }, [position, trackAdEvent]);
-
-  if (adFailed) {
-    return (
-      <div className={`flex justify-center my-4 ${className}`}>
-        <div className="flex items-center justify-center bg-muted/30 rounded-lg border border-border/50 p-4" style={{ minHeight: 100 }}>
-          <p className="text-sm text-muted-foreground">Sponsored</p>
-        </div>
-      </div>
-    );
-  }
+  const handleClick = () => {
+    trackAdEvent({ eventType: "click", adComponent: "ResponsiveAd", adPosition: position });
+    window.open(DIRECT_LINK_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
-    <div className={`flex justify-center my-4 ${className}`}>
-      <div ref={containerRef} className="w-full max-w-2xl" />
+    <div className={`my-4 px-4 ${className}`}>
+      <div
+        onClick={handleClick}
+        className="cursor-pointer mx-auto max-w-2xl rounded-xl border border-border/50 bg-muted/30 p-3 flex items-center justify-between gap-3 transition-all hover:bg-muted/50 active:scale-[0.98]"
+      >
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{variation.emoji}</span>
+          <span className="text-sm text-muted-foreground">{variation.text}</span>
+        </div>
+        <span className="text-xs text-primary font-medium flex items-center gap-1">
+          {variation.cta} <ArrowRight className="w-3 h-3" />
+        </span>
+      </div>
+      <p className="text-[9px] text-muted-foreground/40 text-center mt-1">Sponsored</p>
     </div>
   );
 };

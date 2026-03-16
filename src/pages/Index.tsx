@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SocialBar from "@/components/ads/SocialBar";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import InlineAd from "@/components/ads/InlineAd";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { useLanguageRedirect } from "@/hooks/useLanguageRedirect";
 import { 
   seoConfig, 
@@ -126,9 +129,17 @@ const Index = () => {
         <Suspense fallback={null}>
           <DownloadHistory />
         </Suspense>
+
+        {/* Ad after hero */}
+        <BannerAd />
+
         <Suspense fallback={<SectionLoader />}>
           <AboutSection />
         </Suspense>
+
+        {/* Ad between sections */}
+        <InlineAd />
+
         <Suspense fallback={<SectionLoader />}>
           <HowToSection />
         </Suspense>
@@ -141,6 +152,9 @@ const Index = () => {
         <Suspense fallback={<SectionLoader />}>
           <FAQSection faqs={homeFaqs} />
         </Suspense>
+
+        {/* Ad after FAQ */}
+        <NativeBanner />
 
         {/* Internal links section for SEO */}
         <section className="py-8 md:py-12 px-4 bg-muted/10">
