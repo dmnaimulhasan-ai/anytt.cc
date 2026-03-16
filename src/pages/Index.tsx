@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SocialBar from "@/components/ads/SocialBar";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import InlineAd from "@/components/ads/InlineAd";
+import NativeBanner from "@/components/ads/NativeBanner";
+import BannerAd from "@/components/ads/BannerAd";
 import { useLanguageRedirect } from "@/hooks/useLanguageRedirect";
 import { 
   seoConfig, 
