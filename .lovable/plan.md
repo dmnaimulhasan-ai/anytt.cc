@@ -1,108 +1,68 @@
+# Ads দৃশ্যমান করার পরিকল্পনা
+
+## সমস্যা
+
+Monetag In-Page Push (zone 10733016) হলো **notification-style overlay** ad — এটা পেজের content এর মধ্যে visible banner হিসেবে দেখায় না। তাই `BannerAd`, `NativeBanner`, `InlineAd`, `ResponsiveAd`, `ScrollBanner` — এগুলোর container div খালি থাকে। ইউজার কোনো ad দেখতে পায় না।
+
+Vignette, Popunder, Push Notifications — এগুলো background/overlay ad, সেগুলো ঠিক আছে। কিন্তু **inline visible ads** দরকার।
+
+## সমাধান
+
+Monetag In-Page Push scripts background এ থাকবে (revenue generate করবে), কিন্তু পাশাপাশি **visible ad banners** যোগ করবো যেগুলো Direct Link (`https://omg10.com/4/1073301`) এ redirect করবে। এতে ইউজার ad দেখবে এবং click করলে revenue আসবে।
+
+## কী তৈরি হবে
+
+### 1. নতুন Visible Ad Components
+
+**a) `BannerAd.tsx` — Redesign**
+
+- একটি আকর্ষণীয় card-style banner যেখানে promotional content থাকবে
+- "Sponsored" label + eye-catching design + CTA button
+- Click করলে Direct Link open হবে নতুন tab এ
+- Rotating ad copy (3-4 variations randomly দেখাবে)
+- Monetag In-Page Push script ও background এ load হবে
+
+**b) `NativeBanner.tsx` — Native-looking ad card**
+
+- পেজের content এর সাথে মিলে যায় এমন design
+- "Recommended" বা "Sponsored" tag সহ
+- Direct Link এ redirect
+
+**c) `InlineAd.tsx` — Inline promotional banner**
+
+- Sections এর মাঝে বসবে
+- Gradient background + bold CTA
+- Direct Link এ redirect
+
+**d) `ScrollBanner.tsx` — Scroll-triggered visible banner**  
+
+- 5% scroll করলে দেখাবে
+- Floating/sticky style
+- Close button সহ
+
+### 2. Index.tsx — আরও ad placement যোগ
+
+- HeroSection এর নিচে একটি `BannerAd`
+- AboutSection ও HowToSection এর মাঝে `InlineAd`
+- FAQ এর নিচে `NativeBanner`
+
+### 3. TikTokDownloader.tsx ও অন্যান্য pages
+
+- Download result এর নিচে `BannerAd`
+- FAQ section এর আগে `NativeBanner`
+
+### 4. Ad Content Variations
+
+Banner গুলোতে rotating content থাকবে:
+
+- "🔥 Exclusive Deal — Claim Your Reward!"
+- "🎁 Free Gift — Limited Time Offer"  
+- "⚡ Trending Now — Don't Miss Out"
+- "💰 Special Offer — Click to Unlock"
+
+## পরিবর্তিত ফাইল
 
 
-# SnapTik, SSStiK, TikMate Competitor Keywords যোগ করা
-
-## বিশ্লেষণ
-
-তিনটি competitor এর সাইট রিসার্চ করে তাদের SEO keyword patterns বের করা হয়েছে:
-
-### Competitor ভাষা Coverage
-
-| Competitor | ভাষা সমূহ |
-|---|---|
-| **SnapTik** | EN, ID, AR, DE, FR, ES, RU, TR, PT, VI, TH, JA, IT, PL, KO (15 ভাষা) |
-| **SSStiK/SSStiKtok** | EN, ES, PT, VI, FR, ID, TH, ZH, AR, IT, JA, HI, DE, KO, TR, RU (16 ভাষা) |
-| **TikMate** | EN, ID, TH, VI, TR, PT, ES (7 ভাষা) |
-
-### যে keywords আমাদের নেই (নতুন যোগ হবে)
-
-**1. SnapTik Brand Hijacking (~30 terms, multilingual)**
-- snaptik.app, snap tik app, snaptik video downloader, snaptik tiktok downloader
-- snaptik ID (Indonesian), snaptik Deutsch, snaptik francais
-- snaptik slideshow download, snaptik photo download
-- snaptik not working, snaptik alternative [language], snaptik vs anytt
-- Italian: "snaptik italiano", Polish: "snaptik pobierz", Korean: "스냅틱", Japanese: "スナップティック"
-
-**2. SSStiK Brand Hijacking (~30 terms, multilingual)**
-- ssstik.io, ssstik download, ssstik video downloader, ssstiktok.io
-- ssstik mp3, ssstik mp4, ssstik story download
-- ssstik not working, ssstik down, ssstik proxy, ssstik alternative
-- ssstik Indonesia, ssstik Vietnam, ssstik Thai
-- Chinese: "ssstik下载", Korean: "ssstik 다운로드", Japanese: "ssstikダウンロード"
-
-**3. TikMate Brand Hijacking (~25 terms)**
-- tikmate.app, tikmate online, tikmate download, tikmate video downloader
-- tikmate no watermark, tikmate mp3, tikmate HD
-- tikmate not working, tikmate alternative, tikmate vs anytt
-- tikmate apk, tikmate app download, tikmate for iPhone
-
-**4. New Language Keywords - Italian (~15 terms)**
-- scaricare video TikTok, scaricare TikTok senza filigrana, TikTok downloader italiano
-- scaricare video TikTok gratis, salvare video TikTok, TikTok mp3 scaricare
-- snaptik alternativa italiano, ssstik alternativa italiano
-
-**5. New Language Keywords - Polish (~15 terms)**
-- pobierz wideo TikTok, TikTok bez znaku wodnego, pobierz TikTok za darmo
-- TikTok downloader polski, zapisz wideo TikTok, TikTok mp3 pobierz
-- snaptik alternatywa, ssstik alternatywa
-
-**6. New Language Keywords - Korean (~15 terms)**
-- 틱톡 다운로드, 틱톡 워터마크 없이, 틱톡 동영상 저장, 틱톡 mp3 다운로드
-- 스냅틱 대안, ssstik 대안, 틱톡 다운로더 무료
-
-**7. New Language Keywords - Japanese (~15 terms)**
-- TikTok動画ダウンロード, TikTokウォーターマークなし, TikTok保存
-- TikTok mp3ダウンロード, スナップティック代替, TikTokダウンローダー無料
-
-**8. Cross-competitor "vs" and comparison keywords (~20 terms)**
-- snaptik vs ssstik, snaptik vs tikmate, ssstik vs tikmate
-- snaptik vs anytt, ssstik vs anytt, tikmate vs anytt
-- best tiktok downloader snaptik or ssstik
-- snaptik ssstik tikmate comparison 2026
-
-## ফাইল পরিবর্তন
-
-### 1. `src/lib/seo-config.ts`
-
-**নতুন categories যোগ:**
-- `snaptikCompetitor` (~30 multilingual brand hijacking terms)
-- `ssstikCompetitor` (~30 multilingual brand hijacking terms)  
-- `tikmateCompetitor` (~25 brand hijacking terms)
-- `competitorComparison` (~20 "vs" and comparison terms)
-
-**`allTiktokKeywords` array আপডেট:**
-- নতুন 4টি category include করা
-
-### 2. `src/lib/worldwide-keywords.ts`
-
-**নতুন arrays যোগ:**
-- `italianKeywords` (~15 terms) - Italian market (snaptik/ssstik উভয়ই target করে)
-- `polishKeywords` (~15 terms) - Polish market (snaptik target করে)
-- `koreanKeywords` (~15 terms) - Korean market (snaptik/ssstik উভয়ই target করে)
-- `japaneseKeywords` (~15 terms) - Japanese market (snaptik/ssstik উভয়ই target করে)
-- `competitorBrandKeywords` (~25 terms) - Cross-language competitor brand terms
-
-**`allWorldwideKeywords` আপডেট:**
-- সব নতুন arrays push করা
-
-## টেকনিক্যাল ডিটেইলস
-
-```text
-seo-config.ts:
-  - Add snaptikCompetitor category (~30 terms)
-  - Add ssstikCompetitor category (~30 terms)
-  - Add tikmateCompetitor category (~25 terms)
-  - Add competitorComparison category (~20 terms)
-  - Wire all into allTiktokKeywords
-
-worldwide-keywords.ts:
-  - Add italianKeywords (~15 terms)
-  - Add polishKeywords (~15 terms)
-  - Add koreanKeywords (~15 terms)
-  - Add japaneseKeywords (~15 terms)
-  - Add competitorBrandKeywords (~25 terms)
-  - Push all into allWorldwideKeywords
-```
-
-মোট ~200 নতুন keyword যোগ হবে, যা SnapTik (15 ভাষা), SSStiK (16 ভাষা), এবং TikMate (7 ভাষা) এর সব major market কভার করবে এবং তাদের brand terms hijack করবে। নতুন Italian, Polish, Korean, Japanese market ও যোগ হবে যেগুলো আগে ছিল না।
-
+| ফাইল | কাজ    |
+| ---- | ------ |
+| `src | &nbsp; |
