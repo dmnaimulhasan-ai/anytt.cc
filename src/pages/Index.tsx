@@ -129,9 +129,17 @@ const Index = () => {
         <Suspense fallback={null}>
           <DownloadHistory />
         </Suspense>
+
+        {/* Ad after hero */}
+        <BannerAd />
+
         <Suspense fallback={<SectionLoader />}>
           <AboutSection />
         </Suspense>
+
+        {/* Ad between sections */}
+        <InlineAd />
+
         <Suspense fallback={<SectionLoader />}>
           <HowToSection />
         </Suspense>
@@ -144,6 +152,9 @@ const Index = () => {
         <Suspense fallback={<SectionLoader />}>
           <FAQSection faqs={homeFaqs} />
         </Suspense>
+
+        {/* Ad after FAQ */}
+        <NativeBanner />
 
         {/* Internal links section for SEO */}
         <section className="py-8 md:py-12 px-4 bg-muted/10">

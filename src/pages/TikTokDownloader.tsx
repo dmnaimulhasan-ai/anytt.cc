@@ -138,6 +138,9 @@ const TikTokDownloader = () => {
 
         {/* Native Banner Ad */}
         <NativeBanner />
+        
+        {/* Inline Ad before FAQ */}
+        <InlineAd />
 
         {/* FAQ Section */}
         <section className="py-16 px-4 md:px-6 bg-muted/20">
