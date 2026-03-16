@@ -5,6 +5,7 @@ import SEOHead from "@/components/SEOHead";
 import PlatformDownloader from "@/components/PlatformDownloader";
 import NativeBanner from "@/components/ads/NativeBanner";
 import BannerAd from "@/components/ads/BannerAd";
+import InlineAd from "@/components/ads/InlineAd";
 import { Link } from "react-router-dom";
 import {
   seoConfig, 
