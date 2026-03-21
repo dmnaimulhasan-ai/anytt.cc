@@ -181,21 +181,8 @@ const BlogPost = () => {
               </div>
             )}
             
-            {/* Promotional Smartlink CTA */}
-            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 text-center">
-              <h3 className="text-xl font-bold font-display mb-2">🎁 Exclusive Deals & Offers</h3>
-              <p className="text-muted-foreground mb-4">Check out amazing deals and premium content!</p>
-              <a 
-                href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                  Discover Offers
-                  <ExternalLink className="h-4 w-4 ml-2" />
-                </Button>
-              </a>
-            </div>
+            {/* Ad placement - Monetag handles rendering */}
+            <BannerAd />
           </div>
         </article>
         
