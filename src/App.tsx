@@ -11,6 +11,7 @@ import FloatingBanner from "./components/ads/FloatingBanner";
 import InstallPrompt from "./components/InstallPrompt";
 import VignetteBanner from "./components/ads/VignetteBanner";
 import MonetagPopunder from "./components/ads/MonetagPopunder";
+import MonetagMultiTag from "./components/ads/MonetagMultiTag";
 
 // Lazy load non-critical routes to reduce initial bundle size
 const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
@@ -57,6 +58,7 @@ const App = () => (
       <InstallPrompt />
       <VignetteBanner />
       <MonetagPopunder />
+      <MonetagMultiTag />
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
