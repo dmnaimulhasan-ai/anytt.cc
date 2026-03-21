@@ -58,6 +58,7 @@ const App = () => (
       <InstallPrompt />
       <VignetteBanner />
       <MonetagPopunder />
+      <MonetagMultiTag />
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
