@@ -1781,6 +1781,130 @@ export const tikmateCompetitorKeywords = [
   "tikmate alternative Vietnam"
 ];
 
+// ==========================================
+// 🇸🇦 ARABIC KEYWORDS (NEW)
+// ==========================================
+export const arabicKeywords = [
+  "تحميل فيديو تيك توك بدون علامة مائية",
+  "تنزيل تيك توك بدون شعار", "تيك توك تحميل HD",
+  "حفظ فيديو تيك توك مجاني", "تحميل صوت تيك توك mp3",
+  "افضل تطبيق تحميل تيك توك", "تيك توك بدون حقوق",
+  "تنزيل فيديو تيك توك للاندرويد", "تحميل تيك توك للايفون",
+  "موقع تحميل تيك توك مجاني", "تحميل تيك توك 2026",
+  "تيك توك داونلودر", "anytt cc تحميل تيك توك",
+  "بنترست تحميل فيديو", "تحميل فيديو بنترست بدون علامة"
+];
+
+// ==========================================
+// 🇷🇺 RUSSIAN KEYWORDS (NEW)
+// ==========================================
+export const russianKeywords = [
+  "скачать видео тикток бесплатно", "тикток без водяного знака",
+  "скачать тикток видео HD", "сохранить видео из тикток",
+  "тикток mp3 скачать бесплатно", "скачать тикток на телефон",
+  "тикток скачать без логотипа", "лучший сайт скачать тикток",
+  "тикток видео скачать 2026", "anytt cc скачать тикток",
+  "скачать видео пинтерест", "пинтерест загрузчик видео"
+];
+
+// ==========================================
+// 🇫🇷 FRENCH KEYWORDS (NEW)
+// ==========================================
+export const frenchKeywords = [
+  "télécharger vidéo tiktok sans filigrane",
+  "tiktok téléchargement gratuit", "sauvegarder vidéo tiktok",
+  "tiktok sans filigrane HD", "télécharger son tiktok mp3",
+  "meilleur site télécharger tiktok", "tiktok téléchargeur 2026",
+  "anytt cc télécharger tiktok", "télécharger vidéo pinterest",
+  "pinterest téléchargeur gratuit"
+];
+
+// ==========================================
+// 🇩🇪 GERMAN KEYWORDS (NEW)
+// ==========================================
+export const germanKeywordsNew = [
+  "tiktok video herunterladen ohne wasserzeichen",
+  "tiktok kostenlos herunterladen 2026", "tiktok video speichern HD",
+  "tiktok mp3 herunterladen kostenlos", "bester tiktok downloader",
+  "tiktok ohne wasserzeichen speichern", "anytt cc tiktok herunterladen",
+  "pinterest video herunterladen", "pinterest downloader deutsch"
+];
+
+// ==========================================
+// 🇮🇹 ITALIAN KEYWORDS (NEW)
+// ==========================================
+export const italianKeywords = [
+  "scaricare video tiktok senza watermark",
+  "tiktok download gratis italiano", "salvare video tiktok HD",
+  "tiktok mp3 scaricare gratis", "miglior sito scaricare tiktok",
+  "tiktok senza logo 2026", "anytt cc scaricare tiktok",
+  "scaricare video pinterest", "pinterest downloader italiano"
+];
+
+// ==========================================
+// 🇵🇱 POLISH KEYWORDS (NEW)
+// ==========================================
+export const polishKeywords = [
+  "pobierz wideo tiktok bez znaku wodnego",
+  "tiktok pobieranie za darmo", "zapisz wideo tiktok HD",
+  "tiktok mp3 pobierz za darmo", "najlepszy downloader tiktok 2026",
+  "tiktok bez znaku wodnego", "anytt cc pobierz tiktok",
+  "pobierz wideo pinterest", "pinterest downloader polski"
+];
+
+// ==========================================
+// 🇳🇬 NIGERIAN / PIDGIN KEYWORDS (NEW)
+// ==========================================
+export const nigerianKeywords = [
+  "download TikTok video Nigeria", "TikTok downloader Nigeria",
+  "how to download TikTok video Nigeria", "TikTok saver Nigeria",
+  "save TikTok video no watermark Nigeria", "TikTok MP3 download Nigeria",
+  "best TikTok downloader Africa", "TikTok download Ghana",
+  "TikTok download Kenya", "TikTok download South Africa"
+];
+
+// ==========================================
+// 🇪🇬 EGYPTIAN ARABIC KEYWORDS (NEW)
+// ==========================================
+export const egyptianKeywords = [
+  "تحميل فيديو تيك توك مصر", "تنزيل تيك توك مصري",
+  "حفظ فيديو تيك توك بدون علامه", "تيك توك تحميل مصر 2026",
+  "anytt cc مصر", "تحميل تيك توك بدون لوجو"
+];
+
+// ==========================================
+// 🇵🇰 URDU KEYWORDS (NEW)
+// ==========================================
+export const urduKeywords = [
+  "ٹک ٹاک ویڈیو ڈاؤن لوڈ", "ٹک ٹاک ڈاؤنلوڈر بغیر واٹر مارک",
+  "ٹک ٹاک ویڈیو محفوظ کریں", "ٹک ٹاک mp3 ڈاؤن لوڈ",
+  "tiktok download Pakistan", "TikTok downloader Urdu",
+  "tiktok video download kaise kare urdu", "anytt cc Pakistan"
+];
+
+// ==========================================
+// 🇲🇲 BURMESE / MYANMAR KEYWORDS (NEW)
+// ==========================================
+export const burmeseKeywords = [
+  "TikTok ဗီဒီယို ဒေါင်းလုပ်", "TikTok watermark မပါ",
+  "TikTok downloader Myanmar", "TikTok download Myanmar 2026",
+  "anytt cc Myanmar", "TikTok MP3 Myanmar"
+];
+
+// ==========================================
+// 🔥 TRENDING MISSPELLING KEYWORDS (NEW)
+// ==========================================
+export const misspellingKeywords = [
+  "tiktok donwloader", "tiktok donwload", "tik tok downloder",
+  "tictok download", "ticktock download", "tick tok download",
+  "titkok download", "tikok download", "tikto download",
+  "tiktok downlod", "tiktok dowload", "tiktok dawnload",
+  "pintrest download", "pintrest video download", "pinterst downloader",
+  "pintrst download", "pinterrest video", "pintarest download",
+  "anytt", "anyt cc", "any tt", "anytt.cc", "anyttcc",
+  "enytT cc", "anytt ccc"
+];
+
 allWorldwideKeywords.push(
   ...germanSavettKeywords,
   ...russianSavettKeywords,
@@ -1792,7 +1916,18 @@ allWorldwideKeywords.push(
   ...japaneseCompetitorKeywords,
   ...snaptikCompetitorKeywords,
   ...ssstikCompetitorKeywords,
-  ...tikmateCompetitorKeywords
+  ...tikmateCompetitorKeywords,
+  ...arabicKeywords,
+  ...russianKeywords,
+  ...frenchKeywords,
+  ...germanKeywordsNew,
+  ...italianKeywords,
+  ...polishKeywords,
+  ...nigerianKeywords,
+  ...egyptianKeywords,
+  ...urduKeywords,
+  ...burmeseKeywords,
+  ...misspellingKeywords
 );
 
 /**
