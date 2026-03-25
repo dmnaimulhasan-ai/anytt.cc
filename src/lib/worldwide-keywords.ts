@@ -1831,9 +1831,9 @@ export const germanKeywordsNew = [
 ];
 
 // ==========================================
-// 🇮🇹 ITALIAN KEYWORDS (NEW)
+// 🇮🇹 ITALIAN KEYWORDS EXTENDED (NEW)
 // ==========================================
-export const italianKeywords = [
+export const italianKeywordsExtended = [
   "scaricare video tiktok senza watermark",
   "tiktok download gratis italiano", "salvare video tiktok HD",
   "tiktok mp3 scaricare gratis", "miglior sito scaricare tiktok",
@@ -1842,9 +1842,9 @@ export const italianKeywords = [
 ];
 
 // ==========================================
-// 🇵🇱 POLISH KEYWORDS (NEW)
+// 🇵🇱 POLISH KEYWORDS EXTENDED (NEW)
 // ==========================================
-export const polishKeywords = [
+export const polishKeywordsExtended = [
   "pobierz wideo tiktok bez znaku wodnego",
   "tiktok pobieranie za darmo", "zapisz wideo tiktok HD",
   "tiktok mp3 pobierz za darmo", "najlepszy downloader tiktok 2026",
@@ -1853,9 +1853,9 @@ export const polishKeywords = [
 ];
 
 // ==========================================
-// 🇳🇬 NIGERIAN / PIDGIN KEYWORDS (NEW)
+// 🇳🇬 NIGERIAN KEYWORDS EXTENDED (NEW)
 // ==========================================
-export const nigerianKeywords = [
+export const nigerianKeywordsExtended = [
   "download TikTok video Nigeria", "TikTok downloader Nigeria",
   "how to download TikTok video Nigeria", "TikTok saver Nigeria",
   "save TikTok video no watermark Nigeria", "TikTok MP3 download Nigeria",
@@ -1883,9 +1883,9 @@ export const urduKeywords = [
 ];
 
 // ==========================================
-// 🇲🇲 BURMESE / MYANMAR KEYWORDS (NEW)
+// 🇲🇲 BURMESE / MYANMAR KEYWORDS EXTENDED (NEW)
 // ==========================================
-export const burmeseKeywords = [
+export const burmeseKeywordsExtended = [
   "TikTok ဗီဒီယို ဒေါင်းလုပ်", "TikTok watermark မပါ",
   "TikTok downloader Myanmar", "TikTok download Myanmar 2026",
   "anytt cc Myanmar", "TikTok MP3 Myanmar"
