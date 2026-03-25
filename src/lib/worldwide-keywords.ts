@@ -1921,12 +1921,12 @@ allWorldwideKeywords.push(
   ...russianKeywords,
   ...frenchKeywords,
   ...germanKeywordsNew,
-  ...italianKeywords,
-  ...polishKeywords,
-  ...nigerianKeywords,
+  ...italianKeywordsExtended,
+  ...polishKeywordsExtended,
+  ...nigerianKeywordsExtended,
   ...egyptianKeywords,
   ...urduKeywords,
-  ...burmeseKeywords,
+  ...burmeseKeywordsExtended,
   ...misspellingKeywords
 );
 
