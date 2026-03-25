@@ -421,6 +421,141 @@ export const tiktokKeywords = {
     "snaptik or tikmate which is better",
     "ssstik or snaptik which is faster",
     "anytt vs all tiktok downloaders 2026"
+  ],
+  // 🔥 2026 Viral & Trending Keywords (NEW)
+  viral2026: [
+    "tiktok download without watermark 2026 free",
+    "tiktok video downloader online free 2026",
+    "tiktok saver online 2026 no app",
+    "download tiktok reels without watermark",
+    "tiktok shorts download", "tiktok clips downloader 2026",
+    "tiktok fyp video download", "save tiktok fyp video",
+    "tiktok for you page download", "tiktok viral video download",
+    "tiktok trending sound download 2026", "tiktok challenge video download",
+    "tiktok duet download no watermark 2026", "tiktok stitch saver 2026",
+    "tiktok effect video download free", "tiktok green screen video save",
+    "download tiktok compilation", "tiktok mashup downloader 2026",
+    "tiktok edit download no watermark", "tiktok fan edit download",
+    "tiktok trend download 2026", "tiktok dance download",
+    "tiktok comedy video download", "tiktok prank download",
+    "download tiktok to instagram reels", "tiktok to youtube shorts converter",
+    "tiktok download for whatsapp status", "save tiktok for whatsapp",
+    "tiktok video download telegram bot", "tiktok download discord bot"
+  ],
+  // 🔤 Misspelling & Typo Keywords (NEW)
+  misspellings: [
+    "tiktok donwloader", "tiktok donwload", "tikток downloader",
+    "tik tok downloder", "tiktok downloder", "tik tok donwload",
+    "tictok download", "tictok downloader", "ticktock download",
+    "ticktock downloader", "tick tock video download", "tick tok download",
+    "titkok download", "titkok downloader", "tktok download",
+    "tikok download", "tikto download", "tiktok downlod",
+    "tiktok downloaad", "tiktok dowload", "tiktok dawnload",
+    "tik tok dawnloader", "tikitok downloader", "tiktk download",
+    "anytt", "anyt cc", "any tt", "anytt.cc", "anytt cc",
+    "anyttcc", "anytt. cc", "any tt cc", "anytt download",
+    "enytT cc", "anytt ccc", "anytt.ccc", "aanytt cc",
+    "annyt cc", "anytt cc download", "anytt cc tiktok"
+  ],
+  // 📲 Social Media Cross-Platform (NEW)
+  crossPlatform: [
+    "download instagram reels without watermark",
+    "instagram video downloader 2026", "instagram reels saver",
+    "youtube shorts downloader", "youtube shorts download no watermark",
+    "facebook video downloader 2026", "facebook reels download",
+    "snapchat video download", "snapchat spotlight download",
+    "twitter video download", "x video downloader 2026",
+    "reddit video downloader", "reddit video download with audio",
+    "threads video download", "threads downloader 2026",
+    "likee video download", "kwai video downloader",
+    "social media video downloader all in one",
+    "all social media downloader 2026",
+    "universal video downloader online free",
+    "multi platform video downloader", "all in one video saver"
+  ],
+  // 🎓 Educational & How-To (NEW)
+  educational: [
+    "how to download tiktok video 2026",
+    "cara download tiktok tanpa watermark",
+    "como descargar video de tiktok sin marca de agua",
+    "como baixar video do tiktok sem marca d'agua",
+    "tiktok video nasıl indirilir",
+    "วิธีดาวน์โหลดวิดีโอ tiktok",
+    "cách tải video tiktok không có watermark",
+    "টিকটক ভিডিও ডাউনলোড করার উপায়",
+    "tiktok video download kaise kare",
+    "tiktok video indirme 2026",
+    "tiktok video kaydetme",
+    "tiktok ダウンロード 方法", "tiktok 다운로드 방법",
+    "tiktok скачать видео без водяного знака",
+    "tiktok herunterladen ohne wasserzeichen",
+    "télécharger vidéo tiktok sans filigrane",
+    "scaricare video tiktok senza watermark",
+    "descargar tiktok sin marca de agua gratis"
+  ],
+  // 💎 High-Value Commercial Intent (NEW)
+  commercialIntent: [
+    "best tiktok downloader 2026", "top tiktok video downloader",
+    "fastest tiktok downloader", "safest tiktok downloader",
+    "most reliable tiktok downloader", "unlimited tiktok downloader",
+    "tiktok downloader no ads", "tiktok downloader no popup",
+    "tiktok downloader no redirect", "clean tiktok downloader",
+    "tiktok downloader instant download", "tiktok downloader one click",
+    "tiktok downloader api", "tiktok downloader extension chrome 2026",
+    "tiktok downloader addon firefox", "tiktok downloader bookmarklet",
+    "free tiktok downloader no sign up", "tiktok downloader without email",
+    "tiktok batch download free unlimited", "tiktok mass downloader 2026",
+    "tiktok profile downloader all videos", "download all tiktok videos from profile",
+    "tiktok downloader by username", "tiktok downloader by hashtag"
+  ],
+  // 🌐 Arabic & Middle East Keywords (NEW)
+  arabicKeywords: [
+    "تحميل فيديو تيك توك", "تحميل تيك توك بدون علامة مائية",
+    "تنزيل فيديو تيك توك", "حفظ فيديو تيك توك",
+    "تيك توك بدون شعار", "تحميل تيك توك HD",
+    "تحميل صوت تيك توك mp3", "تنزيل تيك توك مجاني",
+    "تيك توك داونلودر عربي", "افضل موقع تحميل تيك توك",
+    "tiktok download arabic", "tiktok downloader arabic",
+    "tiktok تحميل", "تيك توك تحميل فيديو بدون حقوق"
+  ],
+  // 🇷🇺 Russian Keywords (NEW)
+  russianKeywords: [
+    "скачать видео тикток", "скачать тикток без водяного знака",
+    "тикток скачать бесплатно", "сохранить видео тикток",
+    "тикток без логотипа", "скачать тикток HD",
+    "тикток mp3 скачать", "тикток скачать онлайн",
+    "лучший загрузчик тикток 2026", "тикток скачать видео бесплатно",
+    "tiktok скачать", "тик ток скачать видео без водяного знака"
+  ],
+  // 🇫🇷 French Keywords (NEW)
+  frenchKeywords: [
+    "télécharger vidéo tiktok", "tiktok téléchargeur sans filigrane",
+    "télécharger tiktok gratuit", "sauvegarder vidéo tiktok",
+    "tiktok sans filigrane", "télécharger tiktok HD",
+    "tiktok mp3 télécharger", "meilleur téléchargeur tiktok 2026",
+    "tiktok télécharger en ligne", "télécharger vidéo tiktok gratuitement"
+  ],
+  // 🇩🇪 German Keywords (NEW)
+  germanKeywords: [
+    "tiktok video herunterladen", "tiktok downloader ohne wasserzeichen",
+    "tiktok kostenlos herunterladen", "tiktok video speichern",
+    "tiktok ohne wasserzeichen", "tiktok HD herunterladen",
+    "tiktok mp3 herunterladen", "bester tiktok downloader 2026",
+    "tiktok video herunterladen kostenlos", "tiktok online herunterladen"
+  ],
+  // 🇮🇹 Italian Keywords (NEW)
+  italianKeywords: [
+    "scaricare video tiktok", "tiktok downloader senza watermark",
+    "scaricare tiktok gratis", "salvare video tiktok",
+    "tiktok senza watermark", "scaricare tiktok HD",
+    "tiktok mp3 scaricare", "miglior downloader tiktok 2026"
+  ],
+  // 🇵🇱 Polish Keywords (NEW)
+  polishKeywords: [
+    "pobierz wideo tiktok", "tiktok pobieranie bez znaku wodnego",
+    "tiktok za darmo pobierz", "zapisz wideo tiktok",
+    "tiktok bez znaku wodnego", "tiktok HD pobierz",
+    "tiktok mp3 pobierz", "najlepszy downloader tiktok 2026"
   ]
 };
 
