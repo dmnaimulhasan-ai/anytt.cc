@@ -556,6 +556,79 @@ export const tiktokKeywords = {
     "tiktok za darmo pobierz", "zapisz wideo tiktok",
     "tiktok bez znaku wodnego", "tiktok HD pobierz",
     "tiktok mp3 pobierz", "najlepszy downloader tiktok 2026"
+  ],
+  // 🔥 TikTok Viral & Trend Keywords (2026 Q2)
+  viralTrend2026Q2: [
+    "TikTok brain rot download", "TikTok NPC stream download", "TikTok POV download no watermark",
+    "TikTok edit download HD", "TikTok fancam download", "TikTok compilation download",
+    "TikTok aesthetic video download", "TikTok GRWM download", "TikTok mukbang download",
+    "TikTok storytime download", "TikTok rant download", "TikTok CapCut edit download",
+    "TikTok transition video download", "TikTok trend compilation save", "TikTok POV series download",
+    "TikTok dark humor download", "TikTok wholesome video save", "TikTok satisfying video download",
+    "TikTok ASMR download", "TikTok cooking video download HD", "TikTok gym video download",
+    "TikTok transformation video save", "TikTok unboxing download", "TikTok review video download"
+  ],
+  // 🔄 Cross-Platform & Repurpose Keywords
+  crossPlatformRepurpose: [
+    "TikTok to Instagram Reels converter", "TikTok to YouTube Shorts download",
+    "TikTok to WhatsApp Status download", "TikTok to Facebook Reels save",
+    "download TikTok for CapCut editing", "TikTok to Snapchat Spotlight",
+    "TikTok to Pinterest video upload", "TikTok to Twitter video post",
+    "convert TikTok to square video", "TikTok to LinkedIn video",
+    "TikTok to Telegram video share", "TikTok for presentation download",
+    "TikTok to GIF converter online", "repurpose TikTok content download",
+    "TikTok to blog embed download", "TikTok to website video download",
+    "TikTok vertical to horizontal convert", "TikTok to podcast audio extract"
+  ],
+  // ❓ People Also Ask / Question-Based Keywords
+  peopleAlsoAsk: [
+    "is it legal to download TikTok videos", "can you download private TikTok videos",
+    "why can't I save TikTok videos", "how to download TikTok without watermark on iPhone",
+    "does downloading TikTok reduce quality", "how to download TikTok audio only",
+    "is TikTok downloader safe to use", "can I download TikTok live videos",
+    "how to download TikTok slideshow as images", "why is TikTok save button disabled",
+    "how to download TikTok video with sound", "can you download TikTok stories",
+    "what is the best TikTok downloader 2026", "how to download TikTok drafts",
+    "does TikTok notify when you download", "how to download TikTok without app",
+    "can I download age restricted TikTok", "how to save TikTok to camera roll",
+    "why TikTok video won't download", "how to download TikTok batch videos"
+  ],
+  // 🗣️ Regional Slang & Informal Search Terms
+  regionalSlang: [
+    "tiktoker video save koro", "tiktok video kibhabe download korbo",
+    "tiktok video indirin", "tiktok vidéo télécharger",
+    "скачать тикток без водяного знака", "descargar tiktok sin marca de agua gratis 2026",
+    "tiktok ভিডিও সেভ করবো কিভাবে", "tiktok video ডাউনলোড",
+    "tiktok ladke wala video download", "tiktok girl dance download",
+    "tiktok funny video download karo", "tiktok sad video save koro",
+    "tiktok romantic video download kaise kare", "tiktok shayari video download",
+    "tiktok bangla funny video download", "tiktok hindi song video download",
+    "tiktok urdu poetry video save", "unduh video tiktok tanpa watermark gratis",
+    "tiktok videosunu indir bedava", "tải video tiktok không logo miễn phí",
+    "ดาวน์โหลดวิดีโอติ๊กต๊อกฟรี", "tiktok 動画 保存 無料"
+  ],
+  // 🚫 Competitor "Not Working" Keywords
+  competitorNotWorking: [
+    "snaptik not working 2026", "ssstik down alternative", "tikmate error fix",
+    "savefrom tiktok not working", "y2mate tiktok alternative 2026",
+    "snaptik server error", "ssstik 403 error", "tikmate banned",
+    "snaptik loading forever", "ssstik blank page", "tikmate not downloading",
+    "snaptik virus warning", "ssstik redirect problem", "tikmate slow download",
+    "snaptik captcha error", "ssstik region blocked", "tikmate app crash",
+    "musicallydown not working 2026", "tikdown error 2026", "toksaver down",
+    "snaptik alternative that works", "ssstik replacement 2026", "tikmate substitute free",
+    "savett not working fix", "qload server error 2026", "tikfast down alternative"
+  ],
+  // 📌 Pinterest Extended Keywords
+  pinterestExtended: [
+    "Pinterest video downloader HD", "download Pinterest Idea Pin", "Pinterest board download zip",
+    "save Pinterest video to phone", "Pinterest GIF download", "Pinterest Reel download",
+    "Pinterest Story download free", "Pinterest carousel download", "Pinterest infographic download",
+    "Pinterest recipe video download", "Pinterest DIY video save", "Pinterest fashion video download",
+    "Pinterest aesthetic board download", "Pinterest travel video save HD",
+    "Pinterest home decor video download", "Pinterest workout video download",
+    "Pinterest wedding ideas download", "Pinterest food video downloader free",
+    "download all Pinterest pins from board", "Pinterest to MP4 converter online"
   ]
 };
 
