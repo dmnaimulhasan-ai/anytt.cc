@@ -6078,4 +6078,9 @@ export const getInternalLinks = (): { text: string; url: string; keywords: strin
   { text: "SnapTik alternative", url: "/blog/snaptik-alternative-tiktok-downloader-2026", keywords: ["snaptik", "alternative"] },
   { text: "best TikTok downloader tools", url: "/blog/best-tiktok-downloader-tools-2026", keywords: ["best", "tools", "comparison"] },
   { text: "TikTok downloader comparison 2026", url: "/blog/best-tiktok-downloader-comparison-2026", keywords: ["comparison", "snaptik", "ssstik", "tikmate", "savett", "best", "review"] },
+  { text: "TikTok to Instagram Reels guide", url: "/blog/tiktok-to-instagram-reels-download-repurpose", keywords: ["instagram", "reels", "youtube shorts", "repurpose", "whatsapp"] },
+  { text: "download private TikTok videos", url: "/blog/download-private-tiktok-videos-guide", keywords: ["private", "private tiktok", "save disabled", "can't save"] },
+  { text: "TikTok downloader not working fix", url: "/blog/tiktok-downloader-not-working-fix-2026", keywords: ["not working", "error", "fix", "snaptik down", "ssstik error"] },
+  { text: "download TikTok ASMR aesthetic videos", url: "/blog/download-tiktok-asmr-aesthetic-videos-2026", keywords: ["asmr", "aesthetic", "fancam", "compilation", "grwm"] },
+  { text: "download Pinterest boards guide", url: "/blog/download-pinterest-board-complete-guide-2026", keywords: ["pinterest board", "idea pin", "pinterest video", "pinterest download"] },
 ];
