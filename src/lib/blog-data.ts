@@ -5399,7 +5399,7 @@ SSStiK has some redirect chains and third-party trackers. For a safer alternativ
       "tiktok downloader 2026", "cross platform video download", "repurpose social media content",
       "tiktok to reels", "tiktok to shorts", "multi platform video downloader"
     ],
-    content: \`
+    content: `
 # How to Download TikTok Videos & Repurpose for Instagram Reels, YouTube Shorts & WhatsApp Status
 
 *Last updated: April 2026*
@@ -5508,7 +5508,7 @@ Yes, but remove the watermark first. YouTube may suppress videos with visible Ti
 You should only repurpose your own content. For others' videos, always ask permission first.
 
 **Ready to start?** Download your TikTok videos now with [Anytt cc](https://anytt.cc/tiktok-downloader) — free, fast, no watermark!
-    \`
+    `
   },
   {
     slug: "download-private-tiktok-videos-guide",
@@ -5531,7 +5531,7 @@ You should only repurpose your own content. For others' videos, always ask permi
       "anytt", "anytt cc", "anytt.cc", "tt downloader", "tiktok downloader 2026",
       "tiktok no watermark", "download tiktok video"
     ],
-    content: \`
+    content: `
 # Can You Download Private TikTok Videos? Complete Guide 2026
 
 *Last updated: April 2026*
@@ -5619,7 +5619,7 @@ No. [Anytt cc](https://anytt.cc) respects privacy settings and only downloads pu
 [Anytt cc](https://anytt.cc) is 100% safe — no data stored, no registration required, HTTPS encrypted.
 
 **Download public TikTok videos safely** → [Anytt cc](https://anytt.cc/tiktok-downloader)
-    \`
+    `
   },
   {
     slug: "tiktok-downloader-not-working-fix-2026",
@@ -5645,7 +5645,7 @@ No. [Anytt cc](https://anytt.cc) respects privacy settings and only downloads pu
       "anytt", "anytt cc", "anytt.cc", "tt downloader", "tiktok downloader 2026",
       "best tiktok downloader 2026", "tiktok no watermark"
     ],
-    content: \`
+    content: `
 # TikTok Downloader Not Working? Fix SnapTik, SSStiK, TikMate Errors (2026)
 
 *Last updated: April 2026*
@@ -5740,7 +5740,7 @@ TikMate's APK was removed from many sources. [Anytt cc](https://anytt.cc) is the
 [Anytt cc](https://anytt.cc) is consistently the most reliable TikTok downloader in 2026, with regular updates and fast servers.
 
 **Stop dealing with broken downloaders** → [Try Anytt cc now](https://anytt.cc/tiktok-downloader)
-    \`
+    `
   },
   {
     slug: "download-tiktok-asmr-aesthetic-videos-2026",
@@ -5765,7 +5765,7 @@ TikMate's APK was removed from many sources. [Anytt cc](https://anytt.cc) is the
       "anytt", "anytt cc", "anytt.cc", "tt downloader", "tiktok no watermark",
       "tiktok downloader 2026", "download tiktok hd", "save tiktok video"
     ],
-    content: \`
+    content: `
 # Download TikTok ASMR, Aesthetic & Viral Edit Videos in HD (2026)
 
 *Last updated: April 2026*
@@ -5883,7 +5883,7 @@ No. [Anytt cc](https://anytt.cc) downloads in the original uploaded quality — 
 Absolutely. Any public TikTok video can be downloaded, including compilations and mashups.
 
 **Start downloading** → [Anytt cc TikTok Downloader](https://anytt.cc/tiktok-downloader)
-    \`
+    `
   },
   {
     slug: "download-pinterest-board-complete-guide-2026",
@@ -5908,7 +5908,7 @@ Absolutely. Any public TikTok video can be downloaded, including compilations an
       "pinterest video download without app", "pinterest downloader online free",
       "anytt", "anytt cc", "anytt.cc", "pinterest downloader 2026"
     ],
-    content: \`
+    content: `
 # How to Download Entire Pinterest Boards, Idea Pins & Videos (Complete 2026 Guide)
 
 *Last updated: April 2026*
@@ -6020,7 +6020,7 @@ Yes! [Anytt cc](https://anytt.cc/pinterest-downloader) is 100% free with no regi
 Yes. Paste the GIF pin URL into Anytt cc and download as MP4 or GIF format.
 
 **Start downloading Pinterest content** → [Anytt cc Pinterest Downloader](https://anytt.cc/pinterest-downloader)
-    \`
+    `
   }
 ];
 
