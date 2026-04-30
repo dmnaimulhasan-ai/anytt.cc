@@ -92,6 +92,81 @@ export type Database = {
         }
         Relationships: []
       }
+      telegram_bot_state: {
+        Row: {
+          id: number
+          update_offset: number
+          updated_at: string
+        }
+        Insert: {
+          id: number
+          update_offset?: number
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          update_offset?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      telegram_messages: {
+        Row: {
+          chat_id: number
+          created_at: string
+          processed: boolean
+          processed_at: string | null
+          raw_update: Json
+          text: string | null
+          update_id: number
+          user_id: number | null
+          username: string | null
+        }
+        Insert: {
+          chat_id: number
+          created_at?: string
+          processed?: boolean
+          processed_at?: string | null
+          raw_update: Json
+          text?: string | null
+          update_id: number
+          user_id?: number | null
+          username?: string | null
+        }
+        Update: {
+          chat_id?: number
+          created_at?: string
+          processed?: boolean
+          processed_at?: string | null
+          raw_update?: Json
+          text?: string | null
+          update_id?: number
+          user_id?: number | null
+          username?: string | null
+        }
+        Relationships: []
+      }
+      telegram_rate_limits: {
+        Row: {
+          chat_id: number
+          id: string
+          request_count: number
+          window_start: string
+        }
+        Insert: {
+          chat_id: number
+          id?: string
+          request_count?: number
+          window_start?: string
+        }
+        Update: {
+          chat_id?: number
+          id?: string
+          request_count?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
       visitor_stats: {
         Row: {
           first_visit: string
