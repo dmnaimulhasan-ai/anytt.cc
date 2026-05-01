@@ -186,6 +186,20 @@ async function processMessage(
     const detected = detectedList[i];
     const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
 
+    // Skip duplicates already processed for this chat in the last N days
+    const urlHash = await hashUrl(detected.url);
+    if (await isDuplicate(supabase, chat_id, urlHash)) {
+      await sendMessage(
+        chat_id,
+        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.`,
+        lovableKey,
+        tgKey,
+        i === 0 ? message_id : undefined,
+      );
+      results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: false, reason: "Duplicate (already sent)" });
+      continue;
+    }
+
     // Rate limit per URL
     const allowed = await checkRateLimit(supabase, chat_id);
     if (!allowed) {
