@@ -146,6 +146,33 @@ export type Database = {
         }
         Relationships: []
       }
+      telegram_processed_urls: {
+        Row: {
+          chat_id: number
+          id: string
+          platform: string
+          processed_at: string
+          url: string
+          url_hash: string
+        }
+        Insert: {
+          chat_id: number
+          id?: string
+          platform: string
+          processed_at?: string
+          url: string
+          url_hash: string
+        }
+        Update: {
+          chat_id?: number
+          id?: string
+          platform?: string
+          processed_at?: string
+          url?: string
+          url_hash?: string
+        }
+        Relationships: []
+      }
       telegram_rate_limits: {
         Row: {
           chat_id: number
