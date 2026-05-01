@@ -10,16 +10,20 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const TIKTOK_REGEX = /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/\S+/i;
-const PINTEREST_REGEX = /https?:\/\/(?:[\w.-]+\.)?(?:pinterest\.[\w.]+|pin\.it)\/\S+/i;
+const TIKTOK_REGEX = /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/\S+/gi;
+const PINTEREST_REGEX = /https?:\/\/(?:[\w.-]+\.)?(?:pinterest\.[\w.]+|pin\.it)\/\S+/gi;
 
-function detectUrl(text: string): { platform: "tiktok" | "pinterest"; url: string } | null {
-  if (!text) return null;
-  const tt = text.match(TIKTOK_REGEX);
-  if (tt) return { platform: "tiktok", url: tt[0] };
-  const pt = text.match(PINTEREST_REGEX);
-  if (pt) return { platform: "pinterest", url: pt[0] };
-  return null;
+function detectUrls(text: string): Array<{ platform: "tiktok" | "pinterest"; url: string }> {
+  if (!text) return [];
+  const found: Array<{ platform: "tiktok" | "pinterest"; url: string }> = [];
+  const seen = new Set<string>();
+  for (const m of text.matchAll(TIKTOK_REGEX)) {
+    if (!seen.has(m[0])) { seen.add(m[0]); found.push({ platform: "tiktok", url: m[0] }); }
+  }
+  for (const m of text.matchAll(PINTEREST_REGEX)) {
+    if (!seen.has(m[0])) { seen.add(m[0]); found.push({ platform: "pinterest", url: m[0] }); }
+  }
+  return found;
 }
 
 async function tg(method: string, body: Record<string, unknown>, lovableKey: string, tgKey: string) {
