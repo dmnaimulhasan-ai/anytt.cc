@@ -117,8 +117,8 @@ async function processMessage(
     return;
   }
 
-  const detected = detectUrl(trimmed);
-  if (!detected) {
+  const detectedList = detectUrls(trimmed);
+  if (detectedList.length === 0) {
     await sendMessage(
       chat_id,
       `❌ I couldn't find a TikTok or Pinterest URL in your message.\n\nSend me a link like:\n<code>https://www.tiktok.com/@user/video/123</code>\n<code>https://pin.it/abc</code>`,
@@ -129,95 +129,112 @@ async function processMessage(
     return;
   }
 
-  // Rate limit
-  const allowed = await checkRateLimit(supabase, chat_id);
-  if (!allowed) {
+  if (detectedList.length > 1) {
     await sendMessage(
       chat_id,
-      `⏰ Rate limit reached (${RATE_LIMIT_PER_HOUR} downloads / hour).\nPlease try again later.`,
+      `🔎 Found <b>${detectedList.length}</b> links — processing one by one...`,
       lovableKey,
       tgKey,
+      message_id,
     );
-    return;
   }
 
-  await sendMessage(chat_id, `⏳ Processing your ${detected.platform} link...`, lovableKey, tgKey, message_id);
+  for (let i = 0; i < detectedList.length; i++) {
+    const detected = detectedList[i];
+    const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
 
-  try {
-    const fnName = detected.platform === "tiktok" ? "tiktok-download" : "pinterest-download";
-    const apiResp = await fetch(`${supabaseUrl}/functions/v1/${fnName}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceKey}`,
-        apikey: serviceKey,
-      },
-      body: JSON.stringify({ url: detected.url }),
-    });
-    const apiData = await apiResp.json();
-
-    if (!apiData.success || !apiData.data) {
+    // Rate limit per URL
+    const allowed = await checkRateLimit(supabase, chat_id);
+    if (!allowed) {
       await sendMessage(
         chat_id,
-        `❌ Could not download.\nReason: ${apiData.error || "Unknown error"}\n\nMake sure the URL is public and valid.`,
+        `⏰ Rate limit reached (${RATE_LIMIT_PER_HOUR} downloads / hour).\nSkipped remaining ${detectedList.length - i} link(s). Try again later.`,
         lovableKey,
         tgKey,
       );
       return;
     }
 
-    if (detected.platform === "tiktok") {
-      const v = apiData.data;
-      const caption =
-        `✅ <b>${v.title || "TikTok Video"}</b>\n` +
-        `👤 @${v.author || "unknown"}\n` +
-        `🌐 Powered by <a href="https://anytt.cc">anytt.cc</a>`;
+    await sendMessage(chat_id, `⏳ ${prefix}Processing your ${detected.platform} link...`, lovableKey, tgKey, i === 0 ? message_id : undefined);
 
-      const videoUrl = v.videoUrlNoWatermark || v.videoUrl;
-      const videoResult = await sendVideo(chat_id, videoUrl, caption, lovableKey, tgKey);
+    try {
+      const fnName = detected.platform === "tiktok" ? "tiktok-download" : "pinterest-download";
+      const apiResp = await fetch(`${supabaseUrl}/functions/v1/${fnName}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${serviceKey}`,
+          apikey: serviceKey,
+        },
+        body: JSON.stringify({ url: detected.url }),
+      });
+      const apiData = await apiResp.json();
 
-      if (!videoResult.ok) {
-        // Fallback to link if Telegram refuses (e.g. >50MB)
+      if (!apiData.success || !apiData.data) {
         await sendMessage(
           chat_id,
-          `${caption}\n\n📥 <a href="${videoUrl}">Download HD Video</a>` +
-            (v.musicUrl ? `\n🎵 <a href="${v.musicUrl}">Download MP3</a>` : ""),
+          `❌ ${prefix}Could not download.\nReason: ${apiData.error || "Unknown error"}\n\nMake sure the URL is public and valid.`,
           lovableKey,
           tgKey,
         );
-      } else if (v.musicUrl) {
-        // Send MP3 separately
-        await tg("sendAudio", {
-          chat_id,
-          audio: v.musicUrl,
-          title: v.musicTitle || "Original Sound",
-          performer: v.author || "TikTok",
-        }, lovableKey, tgKey);
+        continue;
       }
-    } else {
-      // Pinterest
-      const v = apiData.data;
-      const isVideo = v.type === "video" || v.videoUrl;
-      const mediaUrl = v.videoUrl || v.imageUrl || v.url;
-      const caption =
-        `✅ <b>${v.title || "Pinterest Media"}</b>\n` +
-        `🌐 Powered by <a href="https://anytt.cc">anytt.cc</a>`;
 
-      if (isVideo) {
-        const r = await sendVideo(chat_id, mediaUrl, caption, lovableKey, tgKey);
-        if (!r.ok) {
-          await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
+      if (detected.platform === "tiktok") {
+        const v = apiData.data;
+        const caption =
+          `✅ ${prefix}<b>${v.title || "TikTok Video"}</b>\n` +
+          `👤 @${v.author || "unknown"}\n` +
+          `🌐 Powered by <a href="https://anytt.cc">anytt.cc</a>`;
+
+        const videoUrl = v.videoUrlNoWatermark || v.videoUrl;
+        const videoResult = await sendVideo(chat_id, videoUrl, caption, lovableKey, tgKey);
+
+        if (!videoResult.ok) {
+          await sendMessage(
+            chat_id,
+            `${caption}\n\n📥 <a href="${videoUrl}">Download HD Video</a>` +
+              (v.musicUrl ? `\n🎵 <a href="${v.musicUrl}">Download MP3</a>` : ""),
+            lovableKey,
+            tgKey,
+          );
+        } else if (v.musicUrl) {
+          await tg("sendAudio", {
+            chat_id,
+            audio: v.musicUrl,
+            title: v.musicTitle || "Original Sound",
+            performer: v.author || "TikTok",
+          }, lovableKey, tgKey);
         }
       } else {
-        const r = await sendPhoto(chat_id, mediaUrl, caption, lovableKey, tgKey);
-        if (!r.ok) {
-          await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
+        const v = apiData.data;
+        const isVideo = v.type === "video" || v.videoUrl;
+        const mediaUrl = v.videoUrl || v.imageUrl || v.url;
+        const caption =
+          `✅ ${prefix}<b>${v.title || "Pinterest Media"}</b>\n` +
+          `🌐 Powered by <a href="https://anytt.cc">anytt.cc</a>`;
+
+        if (isVideo) {
+          const r = await sendVideo(chat_id, mediaUrl, caption, lovableKey, tgKey);
+          if (!r.ok) {
+            await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
+          }
+        } else {
+          const r = await sendPhoto(chat_id, mediaUrl, caption, lovableKey, tgKey);
+          if (!r.ok) {
+            await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
+          }
         }
       }
+    } catch (err) {
+      console.error("Process error:", err);
+      await sendMessage(chat_id, `❌ ${prefix}Server error on this link. Continuing...`, lovableKey, tgKey);
     }
-  } catch (err) {
-    console.error("Process error:", err);
-    await sendMessage(chat_id, `❌ Server error. Please try again in a moment.`, lovableKey, tgKey);
+
+    // Small delay between sequential downloads to avoid Telegram flood limits
+    if (i < detectedList.length - 1) {
+      await new Promise((r) => setTimeout(r, 600));
+    }
   }
 }
 
