@@ -4,6 +4,46 @@ const GATEWAY_URL = "https://connector-gateway.lovable.dev/telegram";
 const MAX_RUNTIME_MS = 55_000;
 const MIN_REMAINING_MS = 5_000;
 const RATE_LIMIT_PER_HOUR = 15;
+const DEDUP_WINDOW_DAYS = 7;
+
+async function hashUrl(url: string): Promise<string> {
+  // Normalize: lowercase + strip trailing slash + drop common tracking params
+  let norm = url.trim();
+  try {
+    const u = new URL(norm);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "_t", "_r", "is_from_webapp", "sender_device"].forEach((p) =>
+      u.searchParams.delete(p),
+    );
+    norm = (u.origin + u.pathname + (u.search ? "?" + u.searchParams.toString() : "")).toLowerCase().replace(/\/+$/, "");
+  } catch {
+    norm = norm.toLowerCase();
+  }
+  const data = new TextEncoder().encode(norm);
+  const buf = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function isDuplicate(supabase: any, chatId: number, urlHash: string): Promise<boolean> {
+  const cutoff = new Date(Date.now() - DEDUP_WINDOW_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const { data } = await supabase
+    .from("telegram_processed_urls")
+    .select("id")
+    .eq("chat_id", chatId)
+    .eq("url_hash", urlHash)
+    .gte("processed_at", cutoff)
+    .limit(1)
+    .maybeSingle();
+  return !!data;
+}
+
+async function markProcessed(supabase: any, chatId: number, urlHash: string, url: string, platform: string) {
+  await supabase
+    .from("telegram_processed_urls")
+    .upsert(
+      { chat_id: chatId, url_hash: urlHash, url, platform, processed_at: new Date().toISOString() },
+      { onConflict: "chat_id,url_hash" },
+    );
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -146,6 +186,20 @@ async function processMessage(
     const detected = detectedList[i];
     const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
 
+    // Skip duplicates already processed for this chat in the last N days
+    const urlHash = await hashUrl(detected.url);
+    if (await isDuplicate(supabase, chat_id, urlHash)) {
+      await sendMessage(
+        chat_id,
+        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.`,
+        lovableKey,
+        tgKey,
+        i === 0 ? message_id : undefined,
+      );
+      results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: false, reason: "Duplicate (already sent)" });
+      continue;
+    }
+
     // Rate limit per URL
     const allowed = await checkRateLimit(supabase, chat_id);
     if (!allowed) {
@@ -214,6 +268,7 @@ async function processMessage(
             performer: v.author || "TikTok",
           }, lovableKey, tgKey);
         }
+        await markProcessed(supabase, chat_id, urlHash, detected.url, detected.platform);
         results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       } else {
         const v = apiData.data;
@@ -234,6 +289,7 @@ async function processMessage(
             await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
           }
         }
+        await markProcessed(supabase, chat_id, urlHash, detected.url, detected.platform);
         results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       }
     } catch (err) {
