@@ -289,6 +289,7 @@ async function processMessage(
             await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
           }
         }
+        await markProcessed(supabase, chat_id, urlHash, detected.url, detected.platform);
         results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       }
     } catch (err) {
