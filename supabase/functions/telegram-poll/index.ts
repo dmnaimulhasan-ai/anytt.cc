@@ -53,16 +53,35 @@ const corsHeaders = {
 const TIKTOK_REGEX = /https?:\/\/(?:www\.|m\.|vm\.|vt\.)?tiktok\.com\/\S+/gi;
 const PINTEREST_REGEX = /https?:\/\/(?:[\w.-]+\.)?(?:pinterest\.[\w.]+|pin\.it)\/\S+/gi;
 
+function normalizeForDedup(url: string): string {
+  let n = url.trim().replace(/[)\].,;:!?"'>]+$/g, ""); // strip trailing punctuation
+  try {
+    const u = new URL(n);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "_t", "_r", "is_from_webapp", "sender_device"].forEach((p) =>
+      u.searchParams.delete(p),
+    );
+    n = (u.origin + u.pathname + (u.search ? "?" + u.searchParams.toString() : "")).toLowerCase().replace(/\/+$/, "");
+  } catch {
+    n = n.toLowerCase();
+  }
+  return n;
+}
+
 function detectUrls(text: string): Array<{ platform: "tiktok" | "pinterest"; url: string }> {
   if (!text) return [];
   const found: Array<{ platform: "tiktok" | "pinterest"; url: string }> = [];
   const seen = new Set<string>();
-  for (const m of text.matchAll(TIKTOK_REGEX)) {
-    if (!seen.has(m[0])) { seen.add(m[0]); found.push({ platform: "tiktok", url: m[0] }); }
-  }
-  for (const m of text.matchAll(PINTEREST_REGEX)) {
-    if (!seen.has(m[0])) { seen.add(m[0]); found.push({ platform: "pinterest", url: m[0] }); }
-  }
+
+  const pushIfNew = (raw: string, platform: "tiktok" | "pinterest") => {
+    const cleaned = raw.replace(/[)\].,;:!?"'>]+$/g, "");
+    const key = normalizeForDedup(cleaned);
+    if (seen.has(key)) return;
+    seen.add(key);
+    found.push({ platform, url: cleaned });
+  };
+
+  for (const m of text.matchAll(TIKTOK_REGEX)) pushIfNew(m[0], "tiktok");
+  for (const m of text.matchAll(PINTEREST_REGEX)) pushIfNew(m[0], "pinterest");
   return found;
 }
 
