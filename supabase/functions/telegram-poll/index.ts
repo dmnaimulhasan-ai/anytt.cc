@@ -139,6 +139,9 @@ async function processMessage(
     );
   }
 
+  const results: Array<{ index: number; url: string; platform: string; ok: boolean; reason?: string }> = [];
+  const shortUrl = (u: string) => (u.length > 55 ? u.slice(0, 52) + "..." : u);
+
   for (let i = 0; i < detectedList.length; i++) {
     const detected = detectedList[i];
     const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
@@ -152,7 +155,11 @@ async function processMessage(
         lovableKey,
         tgKey,
       );
-      return;
+      // Mark remaining as failed (rate-limited)
+      for (let j = i; j < detectedList.length; j++) {
+        results.push({ index: j + 1, url: detectedList[j].url, platform: detectedList[j].platform, ok: false, reason: "Rate limit" });
+      }
+      break;
     }
 
     await sendMessage(chat_id, `⏳ ${prefix}Processing your ${detected.platform} link...`, lovableKey, tgKey, i === 0 ? message_id : undefined);
@@ -177,6 +184,7 @@ async function processMessage(
           lovableKey,
           tgKey,
         );
+        results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: false, reason: apiData.error || "Unknown error" });
         continue;
       }
 
@@ -206,6 +214,7 @@ async function processMessage(
             performer: v.author || "TikTok",
           }, lovableKey, tgKey);
         }
+        results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       } else {
         const v = apiData.data;
         const isVideo = v.type === "video" || v.videoUrl;
@@ -225,16 +234,33 @@ async function processMessage(
             await sendMessage(chat_id, `${caption}\n\n📥 <a href="${mediaUrl}">Download</a>`, lovableKey, tgKey);
           }
         }
+        results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       }
     } catch (err) {
       console.error("Process error:", err);
       await sendMessage(chat_id, `❌ ${prefix}Server error on this link. Continuing...`, lovableKey, tgKey);
+      results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: false, reason: "Server error" });
     }
 
     // Small delay between sequential downloads to avoid Telegram flood limits
     if (i < detectedList.length - 1) {
       await new Promise((r) => setTimeout(r, 600));
     }
+  }
+
+  // Final summary (only when there were multiple links)
+  if (detectedList.length > 1) {
+    const success = results.filter((r) => r.ok);
+    const failed = results.filter((r) => !r.ok);
+
+    const successLines = success.map((r) => `  ${r.index}. ${r.platform} — <a href="${r.url}">${shortUrl(r.url)}</a>`).join("\n");
+    const failedLines = failed.map((r) => `  ${r.index}. ${r.platform} — <a href="${r.url}">${shortUrl(r.url)}</a>\n     <i>${r.reason || "Failed"}</i>`).join("\n");
+
+    let summary = `📊 <b>Summary:</b> ${success.length}/${detectedList.length} succeeded\n\n`;
+    if (success.length > 0) summary += `✅ <b>Success:</b>\n${successLines}\n\n`;
+    if (failed.length > 0) summary += `❌ <b>Failed:</b>\n${failedLines}`;
+
+    await sendMessage(chat_id, summary.trim(), lovableKey, tgKey);
   }
 }
 
