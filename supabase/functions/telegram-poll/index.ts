@@ -268,6 +268,7 @@ async function processMessage(
             performer: v.author || "TikTok",
           }, lovableKey, tgKey);
         }
+        await markProcessed(supabase, chat_id, urlHash, detected.url, detected.platform);
         results.push({ index: i + 1, url: detected.url, platform: detected.platform, ok: true });
       } else {
         const v = apiData.data;
