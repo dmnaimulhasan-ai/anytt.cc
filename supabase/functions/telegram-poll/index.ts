@@ -112,23 +112,117 @@ async function sendMessage(chatId: number, text: string, lovableKey: string, tgK
   }, lovableKey, tgKey);
 }
 
+// Telegram limit for bots is 50MB for sendVideo/sendDocument via multipart upload
+const TG_MAX_UPLOAD_BYTES = 49 * 1024 * 1024;
+
+async function tgMultipart(
+  method: string,
+  fields: Record<string, string>,
+  fileField: string,
+  fileName: string,
+  fileBytes: Uint8Array,
+  mime: string,
+  lovableKey: string,
+  tgKey: string,
+) {
+  const form = new FormData();
+  for (const [k, v] of Object.entries(fields)) form.append(k, v);
+  form.append(fileField, new Blob([fileBytes], { type: mime }), fileName);
+
+  const res = await fetch(`${GATEWAY_URL}/${method}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${lovableKey}`,
+      "X-Connection-Api-Key": tgKey,
+    },
+    body: form,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    console.error(`Telegram ${method} (multipart) failed [${res.status}]:`, JSON.stringify(data));
+  }
+  return { ok: res.ok, data };
+}
+
+async function downloadBytes(url: string, maxBytes: number): Promise<{ bytes: Uint8Array; mime: string } | null> {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Referer": url.includes("tiktok") ? "https://www.tiktok.com/" : url.includes("pinterest") ? "https://www.pinterest.com/" : "",
+      },
+    });
+    if (!res.ok) {
+      console.error(`Download failed [${res.status}] for ${url.slice(0, 80)}`);
+      return null;
+    }
+    const lenHeader = res.headers.get("content-length");
+    if (lenHeader && parseInt(lenHeader) > maxBytes) {
+      console.warn(`File too large (${lenHeader} bytes), skipping upload`);
+      return null;
+    }
+    const buf = await res.arrayBuffer();
+    if (buf.byteLength > maxBytes) {
+      console.warn(`File too large after download (${buf.byteLength} bytes)`);
+      return null;
+    }
+    const mime = res.headers.get("content-type")?.split(";")[0] || "application/octet-stream";
+    return { bytes: new Uint8Array(buf), mime };
+  } catch (e) {
+    console.error("downloadBytes error:", e);
+    return null;
+  }
+}
+
 async function sendVideo(chatId: number, videoUrl: string, caption: string, lovableKey: string, tgKey: string) {
-  return tg("sendVideo", {
+  // Try URL-based first (fastest)
+  const urlAttempt = await tg("sendVideo", {
     chat_id: chatId,
     video: videoUrl,
     caption,
     parse_mode: "HTML",
     supports_streaming: true,
   }, lovableKey, tgKey);
+  if (urlAttempt.ok) return urlAttempt;
+
+  // Fallback: download bytes and upload as multipart
+  console.log("sendVideo URL failed — falling back to multipart upload");
+  const file = await downloadBytes(videoUrl, TG_MAX_UPLOAD_BYTES);
+  if (!file) return urlAttempt; // give up; caller will post link
+  return tgMultipart(
+    "sendVideo",
+    { chat_id: String(chatId), caption, parse_mode: "HTML", supports_streaming: "true" },
+    "video",
+    "video.mp4",
+    file.bytes,
+    file.mime.startsWith("video/") ? file.mime : "video/mp4",
+    lovableKey,
+    tgKey,
+  );
 }
 
 async function sendPhoto(chatId: number, photoUrl: string, caption: string, lovableKey: string, tgKey: string) {
-  return tg("sendPhoto", {
+  const urlAttempt = await tg("sendPhoto", {
     chat_id: chatId,
     photo: photoUrl,
     caption,
     parse_mode: "HTML",
   }, lovableKey, tgKey);
+  if (urlAttempt.ok) return urlAttempt;
+
+  console.log("sendPhoto URL failed — falling back to multipart upload");
+  const file = await downloadBytes(photoUrl, TG_MAX_UPLOAD_BYTES);
+  if (!file) return urlAttempt;
+  return tgMultipart(
+    "sendPhoto",
+    { chat_id: String(chatId), caption, parse_mode: "HTML" },
+    "photo",
+    "image.jpg",
+    file.bytes,
+    file.mime.startsWith("image/") ? file.mime : "image/jpeg",
+    lovableKey,
+    tgKey,
+  );
 }
 
 async function checkRateLimit(supabase: any, chatId: number): Promise<boolean> {
