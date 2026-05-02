@@ -308,12 +308,14 @@ async function processMessage(
     const detected = detectedList[i];
     const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
 
-    // Skip duplicates already processed for this chat in the last N days
+    // Skip duplicates already processed for this chat in the last N days,
+    // unless the user explicitly asked to re-download via /again, /force, !again, #again.
     const urlHash = await hashUrl(detected.url);
-    if (await isDuplicate(supabase, chat_id, urlHash)) {
+    if (!forceRedownload && (await isDuplicate(supabase, chat_id, urlHash))) {
       await sendMessage(
         chat_id,
-        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.`,
+        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.\n` +
+          `<i>Send it again with <code>/again</code> to force a re-download.</i>`,
         lovableKey,
         tgKey,
         i === 0 ? message_id : undefined,
