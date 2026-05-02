@@ -253,6 +253,12 @@ async function processMessage(
 
   const trimmed = text.trim();
 
+  // Detect "force re-download" flag — user can bypass the 7-day dedup
+  // by adding /again, /force, !again, or #again anywhere in the message.
+  const FORCE_REGEX = /(^|\s)(\/again|\/force|!again|#again)(\s|$)/i;
+  const forceRedownload = FORCE_REGEX.test(trimmed);
+  const cleanedText = trimmed.replace(FORCE_REGEX, " ").trim();
+
   // Commands
   if (trimmed === "/start" || trimmed === "/help") {
     await sendMessage(
@@ -261,7 +267,10 @@ async function processMessage(
         `Send me any <b>TikTok</b> or <b>Pinterest</b> URL and I'll download it for you — no watermark, HD quality, free.\n\n` +
         `<b>Commands:</b>\n` +
         `/start — Show this message\n` +
-        `/help — Same as /start\n\n` +
+        `/help — Same as /start\n` +
+        `/again — Re-download a link you sent before (add it next to the URL)\n\n` +
+        `<b>Tip:</b> By default I skip links you already downloaded in the last 7 days. ` +
+        `Send the link again with <code>/again</code> to force a re-download.\n\n` +
         `<b>Try it:</b> paste a TikTok or Pinterest link 🎬\n\n` +
         `🌐 <a href="https://anytt.cc">anytt.cc</a>`,
       lovableKey,
@@ -270,7 +279,7 @@ async function processMessage(
     return;
   }
 
-  const detectedList = detectUrls(trimmed);
+  const detectedList = detectUrls(cleanedText);
   if (detectedList.length === 0) {
     await sendMessage(
       chat_id,
@@ -299,12 +308,14 @@ async function processMessage(
     const detected = detectedList[i];
     const prefix = detectedList.length > 1 ? `(${i + 1}/${detectedList.length}) ` : "";
 
-    // Skip duplicates already processed for this chat in the last N days
+    // Skip duplicates already processed for this chat in the last N days,
+    // unless the user explicitly asked to re-download via /again, /force, !again, #again.
     const urlHash = await hashUrl(detected.url);
-    if (await isDuplicate(supabase, chat_id, urlHash)) {
+    if (!forceRedownload && (await isDuplicate(supabase, chat_id, urlHash))) {
       await sendMessage(
         chat_id,
-        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.`,
+        `⏭️ ${prefix}Already downloaded recently — skipping <a href="${detected.url}">this ${detected.platform} link</a>.\n` +
+          `<i>Send it again with <code>/again</code> to force a re-download.</i>`,
         lovableKey,
         tgKey,
         i === 0 ? message_id : undefined,
