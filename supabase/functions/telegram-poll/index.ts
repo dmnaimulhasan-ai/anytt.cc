@@ -70,18 +70,14 @@ function normalizeForDedup(url: string): string {
 function detectUrls(text: string): Array<{ platform: "tiktok" | "pinterest"; url: string }> {
   if (!text) return [];
   const found: Array<{ platform: "tiktok" | "pinterest"; url: string }> = [];
-  const seen = new Set<string>();
 
-  const pushIfNew = (raw: string, platform: "tiktok" | "pinterest") => {
+  const push = (raw: string, platform: "tiktok" | "pinterest") => {
     const cleaned = raw.replace(/[)\].,;:!?"'>]+$/g, "");
-    const key = normalizeForDedup(cleaned);
-    if (seen.has(key)) return;
-    seen.add(key);
     found.push({ platform, url: cleaned });
   };
 
-  for (const m of text.matchAll(TIKTOK_REGEX)) pushIfNew(m[0], "tiktok");
-  for (const m of text.matchAll(PINTEREST_REGEX)) pushIfNew(m[0], "pinterest");
+  for (const m of text.matchAll(TIKTOK_REGEX)) push(m[0], "tiktok");
+  for (const m of text.matchAll(PINTEREST_REGEX)) push(m[0], "pinterest");
   return found;
 }
 
