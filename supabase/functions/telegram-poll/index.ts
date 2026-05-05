@@ -520,32 +520,44 @@ Deno.serve(async (req) => {
       .eq("id", 1);
     currentOffset = newOffset;
 
-    // Process each message (sequential to avoid Telegram flood)
+    // Group updates by chat_id so different chats are processed in PARALLEL,
+    // but messages within the same chat stay sequential (avoid Telegram flood).
+    const byChat = new Map<number, any[]>();
     for (const u of updates) {
       if (!u.message) continue;
-      try {
-        await processMessage(
-          {
-            update_id: u.update_id,
-            chat_id: u.message.chat.id,
-            text: u.message.text ?? null,
-            message_id: u.message.message_id,
-          },
-          supabase,
-          LOVABLE_API_KEY,
-          TELEGRAM_API_KEY,
-          SUPABASE_URL,
-          SERVICE_KEY,
-        );
-        await supabase
-          .from("telegram_messages")
-          .update({ processed: true, processed_at: new Date().toISOString() })
-          .eq("update_id", u.update_id);
-        totalProcessed++;
-      } catch (err) {
-        console.error("Message handler error:", err);
-      }
+      const cid = u.message.chat.id;
+      if (!byChat.has(cid)) byChat.set(cid, []);
+      byChat.get(cid)!.push(u);
     }
+
+    const chatTasks = Array.from(byChat.values()).map(async (chatUpdates) => {
+      for (const u of chatUpdates) {
+        try {
+          await processMessage(
+            {
+              update_id: u.update_id,
+              chat_id: u.message.chat.id,
+              text: u.message.text ?? null,
+              message_id: u.message.message_id,
+            },
+            supabase,
+            LOVABLE_API_KEY,
+            TELEGRAM_API_KEY,
+            SUPABASE_URL,
+            SERVICE_KEY,
+          );
+          await supabase
+            .from("telegram_messages")
+            .update({ processed: true, processed_at: new Date().toISOString() })
+            .eq("update_id", u.update_id);
+          totalProcessed++;
+        } catch (err) {
+          console.error("Message handler error:", err);
+        }
+      }
+    });
+
+    await Promise.all(chatTasks);
   }
 
   return new Response(
