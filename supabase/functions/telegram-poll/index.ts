@@ -482,7 +482,7 @@ Deno.serve(async (req) => {
     const remainingMs = MAX_RUNTIME_MS - elapsed;
     if (remainingMs < MIN_REMAINING_MS) break;
 
-    const timeout = Math.min(50, Math.floor(remainingMs / 1000) - 5);
+    const timeout = Math.min(20, Math.floor(remainingMs / 1000) - 5);
     if (timeout < 1) break;
 
     const { ok, data } = await tg("getUpdates", {
