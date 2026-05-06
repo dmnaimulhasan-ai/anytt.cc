@@ -98,15 +98,29 @@ async function tg(method: string, body: Record<string, unknown>, lovableKey: str
   return { ok: res.ok, data };
 }
 
-async function sendMessage(chatId: number, text: string, lovableKey: string, tgKey: string, replyTo?: number) {
+async function sendMessage(
+  chatId: number,
+  text: string,
+  lovableKey: string,
+  tgKey: string,
+  replyTo?: number,
+  extra?: Record<string, unknown>,
+) {
   return tg("sendMessage", {
     chat_id: chatId,
     text,
     parse_mode: "HTML",
     disable_web_page_preview: true,
     ...(replyTo ? { reply_to_message_id: replyTo } : {}),
+    ...(extra || {}),
   }, lovableKey, tgKey);
 }
+
+const MINI_APP_KEYBOARD = {
+  inline_keyboard: [[
+    { text: "🚀 Open Mini App", web_app: { url: "https://anytt.cc/tg" } },
+  ]],
+};
 
 // Telegram limit for bots is 50MB for sendVideo/sendDocument via multipart upload
 const TG_MAX_UPLOAD_BYTES = 49 * 1024 * 1024;
@@ -261,16 +275,18 @@ async function processMessage(
       chat_id,
       `👋 <b>Welcome to Anytt cc Bot!</b>\n\n` +
         `Send me any <b>TikTok</b> or <b>Pinterest</b> URL and I'll download it for you — no watermark, HD quality, free.\n\n` +
+        `<b>✨ NEW:</b> Tap the button below to open the full <b>Mini App</b> right inside Telegram!\n\n` +
         `<b>Commands:</b>\n` +
         `/start — Show this message\n` +
         `/help — Same as /start\n` +
         `/again — Re-download a link you sent before (add it next to the URL)\n\n` +
         `<b>Tip:</b> By default I skip links you already downloaded in the last 7 days. ` +
         `Send the link again with <code>/again</code> to force a re-download.\n\n` +
-        `<b>Try it:</b> paste a TikTok or Pinterest link 🎬\n\n` +
         `🌐 <a href="https://anytt.cc">anytt.cc</a>`,
       lovableKey,
       tgKey,
+      undefined,
+      { reply_markup: MINI_APP_KEYBOARD },
     );
     return;
   }

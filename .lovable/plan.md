@@ -1,43 +1,103 @@
 
+# Telegram Mini App Implementation Plan
 
-# নতুন SEO Keywords যোগ করার পরিকল্পনা
+`@GEN_ZDownloader` bot-এর সাথে একটি full-featured Telegram Mini App যোগ করা হবে যা anytt.cc-এর সব downloader feature Telegram-এর ভিতরে চালাবে।
 
-## কী যোগ হবে
+## যা তৈরি হবে
 
-`src/lib/seo-config.ts` ফাইলে নিচের নতুন keyword categories যোগ করবো:
+- **Full app** Mini App-এ — TikTok + Pinterest downloader, download history সহ
+- **Telegram native theme** — dark/light auto-sync, system colors ব্যবহার
+- নতুন route `/tg` — anytt.cc/tg থেকে serve হবে
+- Bot-এ "Open App" button — `/start`-এ এবং inline keyboard-এ
 
-### 1. TikTok Viral & Trend Keywords (2026 Q2)
-- "TikTok brain rot download", "TikTok NPC stream download", "TikTok POV download no watermark"
-- "TikTok edit download HD", "TikTok fancam download", "TikTok compilation download"
-- "TikTok aesthetic video download", "TikTok GRWM download", "TikTok mukbang download"
+## File Changes
 
-### 2. Cross-Platform & Repurpose Keywords
-- "TikTok to Instagram Reels converter", "TikTok to YouTube Shorts download"
-- "TikTok to WhatsApp Status download", "TikTok to Facebook Reels save"
-- "download TikTok for CapCut editing", "TikTok to Snapchat Spotlight"
+### ১. Telegram WebApp SDK (`index.html`)
+`<head>`-এর ভেতরে যোগ:
+```html
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+```
 
-### 3. "People Also Ask" / Question-Based Keywords
-- "is it legal to download TikTok videos", "can you download private TikTok videos"
-- "why can't I save TikTok videos", "how to download TikTok without watermark on iPhone"
-- "does downloading TikTok reduce quality", "how to download TikTok audio only"
+### ২. New Hook — `src/hooks/useTelegramWebApp.ts`
+- `window.Telegram.WebApp` access করার wrapper
+- `ready()` + `expand()` auto-call (full screen)
+- Telegram theme params → CSS variables এ map (bg, text, button, hint colors)
+- `isInTelegram` boolean — non-Telegram browser এ graceful fallback
+- User info expose (`user.first_name`, `user.id`)
+- `hapticFeedback` helper (impact/notification)
 
-### 4. Regional Slang & Informal Search Terms
-- "tiktoker video save koro", "tiktok video kibhabe download korbo"
-- "tiktok video indirin", "tiktok vidéo télécharger", "скачать тикток без водяного знака"
-- "descargar tiktok sin marca de agua gratis 2026"
+### ৩. New Page — `src/pages/TelegramMiniApp.tsx`
+Layout:
+```text
+┌─────────────────────────────┐
+│ 👋 Hi, [first_name]!        │  ← Telegram user greeting
+├─────────────────────────────┤
+│ [TikTok] [Pinterest] tabs   │
+├─────────────────────────────┤
+│  PlatformDownloader (reuse) │  ← existing component
+├─────────────────────────────┤
+│  Recent Downloads (5)       │  ← from useDownloadHistory
+└─────────────────────────────┘
+```
+- Existing `PlatformDownloader` component reuse
+- Existing `useDownloadHistory` hook reuse
+- Telegram theme CSS variables apply (no brand teal — native look)
+- Header/Footer/Ads hide করা (clean Mini App experience)
+- Haptic feedback on download success
+- `tg.MainButton` ব্যবহার "Paste & Download" এর জন্য
 
-### 5. Competitor "Not Working" Keywords
-- "snaptik not working 2026", "ssstik down alternative", "tikmate error fix"
-- "savefrom tiktok not working", "y2mate tiktok alternative 2026"
-- "snaptik server error", "ssstik 403 error", "tikmate banned"
+### ৪. Route Registration — `src/App.tsx`
+```tsx
+<Route path="/tg" element={<TelegramMiniApp />} />
+```
 
-### 6. Pinterest Extended Keywords
-- "Pinterest video downloader HD", "download Pinterest Idea Pin", "Pinterest board download zip"
-- "save Pinterest video to phone", "Pinterest GIF download", "Pinterest Reel download"
+### ৫. Telegram Bot Update — `supabase/functions/telegram-poll/index.ts`
+`/start` command-এ inline keyboard যোগ:
+```ts
+reply_markup: {
+  inline_keyboard: [[
+    { text: "🚀 Open Mini App", web_app: { url: "https://anytt.cc/tg" } }
+  ]]
+}
+```
+লিংক paste করলে আগের মতই কাজ করবে (dual mode — bot + mini app দুটোই)।
 
-## পরিবর্তিত ফাইল
+### ৬. BotFather Configuration (User-side step)
+User-কে instructions দেব:
+1. `@BotFather` → `/mybots` → bot select
+2. **Bot Settings → Menu Button → Configure**
+3. URL: `https://anytt.cc/tg`
+4. Text: `Open Downloader`
 
-| ফাইল | কাজ |
-|---|---|
-| `src/lib/seo-config.ts` | ৬টি নতুন keyword category যোগ (~120 নতুন keywords) |
+এর পর Telegram chat-এর নিচে permanent menu button দেখাবে।
 
+### ৭. PWA Service Worker — `vite.config.ts`
+`/tg` route যাতে cache না হয় (Telegram fresh load করুক):
+```ts
+navigateFallbackDenylist: [..., /^\/tg/]
+```
+
+## Technical Details
+
+**Theme integration:** Telegram passes 8+ theme colors (`bg_color`, `text_color`, `hint_color`, `button_color`, etc.) via `tg.themeParams`। এগুলো CSS variables-এ inject হবে যাতে Tailwind classes (`bg-background`, `text-foreground`) Telegram colors use করে।
+
+**Viewport:** `tg.expand()` call করলে Mini App full height নেবে। `tg.viewportHeight` listen করে dynamic resize handle হবে।
+
+**SEO:** `/tg` route-এ `<meta name="robots" content="noindex">` যাতে Google index না করে (Mini App, public page নয়)।
+
+**Backward compat:** `useTelegramWebApp` hook detect করবে user Telegram-এ আছে কিনা — না থাকলে normal anytt.cc UI দেখাবে (যাতে কেউ link share করলেও broken না হয়)।
+
+## যা পরিবর্তন হবে না
+
+- Bot-এর existing link-paste behavior অপরিবর্তিত
+- Main anytt.cc site (`/`, `/tiktok-downloader`, etc.) অপরিবর্তিত
+- Existing edge functions (`tiktok-download`, `pinterest-download`) reuse হবে
+- Database schema unchanged
+
+## Deliverables
+
+কাজ শেষে user পাবেন:
+- ✅ `https://anytt.cc/tg` — Telegram Mini App URL
+- ✅ Bot-এ inline button দিয়ে Mini App খোলা যাবে
+- ✅ BotFather setup করার step-by-step Bangla guide
+- ✅ Native Telegram look & feel (dark/light auto)
