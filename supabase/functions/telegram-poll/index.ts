@@ -275,16 +275,18 @@ async function processMessage(
       chat_id,
       `👋 <b>Welcome to Anytt cc Bot!</b>\n\n` +
         `Send me any <b>TikTok</b> or <b>Pinterest</b> URL and I'll download it for you — no watermark, HD quality, free.\n\n` +
+        `<b>✨ NEW:</b> Tap the button below to open the full <b>Mini App</b> right inside Telegram!\n\n` +
         `<b>Commands:</b>\n` +
         `/start — Show this message\n` +
         `/help — Same as /start\n` +
         `/again — Re-download a link you sent before (add it next to the URL)\n\n` +
         `<b>Tip:</b> By default I skip links you already downloaded in the last 7 days. ` +
         `Send the link again with <code>/again</code> to force a re-download.\n\n` +
-        `<b>Try it:</b> paste a TikTok or Pinterest link 🎬\n\n` +
         `🌐 <a href="https://anytt.cc">anytt.cc</a>`,
       lovableKey,
       tgKey,
+      undefined,
+      { reply_markup: MINI_APP_KEYBOARD },
     );
     return;
   }

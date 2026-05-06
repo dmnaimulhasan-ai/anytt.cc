@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Music2, Image as ImageIcon, History, Trash2 } from "lucide-react";
 import PlatformDownloader from "@/components/PlatformDownloader";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
@@ -16,9 +15,17 @@ const TelegramMiniApp = () => {
 
   // Listen for download success → haptic feedback
   useEffect(() => {
+    document.title = "Anytt cc — Telegram Mini App";
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
     const onComplete = () => haptic("success");
     window.addEventListener("anytt:download-complete", onComplete);
-    return () => window.removeEventListener("anytt:download-complete", onComplete);
+    return () => {
+      window.removeEventListener("anytt:download-complete", onComplete);
+      document.head.removeChild(meta);
+    };
   }, [haptic]);
 
   const switchTab = (t: Tab) => {
@@ -29,12 +36,6 @@ const TelegramMiniApp = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Helmet>
-        <title>Anytt cc — Telegram Mini App</title>
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-      </Helmet>
-
       {/* Header */}
       <header className="px-4 pt-4 pb-3">
         <div className="flex items-center justify-between">
