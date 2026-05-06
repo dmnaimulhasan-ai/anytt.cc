@@ -98,15 +98,29 @@ async function tg(method: string, body: Record<string, unknown>, lovableKey: str
   return { ok: res.ok, data };
 }
 
-async function sendMessage(chatId: number, text: string, lovableKey: string, tgKey: string, replyTo?: number) {
+async function sendMessage(
+  chatId: number,
+  text: string,
+  lovableKey: string,
+  tgKey: string,
+  replyTo?: number,
+  extra?: Record<string, unknown>,
+) {
   return tg("sendMessage", {
     chat_id: chatId,
     text,
     parse_mode: "HTML",
     disable_web_page_preview: true,
     ...(replyTo ? { reply_to_message_id: replyTo } : {}),
+    ...(extra || {}),
   }, lovableKey, tgKey);
 }
+
+const MINI_APP_KEYBOARD = {
+  inline_keyboard: [[
+    { text: "🚀 Open Mini App", web_app: { url: "https://anytt.cc/tg" } },
+  ]],
+};
 
 // Telegram limit for bots is 50MB for sendVideo/sendDocument via multipart upload
 const TG_MAX_UPLOAD_BYTES = 49 * 1024 * 1024;

@@ -26,6 +26,7 @@ const TikTokDownloaderHI = lazy(() => import("./pages/TikTokDownloaderHI"));
 const PinterestDownloader = lazy(() => import("./pages/PinterestDownloader"));
 const PinterestFAQ = lazy(() => import("./pages/PinterestFAQ"));
 const TikTokProfilePage = lazy(() => import("./pages/TikTokProfileDownloader"));
+const TelegramMiniApp = lazy(() => import("./pages/TelegramMiniApp"));
 
 // Eagerly load LCP-critical pages (flagged by CWV)
 import About from "./pages/About";
@@ -68,6 +69,8 @@ const App = () => (
             <Route path="/pinterest-downloader" element={<PinterestDownloader />} />
             <Route path="/pinterest-faq" element={<PinterestFAQ />} />
             <Route path="/tiktok-profile-downloader" element={<TikTokProfilePage />} />
+            {/* Telegram Mini App — opened inside Telegram WebApp */}
+            <Route path="/tg" element={<TelegramMiniApp />} />
             {/* Multilingual landing pages */}
             <Route path="/es/descargar-tiktok" element={<TikTokDownloaderES />} />
             <Route path="/pt/baixar-tiktok" element={<TikTokDownloaderPT />} />

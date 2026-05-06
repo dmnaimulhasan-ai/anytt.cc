@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
         skipWaiting: true,
         cleanupOutdatedCaches: true,
         // Exclude sitemap.xml, robots.txt and other SEO files from service worker
-        navigateFallbackDenylist: [/sitemap\.xml$/, /robots\.txt$/],
+        navigateFallbackDenylist: [/sitemap\.xml$/, /robots\.txt$/, /^\/tg/],
         runtimeCaching: [
           {
             // XML files (sitemap, etc.) - always fetch from network
