@@ -580,7 +580,18 @@ const Index = () => {
               <span>anytt vs ssstiktok</span><span>•</span>
               <span>best snaptik alternative 2026</span><span>•</span>
               <span>fastest TikTok downloader online</span><span>•</span>
-              <span>safest TikTok downloader 2026</span>
+              <span>safest TikTok downloader 2026</span><span>•</span>
+              {/* No Captions Video Keywords */}
+              <span>no captions video</span><span>•</span>
+              <span>no captions video sad</span><span>•</span>
+              <span>no captions video ইমোশনাল</span><span>•</span>
+              <span>no captions video attitude</span><span>•</span>
+              <span>no captions video emotional</span><span>•</span>
+              <span>no captions video বৃষ্টির</span><span>•</span>
+              <span>no captions video viral</span><span>•</span>
+              <span>no captions video মেয়েদের</span><span>•</span>
+              <span>no captions video rain weather</span><span>•</span>
+              <span>no captions video night</span>
             </div>
           </div>
         </section>
