@@ -442,6 +442,18 @@ export const tiktokKeywords = {
     "tiktok download for whatsapp status", "save tiktok for whatsapp",
     "tiktok video download telegram bot", "tiktok download discord bot"
   ],
+  // 🎬 No Captions Video Style Keywords
+  noCaptionsVideo: [
+    "no captions video", "no captions video sad", "no captions video ইমোশনাল",
+    "no captions video attitude", "no captions video emotional",
+    "no captions video বৃষ্টির", "no captions video viral",
+    "no captions video মেয়েদের", "no captions video rain weather",
+    "no captions video night", "tiktok no captions video download",
+    "no caption video status", "no captions sad video download",
+    "no captions attitude video", "no captions emotional video tiktok",
+    "no captions rain video", "no captions night video download",
+    "no captions girls video", "no captions viral tiktok video"
+  ],
   // 🔤 Misspelling & Typo Keywords (NEW)
   misspellings: [
     "tiktok donwloader", "tiktok donwload", "tikток downloader",
