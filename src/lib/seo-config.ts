@@ -1188,8 +1188,8 @@ export const brandedKeywords = {
 
 export const seoConfig = {
   home: {
-    title: "Anytt cc - Free TikTok Video Downloader Without Watermark 2026",
-    description: "Anytt cc - #1 TikTok video downloader. Download TikTok videos without watermark in HD quality. 100% free, no registration. Works on iPhone, Android & PC. Save TikTok videos instantly with anytt cc!",
+    title: "Anytt cc — TikTok Downloader for No Captions Videos & HD Reels",
+    description: "Download TikTok videos without watermark in HD — perfect for sad, emotional, attitude, viral and no captions video edits. Free, no signup, works on iPhone, Android and PC.",
     keywords: `${goldenKeywordsString}, ${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, ${allBanglaKeywords}, ${allPinterestKeywords}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k, 4k tokkit, savett, tiktok dl, how to download tiktok, tiktok reels download, tiktok to gif, TikTok carousel, TikTok 4K, photo mode, Pinterest board downloader, Pinterest carousel, pin saver, ${formatExtended.join(", ")}`,
     h1: "Anytt cc - TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
