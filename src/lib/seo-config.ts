@@ -948,6 +948,7 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.ssstikCompetitor,
   ...tiktokKeywords.tikmateCompetitor,
   ...tiktokKeywords.competitorComparison,
+  ...tiktokKeywords.noCaptionsVideo,
   ...urduKeywords,
   ...arabicKeywords,
   ...thaiExpandedKeywords,
