@@ -6,7 +6,6 @@
 
 # Static files - serve directly with forced 200 (bypass SPA)
 /sitemap.xml/   /sitemap.xml    301!
-/sitemap.xml    https://gicmzzepxupzghcswqyd.supabase.co/functions/v1/serve-sitemap  200!
 /robots.txt     https://gicmzzepxupzghcswqyd.supabase.co/functions/v1/serve-robots   200!
 
 # Remove trailing slashes - DIRECT redirect (no chains)
