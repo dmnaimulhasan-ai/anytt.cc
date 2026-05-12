@@ -44,7 +44,6 @@ const queryClient = new QueryClient();
 const sitemapAliases = new Set([
   "/sitemap.xml/",
   "/sitemap_index.xml/",
-  "/sitemap_index.xml/",
   "/sitemap-index.xml/",
 ]);
 
