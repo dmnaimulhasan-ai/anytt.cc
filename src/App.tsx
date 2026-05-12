@@ -41,6 +41,11 @@ const DMCA = lazy(() => import("./pages/DMCA"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
+const sitemapAliases = new Set([
+  "/sitemap.xml/",
+  "/sitemap_index.xml/",
+  "/sitemap-index.xml/",
+]);
 
 // Minimal loading fallback to avoid layout shift
 const PageLoader = () => (
@@ -49,7 +54,13 @@ const PageLoader = () => (
   </div>
 );
 
-const App = () => (
+const App = () => {
+  if (sitemapAliases.has(window.location.pathname)) {
+    window.location.replace("/sitemap.xml");
+    return <PageLoader />;
+  }
+
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -97,6 +108,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
