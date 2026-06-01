@@ -17,16 +17,18 @@
 3. Click "Download" — choose video quality or MP3
 4. Save to your device
 
-## Main Pages
+## Pages
 
-- Homepage: https://anytt.cc/
-- TikTok Downloader: https://anytt.cc/tiktok-downloader
-- Pinterest Downloader: https://anytt.cc/pinterest-downloader
-- FAQ: https://anytt.cc/faq
-- Pinterest FAQ: https://anytt.cc/pinterest-faq
-- About: https://anytt.cc/about
-- Blog: https://anytt.cc/blog
-- Download Tool: https://anytt.cc/download
+- [Homepage](/): Free TikTok and Pinterest video downloader.
+- [TikTok Downloader](/tiktok-downloader): Download TikTok videos in HD without watermark.
+- [TikTok Profile Downloader](/tiktok-profile-downloader): Fetch and batch-download videos from a TikTok profile.
+- [Pinterest Downloader](/pinterest-downloader): Download Pinterest videos and images.
+- [FAQ](/faq): Common questions about downloading TikTok videos.
+- [Pinterest FAQ](/pinterest-faq): Common questions about Pinterest downloads.
+- [About](/about): What Anytt cc is and how it works.
+- [Blog](/blog): Tutorials and guides for downloading TikTok and Pinterest content.
+- [Download Tool](/download): Direct download interface.
+
 
 ## Supported Languages
 
