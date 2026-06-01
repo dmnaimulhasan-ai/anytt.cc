@@ -111,7 +111,7 @@ const SEOHead = ({
       // Reset lang to default
       document.documentElement.lang = "en";
     };
-  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd, hreflang, lang]);
+  }, [title, description, canonicalUrl, keywords, ogImage, ogType, jsonLd, hreflang, lang]);
   
   return null;
 };
