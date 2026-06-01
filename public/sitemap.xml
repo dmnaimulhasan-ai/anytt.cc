@@ -16,6 +16,23 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- TikTok Profile Downloader -->
+  <url>
+    <loc>https://anytt.cc/tiktok-profile-downloader</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Telegram Mini App -->
+  <url>
+    <loc>https://anytt.cc/tg</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   
   <!-- Pinterest Downloader - New Feature -->
   <url>
