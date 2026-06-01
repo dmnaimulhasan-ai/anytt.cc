@@ -11,6 +11,7 @@ interface SEOHeadProps {
   canonicalUrl: string;
   keywords?: string;
   ogImage?: string;
+  ogType?: string;
   jsonLd?: object[];
   hreflang?: HreflangTag[];
   lang?: string;
@@ -22,6 +23,7 @@ const SEOHead = ({
   canonicalUrl, 
   keywords,
   ogImage = "https://anytt.cc/og-image.jpg",
+  ogType = "website",
   jsonLd = [],
   hreflang = [],
   lang = "en"
