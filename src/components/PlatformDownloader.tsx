@@ -342,6 +342,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
                 <Button
                   variant="outline"
                   onClick={handleClear}
+                  aria-label="Clear input"
                   className="rounded-2xl h-13 sm:h-12 border-border/50 hover:bg-muted/50 active:scale-95 px-5"
                 >
                   <X className="h-5 w-5" />
