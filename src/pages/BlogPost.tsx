@@ -74,6 +74,7 @@ const BlogPost = () => {
         description={post.metaDescription}
         canonicalUrl={`${BASE_URL}/blog/${post.slug}`}
         keywords={post.keywords.join(", ")}
+        ogType="article"
         jsonLd={[articleSchema, breadcrumbJsonLd]}
       />
       <Header />

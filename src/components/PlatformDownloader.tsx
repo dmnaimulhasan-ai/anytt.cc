@@ -342,6 +342,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
                 <Button
                   variant="outline"
                   onClick={handleClear}
+                  aria-label="Clear input"
                   className="rounded-2xl h-13 sm:h-12 border-border/50 hover:bg-muted/50 active:scale-95 px-5"
                 >
                   <X className="h-5 w-5" />
@@ -384,6 +385,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
                 {url && (
                   <button
                     onClick={handleClear}
+                    aria-label="Clear input"
                     className="p-2 hover:bg-muted rounded-xl transition-colors active:scale-95"
                   >
                     <X className="h-5 w-5 text-muted-foreground" />
@@ -433,6 +435,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
                 {url && (
                   <button
                     onClick={handleClear}
+                    aria-label="Clear input"
                     className="p-2 hover:bg-muted rounded-full transition-colors"
                   >
                     <X className="h-5 w-5 text-muted-foreground" />

@@ -11,6 +11,7 @@ interface SEOHeadProps {
   canonicalUrl: string;
   keywords?: string;
   ogImage?: string;
+  ogType?: string;
   jsonLd?: object[];
   hreflang?: HreflangTag[];
   lang?: string;
@@ -22,6 +23,7 @@ const SEOHead = ({
   canonicalUrl, 
   keywords,
   ogImage = "https://anytt.cc/og-image.jpg",
+  ogType = "website",
   jsonLd = [],
   hreflang = [],
   lang = "en"
@@ -56,6 +58,7 @@ const SEOHead = ({
     updateMeta('og:description', description, true);
     updateMeta('og:url', canonicalUrl, true);
     updateMeta('og:image', ogImage, true);
+    updateMeta('og:type', ogType, true);
     
     // Twitter
     updateMeta('twitter:title', title);
@@ -108,7 +111,7 @@ const SEOHead = ({
       // Reset lang to default
       document.documentElement.lang = "en";
     };
-  }, [title, description, canonicalUrl, keywords, ogImage, jsonLd, hreflang, lang]);
+  }, [title, description, canonicalUrl, keywords, ogImage, ogType, jsonLd, hreflang, lang]);
   
   return null;
 };
