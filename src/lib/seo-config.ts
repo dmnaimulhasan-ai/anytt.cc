@@ -1188,32 +1188,32 @@ export const brandedKeywords = {
 
 export const seoConfig = {
   home: {
-    title: "Anytt cc — TikTok Downloader for No Captions Videos & HD Reels",
-    description: "Download TikTok videos without watermark in HD — perfect for sad, emotional, attitude, viral and no captions video edits. Free, no signup, works on iPhone, Android and PC.",
+    title: "Anytt cc — Free TikTok Downloader, No Watermark HD",
+    description: "Download TikTok videos without watermark in HD with Anytt cc. Free, fast, no signup — works on iPhone, Android & PC. MP3 & Pinterest too.",
     keywords: `${goldenKeywordsString}, ${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.spanish}, ${brandedKeywords.portuguese}, ${brandedKeywords.indonesian}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, ${allBanglaKeywords}, ${allPinterestKeywords}, snaptik, ssstik, tikmate, tiktok slideshow download, tiktok story download, save tiktok without logo, tiktok converter, download tiktok 4k, 4k tokkit, savett, tiktok dl, how to download tiktok, tiktok reels download, tiktok to gif, TikTok carousel, TikTok 4K, photo mode, Pinterest board downloader, Pinterest carousel, pin saver, ${formatExtended.join(", ")}`,
     h1: "Anytt cc - TikTok Video Downloader",
     h2: "Download TikTok Videos Without Watermark in HD Quality",
     h3: ["How to Download Videos", "Why Choose Anytt cc", "Frequently Asked Questions"]
   },
   tiktok: {
-    title: "Anytt cc TikTok Downloader - Download Free TikTok Video Without Watermark 2026",
-    description: "Anytt cc - The best free TikTok video downloader. Save TikTok videos without watermark in HD. Works on iPhone, Android, PC. No registration. Download TikTok MP4 & MP3 with anytt cc!",
+    title: "Anytt cc — Free TikTok Video Downloader, No Watermark",
+    description: "Save TikTok videos without watermark in HD. Free, no signup — works on iPhone, Android & PC. Download TikTok MP4 & MP3 with Anytt cc.",
     keywords: `${goldenKeywordsString}, ${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.french}, ${brandedKeywords.german}, ${brandedKeywords.arabic}, ${brandedKeywords.turkish}, ${brandedKeywords.thai}, ${brandedKeywords.vietnamese}, snaptik alternative, ssstiktok, tikmate, tiktok download 2026, remove tiktok watermark, tiktok batch download, tiktok slideshow saver, tiktok reels download, tiktok story saver, tiktok 1080p download, how to download tiktok video, tiktok to gif, tiktok dl, 4k tokkit, savett, tiktok photo download, tiktok live download, tiktok download full hd, TikTok carousel, TikTok 4K, photo mode download, TikTok captions, TikTok metadata, TikTok voiceover, save TikTok slideshow, download TikTok carousel as mp4, TikTok video downloader HD 1080p no watermark, TikTok downloader for CapCut editing, ${formatExtended.join(", ")}`,
     h1: "Anytt cc - TikTok Video Downloader Without Watermark",
     h2: "Save TikTok Videos in HD Quality - Free & Fast",
     h3: ["How to Download TikTok Videos", "TikTok Audio Download", "FAQ"]
   },
   about: {
-    title: "About Anytt cc - Best Free TikTok Video Downloader 2026",
-    description: "Anytt cc is the #1 free TikTok video downloader trusted by millions worldwide. Download TikTok videos without watermark in HD. Fast, free, no registration required. Learn about anytt cc!",
+    title: "About Anytt cc — Free TikTok Video Downloader",
+    description: "Anytt cc is a free TikTok video downloader trusted by millions. No watermark, HD quality, no signup required. Learn more about us.",
     keywords: `${goldenKeywordsString}, ${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.hindi}, ${brandedKeywords.russian}, about anytt cc, best tiktok downloader, free tiktok saver, tiktok video download service, anytt cc features, top tiktok downloader 2026, trusted tiktok tool, TikTok trends, TikTok trending, TikTok algorithm, TikTok SEO, TikTok hashtags`,
     h1: "About Anytt cc Video Downloader",
     h2: "The Fastest Free TikTok Video Downloader Online",
     h3: ["Our Features", "Why Users Love Anytt cc", "Contact Us"]
   },
   faq: {
-    title: "Anytt cc FAQ - TikTok Downloader Help | How to Download TikTok Videos",
-    description: "Get answers about Anytt cc TikTok video downloader. Learn how to save TikTok on iPhone, Android, PC without watermark. Free anytt cc guide and troubleshooting tips!",
+    title: "Anytt cc FAQ — TikTok Downloader Help & Guides",
+    description: "Anytt cc FAQ: how to save TikTok on iPhone, Android & PC without watermark. Free guide and troubleshooting tips.",
     keywords: `${goldenKeywordsString}, ${coreKeywordsString}, ${brandedKeywords.primary}, ${brandedKeywords.japanese}, ${brandedKeywords.korean}, tiktok downloader faq, how to download tiktok, save tiktok video help, tiktok download guide, anytt cc tutorial, download tiktok iphone, download tiktok android, tiktok no watermark how, how to download TikTok video without app, can I download TikTok slideshow as video, best way to download TikTok mp3 original, TikTok downloader for CapCut editing`,
     h1: "Anytt cc - Frequently Asked Questions",
     h2: "Everything You Need to Know About Anytt cc",
