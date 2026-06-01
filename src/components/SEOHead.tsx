@@ -58,6 +58,7 @@ const SEOHead = ({
     updateMeta('og:description', description, true);
     updateMeta('og:url', canonicalUrl, true);
     updateMeta('og:image', ogImage, true);
+    updateMeta('og:type', ogType, true);
     
     // Twitter
     updateMeta('twitter:title', title);
