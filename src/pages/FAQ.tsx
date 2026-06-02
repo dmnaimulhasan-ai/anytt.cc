@@ -94,7 +94,7 @@ const FAQPage = () => {
   return (
     <div className="min-h-screen bg-background">
         <SEOHead
-          title="FAQ - AnyTT TikTok Video Downloader | Frequently Asked Questions"
+          title="FAQ - AnyTT TikTok Downloader"
           description="Get answers to common questions about downloading TikTok videos with AnyTT. Learn how to save TikTok videos without watermark on any device."
         canonicalUrl={`${BASE_URL}/faq`}
         keywords={`${goldenKeywordsString}, download TikTok, fast downloads, social media, video downloader, AnyTT FAQ, TikTok downloader help, TikTok download questions, how to download TikTok videos, video saver FAQ`}

@@ -78,7 +78,7 @@ const PinterestDownloader = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Anytt cc Pinterest Video Downloader - Download Pinterest Videos Free HD 2026"
+        title="Pinterest Video Downloader - Free HD | AnyTT"
         description="Anytt cc - Free Pinterest video downloader. Download Pinterest videos & Idea Pins in HD quality. No registration, no app needed. Works on iPhone, Android & PC!"
         canonicalUrl={`${BASE_URL}/pinterest-downloader`}
         keywords={`${allPinterestKeywords}, ${banglaKeywords.pinterest.join(", ")}`}
