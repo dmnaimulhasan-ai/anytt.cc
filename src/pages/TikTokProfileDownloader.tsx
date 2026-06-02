@@ -31,7 +31,7 @@ const TikTokProfilePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="TikTok Profile Downloader - Download All Videos from Any User | AnyTT"
+        title="TikTok Profile Downloader - Free | AnyTT"
         description="Download all TikTok videos from any user profile. Enter a username, select videos, and batch download without watermark in HD. Free, no login required."
         canonicalUrl={`${BASE_URL}/tiktok-profile-downloader`}
         keywords="tiktok profile downloader, download all tiktok videos, tiktok username downloader, batch download tiktok, tiktok user videos download, download tiktok profile videos"
