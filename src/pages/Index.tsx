@@ -232,6 +232,27 @@ const Index = () => {
           <div className="container mx-auto max-w-4xl text-center">
             <h3 className="text-lg font-semibold text-foreground/80 mb-6">Popular Downloads</h3>
             <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground/70 leading-relaxed">
+              {/* 🎯 Low-difficulty high-volume targets (Semrush) */}
+              <span>pinterest downloader</span><span>•</span>
+              <span>pinterest video downloader</span><span>•</span>
+              <span>pinterest download</span><span>•</span>
+              <span>download pinterest videos</span><span>•</span>
+              <span>pinterest images</span><span>•</span>
+              <span>pinterest video download</span><span>•</span>
+              <span>download pinterest video</span><span>•</span>
+              <span>pintrest downloader</span><span>•</span>
+              <span>pinterest image downloader</span><span>•</span>
+              <span>pinterest to mp4</span><span>•</span>
+              <span>pinterest video downloader online</span><span>•</span>
+              <span>pinterest photo downloader</span><span>•</span>
+              <span>how to download pinterest videos</span><span>•</span>
+              <span>how to download videos from pinterest</span><span>•</span>
+              <span>how to download video from pinterest on iphone</span><span>•</span>
+              <span>tik tok saving</span><span>•</span>
+              <span>tiktok download video</span><span>•</span>
+              <span>download tiktok videos</span><span>•</span>
+              <span>tittok</span><span>•</span>
+              <span>sss tiktok</span><span>•</span>
               {/* English Keywords - Competitors & Tools */}
               <span>snaptik</span><span>•</span>
               <span>ssstiktok</span><span>•</span>
