@@ -641,6 +641,17 @@ export const tiktokKeywords = {
     "Pinterest home decor video download", "Pinterest workout video download",
     "Pinterest wedding ideas download", "Pinterest food video downloader free",
     "download all Pinterest pins from board", "Pinterest to MP4 converter online"
+  ],
+  // 🎯 Low-difficulty high-volume targets (Semrush KD < 45)
+  lowDifficulty: [
+    "tiktok to mp4",
+    "save tiktok",
+    "sstiktok",
+    "tik tok saving",
+    "tiktok download video",
+    "download tiktok videos",
+    "tittok",
+    "sss tiktok"
   ]
 };
 
@@ -783,6 +794,24 @@ export const pinterestKeywords = {
     "Pinterest board to Canva export",
     "save Pinterest board for client presentation",
     "save Pinterest ideas for offline travel"
+  ],
+  // 🎯 Low-difficulty high-volume targets (Semrush KD ~23)
+  lowDifficulty: [
+    "pinterest downloader",
+    "pinterest video downloader",
+    "pinterest download",
+    "download pinterest videos",
+    "pinterest images",
+    "pinterest video download",
+    "download pinterest video",
+    "pintrest downloader",
+    "pinterest image downloader",
+    "pinterest to mp4",
+    "pinterest video downloader online",
+    "pinterest photo downloader",
+    "how to download pinterest videos",
+    "how to download videos from pinterest",
+    "how to download video from pinterest on iphone"
   ]
 };
 
@@ -949,6 +978,7 @@ export const allTiktokKeywords = [
   ...tiktokKeywords.tikmateCompetitor,
   ...tiktokKeywords.competitorComparison,
   ...tiktokKeywords.noCaptionsVideo,
+  ...tiktokKeywords.lowDifficulty,
   ...urduKeywords,
   ...arabicKeywords,
   ...thaiExpandedKeywords,
@@ -975,7 +1005,8 @@ export const allPinterestKeywords = [
   ...pinterestKeywords.imageAndGif,
   ...pinterestKeywords.bulk,
   ...pinterestKeywords.utility,
-  ...pinterestKeywords.conversationalPinterest
+  ...pinterestKeywords.conversationalPinterest,
+  ...pinterestKeywords.lowDifficulty
 ].join(", ");
 
 /**
