@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
+    sitemapPlugin(),
     react(),
     mode === "development" && componentTagger(),
     VitePWA({
