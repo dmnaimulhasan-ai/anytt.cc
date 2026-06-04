@@ -43,7 +43,26 @@ export const coreKeywords = [
   "download TikTok",
   "fast downloads",
   "social media",
-  "video downloader"
+  "video downloader",
+  // 🛡️ Ad-free / clean experience keywords (low-difficulty, high-intent)
+  "ad free tiktok downloader",
+  "no ads tiktok downloader",
+  "tiktok downloader without ads",
+  "tiktok downloader without popup",
+  "tiktok downloader no popup",
+  "tiktok downloader without redirect",
+  "clean tiktok downloader",
+  "safe tiktok downloader no ads",
+  "free tiktok downloader no ads",
+  "pinterest downloader no ads",
+  "ad free pinterest downloader",
+  "no ads video downloader",
+  "tiktok saver no ads",
+  "tiktok mp3 downloader no ads",
+  "tiktok no watermark no ads",
+  "clean video downloader no popup",
+  "anytt ad free",
+  "anytt no ads"
 ];
 
 export const coreKeywordsString = coreKeywords.join(", ");

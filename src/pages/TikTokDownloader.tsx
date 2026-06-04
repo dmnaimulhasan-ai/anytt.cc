@@ -3,9 +3,6 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import SEOHead from "@/components/SEOHead";
 import PlatformDownloader from "@/components/PlatformDownloader";
-import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
-import InlineAd from "@/components/ads/InlineAd";
 import { Link } from "react-router-dom";
 import {
   seoConfig, 
@@ -137,11 +134,6 @@ const TikTokDownloader = () => {
           </div>
         </section>
 
-        {/* Native Banner Ad */}
-        <NativeBanner />
-        
-        {/* Inline Ad before FAQ */}
-        <InlineAd />
 
         {/* FAQ Section */}
         <section className="py-16 px-4 md:px-6 bg-muted/20">
@@ -362,8 +354,6 @@ const TikTokDownloader = () => {
           </div>
         </section>
 
-        {/* Banner Ad */}
-        <BannerAd />
 
         {/* Popular TikTok Searches - SEO Keywords Section */}
         <section className="py-10 px-4 bg-muted/10 border-t border-border/30">

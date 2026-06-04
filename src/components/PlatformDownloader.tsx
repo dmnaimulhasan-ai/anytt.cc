@@ -9,8 +9,6 @@ import { supabase } from "@/integrations/supabase/client";
 import VideoResult from "./VideoResult";
 import BatchResults from "./BatchResults";
 import LoadingSpinner from "./LoadingSpinner";
-import NativeBanner from "./ads/NativeBanner";
-import SmartlinkButton from "./ads/SmartlinkButton";
 
 interface VideoData {
   id: string;
@@ -482,12 +480,6 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
               isProcessing={isLoading}
             />
           )}
-          
-          {/* Separate Smartlink Button - NOT on download */}
-          <SmartlinkButton />
-          
-          {/* Native Banner below results - clearly labeled */}
-          <NativeBanner />
         </div>
       )}
     </div>

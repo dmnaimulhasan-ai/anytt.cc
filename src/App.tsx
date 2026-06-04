@@ -7,11 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 
 import FloatingSupportButton from "./components/FloatingSupportButton";
-import FloatingBanner from "./components/ads/FloatingBanner";
 import InstallPrompt from "./components/InstallPrompt";
-import VignetteBanner from "./components/ads/VignetteBanner";
-import MonetagPopunder from "./components/ads/MonetagPopunder";
-import MonetagMultiTag from "./components/ads/MonetagMultiTag";
 
 // Lazy load non-critical routes to reduce initial bundle size
 const TikTokDownloader = lazy(() => import("./pages/TikTokDownloader"));
@@ -66,11 +62,7 @@ const App = () => {
       <Toaster />
       <Sonner />
       <FloatingSupportButton />
-      <FloatingBanner />
       <InstallPrompt />
-      <VignetteBanner />
-      <MonetagPopunder />
-      <MonetagMultiTag />
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>

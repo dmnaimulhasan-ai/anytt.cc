@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
-import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-data";
 import { BASE_URL, getBreadcrumbSchema, getItemListSchema, getFAQSchema } from "@/lib/seo-config";
@@ -117,8 +115,6 @@ const Blog = () => {
               </p>
             </div>
             
-            {/* Native Banner Ad */}
-            <NativeBanner />
             
             {/* Blog posts grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,8 +176,6 @@ const Blog = () => {
               </nav>
             )}
             
-            {/* Bottom Banner Ad */}
-            <BannerAd />
 
             {/* Internal links for SEO */}
             <div className="mt-12 text-center">
