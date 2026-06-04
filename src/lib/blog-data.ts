@@ -96,7 +96,7 @@ The opposite. Removing all the ad scripts made the site significantly faster —
 **[Try the new ads-free AnyTT.cc →](https://anytt.cc/)**
 
 The cleanest, fastest, totally free TikTok & Pinterest downloader on the web. No ads. No popups. No catch.
-    \`
+    `
   },
   {
     slug: "ultimate-tiktok-download-guide-2026-complete",
