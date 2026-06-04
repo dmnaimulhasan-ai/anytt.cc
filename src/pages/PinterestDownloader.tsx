@@ -3,8 +3,6 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import SEOHead from "@/components/SEOHead";
 import PlatformDownloader from "@/components/PlatformDownloader";
-import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
 import {
   BASE_URL, 
@@ -115,8 +113,6 @@ const PinterestDownloader = () => {
           </div>
         </section>
 
-        {/* Native Banner Ad */}
-        <NativeBanner />
 
         {/* FAQ Section */}
         <section className="py-16 px-4 md:px-6 bg-muted/20">
@@ -286,8 +282,6 @@ const PinterestDownloader = () => {
           </div>
         </section>
 
-        {/* Banner Ad */}
-        <BannerAd />
 
         {/* Popular Pinterest Downloads - SEO Keywords Section */}
         <section className="py-10 px-4 bg-muted/10 border-t border-border/30">

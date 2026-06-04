@@ -2,8 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import SEOHead from "@/components/SEOHead";
-import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
 import { Link } from "react-router-dom";
 import { Zap, Shield, Smartphone, Download, Clock, Globe, ExternalLink } from "lucide-react";
 import { seoConfig, BASE_URL, getOrganizationSchema, getWebApplicationSchema, getFAQSchema } from "@/lib/seo-config";
@@ -120,9 +118,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Native Banner Ad */}
-        <NativeBanner />
-
         {/* Supported Platform */}
         <section className="py-16 px-4 md:px-6 bg-muted/20">
           <div className="container mx-auto max-w-4xl">
@@ -198,29 +193,6 @@ const About = () => {
                   <p className="mt-3 text-muted-foreground">{faq.answer}</p>
                 </details>
               ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Banner Ad */}
-        <BannerAd />
-        
-        {/* Promotional CTA Section */}
-        <section className="py-12 px-4 md:px-6">
-          <div className="container mx-auto max-w-2xl">
-            <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 text-center">
-              <h3 className="text-2xl font-bold font-display mb-3">🎁 Discover Exclusive Offers</h3>
-              <p className="text-muted-foreground mb-6">Check out amazing deals and premium content curated just for you!</p>
-              <a 
-                href="https://evadereprimand.com/is4a58hxt?key=0c00c75ae0ce1787615332dbc4ad48dd" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                  Explore Offers
-                  <ExternalLink className="h-4 w-4 ml-2" />
-                </Button>
-              </a>
             </div>
           </div>
         </section>

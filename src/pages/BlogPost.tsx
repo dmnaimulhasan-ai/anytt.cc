@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
-import NativeBanner from "@/components/ads/NativeBanner";
-import BannerAd from "@/components/ads/BannerAd";
 import { getBlogPost, getRelatedPosts, getInternalLinks } from "@/lib/blog-data";
 import { BASE_URL, getBreadcrumbSchema } from "@/lib/seo-config";
 import { Calendar, Clock, ArrowLeft, ExternalLink, BookOpen } from "lucide-react";
@@ -109,8 +107,6 @@ const BlogPost = () => {
               </div>
             </header>
             
-            {/* In-content Native Banner */}
-            <NativeBanner />
             
             {/* SECURITY NOTE: Blog content is static/hardcoded in src/lib/blog-data.ts (developer-controlled).
                 If blog content is ever sourced from a CMS, user input, or external API,
@@ -146,8 +142,6 @@ const BlogPost = () => {
               }}
             />
             
-            {/* Mid-content Banner Ad */}
-            <BannerAd />
             
             {/* CTA Section */}
             <div className="mt-12 p-6 glass-card rounded-2xl text-center">
@@ -182,8 +176,6 @@ const BlogPost = () => {
               </div>
             )}
             
-            {/* Ad placement - Monetag handles rendering */}
-            <BannerAd />
           </div>
         </article>
         

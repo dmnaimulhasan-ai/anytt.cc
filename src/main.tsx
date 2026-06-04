@@ -19,16 +19,17 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     setTimeout(async () => {
       try {
-        // Register the main service worker
         await navigator.serviceWorker.register('/sw.js', { scope: '/' });
-        
-        // Register Monetag push notification service worker
-        await navigator.serviceWorker.register('/monetag-sw.js', { scope: '/monetag-sw' });
-        
-        // Update existing registrations
+
+        // Unregister any previously installed ad/monetag service workers
         const registrations = await navigator.serviceWorker.getRegistrations();
         for (const registration of registrations) {
-          await registration.update();
+          const scope = registration.scope || '';
+          if (scope.includes('monetag') || scope.includes('/ads')) {
+            await registration.unregister();
+          } else {
+            await registration.update();
+          }
         }
       } catch (e) {
         // SW registration failed, ignore
