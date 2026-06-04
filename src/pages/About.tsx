@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
-import { Zap, Shield, Smartphone, Download, Clock, Globe, ExternalLink } from "lucide-react";
+import { Zap, Shield, Smartphone, Download, Clock, Globe } from "lucide-react";
 import { seoConfig, BASE_URL, getOrganizationSchema, getWebApplicationSchema, getFAQSchema } from "@/lib/seo-config";
 import { Button } from "@/components/ui/button";
 
