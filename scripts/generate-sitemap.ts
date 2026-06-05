@@ -46,6 +46,7 @@ const STATIC_ROUTES: Entry[] = [
   { path: "/privacy-policy", lastmod: "2026-01-23", changefreq: "yearly", priority: "0.4" },
   { path: "/terms-of-service", lastmod: "2026-01-23", changefreq: "yearly", priority: "0.4" },
   { path: "/dmca", lastmod: "2026-01-23", changefreq: "yearly", priority: "0.4" },
+  { path: "/tg", lastmod: today, changefreq: "monthly", priority: "0.5" },
 ];
 
 function parseBlogPosts(): Entry[] {
