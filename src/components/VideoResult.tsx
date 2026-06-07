@@ -91,10 +91,32 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     // Use the native WebApp API instead so the file actually saves.
     const tg = (window as any).Telegram?.WebApp;
     if (tg?.initData) {
+      // Show progress UI so the page doesn't look frozen while
+      // Telegram's native save sheet is open.
+      setDownloadState({ isDownloading: true, progress: 10, filename });
+      const finish = (ok: boolean) => {
+        setDownloadState({
+          isDownloading: false,
+          progress: ok ? 100 : 0,
+          filename: '',
+        });
+        try { tg.HapticFeedback?.notificationOccurred?.(ok ? 'success' : 'error'); } catch { /* ignore */ }
+      };
       try {
         if (typeof tg.downloadFile === 'function') {
-          // Bot API 8.0+: native "Save file" sheet
-          tg.downloadFile({ url, file_name: filename }, () => {});
+          // Bot API 8.0+: native "Save file" sheet. Callback fires with the
+          // user's accept/decline decision.
+          tg.downloadFile({ url, file_name: filename }, (accepted: boolean) => {
+            finish(!!accepted);
+          });
+          // Safety timeout in case the callback never fires (older clients)
+          setTimeout(() => {
+            setDownloadState((prev) =>
+              prev.isDownloading && prev.filename === filename
+                ? { isDownloading: false, progress: 0, filename: '' }
+                : prev,
+            );
+          }, 30000);
           return;
         }
       } catch { /* fall through */ }
@@ -102,10 +124,12 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
         if (typeof tg.openLink === 'function') {
           // Opens in the user's external browser where the download works
           tg.openLink(url, { try_instant_view: false });
+          finish(true);
           return;
         }
       } catch { /* fall through */ }
       window.location.href = url;
+      finish(true);
       return;
     }
 
