@@ -48,6 +48,20 @@ const BatchResults = ({ results, onReset, autoDownload = false, isProcessing = f
   };
 
   const handleDownload = (url: string, filename: string) => {
+    // Telegram Mini App: WebView blocks <a download>; use native API
+    const tg = (window as any).Telegram?.WebApp;
+    if (tg?.initData) {
+      try {
+        if (typeof tg.downloadFile === 'function') {
+          tg.downloadFile({ url, file_name: filename }, () => {});
+          return;
+        }
+        if (typeof tg.openLink === 'function') {
+          tg.openLink(url, { try_instant_view: false });
+          return;
+        }
+      } catch { /* fall through */ }
+    }
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;

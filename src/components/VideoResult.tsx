@@ -85,6 +85,30 @@ const VideoResult = ({ video, onReset, platform = 'tiktok' }: VideoResultProps) 
     });
     // Dispatch event for PWA install prompt
     window.dispatchEvent(new Event('anytt:download-complete'));
+
+    // ── Telegram Mini App path ──
+    // Telegram's in-app WebView blocks blob URLs and <a download>.
+    // Use the native WebApp API instead so the file actually saves.
+    const tg = (window as any).Telegram?.WebApp;
+    if (tg?.initData) {
+      try {
+        if (typeof tg.downloadFile === 'function') {
+          // Bot API 8.0+: native "Save file" sheet
+          tg.downloadFile({ url, file_name: filename }, () => {});
+          return;
+        }
+      } catch { /* fall through */ }
+      try {
+        if (typeof tg.openLink === 'function') {
+          // Opens in the user's external browser where the download works
+          tg.openLink(url, { try_instant_view: false });
+          return;
+        }
+      } catch { /* fall through */ }
+      window.location.href = url;
+      return;
+    }
+
     setDownloadState({ isDownloading: true, progress: 0, filename });
 
     try {
