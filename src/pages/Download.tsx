@@ -132,6 +132,7 @@ const DownloadPage = () => {
           {isLoading && (
             <div className="glass-card rounded-3xl p-8 text-center space-y-4 animate-fade-in">
               <Loader2 className="h-12 w-12 animate-spin mx-auto text-primary" />
+              <h1 className="text-2xl font-bold">Preparing Your Download</h1>
               <p className="text-lg font-medium">Fetching video...</p>
               <p className="text-muted-foreground">This may take a moment</p>
             </div>
@@ -143,7 +144,7 @@ const DownloadPage = () => {
               <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto">
                 <AlertCircle className="h-8 w-8 text-destructive" />
               </div>
-              <h2 className="text-xl font-bold">Unable to Download</h2>
+              <h1 className="text-xl font-bold">Download Error</h1>
               <p className="text-muted-foreground">{error}</p>
               <Button onClick={() => navigate('/')} className="btn-primary mt-4">
                 Try Another Link
