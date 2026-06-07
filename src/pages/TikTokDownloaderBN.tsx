@@ -72,8 +72,8 @@ const TikTokDownloaderBN = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background" lang="bn">
       <SEOHead 
-        title="Anytt cc - টিকটক ভিডিও ডাউনলোডার | লোগো ছাড়া ফ্রি ডাউনলোড ২০২৬"
-        description="Anytt cc - সেরা ফ্রি টিকটক ভিডিও ডাউনলোডার। লোগো/ওয়াটারমার্ক ছাড়া HD কোয়ালিটিতে TikTok ভিডিও ডাউনলোড করুন। iPhone, Android, PC তে কাজ করে। রেজিস্ট্রেশন লাগে না।"
+        title="টিকটক ডাউনলোডার - লোগো ছাড়া HD ভিডিও | Anytt cc"
+        description="Anytt cc দিয়ে লোগো ছাড়া HD কোয়ালিটিতে TikTok ভিডিও ডাউনলোড করুন। iPhone, Android, PC তে ফ্রি, রেজিস্ট্রেশন ছাড়া।"
         keywords={`${goldenKeywordsString}, ${allBanglaKeywords}, টিকটক ভিডিও ডাউনলোড, টিকটক ডাউনলোডার, লোগো ছাড়া টিকটক, ওয়াটারমার্ক ছাড়া, টিকটক এমপি৩, ফ্রি ডাউনলোড, tiktok video download bangla, tiktok downloader bangladesh, download tiktok without watermark bangla`}
         canonicalUrl={`${BASE_URL}/bn/tiktok-download`}
         lang="bn"
