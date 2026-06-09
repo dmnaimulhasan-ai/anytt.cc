@@ -38,6 +38,7 @@ interface PlatformDownloaderProps {
   placeholder: string;
   batchPlaceholder: string;
   accentColor: string;
+  hideHeading?: boolean;
 }
 
 /**
