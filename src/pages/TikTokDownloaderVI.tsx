@@ -117,6 +117,7 @@ const TikTokDownloaderVI = () => {
               placeholder="Dán liên kết video TikTok vào đây..."
               batchPlaceholder="Dán nhiều liên kết TikTok (mỗi dòng một liên kết)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

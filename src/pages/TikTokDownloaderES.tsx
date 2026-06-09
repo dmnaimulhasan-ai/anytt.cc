@@ -107,6 +107,7 @@ const TikTokDownloaderES = () => {
               placeholder="Pega el enlace del video de TikTok aquí..."
               batchPlaceholder="Pega múltiples enlaces de TikTok (uno por línea)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

@@ -107,6 +107,7 @@ const TikTokDownloaderID = () => {
               placeholder="Tempel link video TikTok di sini..."
               batchPlaceholder="Tempel banyak link TikTok (satu per baris)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

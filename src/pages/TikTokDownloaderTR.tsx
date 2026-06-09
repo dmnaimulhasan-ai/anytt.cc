@@ -113,6 +113,7 @@ const TikTokDownloaderTR = () => {
               placeholder="TikTok video bağlantısını buraya yapıştırın..."
               batchPlaceholder="Birden fazla TikTok bağlantısı yapıştırın (her satıra bir tane)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

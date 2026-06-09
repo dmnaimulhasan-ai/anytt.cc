@@ -121,6 +121,7 @@ const TikTokDownloaderHI = () => {
               placeholder="TikTok वीडियो लिंक यहाँ पेस्ट करें..."
               batchPlaceholder="कई TikTok लिंक पेस्ट करें (हर लाइन में एक)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

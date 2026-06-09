@@ -38,6 +38,7 @@ interface PlatformDownloaderProps {
   placeholder: string;
   batchPlaceholder: string;
   accentColor: string;
+  hideHeading?: boolean;
 }
 
 /**
@@ -55,7 +56,8 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
   functionName,
   placeholder,
   batchPlaceholder,
-  accentColor
+  accentColor,
+  hideHeading = false
 }, ref) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [url, setUrl] = useState("");
@@ -264,11 +266,13 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
         </div>
       </div>
 
-      <h1 className="text-4xl md:text-7xl font-black font-display mb-4 text-center leading-tight">
-        <span className="gradient-text">{platformName}</span>
-        <br className="md:hidden" />
-        <span className="text-foreground"> Downloader</span>
-      </h1>
+      {!hideHeading && (
+        <h1 className="text-4xl md:text-7xl font-black font-display mb-4 text-center leading-tight">
+          <span className="gradient-text">{platformName}</span>
+          <br className="md:hidden" />
+          <span className="text-foreground"> Downloader</span>
+        </h1>
+      )}
       
       <p className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-xl mx-auto font-medium">
         Download {platformName} videos without watermark in HD
