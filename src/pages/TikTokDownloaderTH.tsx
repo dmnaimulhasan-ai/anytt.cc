@@ -113,6 +113,7 @@ const TikTokDownloaderTH = () => {
               placeholder="วางลิงก์วิดีโอ TikTok ที่นี่..."
               batchPlaceholder="วางลิงก์ TikTok หลายรายการ (หนึ่งรายการต่อบรรทัด)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>

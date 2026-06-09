@@ -120,6 +120,7 @@ const TikTokDownloaderBN = () => {
               placeholder="TikTok ভিডিও লিংক এখানে পেস্ট করুন..."
               batchPlaceholder="একাধিক TikTok লিংক পেস্ট করুন (প্রতি লাইনে একটি)"
               accentColor="primary"
+              hideHeading
             />
           </div>
         </section>
