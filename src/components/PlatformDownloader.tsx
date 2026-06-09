@@ -56,7 +56,8 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
   functionName,
   placeholder,
   batchPlaceholder,
-  accentColor
+  accentColor,
+  hideHeading = false
 }, ref) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [url, setUrl] = useState("");
