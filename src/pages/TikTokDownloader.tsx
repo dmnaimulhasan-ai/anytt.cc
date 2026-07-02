@@ -526,6 +526,13 @@ const TikTokDownloader = () => {
           <div className="container mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold font-display mb-6 text-center">Explore More</h2>
             <nav className="flex flex-wrap justify-center gap-4" aria-label="Related tools">
+              <Link
+                to="/tiktok-to-mp3-downloader"
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
+                title="Convert TikTok videos to MP3 audio"
+              >
+                <span className="font-semibold">🎵 TikTok to MP3</span>
+              </Link>
               <Link 
                 to="/blog/ultimate-tiktok-download-guide-2026-complete" 
                 className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
