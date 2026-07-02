@@ -1308,6 +1308,7 @@ export const altTexts = {
 export const internalLinks = {
   home: { path: "/", anchor: "AnyTT Video Downloader" },
   tiktok: { path: "/tiktok-downloader", anchor: "TikTok Video Downloader" },
+  tiktokMp3: { path: "/tiktok-to-mp3-downloader", anchor: "TikTok to MP3 Downloader" },
   faq: { path: "/faq", anchor: "FAQ - Common Questions" },
   about: { path: "/about", anchor: "About AnyTT" },
   blog: { path: "/blog", anchor: "TikTok Download Tips & Guides" },
