@@ -70,6 +70,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/download" element={<Download />} />
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
+            <Route path="/tiktok-to-mp3-downloader" element={<TikTokToMp3Downloader />} />
             <Route path="/pinterest-downloader" element={<PinterestDownloader />} />
             <Route path="/pinterest-faq" element={<PinterestFAQ />} />
             <Route path="/tiktok-profile-downloader" element={<TikTokProfilePage />} />
