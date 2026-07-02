@@ -277,7 +277,7 @@ const PlatformDownloader = forwardRef<HTMLDivElement, PlatformDownloaderProps>((
       )}
       
       <p className="text-lg md:text-xl text-muted-foreground mb-8 text-center max-w-xl mx-auto font-medium">
-        Download {platformName} videos without watermark in HD
+        {customSubtitle || `Download ${platformName} videos without watermark in HD`}
         <span className="inline-block ml-2 animate-bounce">🚀</span>
       </p>
 
