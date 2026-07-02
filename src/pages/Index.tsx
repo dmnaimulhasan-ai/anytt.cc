@@ -161,6 +161,14 @@ const Index = () => {
                 <span className="text-xl">👤</span>
                 <span className="font-semibold">Profile Downloader</span>
               </Link>
+              <Link 
+                to="/tiktok-to-mp3-downloader" 
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl glass-card border border-primary/30 hover:border-primary/60 transition-colors"
+                title="Convert TikTok videos to MP3 audio"
+              >
+                <span className="text-xl">🎵</span>
+                <span className="font-semibold">TikTok to MP3</span>
+              </Link>
             </nav>
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
               <Link 
