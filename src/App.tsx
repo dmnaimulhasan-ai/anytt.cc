@@ -23,6 +23,7 @@ const PinterestDownloader = lazy(() => import("./pages/PinterestDownloader"));
 const PinterestFAQ = lazy(() => import("./pages/PinterestFAQ"));
 const TikTokProfilePage = lazy(() => import("./pages/TikTokProfileDownloader"));
 const TelegramMiniApp = lazy(() => import("./pages/TelegramMiniApp"));
+const TikTokToMp3Downloader = lazy(() => import("./pages/TikTokToMp3Downloader"));
 
 // Eagerly load LCP-critical pages (flagged by CWV)
 import About from "./pages/About";
