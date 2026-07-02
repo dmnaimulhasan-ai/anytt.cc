@@ -39,6 +39,7 @@ interface PlatformDownloaderProps {
   batchPlaceholder: string;
   accentColor: string;
   hideHeading?: boolean;
+  customSubtitle?: string;
 }
 
 /**
