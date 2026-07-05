@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "anytt-cc-mcp",
+      "version": "0.1.0",
+      "title": "Anytt.cc Downloader"
+    },
+    "tools": [
+      {
+        "name": "download_tiktok",
+        "title": "Download TikTok video",
+        "description": "Get direct download links for a TikTok video (no watermark HD, plus MP3 audio). Accepts any TikTok URL including vt.tiktok.com and vm.tiktok.com short links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The TikTok video URL (e.g. https://www.tiktok.com/@user/video/12345)."
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "download_pinterest",
+        "title": "Download Pinterest video or image",
+        "description": "Get a direct download link for a Pinterest pin (video or image) in the highest quality available. Accepts pinterest.com pin URLs and pin.it short links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The Pinterest pin URL (e.g. https://pin.it/xxxx or https://www.pinterest.com/pin/12345)."
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_tiktok_profile_videos",
+        "title": "List TikTok profile videos",
+        "description": "Fetch a list of recent public videos for a TikTok profile (up to ~30). Useful for batch downloading. Accepts a @username or a full profile URL.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 1,
+              "description": "TikTok username (with or without @), or a full profile URL like https://www.tiktok.com/@user."
+            }
+          },
+          "required": [
+            "username"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
