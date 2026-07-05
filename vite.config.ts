@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
+import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 import { generateSitemap } from "./scripts/generate-sitemap";
 
 // Regenerates public/sitemap.xml on dev start and build so new routes / blog
@@ -29,6 +30,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     sitemapPlugin(),
+    mcpPlugin(),
     react(),
     mode === "development" && componentTagger(),
     VitePWA({
