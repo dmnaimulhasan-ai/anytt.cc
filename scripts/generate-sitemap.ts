@@ -28,6 +28,7 @@ const today = new Date().toISOString().slice(0, 10);
 const STATIC_ROUTES: Entry[] = [
   { path: "/", lastmod: today, changefreq: "daily", priority: "1.0" },
   { path: "/tiktok-downloader", lastmod: today, changefreq: "weekly", priority: "0.9" },
+  { path: "/tiktok-to-mp3-downloader", lastmod: today, changefreq: "weekly", priority: "0.9" },
   { path: "/pinterest-downloader", lastmod: today, changefreq: "weekly", priority: "0.9" },
   { path: "/tiktok-profile-downloader", lastmod: today, changefreq: "weekly", priority: "0.9" },
   { path: "/pinterest-faq", lastmod: today, changefreq: "monthly", priority: "0.8" },
