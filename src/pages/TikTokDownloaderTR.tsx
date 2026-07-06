@@ -67,7 +67,7 @@ const TikTokDownloaderTR = () => {
       <SEOHead 
         title="Anytt cc - TikTok Video İndirme Filigrensiz Ücretsiz 2026"
         description="Anytt cc - En iyi ücretsiz TikTok video indirici. TikTok videolarını filigrensiz HD kalitesinde indirin. iPhone, Android, PC'de çalışır. Kayıt gerekmez."
-        keywords={`${goldenKeywordsString}, download TikTok, fast downloads, social media, video downloader, anytt cc, tiktok video indirme, tiktok indirme, tiktok video indir, tiktok indir, tiktok video indirme programı, tiktok filigrensiz indir, tiktok video kaydet, tiktok mp4 indir, tiktok hd indir, tiktok indirici`}
+        keywords={`${goldenKeywordsString}, ${getLangKeywordString("tr")}, tiktok video indirme, tiktok indirme, tiktok video indir, tiktok indir, tiktok video indirme programı, tiktok filigrensiz indir, tiktok video kaydet, tiktok mp4 indir, tiktok hd indir, tiktok indirici`}
         canonicalUrl={`${BASE_URL}/tr/tiktok-indir`}
         lang="tr"
         jsonLd={[
