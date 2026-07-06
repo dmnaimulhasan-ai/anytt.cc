@@ -1,3 +1,4 @@
+import { getLangKeywordString } from "@/lib/lang-keywords";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -71,7 +72,7 @@ const TikTokDownloaderVI = () => {
       <SEOHead 
         title="Anytt cc - Tải Video TikTok Không Logo Miễn Phí 2026"
         description="Anytt cc - Công cụ tải video TikTok miễn phí tốt nhất. Tải video TikTok không có logo chất lượng HD. Hoạt động trên iPhone, Android, PC. Không cần đăng ký."
-        keywords={`${goldenKeywordsString}, download TikTok, fast downloads, social media, video downloader, anytt cc, tải video tiktok, tải tiktok không logo, download video tiktok không watermark, tải video tiktok không có logo, tải nhạc tiktok, tải tiktok miễn phí, lưu video tiktok, tiktok mp4, tiktok hd`}
+        keywords={`${goldenKeywordsString}, ${getLangKeywordString("vi")}, tải video tiktok, tải tiktok không logo, download video tiktok không watermark, tải video tiktok không có logo, tải nhạc tiktok, tải tiktok miễn phí, lưu video tiktok, tiktok mp4, tiktok hd`}
         canonicalUrl={`${BASE_URL}/vi/tai-tiktok`}
         lang="vi"
         jsonLd={[

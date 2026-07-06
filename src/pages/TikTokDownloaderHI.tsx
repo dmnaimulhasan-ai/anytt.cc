@@ -1,3 +1,4 @@
+import { getLangKeywordString } from "@/lib/lang-keywords";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -75,7 +76,7 @@ const TikTokDownloaderHI = () => {
       <SEOHead 
         title="Anytt cc - टिकटॉक वीडियो डाउनलोडर | बिना वॉटरमार्क फ्री डाउनलोड 2026"
         description="Anytt cc - सबसे अच्छा फ्री टिकटॉक वीडियो डाउनलोडर। बिना वॉटरमार्क/लोगो के HD क्वालिटी में TikTok वीडियो डाउनलोड करें। iPhone, Android, PC पर काम करता है। रजिस्ट्रेशन की जरूरत नहीं।"
-        keywords={`${goldenKeywordsString}, ${hindiKeywordsStr}`}
+        keywords={`${goldenKeywordsString}, ${hindiKeywordsStr}, ${getLangKeywordString("hi")}`}
         canonicalUrl={`${BASE_URL}/hi/tiktok-download`}
         lang="hi"
         jsonLd={[

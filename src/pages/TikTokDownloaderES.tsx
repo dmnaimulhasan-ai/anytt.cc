@@ -1,3 +1,4 @@
+import { getLangKeywordString } from "@/lib/lang-keywords";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -52,7 +53,7 @@ const TikTokDownloaderES = () => {
       <SEOHead 
         title="Anytt cc - Descargar TikTok Sin Marca de Agua 2026"
         description="Descarga videos de TikTok en HD sin marca de agua. Gratis, sin registro. Funciona en iPhone, Android y PC. Rápido y seguro con Anytt cc."
-        keywords={`${goldenKeywordsString}, download TikTok, fast downloads, social media, video downloader, anytt cc, anytt cc descargar tiktok, descargar tiktok sin marca de agua, descargador de videos tiktok, guardar video tiktok, tiktok sin logo, descargar tiktok gratis, tiktok mp4, tiktok hd, bajar videos tiktok`}
+        keywords={`${goldenKeywordsString}, ${getLangKeywordString("es")}, anytt cc descargar tiktok, descargar tiktok sin marca de agua, descargador de videos tiktok, guardar video tiktok, tiktok sin logo, descargar tiktok gratis, tiktok mp4, tiktok hd, bajar videos tiktok`}
         canonicalUrl={`${BASE_URL}/es/descargar-tiktok`}
         lang="es"
         jsonLd={[

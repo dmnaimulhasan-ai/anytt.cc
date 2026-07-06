@@ -1,3 +1,4 @@
+import { getLangKeywordString } from "@/lib/lang-keywords";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -74,7 +75,7 @@ const TikTokDownloaderBN = () => {
       <SEOHead 
         title="টিকটক ডাউনলোডার - লোগো ছাড়া HD ভিডিও | Anytt cc"
         description="Anytt cc দিয়ে লোগো ছাড়া HD কোয়ালিটিতে TikTok ভিডিও ডাউনলোড করুন। iPhone, Android, PC তে ফ্রি, রেজিস্ট্রেশন ছাড়া।"
-        keywords={`${goldenKeywordsString}, ${allBanglaKeywords}, টিকটক ভিডিও ডাউনলোড, টিকটক ডাউনলোডার, লোগো ছাড়া টিকটক, ওয়াটারমার্ক ছাড়া, টিকটক এমপি৩, ফ্রি ডাউনলোড, tiktok video download bangla, tiktok downloader bangladesh, download tiktok without watermark bangla`}
+        keywords={`${goldenKeywordsString}, ${allBanglaKeywords}, ${getLangKeywordString("bn")}, টিকটক ভিডিও ডাউনলোড, টিকটক ডাউনলোডার, লোগো ছাড়া টিকটক, ওয়াটারমার্ক ছাড়া, টিকটক এমপি৩, ফ্রি ডাউনলোড, tiktok video download bangla, tiktok downloader bangladesh, download tiktok without watermark bangla`}
         canonicalUrl={`${BASE_URL}/bn/tiktok-download`}
         lang="bn"
         jsonLd={[
