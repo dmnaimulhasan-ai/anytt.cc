@@ -12,8 +12,6 @@ verify_jwt = false
 [functions.track-analytics]
 verify_jwt = false
 
-[functions.track-ad-analytics]
-verify_jwt = false
 
 [functions.tiktok-profile]
 verify_jwt = false
