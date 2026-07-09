@@ -14,36 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      ad_analytics: {
-        Row: {
-          ad_component: string
-          ad_position: string | null
-          created_at: string
-          error_reason: string | null
-          event_type: string
-          id: string
-          user_agent: string | null
-        }
-        Insert: {
-          ad_component: string
-          ad_position?: string | null
-          created_at?: string
-          error_reason?: string | null
-          event_type: string
-          id?: string
-          user_agent?: string | null
-        }
-        Update: {
-          ad_component?: string
-          ad_position?: string | null
-          created_at?: string
-          error_reason?: string | null
-          event_type?: string
-          id?: string
-          user_agent?: string | null
-        }
-        Relationships: []
-      }
       download_stats: {
         Row: {
           downloaded_at: string
