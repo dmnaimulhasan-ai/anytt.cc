@@ -164,27 +164,6 @@ export type Database = {
         }
         Relationships: []
       }
-      visitor_stats: {
-        Row: {
-          first_visit: string
-          id: string
-          last_visit: string
-          visitor_id: string
-        }
-        Insert: {
-          first_visit?: string
-          id?: string
-          last_visit?: string
-          visitor_id: string
-        }
-        Update: {
-          first_visit?: string
-          id?: string
-          last_visit?: string
-          visitor_id?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       public_stats: {
