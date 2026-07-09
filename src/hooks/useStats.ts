@@ -39,26 +39,8 @@ export const useStats = () => {
     }
   };
 
-  const trackVisitor = async () => {
-    try {
-      // Get or create visitor ID from localStorage
-      let visitorId = localStorage.getItem('visitor_id');
-      if (!visitorId) {
-        visitorId = crypto.randomUUID();
-        localStorage.setItem('visitor_id', visitorId);
-      }
 
-      // Track visitor via secure edge function
-      await supabase.functions.invoke('track-analytics', {
-        body: { 
-          action: 'track_visitor', 
-          data: { visitor_id: visitorId } 
-        }
-      });
-    } catch (error) {
-      console.error('Error tracking visitor:', error);
-    }
-  };
+
 
   const trackDownload = async (platform: string, videoId?: string) => {
     try {
