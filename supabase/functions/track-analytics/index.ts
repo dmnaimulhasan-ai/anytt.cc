@@ -55,20 +55,9 @@ serve(async (req) => {
 
     // Process the action
     if (action === 'track_visitor') {
-      const visitorId = data?.visitor_id;
-      if (!visitorId || typeof visitorId !== 'string' || visitorId.length > 100) {
-        return new Response(
-          JSON.stringify({ success: false, error: 'Invalid visitor_id' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
+      // Visitor tracking removed; accept and no-op for backward compatibility.
+      console.log('track_visitor received (no-op)');
 
-      await supabase.from('visitor_stats').upsert({
-        visitor_id: visitorId,
-        last_visit: new Date().toISOString()
-      }, { onConflict: 'visitor_id' });
-
-      console.log('Tracked visitor:', visitorId.substring(0, 8));
 
     } else if (action === 'track_download') {
       const platform = data?.platform;
