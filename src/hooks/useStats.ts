@@ -80,7 +80,6 @@ export const useStats = () => {
   useEffect(() => {
     // Defer analytics calls to not block critical render path
     const deferAnalytics = () => {
-      trackVisitor();
       fetchStats();
     };
 
@@ -91,6 +90,7 @@ export const useStats = () => {
       setTimeout(deferAnalytics, 100);
     }
   }, []);
+
 
   return { stats, isLoading, trackDownload };
 };
