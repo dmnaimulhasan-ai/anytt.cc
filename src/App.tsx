@@ -25,6 +25,10 @@ const TikTokProfilePage = lazy(() => import("./pages/TikTokProfileDownloader"));
 const TelegramMiniApp = lazy(() => import("./pages/TelegramMiniApp"));
 const TikTokToMp3Downloader = lazy(() => import("./pages/TikTokToMp3Downloader"));
 const TikTokSlideshowDownloader = lazy(() => import("./pages/TikTokSlideshowDownloader"));
+const TikTokStoryDownloader = lazy(() => import("./pages/TikTokStoryDownloader"));
+const TikTokMp3Converter = lazy(() => import("./pages/TikTokMp3Converter"));
+const TikTokToMovConverter = lazy(() => import("./pages/TikTokToMovConverter"));
+const TikTokLiveDownloader = lazy(() => import("./pages/TikTokLiveDownloader"));
 
 // Eagerly load LCP-critical pages (flagged by CWV)
 import About from "./pages/About";
@@ -73,6 +77,10 @@ const App = () => {
             <Route path="/tiktok-downloader" element={<TikTokDownloader />} />
             <Route path="/tiktok-to-mp3-downloader" element={<TikTokToMp3Downloader />} />
             <Route path="/tiktok-slideshow-downloader" element={<TikTokSlideshowDownloader />} />
+            <Route path="/tiktok-story-downloader" element={<TikTokStoryDownloader />} />
+            <Route path="/tiktok-mp3-converter" element={<TikTokMp3Converter />} />
+            <Route path="/tiktok-to-mov-converter" element={<TikTokToMovConverter />} />
+            <Route path="/tiktok-live-downloader" element={<TikTokLiveDownloader />} />
             <Route path="/pinterest-downloader" element={<PinterestDownloader />} />
             <Route path="/pinterest-faq" element={<PinterestFAQ />} />
             <Route path="/tiktok-profile-downloader" element={<TikTokProfilePage />} />
